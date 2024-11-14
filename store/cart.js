@@ -6,7 +6,15 @@ export const useCartStore = defineStore('cart', {
   }),
   actions: {
     addToCart(product) {
-      this.cart.push(product);
+      const existingProduct = this.cart.find(item => item.id === product.id);
+      if (existingProduct) {
+        existingProduct.quantity += 1; // Increase quantity if the product exists
+      } else {
+        this.cart.push({ ...product, quantity: 1 }); // Add new product with quantity 1
+      }
+    },
+    removeFromCart(productId) {
+      this.cart = this.cart.filter(item => item.id !== productId);
     },
   },
 });

@@ -24,7 +24,9 @@
   ];
   
   const handleAddToCart = (product) => {
+    if (window.confirm('Are you sure you want to add this item to cart?')) {
     cartStore.addToCart(product);
+    }
   };
   </script>
   

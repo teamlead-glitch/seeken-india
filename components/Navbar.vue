@@ -1,9 +1,9 @@
 <template>
     <nav>
-      <h1 style="width: 75%;">My E-commerce Store</h1>
+        <h1 style="width: 75%;"><NuxtLink to="/">MyStore</NuxtLink></h1>
       <NuxtLink to="/">Home</NuxtLink>
-      <NuxtLink to="/about">About us</NuxtLink>
-      <NuxtLink to="/contact">Contact us</NuxtLink>
+      <NuxtLink to="/about">About</NuxtLink>
+      <NuxtLink to="/contact">Contact</NuxtLink>
       <NuxtLink to="/cart">Cart ({{ cartCount }})</NuxtLink>
     </nav>
   </template>
