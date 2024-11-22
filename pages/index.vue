@@ -10,7 +10,7 @@
     </div>
   </template>
   
-  <script setup>
+  <script setup lang="ts">
   import Navbar from '~/components/Navbar.vue';
   import ProductCard from '~/components/ProductCard.vue';
   import { useCartStore } from '~/store/cart';
@@ -26,6 +26,7 @@
   const handleAddToCart = (product) => {
     if (window.confirm('Are you sure you want to add this item to cart?')) {
     cartStore.addToCart(product);
+    navigateTo('/cart');
     }
   };
   </script>

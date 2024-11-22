@@ -5,13 +5,23 @@
       <NuxtLink to="/about">About</NuxtLink>
       <NuxtLink to="/contact">Contact</NuxtLink>
       <NuxtLink to="/cart">Cart ({{ cartCount }})</NuxtLink>
+      <NuxtLink to="/login" v-if="!authStore.token">  Login</NuxtLink>
+      <NuxtLink v-if="authStore.token" to="/profile"> Profile</NuxtLink>
+      <NuxtLink v-if="authStore.token" @click="logout"> Logout</NuxtLink>
     </nav>
   </template>
   
-  <script setup>
+  <script setup lang="ts">
   import { useCartStore } from '~/store/cart';
+  import { useAuthStore } from '~/store/auth';
   const cartStore = useCartStore();
   const cartCount = computed(() => cartStore.cart.length);
+  const authStore = useAuthStore();
+
+  const logout = () => {
+    authStore.logout();
+    navigateTo('/login');
+  };
   </script>
   
   <style scoped>

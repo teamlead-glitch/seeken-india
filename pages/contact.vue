@@ -9,6 +9,6 @@
       <p>65656</p>
     </div>
 </template>
-<script setup>
+<script setup lang="ts">
 
 </script>

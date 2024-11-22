@@ -20,7 +20,7 @@
     </div>
   </template>
   
-  <script setup>
+  <script setup lang="ts">
   import Navbar from '~/components/Navbar.vue';
   import { useCartStore } from '~/store/cart';
   
