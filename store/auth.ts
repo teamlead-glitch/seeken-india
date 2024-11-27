@@ -8,38 +8,25 @@ export const useAuthStore = defineStore('auth', {
   }),
   actions: {
     async login(email: string, password: string) {
-      const { token, user } = {
-        token: "sampleToken12345",
-        user: {
-          id: 1,
-          name: "John Doe",
-          email: email, // Use the provided email
-        },
-      }
-      
-      // await $fetch('/auth/login', {
-      //   method: 'POST',
-      //   body: { email, password }
-      // });
+      const { token, user } = await $fetch('http://boilerplate-latest.test/api/login', {
+        method: 'POST',
+        body: { email, password }
+      });
 
       this.token = token;
       this.user = user;
-      useCookie('auth_token').value = token; // Store token in cookie for persistence
+      //useCookie('auth_token').value = token; // Store token in cookie for persistence
+      localStorage.setItem('auth_token', token);
     },
     async fetchUser() {
       if (!this.token) return;
 
       try {
-         this.user = {
-          id: 1,
-          name: "John Doe",
-          email: 'email', // Use the provided email
-        }
-         //await $fetch('/auth/user', {
-        //   headers: {
-        //     Authorization: `Bearer ${this.token}`
-        //   }
-        // });
+         this.user =  await $fetch('http://boilerplate-latest.test/api/user', {
+          headers: {
+            Authorization: `Bearer ${this.token}`
+          }
+        });
       } catch {
         this.logout(); // Clear invalid token
       }
@@ -47,7 +34,9 @@ export const useAuthStore = defineStore('auth', {
     logout() {
       this.token = null;
       this.user = null;
-      useCookie('auth_token').value = null; // Clear cookie
+      //useCookie('auth_token').value = null; // Clear cookie
+      localStorage.removeItem('auth_token');
+      
     }
   }
 });
