@@ -1,17 +1,45 @@
 <template>
-  <div class="product-card">
-    <a :href="`/products/${product.id}`">
-    <img :src="product.image" :alt="product.name" class="product-image"/>
-  </a>
-    <h3 class="product-name">{{ product.name }}</h3>
-    <p class="product-price">${{ product.price.toFixed(2) }}</p>
-    <button class="add-to-cart-btn" @click="$emit('add-to-cart', product)">Add to Cart</button>
+  <div>
+    <div v-if="pending">Loading...</div>
+    <div v-else-if="error">Error: {{ error.message }}</div>
+    <div v-else>
+     
+
+      <template>
+        <div class="product-card">
+          
+          <img :src="product.image" :alt="product.name" class="product-image"/>
+       
+          <h3 class="product-name">{{ product.name }}</h3>
+          <p class="product-price">${{ product.price.toFixed(2) }}</p>
+          <button class="add-to-cart-btn" @click="handleAddToCart(product)">Add to Cart</button>
+        </div>
+      </template>
+
+    </div>
   </div>
 </template>
 
-<script setup lang="ts">
-defineProps(['product']);
+<script setup>
+import { useRoute } from 'vue-router';
+import { useCartStore } from '~/store/cart';
+
+const cartStore = useCartStore();
+
+const route = useRoute();
+const productId = route.params.id;
+
+// Fetch product data from the mock API
+const { data: product, error, pending } = useFetch(`/api/products/${productId}`);
+
+const handleAddToCart = (product) => {
+  if (window.confirm('Are you sure you want to add this item to cart?')) {
+    cartStore.addToCart(product);
+    navigateTo('/cart');
+  }
+};
 </script>
+
 
 <style scoped>
 .product-card {
