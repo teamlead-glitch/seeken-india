@@ -1,5 +1,5 @@
 <template>
-  <Navbar />
+  
     <div>
       <h1>Contact us</h1>
       <p>Address</p>

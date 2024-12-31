@@ -16,5 +16,14 @@ export const useCartStore = defineStore('cart', {
     removeFromCart(productId) {
       this.cart = this.cart.filter(item => item.id !== productId);
     },
+    updateCartQuantity(productId, change) {
+      const item = this.cart.find((item) => item.id === productId);
+      if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+          this.cart = this.cart.filter((item) => item.id !== productId);
+        }
+      }
+    }
   },
 });

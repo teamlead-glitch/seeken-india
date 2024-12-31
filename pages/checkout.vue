@@ -1,5 +1,5 @@
 <template>
-    <Navbar />
+    
     <div class="checkout-container">
       <h1>Checkout</h1>
   

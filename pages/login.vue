@@ -1,5 +1,5 @@
 <template>
-  <Navbar />
+  
   <div class="login-container">
     
     <form class="login-form" @submit.prevent="handleLogin">
@@ -7,9 +7,11 @@
       <input class="login-input" v-model="email" type="email" placeholder="Email" required />
       <input class="login-input" v-model="password" type="password" placeholder="Password" required />
       <button class="login-button" type="submit">Login</button>
+      <p class="error-message" v-if="error">{{ error }}</p>
     </form>
-    <p class="error-message" v-if="error">{{ error }}</p>
+    
   </div>
+  
   </template>
 
   <style>
@@ -19,7 +21,7 @@
   justify-content: center;
   align-items: center;
   height: 60vh; /* Full viewport height */
-  background-color: #f4f4f4;
+ 
 }
 
 .login-title {
@@ -40,7 +42,7 @@
 
 /* Input fields */
 .login-input {
-  width: 100%;
+  width: 92%;
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #ccc;

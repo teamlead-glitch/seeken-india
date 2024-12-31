@@ -1,5 +1,5 @@
 <template>
-  <Navbar />
+  
     <div>
       <h1>Profile</h1>
       <p>Email :  {{ authStore.user?.email ?? 'Guest' }}</p>
