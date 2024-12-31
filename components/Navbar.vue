@@ -107,13 +107,20 @@ nav a:last-child {
     align-items: flex-start;
   }
   .nav-links {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
+    justify-content: inherit;
     width: 100%;
     padding: 16px 0;
   }
   .nav-links li {
     margin: 10px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
   }
 }
 </style>

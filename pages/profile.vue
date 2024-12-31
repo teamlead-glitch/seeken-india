@@ -2,6 +2,7 @@
   
     <div>
       <h1>Profile</h1>
+      <p>Name :  {{ authStore.user?.name ?? 'Guest' }}</p>
       <p>Email :  {{ authStore.user?.email ?? 'Guest' }}</p>
       <button @click="logout">Logout</button>
     </div>

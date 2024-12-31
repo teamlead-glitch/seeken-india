@@ -8,21 +8,35 @@ export const useAuthStore = defineStore('auth', {
   }),
   actions: {
     async login(email: string, password: string) {
-      const { token, user } = await $fetch('http://boilerplate-latest.test/api/login', {
+      const { access_token	 } = await $fetch(useRuntimeConfig().public.apiBase + 'login', {
         method: 'POST',
         body: { email, password }
       });
 
-      this.token = token;
-      this.user = user;
+      this.token = access_token;
+      //this.user = user;
       //useCookie('auth_token').value = token; // Store token in cookie for persistence
-      localStorage.setItem('auth_token', token);
+      localStorage.setItem('auth_token', this.token);
+    },
+
+    async register(payLoad) {
+      const result = await $fetch(useRuntimeConfig().public.apiBase + 'register', {
+        method: 'POST',
+        body: payLoad
+      });
+
+      if (result) {
+        return true;
+      }else{
+        return false;
+      }
+
     },
     async fetchUser() {
       if (!this.token) return;
 
       try {
-         this.user =  await $fetch('http://boilerplate-latest.test/api/user', {
+         this.user =  await $fetch(useRuntimeConfig().public.apiBase+'profile', {
           headers: {
             Authorization: `Bearer ${this.token}`
           }
@@ -31,7 +45,15 @@ export const useAuthStore = defineStore('auth', {
         this.logout(); // Clear invalid token
       }
     },
-    logout() {
+    async logout() {
+
+      await $fetch(useRuntimeConfig().public.apiBase+'logout', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      });
+
       this.token = null;
       this.user = null;
       //useCookie('auth_token').value = null; // Clear cookie

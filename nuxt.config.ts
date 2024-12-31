@@ -3,7 +3,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: process.env.API_BASE_URL || 'https://your-api-url.com' // Replace with your backend URL
+      apiBase: process.env.API_BASE_URL || 'https://mynuxtapp-laravel.pbsmokeup.in/api/' // Replace with your backend URLhttp://boilerplate-latest.test/api/
     }
   },
   compatibilityDate: '2024-04-03',

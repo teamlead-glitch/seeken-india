@@ -2,14 +2,21 @@
   
   <div class="login-container">
     
-    <form class="login-form" @submit.prevent="handleLogin">
-      <h1 class="login-title">Login</h1>
-      <input class="login-input" v-model="email" type="email" placeholder="Email" required />
-      <input class="login-input" v-model="password" type="password" placeholder="Password" required />
-      <button class="login-button" type="submit">Login</button>
-      <NuxtLink to="/register">Register</NuxtLink>
+    <form class="login-form" @submit.prevent="handleRegister">
+      <h1 class="login-title">Register</h1>
+      <input class="login-input" v-model="name" type="text" placeholder="Name" required autocomplete="off"/>
+
+      <input class="login-input" v-model="email" type="text" placeholder="Email" required autocomplete="off"/>
+      <input class="login-input" v-model="password" type="password" placeholder="Password" required autocomplete="new-password"/>
+      <button class="login-button" type="submit">Save</button>
+      <p class="success-message" v-if="successMessage">{{ successMessage }}</p>
+      <NuxtLink to="/login">Login</NuxtLink>
       <p class="error-message" v-if="error">{{ error }}</p>
+      
     </form>
+
+
+    
     
   </div>
   
@@ -79,6 +86,9 @@
   font-size: 14px;
   margin-top: 10px;
 }
+.success-message{
+  color: green;
+}
 
 
 </style>
@@ -91,15 +101,24 @@
   const password = ref('');
   const error = ref('');
   const authStore = useAuthStore();
+  const successMessage = ref('');
+ 
+    const name = ref('');
   
-  const handleLogin = async () => {
+  const handleRegister = async () => {
     try {
-      await authStore.login(email.value, password.value);
-      navigateTo('/'); // Redirect to homepage after login
+      const payload = { name: name.value, email: email.value, password: password.value };
+      const reg = await authStore.register(payload);
+      if(reg){
+      successMessage.value = 'Registration successful. Please log in.'}else{
+        error.value = 'Error please try again';
+      }
+      //navigateTo('/login'); // Redirect to homepage after login
     } catch (err) {
-      console.log(err+'err')
-      error.value = 'Invalid credentials';
+      error.value = 'Error please try again';
     }
   };
+
+ 
   </script>
   
