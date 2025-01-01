@@ -4,18 +4,38 @@
   </div>
 
   <h1 style="text-align: center;margin-top:40px;">Our Products</h1>
+
+  <div class="content">
+      <div class="sidebar">
+        <div class="filter">
+          <h3>Search Products</h3>
+          <select style="margin-right: 15px;" v-model="sort" @change="filterProducts">
+  <option value="nameAsc">Name: A to Z</option> 
+  <option value="nameDesc">Name: Z to A</option>
+  <option value="priceLowToHigh">Price: Low to High</option>
+  <option value="priceHighToLow">Price: High to Low</option>
+</select>
+
+          <input v-model="search" type="text" placeholder="search" @input="filterProducts"/>
+        </div>
+
+  
+      </div>
+
   <div class="product-list">
     <div v-if="pending">Loading products...</div>
    
     <ProductCard
     v-if="products"
-      v-for="product in products"
+      v-for="product in filteredProducts"
       :key="product.id"
       :product="product"
       @add-to-cart="handleAddToCart"
       
     />
   
+  </div>
+
   </div>
 
   
@@ -25,10 +45,15 @@
 <script setup lang="ts">
 //import ProductCard from '~/components/ProductCard.vue';
 import { useCartStore } from '~/store/cart';
+const { data: products, error, pending } = useFetch(`/api/all`);
+const search = ref('');
+const sort = ref('nameAsc'); // Default sort value
+// Create a reactive filtered products list
+const filteredProducts = ref(products.value || []);
 
 const cartStore = useCartStore();
 
-const { data: products, error, pending } = useFetch(`/api/all`);
+
 
 
 const handleAddToCart = (product) => {
@@ -37,9 +62,97 @@ const handleAddToCart = (product) => {
     navigateTo('/cart');
   }
 };
+
+const categories = ref(['Electronics', 'Clothing', 'Accessories']); // Example categories
+
+function filterProducts() {
+
+  // Filter by search term first
+  let filtered = products.value.filter(product => 
+    product.name.toLowerCase().includes(search.value.toLowerCase())
+  );
+
+  // Apply sorting based on the sort value
+  if (sort.value === 'priceLowToHigh') {
+    filtered.sort((a, b) => a.price - b.price); // Sort by price ascending
+  } else if (sort.value === 'priceHighToLow') {
+    filtered.sort((a, b) => b.price - a.price); // Sort by price descending
+  } else if (sort.value === 'nameAsc') {
+    filtered.sort((a, b) => a.name.localeCompare(b.name)); // Sort alphabetically A-Z
+  } else if (sort.value === 'nameDesc') {
+    filtered.sort((a, b) => b.name.localeCompare(a.name)); // Sort alphabetically Z-A
+  }
+
+  // Update the filtered products
+  filteredProducts.value = filtered;
+  }
+
 </script>
 
 <style scoped>
+/* Style the container and the sidebar for better spacing */
+.container {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  margin-top: 40px; /* Add some margin to top */
+}
+
+.sidebar {
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  background-color: #f8f9fa; /* Light background color for sidebar */
+  border-radius: 8px; /* Rounded corners for the sidebar */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+ 
+}
+
+/* Style filter inputs and selects to align horizontally */
+.sidebar .filter {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row; /* Align items in a row */
+  align-items: center; /* Vertically align in the middle */
+  gap: 10px; /* Add space between the input and select */
+}
+
+.sidebar h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase; /* Uppercase the filter titles */
+  letter-spacing: 1px;
+  width: 100%;
+}
+
+/* Style select and input to take full width */
+.sidebar select,
+.sidebar input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 0 0; /* Adjust margins */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+/* Add a hover effect on the inputs and select */
+.sidebar select:hover,
+.sidebar input[type="text"]:hover {
+  border-color: #007bff; /* Blue border on hover */
+}
+
+/* Add focus styles to inputs */
+.sidebar select:focus,
+.sidebar input[type="text"]:focus {
+  outline: none;
+  border-color: #0056b3; /* Darker blue for focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add subtle glow effect */
+}
+
+/* Style the product list */
 .product-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -47,26 +160,38 @@ const handleAddToCart = (product) => {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
-  margin-bottom: 60px; /* Ensures spacing for footer */
+  margin-bottom: 60px;
 }
 
+/* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
   .product-list {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 16px;
-    padding: 10px;
-    margin-bottom: 60px; /* Spacing for footer */
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    margin-bottom: 20px;
+  }
+
+  /* Stack filter elements vertically on small screens */
+  .sidebar .filter {
+    flex-direction: column; /* Stack input and select vertically */
+    gap: 15px;
+  }
+
+  /* Adjust the select and input to fit the width on small screens */
+  .sidebar select,
+  .sidebar input[type="text"] {
+    width: 100%; /* Ensure full width on small screens */
   }
 }
 
-/* Add this style to ensure footer is positioned correctly on small screens */
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
 
-footer {
-  margin-top: auto; /* Ensures footer stays at the bottom */
-}
 </style>
