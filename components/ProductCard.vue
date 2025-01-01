@@ -1,8 +1,10 @@
 <template>
   <div class="product-card">
-    <a :href="`/products/${product.id}`">
+    <!-- <a :href="`/products/${product.id}`"> -->
+      <NuxtLink :to="`/products/${product.id}`">
     <img :src="product.image" :alt="product.name" class="product-image"/>
-  </a>
+  </NuxtLink>
+  <!-- </a> -->
     <h3 class="product-name">{{ product.name }}</h3>
     <p class="product-price">${{ product.price.toFixed(2) }}</p>
     <button class="add-to-cart-btn" @click="$emit('add-to-cart', product)">Add to Cart</button>

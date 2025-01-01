@@ -8,13 +8,15 @@
           class="slide"
           :style="{ backgroundImage: `url(${slide.image})` }"
         >
-        <a :href="`/products/${slide.id}`">
-          <div class="slide-content">
+        
+        <NuxtLink :to="`/products/${slide.id}`">
+          <div class="slide-content" style="color: white;">
             
-            <h2>{{ slide.title }}</h2>
-            <p>{{ slide.description }}</p>
+            <h2>{{ slide.name }}</h2>
+            <p>{{ slide.price }}</p>
           </div>
-        </a>
+        </NuxtLink>
+       
         </div>
       </div>
       <button @click="prevSlide" class="slider-button prev">‹</button>
@@ -25,11 +27,8 @@
   <script setup>
   import { ref, onMounted } from 'vue';
   
-  const slides = ref([
-    { id:'1', image: '/images/product-1.jpg', title: 'product-1', description: 'product-1' },
-    { id:'2', image: '/images/product-2.jpg', title: 'product-2', description: 'product-2' },
-    { id:'2', image: '/images/product-3.jpg', title: 'product-3', description: 'product-3' },
-  ]);
+
+  const { data: slides, error, pending } = useFetch(`/api/flashsale`);
   
   const currentIndex = ref(0);
   const slider = ref(null);

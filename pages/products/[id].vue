@@ -5,7 +5,7 @@
     <div v-else>
      
 
-      <template>
+      
         <div class="product-card">
           
           <img :src="product.image" :alt="product.name" class="product-image"/>
@@ -14,7 +14,7 @@
           <p class="product-price">${{ product.price.toFixed(2) }}</p>
           <button class="add-to-cart-btn" @click="handleAddToCart(product)">Add to Cart</button>
         </div>
-      </template>
+     
 
     </div>
   </div>
