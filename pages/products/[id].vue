@@ -1,36 +1,45 @@
 <template>
   <div>
     <div v-if="pending">Loading...</div>
-    <div v-else-if="error">Error: {{ error.message }}</div>
+    <div v-else-if="error">Error: {{ error }}</div>
     <div v-else>
-     
-
-      
-        <div class="product-card">
-          
-          <img :src="product.image" :alt="product.name" class="product-image"/>
-       
-          <h3 class="product-name">{{ product.name }}</h3>
-          <p class="product-price">${{ product.price.toFixed(2) }}</p>
-          <button class="add-to-cart-btn" @click="handleAddToCart(product)">Add to Cart</button>
-        </div>
-     
-
+      <div class="product-card">
+        <img :src="product.image" :alt="product.name" class="product-image" />
+        <h3 class="product-name">{{ product.name }}</h3>
+        <p class="product-price">${{ product.price.toFixed(2) }}</p>
+        <button class="add-to-cart-btn" @click="handleAddToCart(product)">Add to Cart</button>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useCartStore } from '~/store/cart';
 
 const cartStore = useCartStore();
-
 const route = useRoute();
 const productId = route.params.id;
 
-// Fetch product data from the mock API
-const { data: product, error, pending } = useFetch(`/api/products/${productId}`);
+const product = ref(null);
+const error = ref(null);
+const pending = ref(true);
+
+const fetchProduct = async () => {
+  try {
+    const response = await $fetch(useRuntimeConfig().public.apiBase+'products'); // Replace with your actual API endpoint
+   
+    const prod = await response;
+    console.log( prod,' prod')
+    product.value = prod.find((prod) => prod.id === productId);
+    console.log( product.value,' product.value')
+  } catch (err) {
+    error.value = err.message;
+  } finally {
+    pending.value = false;
+  }
+};
 
 const handleAddToCart = (product) => {
   if (window.confirm('Are you sure you want to add this item to cart?')) {
@@ -38,8 +47,11 @@ const handleAddToCart = (product) => {
     navigateTo('/cart');
   }
 };
-</script>
 
+onMounted(() => {
+  fetchProduct();
+});
+</script>
 
 <style scoped>
 .product-card {
@@ -53,7 +65,7 @@ const handleAddToCart = (product) => {
 }
 
 .product-card:hover {
-  transform: translateY(-10px); /* Adds a slight lift effect */
+  transform: translateY(-10px);
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
 }
 
@@ -66,7 +78,7 @@ const handleAddToCart = (product) => {
 }
 
 .product-image:hover {
-  transform: scale(1.05); /* Slight zoom effect on image hover */
+  transform: scale(1.05);
 }
 
 .product-name {

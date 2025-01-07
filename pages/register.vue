@@ -6,8 +6,8 @@
       <h1 class="login-title">Register</h1>
       <input class="login-input" v-model="name" type="text" placeholder="Name" required autocomplete="off"/>
 
-      <input class="login-input" v-model="email" type="text" placeholder="Email" required autocomplete="off"/>
-      <input class="login-input" v-model="password" type="password" placeholder="Password" required autocomplete="new-password"/>
+      <input class="login-input" v-model="email" type="email" placeholder="Email" required autocomplete="off"/>
+      <input class="login-input" minlength="8" v-model="password" type="password" placeholder="Password" required autocomplete="new-password"/>
       <button class="login-button" type="submit">Save</button>
       <p class="success-message" v-if="successMessage">{{ successMessage }}</p>
       <NuxtLink to="/login">Login</NuxtLink>

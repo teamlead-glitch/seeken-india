@@ -3,26 +3,24 @@
     <FlashSaleBanner />
   </div>
 
-  <h1 style="text-align: center;margin-top:40px;">Our Products</h1>
+  <h1 style="text-align: center; margin-top: 40px;">Our Products</h1>
 
   <div class="content">
-      <div class="sidebar">
-        <div class="filter">
-          <h3>Search Products</h3>
-          <select style="margin-right: 15px;" v-model="sort" @change="filterProducts">
-  <option value="nameAsc">Name: A to Z</option> 
-  <option value="nameDesc">Name: Z to A</option>
-  <option value="priceLowToHigh">Price: Low to High</option>
-  <option value="priceHighToLow">Price: High to Low</option>
-</select>
+    <div class="sidebar">
+      <div class="filter">
+        <h3>Search Products</h3>
+        <select style="margin-right: 15px;" v-model="sort" @change="filterProducts">
+          <option value="nameAsc">Name: A to Z</option>
+          <option value="nameDesc">Name: Z to A</option>
+          <option value="priceLowToHigh">Price: Low to High</option>
+          <option value="priceHighToLow">Price: High to Low</option>
+        </select>
 
-          <input v-model="search" type="text" placeholder="search" @input="filterProducts"/>
-        </div>
-
-  
+        <input v-model="search" type="text" placeholder="Search" @input="filterProducts" />
       </div>
+    </div>
 
-  <div class="product-list">
+    <div class="product-list">
     <div v-if="pending">Loading products...</div>
    
     <ProductCard
@@ -35,26 +33,33 @@
     />
   
   </div>
-
   </div>
-
-  
 </template>
 
-
 <script setup lang="ts">
-//import ProductCard from '~/components/ProductCard.vue';
+import { ref, onMounted } from 'vue';
 import { useCartStore } from '~/store/cart';
-const { data: products, error, pending } = useFetch(`/api/all`);
+import ProductCard from '~/components/ProductCard.vue';
+
+const products = ref([]);
+const filteredProducts = ref([]);
 const search = ref('');
-const sort = ref('nameAsc'); // Default sort value
-// Create a reactive filtered products list
-const filteredProducts = ref(products.value || []);
+const sort = ref('nameAsc');
+const pending = ref(true);
 
 const cartStore = useCartStore();
 
-
-
+const fetchProducts = async () => {
+  try {
+    const data = await $fetch(useRuntimeConfig().public.apiBase+'products'); // Adjust server API endpoint if needed
+    products.value = data;
+    filteredProducts.value = data;
+  } catch (error) {
+    console.error('Failed to fetch products:', error);
+  } finally {
+    pending.value = false;
+  }
+};
 
 const handleAddToCart = (product) => {
   if (window.confirm('Are you sure you want to add this item to cart?')) {
@@ -63,30 +68,27 @@ const handleAddToCart = (product) => {
   }
 };
 
-const categories = ref(['Electronics', 'Clothing', 'Accessories']); // Example categories
-
-function filterProducts() {
-
-  // Filter by search term first
-  let filtered = products.value.filter(product => 
+const filterProducts = () => {
+  let filtered = products.value.filter((product) =>
     product.name.toLowerCase().includes(search.value.toLowerCase())
   );
 
-  // Apply sorting based on the sort value
   if (sort.value === 'priceLowToHigh') {
-    filtered.sort((a, b) => a.price - b.price); // Sort by price ascending
+    filtered.sort((a, b) => a.price - b.price);
   } else if (sort.value === 'priceHighToLow') {
-    filtered.sort((a, b) => b.price - a.price); // Sort by price descending
+    filtered.sort((a, b) => b.price - a.price);
   } else if (sort.value === 'nameAsc') {
-    filtered.sort((a, b) => a.name.localeCompare(b.name)); // Sort alphabetically A-Z
+    filtered.sort((a, b) => a.name.localeCompare(b.name));
   } else if (sort.value === 'nameDesc') {
-    filtered.sort((a, b) => b.name.localeCompare(a.name)); // Sort alphabetically Z-A
+    filtered.sort((a, b) => b.name.localeCompare(a.name));
   }
 
-  // Update the filtered products
   filteredProducts.value = filtered;
-  }
+};
 
+onMounted(() => {
+  fetchProducts();
+});
 </script>
 
 <style scoped>
