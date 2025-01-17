@@ -92,8 +92,24 @@ export default defineNuxtConfig({
           rel: 'manifest',
           href: '/manifest.webmanifest', // Ensure this matches the generated manifest file location
         },
+        { rel: 'icon', href: '/assets/images/favicon.ico' },
+        { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css' },
+        { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css' },
+        { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css' },
+        { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css' },
+        { rel: 'stylesheet', href: 'https://unicons.iconscout.com/release/v4.0.8/css/line.css' },
+        { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css' },
+        { rel: 'stylesheet', href: '/assets/scss/app.css' },
+      ],
+      script: [
+        { src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js', async: true },
+        { src: 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js', async: true },
+        { src: 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js', async: true },
+        { src: 'https://cdnjs.cloudflare.com/ajax/libs/classie/1.0.1/classie.min.js', async: true },
+        { src: 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js', async: true },
       ],
     },
+    
   },
 
   // generate: {

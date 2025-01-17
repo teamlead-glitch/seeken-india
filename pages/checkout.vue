@@ -1,73 +1,68 @@
 <template>
-    
-    <div class="checkout-container">
-      <h1>Checkout</h1>
-  
-      <form @submit.prevent="submitCheckout">
-        <!-- Shipping Details -->
-        <div class="form-section">
-          <h2>Shipping Details</h2>
-          <input type="text" v-model="form.name" placeholder="Full Name" required />
-          <input type="email" v-model="form.email" placeholder="Email" required />
-          <input type="text" v-model="form.address" placeholder="Address" required />
-          <input type="text" v-model="form.city" placeholder="City" required />
-          <input type="text" v-model="form.zip" placeholder="ZIP Code" required />
-        </div>
-  
-        <!-- Order Summary -->
-        <div class="order-summary">
-          <h2>Order Summary</h2>
-          <div v-for="(item, index) in cartItems" :key="index" class="cart-item">
-            <p>{{ item.name }} - ${{ item.price }}</p>
-            <p>Quantity: {{ item.quantity }}</p>
-          </div>
-          <p class="total">Total: ${{ total }}</p>
-        </div>
-  
-        <!-- Payment Button -->
-        <button type="submit" class="checkout-button">Proceed to Payment</button>
-        <NuxtLink to="/cart"><button type="submit" class="checkout-button cancel_btn">Cancel</button></NuxtLink>
-        
-      </form>
-    </div>
-  </template>
-  
-  <script>
-  import { useCartStore } from '~/store/cart';
-  
-  const cartStore = useCartStore();
-  
-  export default {
-    data() {
-      return {
-        form: {
-          name: '',
-          email: '',
-          address: '',
-          city: '',
-          zip: ''
-        },
-        cartItems: cartStore.cart
-      };
-    },
-    computed: {
-      total() {
-        console.log(this.cartItems,' this.cartItems')
-        return this.cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
-      }
-    },
-    methods: {
-      submitCheckout() {
-        alert('Checkout submitted!');
-        // Logic for handling form submission, e.g., sending data to a server
-      }
-    }
-  };
+  <div class="checkout-container">
+    <h1>Checkout</h1>
 
-  definePageMeta({
-    middleware: 'auth'
-  })
-  </script>
+    <form @submit.prevent="submitCheckout">
+      <!-- Shipping Details -->
+      <div class="form-section">
+        <h2>Shipping Details</h2>
+        <input type="text" v-model="form.name" placeholder="Full Name" required />
+        <input type="email" v-model="form.email" placeholder="Email" required />
+        <input type="text" v-model="form.address" placeholder="Address" required />
+        <input type="text" v-model="form.city" placeholder="City" required />
+        <input type="text" v-model="form.zip" placeholder="ZIP Code" required />
+      </div>
+
+      <!-- Order Summary -->
+      <div class="order-summary">
+        <h2>Order Summary</h2>
+        <div v-for="(item, index) in cartItems" :key="index" class="cart-item">
+          <p>{{ item.name }} - ${{ item.price }}</p>
+          <p>Quantity: {{ item.quantity }}</p>
+        </div>
+        <p class="total">Total: ${{ total }}</p>
+      </div>
+
+      <!-- Payment Button -->
+      <PayNow :amount="total * 100" />
+
+      <NuxtLink to="/cart">
+        <button type="submit" class="checkout-button cancel_btn">Cancel</button>
+      </NuxtLink>
+    </form>
+  </div>
+</template>
+
+<script setup>
+import { useCartStore } from '~/store/cart';
+import { ref, computed } from 'vue';
+
+// Access the Pinia store
+const cartStore = useCartStore();
+
+// Define the form data
+const form = ref({
+  name: '',
+  email: '',
+  address: '',
+  city: '',
+  zip: ''
+});
+
+// Define the cart items
+const cartItems = computed(() => cartStore.cart);
+
+// Compute the total price
+const total = computed(() => {
+  return cartItems.value.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
+});
+
+// Handle the form submission
+const submitCheckout = () => {
+  alert('Checkout submitted!');
+  // Logic for handling form submission, e.g., sending data to a server
+};
+</script>
   
   <style scoped>
   .checkout-container {

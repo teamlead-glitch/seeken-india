@@ -1,6 +1,6 @@
 <template>
   <div>
-    <FlashSaleBanner />
+    <!-- <FlashSaleBanner /> -->
   </div>
 
   <h1 style="text-align: center; margin-top: 40px;">Our Products</h1>
