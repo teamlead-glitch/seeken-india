@@ -62,6 +62,10 @@ const submitCheckout = () => {
   alert('Checkout submitted!');
   // Logic for handling form submission, e.g., sending data to a server
 };
+
+definePageMeta({
+    middleware: 'auth'
+  })
 </script>
   
   <style scoped>

@@ -15,7 +15,7 @@ defineProps({
       key: 'rzp_test_1UbmXOwJbkSRQy', // Replace with your Razorpay sandbox key
       amount , // Amount in paisa
       currency: 'INR',
-      name: 'Your Business Name',
+      name: 'Sherin P R',
       description: 'Test Payment',
       handler: function (response) {
         console.log('Payment Successful:', response);

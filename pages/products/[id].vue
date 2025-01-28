@@ -75,6 +75,7 @@ onMounted(() => {
   max-width: 250px;
   border-radius: 8px;
   transition: transform 0.3s ease;
+  margin:auto;
 }
 
 .product-image:hover {

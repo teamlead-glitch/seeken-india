@@ -1,6 +1,15 @@
 <template>
   <div>
     <!-- <FlashSaleBanner /> -->
+  
+    <a href="products/flashsale">
+    <div class="flash-sale-alert">
+      <span>🔥 Flash Sale!</span>
+      <center>Upto 50% Off</center>
+      <a href="products/flashsale" class="ribbon-link">🚨 Flash Sale - Shop Now!</a>
+    </div>
+  </a>
+    
   </div>
 
   <h1 style="text-align: center; margin-top: 40px;">Our Products</h1>
@@ -164,6 +173,32 @@ onMounted(() => {
   margin: 0 auto;
   margin-bottom: 60px;
 }
+
+/* Full-width ribbon style (non-sticky) */
+.flash-sale-ribbon {
+  width: 100%; /* Full width */
+  background-color: #ff4d4f;
+  color: white;
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a slight shadow */
+}
+
+.ribbon-link {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.ribbon-link:hover {
+  text-decoration: underline;
+  color: #ffe58f; /* Highlight color on hover */
+}
+
+
+
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
