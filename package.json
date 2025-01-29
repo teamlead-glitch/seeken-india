@@ -14,11 +14,12 @@
     "@capacitor/cli": "^6.2.0",
     "@capacitor/core": "^6.2.0",
     "@nuxtjs/axios": "^5.13.6",
-    "@pinia/nuxt": "^0.7.0",
+    "@pinia/nuxt": "^0.9.0",
     "@vite-pwa/nuxt": "^0.10.6",
     "axios": "^1.7.7",
     "nuxt": "^3.14.159",
     "pinia": "^2.2.6",
+    "pinia-plugin-persistedstate": "^4.2.0",
     "swiper": "^11.1.15",
     "vue": "latest",
     "vue-router": "latest"
