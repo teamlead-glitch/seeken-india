@@ -33,7 +33,16 @@
     <div v-if="pending">Loading products...</div>
    
     <ProductCard
-    v-if="products"
+    v-if="products && !isMobile"
+      v-for="product in filteredProducts"
+      :key="product.id"
+      :product="product"
+      @add-to-cart="handleAddToCart"
+      
+    />
+
+    <ProductCardMobile
+    v-if="isMobile"
       v-for="product in filteredProducts"
       :key="product.id"
       :product="product"
@@ -47,6 +56,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import { useMediaQuery } from '@vueuse/core';
 import { useCartStore } from '~/store/cart';
 import ProductCard from '~/components/ProductCard.vue';
 
@@ -98,7 +108,13 @@ const filterProducts = () => {
 onMounted(() => {
   fetchProducts();
 });
+
+// Detect screen size
+const isMobile = useMediaQuery('(max-width: 768px)');
+console.log(isMobile.value,'ismob')
 </script>
+
+
 
 <style scoped>
 /* Style the container and the sidebar for better spacing */
