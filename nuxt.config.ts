@@ -284,4 +284,11 @@ export default defineNuxtConfig({
   // generate: {
   //     routes: ['/products/1', '/products/2', '/products/3', '/products/4','/products/5', '/products/6', '/products/7', '/products/8', '/products/9', '/products/10'], // Optional: Define dynamic routes for SSG
   //   },
+
+  nitro: {
+    prerender: {
+      routes: ["/", "/design"], // Manually set valid routes
+      ignore: ["/b"], // Ignore invalid route
+    }
+  }
 })
