@@ -87,29 +87,198 @@ export default defineNuxtConfig({
   // Add the manifest link in the <head> section
   app: {
     head: {
+      title: "Seeken",
+      meta: [
+        { charset: "UTF-8" },
+        { "http-equiv": "X-UA-Compatible", content: "IE=edge" },
+        { name: "viewport", content: "width=device-width, user-scalable=no" },
+        { name: "google-site-verification", content: "" },
+        { name: "description", content: "" },
+        { name: "robots", content: "Index, follow" }
+      ],
       link: [
+        // Canonical URL (set dynamically in components if needed)
+        { rel: "canonical", href: "" },
+
+        // Favicon
+        { rel: "icon", type: "image/webp", href: "images/favicon.webp" },
+        { rel: "icon", type: "image/ico", href: "images/favicon.ico", sizes: "32x32" },
+
+        // Google Fonts
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "anonymous" },
         {
-          rel: 'manifest',
-          href: '/manifest.webmanifest', // Ensure this matches the generated manifest file location
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         },
-        { rel: 'icon', href: '/assets/images/favicon.ico' },
-        { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css' },
-        { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css' },
-        { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css' },
-        { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css' },
-        { rel: 'stylesheet', href: 'https://unicons.iconscout.com/release/v4.0.8/css/line.css' },
-        { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css' },
-        { rel: 'stylesheet', href: '/assets/scss/app.css' },
+
+        // Bootstrap & Icons
+        { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" },
+        { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" },
+
+        // Swiper & Custom Styles
+        { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" },
+        { rel: "stylesheet", href: "/scss/owls.css" },
+        { rel: "stylesheet", href: "/scss/main.css" }
       ],
       script: [
-        { src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js', async: true },
-        { src: 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js', async: true },
-        { src: 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js', async: true },
-        { src: 'https://cdnjs.cloudflare.com/ajax/libs/classie/1.0.1/classie.min.js', async: true },
-        { src: 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js', async: true },
+        // jQuery
+        { src: "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js", defer: true },
+
+        // Bootstrap JS
+        { src: "https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js", defer: true },
+
+        // Swiper
+        { src: "https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js", defer: true },
+
+        // Custom Scripts
+        { src: "/js/webslidemenu.js", defer: true },
+        { src: "/js/owls.js", defer: true },
+        { src: "/js/main.js", defer: true },
+
+        // Inline Script for Grab Sale
+        {
+          children: `
+            document.addEventListener("DOMContentLoaded", function () {
+              const closeBtn = document.querySelector(".close-btns");
+              if (closeBtn) {
+                const saleText = document.querySelector(".grab_sale p");
+                const icon = document.querySelector(".close-btns i");
+
+                closeBtn.addEventListener("click", function () {
+                  if (saleText.style.display === "none" || saleText.style.display === "") {
+                    saleText.style.display = "block";
+                    icon.classList.remove("bi-chevron-down");
+                    icon.classList.add("bi-chevron-up");
+                  } else {
+                    saleText.style.display = "none";
+                    icon.classList.remove("bi-chevron-up");
+                    icon.classList.add("bi-chevron-down");
+                  }
+                });
+              }
+            });
+          `,
+          type: "text/javascript",
+        },
+
+        // Inline Script for Bootstrap Carousel
+        {
+          children: `
+            document.addEventListener("DOMContentLoaded", function () {
+              var carousel = new bootstrap.Carousel(document.getElementById('carouselExample'), {
+                interval: 3000,
+                wrap: true
+              });
+
+              var thumbnails = document.querySelectorAll('.carousel-indicators [data-bs-slide-to]');
+              thumbnails.forEach(function (thumbnail) {
+                thumbnail.addEventListener('click', function () {
+                  var slideTo = this.getAttribute('data-bs-slide-to');
+                  carousel.to(slideTo);
+                });
+              });
+            });
+          `,
+          type: "text/javascript",
+        },
+
+        // Inline Script for Profile Icon Dropdown
+        {
+          children: `
+            document.addEventListener("DOMContentLoaded", function () {
+              const profileIcon = document.querySelector(".profile-icon");
+              if (profileIcon) {
+                const dropdown = document.querySelector(".dropdown-menu");
+
+                profileIcon.addEventListener("click", function () {
+                  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+                });
+
+                document.addEventListener("click", function (event) {
+                  let profile = document.querySelector(".profile-container");
+                  if (!profile.contains(event.target)) {
+                    dropdown.style.display = "none";
+                  }
+                });
+              }
+            });
+          `,
+          type: "text/javascript",
+        },
+
+        // Inline Script for Swiper Slider
+        {
+          children: `
+            document.addEventListener("DOMContentLoaded", function () {
+              new Swiper(".mySwiper", {
+                slidesPerView: 1.2,
+                spaceBetween: 20,
+                centeredSlides: false,
+                loop: true,
+                navigation: {
+                  nextEl: ".swiper-button-next",
+                  prevEl: ".swiper-button-prev",
+                },
+                breakpoints: {
+                  480: { slidesPerView: 2.2 }
+                }
+              });
+
+              new Swiper(".mySwiper2", {
+                slidesPerView: 1.2,
+                spaceBetween: 20,
+                centeredSlides: false,
+                loop: true,
+                navigation: {
+                  nextEl: ".swiper-button-next",
+                  prevEl: ".swiper-button-prev",
+                },
+                breakpoints: {
+                  480: { slidesPerView: 1.2 }
+                }
+              });
+
+              new Swiper(".mySwiper3", {
+                slidesPerView: 1.2,
+                spaceBetween: 20,
+                centeredSlides: false,
+                loop: true,
+                navigation: {
+                  nextEl: ".swiper-button-next",
+                  prevEl: ".swiper-button-prev",
+                },
+                breakpoints: {
+                  480: { slidesPerView: 1.2 }
+                }
+              });
+            });
+          `,
+          type: "text/javascript",
+        },
+
+        // Inline Script for Offcanvas Menu Behavior
+        {
+          children: `
+            document.addEventListener("DOMContentLoaded", function () {
+              const offcanvas = document.getElementById("offcanvasRight_mobmenu");
+              const grabSaleDiv = document.getElementById("grab_sale");
+
+              if (offcanvas && grabSaleDiv) {
+                offcanvas.addEventListener("show.bs.offcanvas", function () {
+                  grabSaleDiv.style.display = "none";
+                });
+
+                offcanvas.addEventListener("hidden.bs.offcanvas", function () {
+                  grabSaleDiv.style.display = "block";
+                });
+              }
+            });
+          `,
+          type: "text/javascript",
+        },
       ],
     },
-    
   },
 
   // generate: {
