@@ -233,8 +233,8 @@
   </div>
   <!-- ------alert box desktop close--- -->
  
- <layoutsDesktopmenu/>
- <layoutsMobilemenu/>
+ <LayoutsDesktopMenu/>
+ <LayoutsMobileMenu/>
 
   
   
