@@ -1,0 +1,143 @@
+.btn_1 {
+    @include transition;
+    @include border(30px);
+    padding: 5px 30px;
+    background: $white-color;
+    font-size: 0.875rem;
+    font-weight: 400;
+    cursor: pointer;
+    border: 2px solid $white-color;
+    display: inline-block;
+    color: $black-color !important;
+
+    @media only screen and (min-width: 767px) and (max-width: 1200px) {
+        font-size: 0.875rem;
+    }
+
+    @media (max-width:767px) {
+        padding: 6px 30px;
+    }
+
+    @media (max-width:480px) {
+        font-size: 0.813rem;
+    }
+
+    &:hover {
+        background: $primery-color;
+        color: $white-color !important;
+        border: 2px solid $primery-color;
+
+        @media (max-width:767px) {
+            letter-spacing: 0;
+        }
+    }
+}
+
+.btn_2 {
+    @include transition;
+    @include border(30px);
+    padding: 5px 30px;
+    background: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    cursor: pointer;
+    border: 2px solid $white-color;
+    display: inline-block;
+    color: $white-color !important;
+
+    @media only screen and (min-width: 767px) and (max-width: 1200px) {
+        font-size: 0.875rem;
+    }
+
+    @media (max-width:767px) {
+        padding: 6px 15px;
+    }
+
+    @media (max-width:480px) {
+        font-size: 0.813rem;
+    }
+
+    &:hover {
+        background: $white-color;
+        color: $black-color !important;
+
+        @media (max-width:767px) {
+            letter-spacing: 0;
+        }
+    }
+}
+
+.btn_3 {
+    @include transition;
+    color: $white-color;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.875rem;
+    background: none;
+    border: none;
+    padding: .2rem .5rem;
+    color: $white-color !important;
+    @media only screen and (min-width: 768px) and (max-width: 1200px) {
+        font-size: 0.75rem;
+        padding: 0rem ;
+        text-align: left;
+    }
+
+    i {
+        font-size: 0.75rem;
+    }
+
+    a {
+        color: $white-color !important;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+}
+
+.btn_4 {
+    @include border(30px);
+    background: #D9D9D9;
+    padding: .5rem 1.5rem;
+    color: #808080;
+    font-size: 0.938rem;
+    text-align: center;
+    border: none;
+
+}
+
+.btn_5 {
+    @include transition;
+    @include border(30px);
+    padding: 5px 30px;
+    background: $black-color;
+    font-size: 0.875rem;
+    font-weight: 400;
+    cursor: pointer;
+
+    display: inline-block;
+    color: $white-color !important;
+
+    @media only screen and (min-width: 767px) and (max-width: 1200px) {
+        font-size: 0.875rem;
+    }
+
+    @media (max-width:767px) {
+        padding: 6px 15px;
+    }
+
+    @media (max-width:480px) {
+        font-size: 0.813rem;
+    }
+
+    &:hover {
+        background: $primery-color;
+        color: $white-color !important;
+
+        @media (max-width:767px) {
+            letter-spacing: 0;
+        }
+    }
+}
