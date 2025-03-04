@@ -287,7 +287,7 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: ["/", "/design"], // Manually set valid routes
+      routes: ["/"], // Manually set valid routes
       ignore: ["/b"], // Ignore invalid route
     }
   }
