@@ -9,7 +9,7 @@
           <div class="logo clearfix"></div>
         </a>
         <ul class="mobile-sub wsmenu-list">
-          <li class="active"><a href="#">Home </a> </li>
+          <li class="active"><NuxtLink to="/">Home </NuxtLink> </li>
           <li><a href="#">Shop <i class="bi bi-chevron-down"></i></a>
             <div class="megamenu clearfix">
               <div class="row">
@@ -139,17 +139,23 @@
                   <img src="/images/profile_icon.svg" alt="profile">
                 </div>
                 <div class="dropdown-menu">
-                  <ul>
+                 
+                  <ul v-if="!authStore.token">
+      <li><NuxtLink to="/login">Login</NuxtLink></li>
+      <li>-OR-</li>
+      <li><NuxtLink to="/register">Register</NuxtLink></li>
+    </ul>
+                  <ul v-if="authStore.token">
                     <li>
                       <div class="profile">
                         <div class="profile_icon"><img src="/images/profile_icon.webp" alt=""></div>
-                        <h6>Hi, Firstname!</h6>
+                        <h6>Hi, {{authStore.user?.name ?? 'Guest'}}!</h6>
                       </div>
                     </li>
-                    <li><a href="profile.html">My Page</a></li>
-                    <li><a href="order-history.html">Orders</a></li>
-                    <li><a href="wishlist.html">Wishlist</a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li><NuxtLink to="/profile">My Page</NuxtLink></li>
+                    <li><a href="/">Orders</a></li>
+                    <li><a href="/">Wishlist</a></li>
+                    <li><NuxtLink @click="logout" href="/">Logout</NuxtLink></li>
                   </ul>
                 </div>
               </li>
@@ -175,3 +181,22 @@
   </div>
   <!-- desktop menu close -->
 </template>
+
+<script setup lang="ts">
+
+import { useAuthStore } from '~/store/auth';
+
+
+const authStore = useAuthStore();
+console.log(authStore,'authStore in desktopmenu')
+
+onMounted(() => {
+  console.log('desktopmenu');
+  authStore.fetchUser(); // ✅ Ensures token is set on every page
+});
+
+const logout = () => {
+  authStore.logout();
+  navigateTo('/login');
+};
+</script>

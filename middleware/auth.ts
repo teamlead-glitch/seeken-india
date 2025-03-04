@@ -4,7 +4,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     const authStore = useAuthStore();
 
     if (process.client) {
-    const token = localStorage.getItem('auth_token');
+    const token = authStore.token;//localStorage.getItem('auth_token');
     console.log('Middleware triggered');
   console.log('Token:', token);
   console.log('Current authStore.user:', authStore.user);

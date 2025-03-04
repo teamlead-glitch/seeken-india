@@ -95,7 +95,8 @@
   const handleLogin = async () => {
     try {
       await authStore.login(email.value, password.value);
-      navigateTo('/'); // Redirect to homepage after login
+      navigateTo('/', { external: true });
+      // navigateTo('/'); 
     } catch (err) {
       console.log(err+'err')
       error.value = 'Invalid credentials';
