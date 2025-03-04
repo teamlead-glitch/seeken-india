@@ -9,7 +9,7 @@
           <div class="logo clearfix"></div>
         </a>
         <ul class="mobile-sub wsmenu-list">
-          <li class="active"><NuxtLink to="/">Home </NuxtLink> </li>
+          <li class="active"><a href="/">Home </a> </li>
           <li><a href="#">Shop <i class="bi bi-chevron-down"></i></a>
             <div class="megamenu clearfix">
               <div class="row">

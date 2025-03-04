@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   // Config for runtime environment variables
   runtimeConfig: {
     public: {
-      apiBase: process.env.API_BASE_URL || 'https://mynuxtapp-laravel.pbsmokeup.in/api/', // Set your backend URL
+      apiBase: process.env.API_BASE_URL || 'https://seeken.pbsmokeup.in/api/', // Set your backend URL
     },
   },
 

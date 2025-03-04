@@ -107,7 +107,7 @@
   
   const handleRegister = async () => {
     try {
-      const payload = { name: name.value, email: email.value, password: password.value };
+      const payload = { name: name.value, email: email.value, password: password.value, password_confirmation: password.value };
       const reg = await authStore.register(payload);
       if(reg){
       successMessage.value = 'Registration successful. Please log in.'}else{

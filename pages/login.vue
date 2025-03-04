@@ -95,7 +95,7 @@
   const handleLogin = async () => {
     try {
       await authStore.login(email.value, password.value);
-      navigateTo('/', { external: true });
+      //navigateTo('/', { external: true });
       // navigateTo('/'); 
     } catch (err) {
       console.log(err+'err')
