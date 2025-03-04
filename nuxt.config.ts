@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   },
 
   // Ensure compatibility with future Nuxt versions
-  compatibilityDate: '2024-04-03',
+  compatibilityDate: "2025-03-04",
 
   // Modules to use in the project
   modules: ['@pinia/nuxt', '@vite-pwa/nuxt'],
