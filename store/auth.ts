@@ -9,11 +9,11 @@ export const useAuthStore = defineStore('auth', {
 
   actions: {
     async login(email: string, password: string) {
-      const { token, user } = await $fetch(`${useRuntimeConfig().public.apiBase}login`, {
+      const { access_token	, user } = await $fetch(`${useRuntimeConfig().public.apiBase}login`, {
         method: 'POST',
         body: { email, password },
       });
-
+      let token	= access_token;
       this.token = token;
       this.user = user;
       useCookie('auth_token').value = token; // Store in cookies for SSR
@@ -63,6 +63,14 @@ export const useAuthStore = defineStore('auth', {
       this.user = null;
       useCookie('auth_token').value = null;
       localStorage.removeItem('auth_token');
+    },
+
+    async resetPassword(email: string) {
+       await $fetch(`${useRuntimeConfig().public.apiBase}forgot-password`, {
+        method: 'POST',
+        body: { email },
+      });
+
     },
   },
 

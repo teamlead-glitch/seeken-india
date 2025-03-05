@@ -1,14 +1,29 @@
 <template>
   
-  <div class="login-container">
+  <div class="login-container" v-if="isShowLogin">
     
     <form class="login-form" @submit.prevent="handleLogin">
       <h1 class="login-title">Login</h1>
       <input class="login-input" v-model="email" type="email" placeholder="Email" required />
       <input class="login-input" v-model="password" type="password" placeholder="Password" required />
       <button class="login-button" type="submit">Login</button>
+      <a href="#" @click="isShowLogin = false">Forgot password</a><br></br>
       <NuxtLink to="/register">Register</NuxtLink>
       <p class="error-message" v-if="error">{{ error }}</p>
+    </form>
+    
+  </div>
+
+  <div class="login-container" v-if="!isShowLogin">
+    
+    <form class="login-form" @submit.prevent="handleResetPassword">
+      <h1 class="login-title">Forgot Password</h1>
+      <input class="login-input" v-model="reset_email" type="email" placeholder="Email" required />
+      
+      <button class="login-button" type="submit">Send Reset Link</button>
+      <a href="#" @click="isShowLogin = true">Login</a>
+      <p class="error-message" v-if="error">{{ error }}</p>
+      <p class="success-message" v-if="success">{{ success }}</p>
     </form>
     
   </div>
@@ -90,9 +105,14 @@
   const email = ref('');
   const password = ref('');
   const error = ref('');
+  const success = ref('');
   const authStore = useAuthStore();
+  const reset_email = ref('');
+
+  const isShowLogin = ref(true);
   
   const handleLogin = async () => {
+    success.value='';error.value='';
     try {
       await authStore.login(email.value, password.value);
       //navigateTo('/', { external: true });
@@ -100,6 +120,18 @@
     } catch (err) {
       console.log(err+'err')
       error.value = 'Invalid credentials';
+    }
+  };
+
+  const handleResetPassword = async () => {
+    success.value='';error.value='';
+    try {
+      await authStore.resetPassword(reset_email.value);
+      success.value = 'Reset link sent to your mail id';
+    } catch (err) {
+      error.value = err.data.error;
+      
+      
     }
   };
   </script>
