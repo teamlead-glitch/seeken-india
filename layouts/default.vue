@@ -433,4 +433,36 @@
   
    
   </template>
+
+<script setup>
+import { useRoute } from "vue-router";
+import { onMounted, watch } from "vue";
+
+const loadScripts = () => {
+  const scripts = [
+    "/js/webslidemenu.js",
+    "/js/owls.js",
+    "/js/main.js"
+  ];
+
+  scripts.forEach((src) => {
+    const existingScript = document.querySelector(`script[src="${src}"]`);
+    if (existingScript) existingScript.remove(); // Remove old script to reload
+
+    const script = document.createElement("script");
+    script.src = src;
+    script.defer = true;
+    document.body.appendChild(script);
+  });
+};
+
+onMounted(() => {
+  loadScripts();
+});
+
+const route = useRoute();
+watch(route, () => {
+  loadScripts(); // Reload scripts when route changes
+});
+</script>
   

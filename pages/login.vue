@@ -116,7 +116,7 @@
     try {
       await authStore.login(email.value, password.value);
       //navigateTo('/', { external: true });
-      // navigateTo('/'); 
+      navigateTo('/'); 
     } catch (err) {
       console.log(err+'err')
       error.value = 'Invalid credentials';
