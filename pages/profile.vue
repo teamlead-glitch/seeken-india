@@ -1,11 +1,6 @@
 <template>
   
-    <!-- <div>
-      <h1>Profile</h1>
-      <p>Name :  {{ authStore.user?.name ?? 'Guest' }}</p>
-      <p>Email :  {{ authStore.user?.email ?? 'Guest' }}</p>
-      <button @click="logout">Logout</button>
-    </div> -->
+   
 
     <div class="inner__banner">
         <div class="container">
@@ -22,6 +17,19 @@
             </div>
         </div>
     </div>
+
+    
+
+  <CommonOverlayPopup :show="showEditPopup" >
+    <ProfileEdit @close="showEditPopup = false"></ProfileEdit>
+  </CommonOverlayPopup>
+
+  <CommonOverlayPopup :show="showAddAddressPopup" >
+    <ProfileAddAddress @close="showAddAddressPopup = false"></ProfileAddAddress>
+  </CommonOverlayPopup>
+    
+    
+
     <section class="inner_container">
         <div class="container">
          <div class="row justify-content-center">
@@ -30,7 +38,7 @@
                 <h1>Profile Settings</h1>
                 <div class="heading">
                     <h4>Profile</h4>
-                    <div class="right_box" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <div class="right_box" data-bs-toggle="modal" data-bs-target="#exampleModal"  @click="showEditPopup = true">
                         <i class="bi bi-pen"></i> Edit
                     </div>
                 </div>
@@ -42,10 +50,13 @@
                         <div class="col-md-8">
                             <div class="lists">
                                 <ul>
-                                <li>First Name Last Name</li>
-                                <li><span class="primery">fakeemail@gmail.com</span><span>+051 12345 67890</span></li>
-                                 <li> <input type="password" id="passwordField" value="1234567890" readonly>
-                                    <span class="show" id="showButton">Show</span></li>
+                                <li>
+                                  {{ authStore.user?.name ?? 'Guest' }}
+                                  
+                                </li>
+                                <li><span class="primery">{{ authStore.user?.email ?? '-' }}</span><span>{{ authStore.user?.mobile ?? '-' }}</span></li>
+                                 <!-- <li> <input :type="showPassword ? 'text' : 'password'" id="passwordField" value="1234567890" readonly>
+                                    <span class="show" id="showButton" @click="showPassword = !showPassword">Show</span></li> -->
                                 </ul>
                             </div>
                         </div>
@@ -54,7 +65,7 @@
                 <div class="heading">
                     <h4>Addresses</h4>
                     <div class="right_box">
-                        <div class="right_box" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                        <div class="right_box" data-bs-toggle="modal" data-bs-target="#exampleModal2" @click="showAddAddressPopup = true">
                             <i class="bi bi-plus-lg"></i> Add
                         </div>
                 </div>
@@ -67,7 +78,7 @@
                         <div class="no__address"><h6>You did not add any address yet</h6></div>
                          <!-- no address added time -->
                           <!-- premenent address -->
-                           <div class="row">
+                           <!-- <div class="row">
 <div class="col-md-6 mb-4">
     <div class="shipping__boxes">
         <div class="default">Default</div>
@@ -114,7 +125,7 @@
   </div>
     </div>
 </div>
-  </div>
+  </div> -->
    </div>
                 </div>
             </div>
@@ -150,6 +161,10 @@
   definePageMeta({
     middleware: 'auth'
   })
+
+  const showEditPopup = ref(false);
+  const showAddAddressPopup = ref(false);
+  const showPassword = ref(false);
   </script>
   
   
