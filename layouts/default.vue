@@ -465,4 +465,13 @@ watch(route, () => {
   loadScripts(); // Reload scripts when route changes
 });
 </script>
+
+<style>
+.error-message{
+  color: red !important;
+}
+.success-message{
+  color: green !important;
+}
+</style>
   

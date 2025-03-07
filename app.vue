@@ -2,6 +2,7 @@
     <!-- <Navbar /> -->
     
     <NuxtLayout>
+      <LayoutsGlobalLoader />
       <NuxtPage />
     </NuxtLayout>
     

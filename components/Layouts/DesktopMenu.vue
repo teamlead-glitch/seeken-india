@@ -2,7 +2,7 @@
  <!-- desktop menu -->
  <div class="wsmenucontainer clearfix">
     <div id="overlapblackbg"></div>
-    <div class="header" id="header">
+    <div class="header" :class="!isIndexPage? 'inner_header':''" id="header">
       <div class="wrapper clearfix"> </div>
       <nav class="wsmenu clearfix">
         <a href="index.html">
@@ -185,6 +185,9 @@
 <script setup lang="ts">
 
 import { useAuthStore } from '~/store/auth';
+const route = useRoute();
+
+const isIndexPage = computed(() => route.path === '/');
 
 
 const authStore = useAuthStore();

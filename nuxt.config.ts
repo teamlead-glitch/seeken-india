@@ -277,6 +277,13 @@ export default defineNuxtConfig({
           `,
           type: "text/javascript",
         },
+        {
+          children :` function closeAlert() {
+      document.getElementById('alertBox').style.display = 'none';
+      document.getElementById('header').style.top = '0px'; // Move header to top
+    }`,
+    type: "text/javascript",
+        },
       ],
     },
   },

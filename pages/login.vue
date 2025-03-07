@@ -1,6 +1,105 @@
 <template>
-  
-  <div class="login-container" v-if="isShowLogin">
+
+
+<div class="inner__banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="breadcrums">
+                        <ul>
+                            <li><NuxtLink to="/">
+                                    Home</NuxtLink></li>
+                            <li>Login</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+  <section class="inner_container">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-xl-5">
+
+
+
+
+          <div class="login__box">
+            <form v-if="isShowLogin" @submit.prevent="handleLogin">
+              <h1>Login</h1>
+              <p>Login with email to become a member</p>
+              <div class="col-12 mb-3 mt-5">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="email"
+                    placeholder="Email Address" required>
+                  <label for="firstName" class="form-label">Email Address</label>
+                </div>
+              </div>
+              <div class="col-12 mb-3">
+                <div class="form-floating mb-3">
+                  <input type="password" class="form-control border-0 border-bottom rounded-0" v-model="password"
+                    placeholder="Password" required>
+                  <label for="password" class="form-label">Password</label>
+                </div>
+                <p class="success-message" v-if="success">{{ success }}</p>
+                <p class="error-message" v-if="error">{{ error }}</p>
+              </div>
+              <div class="col-12 mt-5 mb-3 d-flex justify-content-center flex-column align-items-center">
+                
+                <button class="btn_1" type="submit">Sign in</button>
+                <a href="#" @click="isShowLogin = false" class="mt-2">
+                  <p style="color: #00687f;">Forgot your Password?</p>
+                 
+                </a>
+                <!-- <center>- OR -</center>
+                <NuxtLink to="/register"><button class="btn_1 mt-3">Register</button></NuxtLink> -->
+              </div>
+
+            </form>
+
+
+
+            <form v-if="!isShowLogin"  @submit.prevent="handleResetPassword">
+              <h1>Reset Your Password </h1>
+              <p>Please enter your email address. You will receive a link to create a new password via email </p>
+
+              <div class="col-12 mb-3 mt-5">
+                        <div class="form-floating mb-3">
+                          <input type="email" class="form-control border-0 border-bottom rounded-0" v-model="reset_email" placeholder="E-mail" required>
+                          <label for="firstName" class="form-label">E-mail</label>
+                        </div>
+                      </div>
+                     <div class="col-12 mt-5 mb-3 d-flex justify-content-center  align-items-center gap-2">
+                        <button class="btn_1" type="submit">Reset Password</button>   
+                        <a class="btn_1" href="#" @click="isShowLogin = true">Back</a>
+                      </div>
+
+
+
+              <p class="error-message" v-if="error">{{ error }}</p>
+              <p class="success-message" v-if="success">{{ success }}</p>
+            </form>
+          </div>
+
+
+
+
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-xl-7">
+          <div class="login__box">
+            <p>By logging-in, I consent and accept the Enrollment <a href="">Terms and Conditions</a>   &  <a
+                href="">Privacy Policy</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <div class="login-container" v-if="isShowLogin">
     
     <form class="login-form" @submit.prevent="handleLogin">
       <h1 class="login-title">Login</h1>
@@ -26,113 +125,73 @@
       <p class="success-message" v-if="success">{{ success }}</p>
     </form>
     
-  </div>
+  </div> -->
+
+</template>
+
+
+
+<script setup lang="ts">
+import { ref, onMounted  } from 'vue';
+import { useAuthStore } from '~/store/auth';
+import { useLoader } from '@/composables/useLoader';
+const { showLoader, hideLoader } = useLoader(); // Use global loader
+
+const route = useRoute();
+const router = useRouter();
+
+const email = ref('');
+const password = ref('');
+const error = ref('');
+const success = ref('');
+const authStore = useAuthStore();
+const reset_email = ref('');
+
+const isShowLogin = ref(true);
+
+onMounted(() => {
   
-  </template>
+  //console.log(route.query.reg,'route++')
+    if (route.query.reg == 'success') {
+      success.value = 'Registration successful. Please log in.';
 
-  <style>
- /* Centering the form */
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 60vh; /* Full viewport height */
- 
-}
-
-.login-title {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-/* Form Styling */
-.login-form {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 300px; /* Set a fixed width for the form */
-}
-
-/* Input fields */
-.login-input {
-  width: 92%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-.login-input:focus {
-  border-color: #007BFF;
-  outline: none;
-}
-
-/* Button styling */
-.login-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.login-button:hover {
-  background-color: #0056b3;
-}
-
-/* Error message */
-.error-message {
-  text-align: center;
-  color: red;
-  font-size: 14px;
-  margin-top: 10px;
-}
-
-
-</style>
-  
-  <script setup lang="ts">
-  import { ref } from 'vue';
-  import { useAuthStore } from '~/store/auth';
-  
-  const email = ref('');
-  const password = ref('');
-  const error = ref('');
-  const success = ref('');
-  const authStore = useAuthStore();
-  const reset_email = ref('');
-
-  const isShowLogin = ref(true);
-  
-  const handleLogin = async () => {
-    success.value='';error.value='';
-    try {
-      await authStore.login(email.value, password.value);
-      //navigateTo('/', { external: true });
-      navigateTo('/'); 
-    } catch (err) {
-      console.log(err+'err')
-      error.value = 'Invalid credentials';
+      // Clear query params after showing success message
+      setTimeout(() => {
+            router.replace({ path: '/login' }); // Removes the query param
+            success.value = '';
+        }, 2000); // 2-second delay before clearing
     }
-  };
+});
 
-  const handleResetPassword = async () => {
-    success.value='';error.value='';
-    try {
-      await authStore.resetPassword(reset_email.value);
-      success.value = 'Reset link sent to your mail id';
-    } catch (err) {
-      error.value = err.data.error;
-      
-      
-    }
-  };
-  </script>
-  
+const handleLogin = async () => {
+  success.value = ''; error.value = '';
+  showLoader();
+  try {
+    await authStore.login(email.value, password.value);
+    //navigateTo('/', { external: true });
+    navigateTo('/');
+  } catch (err) {
+    console.log(err + 'err')
+    error.value = 'Invalid credentials';
+  }
+  finally {
+    hideLoader(); // Hide loader after request completes
+  }
+};
+
+const handleResetPassword = async () => {
+  success.value = ''; error.value = '';
+  showLoader();
+  try {
+    await authStore.resetPassword(reset_email.value);
+    success.value = 'Reset link sent to your mail id';
+  } catch (err) {
+    error.value = err.data.error;
+
+
+  }
+  finally {
+    hideLoader(); // Hide loader after request completes
+  }
+};
+</script>
