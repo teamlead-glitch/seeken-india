@@ -7,6 +7,7 @@
     :centeredSlides="false"
     :loop="true"
     :autoplay="{ delay: 4000, disableOnInteraction: false }"
+    :navigation="{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }"
     class="mySwiper"
   >
     <SwiperSlide v-for="(item, index) in slides" :key="index">
@@ -50,6 +51,9 @@
      
     
     </SwiperSlide>
+    <!-- Navigation Arrows -->
+    <div class="swiper-button-next"><i class="bi bi-arrow-right"></i></div>
+    <div class="swiper-button-prev"><i class="bi bi-arrow-left"></i></div>
   </Swiper>
 </div>
 </template>
@@ -73,3 +77,53 @@ const props = defineProps({
 
 
 </script>
+
+<style scoped>
+
+/* Hide default Swiper big arrows */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+
+/* Style for the new navigation arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.7); /* Black with transparency */
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Centering the arrows */
+.swiper-button-prev {
+  left: 15px;
+}
+
+.swiper-button-next {
+  right: 15px;
+}
+
+/* Hover effect */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Icon style */
+.swiper-button-next i,
+.swiper-button-prev i {
+  color: white;
+  font-size: 20px;
+}
+</style>
