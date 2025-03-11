@@ -132,9 +132,9 @@ export default defineNuxtConfig({
         { src: "https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js", defer: true },
 
         // Custom Scripts
-        { src: "/js/webslidemenu.js", defer: true },
-        { src: "/js/owls.js", defer: true },
-        { src: "/js/main.js", defer: true },
+        //{ src: "/js/webslidemenu.js", defer: true },
+        //{ src: "/js/owls.js", defer: true },
+        //{ src: "/js/main.js", defer: true },
 
         // Inline Script for Grab Sale
         {
@@ -162,26 +162,8 @@ export default defineNuxtConfig({
           type: "text/javascript",
         },
 
-        // Inline Script for Bootstrap Carousel
-        {
-          children: `
-            document.addEventListener("DOMContentLoaded", function () {
-              var carousel = new bootstrap.Carousel(document.getElementById('carouselExample'), {
-                interval: 3000,
-                wrap: true
-              });
-
-              var thumbnails = document.querySelectorAll('.carousel-indicators [data-bs-slide-to]');
-              thumbnails.forEach(function (thumbnail) {
-                thumbnail.addEventListener('click', function () {
-                  var slideTo = this.getAttribute('data-bs-slide-to');
-                  carousel.to(slideTo);
-                });
-              });
-            });
-          `,
-          type: "text/javascript",
-        },
+        
+         
 
         // Inline Script for Profile Icon Dropdown
         {
@@ -207,55 +189,7 @@ export default defineNuxtConfig({
           type: "text/javascript",
         },
 
-        // Inline Script for Swiper Slider
-        {
-          children: `
-            document.addEventListener("DOMContentLoaded", function () {
-              new Swiper(".mySwiper", {
-                slidesPerView: 1.2,
-                spaceBetween: 20,
-                centeredSlides: false,
-                loop: true,
-                navigation: {
-                  nextEl: ".swiper-button-next",
-                  prevEl: ".swiper-button-prev",
-                },
-                breakpoints: {
-                  480: { slidesPerView: 2.2 }
-                }
-              });
-
-              new Swiper(".mySwiper2", {
-                slidesPerView: 1.2,
-                spaceBetween: 20,
-                centeredSlides: false,
-                loop: true,
-                navigation: {
-                  nextEl: ".swiper-button-next",
-                  prevEl: ".swiper-button-prev",
-                },
-                breakpoints: {
-                  480: { slidesPerView: 1.2 }
-                }
-              });
-
-              new Swiper(".mySwiper3", {
-                slidesPerView: 1.2,
-                spaceBetween: 20,
-                centeredSlides: false,
-                loop: true,
-                navigation: {
-                  nextEl: ".swiper-button-next",
-                  prevEl: ".swiper-button-prev",
-                },
-                breakpoints: {
-                  480: { slidesPerView: 1.2 }
-                }
-              });
-            });
-          `,
-          type: "text/javascript",
-        },
+        
 
         // Inline Script for Offcanvas Menu Behavior
         {

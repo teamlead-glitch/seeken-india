@@ -457,12 +457,12 @@ const loadScripts = () => {
 };
 
 onMounted(() => {
-  loadScripts();
+  //loadScripts();
 });
 
 const route = useRoute();
 watch(route, () => {
-  loadScripts(); // Reload scripts when route changes
+  //loadScripts(); // Reload scripts when route changes
 });
 </script>
 
