@@ -10,7 +10,7 @@
       :modules="[Autoplay, Navigation, Pagination]"
       :spaceBetween="0"
       :slidesPerView="1"
-      :centeredSlides="true"
+      :centeredSlides="false"
       :loop="true"
       :autoplay="{ delay: 4000, disableOnInteraction: false }"
      
