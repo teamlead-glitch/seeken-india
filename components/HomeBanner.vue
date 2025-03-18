@@ -24,18 +24,18 @@
        
 
         <div class="item">
-          <img :src="item.image" class="img-fluid banner__desk" alt="">
-          <img :src="item.mob_image" class="img-fluid banner__mob" alt="">
+          <img :src="item.image_path" class="img-fluid banner__desk" alt="">
+          <img :src="item.mobile_banner" class="img-fluid banner__mob" alt="">
           <div class="slider-caption">
             <div class="container">
               <div class="row">
                 <div class="col-md-6">
-                  <h6>Lorum ipsum</h6>
+                  <h6>{{ item.sub_title??'Sub title' }}</h6>
                   <h2>{{ item.title }} </h2>
-                  <p>{{ item.description }} </p>
+                  <!-- <p>{{ item.sub_title }} </p> -->
                   <div class="btn_boxes">
-                    <a class="btn_1" href="#">Buy </a>
-                    <a class="btn_2" href="#">Learn More </a>
+                    <a v-if="item.url" class="btn_1" :href=item.url  target="_blank" rel="noopener noreferrer">Buy </a>
+                   
                   </div>
                 </div>
               </div>
@@ -59,9 +59,9 @@
      <div class="owl-thumbs">
       <div class="owl-thumb-item" v-for="(slide, index) in slides" 
       :key="'thumb-' + index" >
-        <img :src="slide.image" alt="Thumb 1">
+        <img :src="slide.mobile_banner" alt="Thumb 1">
         <div class="texts" @click="goToSlide(index)">
-          <h4><span>Next</span>{{slide.title}}</h4>
+          <h4><span>Next</span>{{slide.sub_title??'Sub title'}}</h4>
         </div>
       </div>
       
@@ -81,14 +81,22 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 
+
 const router = useRouter();
 const swiperInstance = ref(null);
+const config = useRuntimeConfig();
 
-const slides = [
-  { title: "Slide 1", description: "This is the first slide content.", image: "/images/banner1.webp", mob_image: "/images/mob-banner-1.webp" },
-  { title: "Slide 2", description: "This is the second slide content.", image: "/images/banner2.webp", mob_image: "/images/mob-banner-2.webp" },
- 
-];
+
+
+
+// Fetch slide data during SSR
+const { data: slides, error } = await useAsyncData('slides', () =>
+  $fetch(`${config.public.apiBase}banners`)
+);
+// Handle errors gracefully
+if (error.value) {
+  console.error('Error fetching slides:', error.value);
+}
 
 // Initialize Swiper instance
 const onSwiperInit = (swiper) => {
