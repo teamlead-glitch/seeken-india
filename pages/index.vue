@@ -25,10 +25,9 @@
 
   <TopPicks />
 
+  <LatestArticles />
 
-
-  <LatestArticlesDesk />
-  <LatestArticlesMob />
+  
 
 
 

@@ -1,7 +1,7 @@
 <template>
   
   <div class="intro">
-    <a id="anchor1" rel="#section1">
+    <a id="anchor1"  href="#section2">
       <div class="arrow"><img src="/images/arrow.svg" alt="seeken"></div>
     </a>
   <div class="content-slider banner">

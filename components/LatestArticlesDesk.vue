@@ -20,7 +20,7 @@
                 <img :src="item.image_path" class="img-fluid" alt="seeken" loading="lazy">
               </div>
               <div class="content">
-                <div class="calendar"><i class="bi bi-calendar4"></i> February 11, 2025</div>
+                <div class="calendar"><i class="bi bi-calendar4"></i> {{ formatDate(item.created_at)	}}</div>
                 <h3>{{ item.title }}</h3>
                 <p>{{ item.description }}</p>
               </div>
@@ -37,21 +37,12 @@
 
 <script setup>
 
-import { useRouter } from 'vue-router';
+const props = defineProps({
+  articles: Array
+});
 
-const router = useRouter();
-const config = useRuntimeConfig();
+import { useDateFormat } from '~/composables/useDateFormat';
 
-
-
-
-// Fetch slide data during SSR
-const { data: articles, error } = await useAsyncData('articles', () =>
-  $fetch(`${config.public.apiBase}blogs?skip=0&take=4`)
-);
-// Handle errors gracefully
-if (error.value) {
-  console.error('Error fetching articles:', error.value);
-}
+const { formatDate } = useDateFormat();
 
 </script>
