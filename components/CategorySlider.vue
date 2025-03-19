@@ -14,15 +14,15 @@
           <div class="category__img__box">
             <div class="img_box">
               <img
-                src="/images/category_1.webp"
+                :src="item.image"
                 alt="seeken"
                 class="img-fluid"
                 loading="lazy"
               />
             </div>
             <div class="content">
-              <h4>Fan</h4>
-              <h6>5 Items</h6>
+              <h4>{{item.title}}</h4>
+              <h6>{{ item.items_count }} Items</h6>
             </div>
           </div>
         </a>
@@ -43,11 +43,11 @@ import "swiper/css/autoplay";
 const router = useRouter();
 
 const slides = [
-  { title: "Slide 1", description: "This is the first slide content." },
-  { title: "Slide 2", description: "This is the second slide content." },
-  { title: "Slide 3", description: "This is the third slide content." },
-  { title: "Slide 4", description: "This is the fourth slide content." },
-  { title: "Slide 5", description: "This is the fifth slide content." },
-  { title: "Slide 6", description: "This is the fifth slide content." },
+  { title: "Category 1", items_count: 2 , image :"/images/category_1.webp"},
+  { title: "Category 2", items_count: 5 , image :"/images/category_2.webp"},
+  { title: "Category 3", items_count: 6 , image :"/images/category_3.webp"},
+  { title: "Category 4", items_count: 8 , image :"/images/category_4.webp"},
+  { title: "Category 5", items_count: 9 , image :"/images/category_5.webp"},
+  { title: "Category 6", items_count: 2 , image :"/images/category_3.webp"},
 ];
 </script>
