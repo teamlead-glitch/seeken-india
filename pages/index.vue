@@ -13,9 +13,8 @@
 
   <Category />
 
-  <ProductHomeFeaturedDesk />
+  <HomeFeaturedProducts />
 
-  <ProductHomeFeaturedMob />
 
 
   <section class="ad_container">
