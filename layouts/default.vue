@@ -2,124 +2,7 @@
     
     <!-- product detail offcanvas Popup -->
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"><i
-        class="bi bi-x-lg"></i></button>
-    <div class="offcanvas-body">
-      <div class="product_img_heading">
-        <div class="row align-items-center">
-          <div class="col-md-5 col-lg-6">
-            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-              <!-- Carousel Indicators (Thumbnails) -->
-              <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"
-                  aria-current="true" aria-label="Slide 1">
-                  <img src="/images/detail1.webp" class="d-block w-100" alt="Thumbnail 1">
-                </button>
-                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2">
-                  <img src="/images/detail2.webp" class="d-block w-100" alt="Thumbnail 2">
-                </button>
-                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3">
-                  <img src="/images/detail3.webp" class="d-block w-100" alt="Thumbnail 3">
-                </button>
-                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="3" aria-label="Slide 3">
-                  <img src="/images/detail4.webp" class="d-block w-100" alt="Thumbnail 4">
-                </button>
-              </div>
-       <!-- Carousel Slides -->
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="/images/detail1.webp" class="d-block w-100" alt="Slide 1">
-                </div>
-                <div class="carousel-item">
-                  <img src="/images/detail2.webp" class="d-block w-100" alt="Slide 2">
-                </div>
-                <div class="carousel-item">
-                  <img src="/images/detail3.webp" class="d-block w-100" alt="Slide 3">
-                </div>
-                <div class="carousel-item">
-                  <img src="/images/detail4.webp" class="d-block w-100" alt="Slide 4">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-7 col-lg-6">
-            <div class="top__box">
-              <div class="category__name">
-                <div class="rating"><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i
-                  class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> 5.0
-                <span>(16k Ratings)</span>
-              </div>
-                <h5>BLDC FAN</h5>
-              </div>
-            </div>
-            <div class="price__feature">
-              <h4>Aither Air 5 star</h4>
-              <div class="price"><span>Rs. 3,500.00</span>Rs. 2,300.00 </div>
-            </div>
-            <div class="colors">
-              <ul>
-                <li>Colors</li>
-                <li>
-                  <div class="code active"> <img src="/images/color_code/clr-1.webp" class="img-fluid" alt="seeken"
-                      loading="lazy">
-                  </div>
-                </li>
-                <li>
-                  <div class="code"><img src="/images/color_code/clr-2.webp" class="img-fluid" alt="seeken" loading="lazy">
-                  </div>
-                </li>
-                <li>
-                  <div class="code"><img src="/images/color_code/clr-3.webp" class="img-fluid" alt="seeken" loading="lazy">
-                  </div>
-                </li>
-                <li>
-                  <div class="code"><img src="/images/color_code/clr-4.webp" class="img-fluid" alt="seeken" loading="lazy">
-                  </div>
-                </li>
-                <li>
-                  <div class="code"><img src="/images/color_code/clr-2.webp" class="img-fluid" alt="seeken" loading="lazy">
-                  </div>
-                </li>
-                <li>
-                  <div class="code"><img src="/images/color_code/clr-3.webp" class="img-fluid" alt="seeken" loading="lazy">
-                  </div>
-                </li>
-                <li>
-                  <div class="code"><img src="/images/color_code/clr-4.webp" class="img-fluid" alt="seeken" loading="lazy">
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="modals">
-              <h5>Choose Modal</h5>
-              <ul>
-                <li>Aither Air</li>
-                <li>Aither</li>
-                <li>Aither 5 Star</li>
-                <li>Aither 4 Star</li>
-                <li>Aither 3 Star</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-     <div class="product_details">
-      <div class="detail">
-          <p>Lorem ipsum dolor sit amet, consecte adipisicing elit, sed do eiusmll tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mill veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exet commodo consequat. Duis aute irure dolor.  labore et dolore magna aliqua. Ut enim ad mill veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exet commodo consequat. Duis aute irure dolor</p>
-       </div>
-      </div>
-      <div class="full_clm">
-        <div class="quantity-input">
-          <button class="quantity-btn minus-btn"><i class="bi bi-dash-lg"></i></button>
-          <input type="number" class="quantity" value="1" min="1" max="10">
-          <button class="quantity-btn plus-btn"><i class="bi bi-plus-lg"></i></button>
-        </div>
-        <button class="btn_2">Add to Cart</button>
-        <button class="btn_1">Buy Now</button>
-      </div>
-      <div class="view_detail"><a class="btn_3" href="detail.html">More Details</a></div>
-
-    </div>
+    <CommonQuickBuyPopup />
   </div>
   <!--product detail  offcanvas Popup close -->
   <!--search  offcanvas Popup desktop  -->
@@ -435,35 +318,32 @@
   </template>
 
 <script setup>
-import { useRoute } from "vue-router";
-import { onMounted, watch } from "vue";
 
-const loadScripts = () => {
-  const scripts = [
-    "/js/webslidemenu.js",
-    "/js/owls.js",
-    "/js/main.js"
-  ];
-
-  scripts.forEach((src) => {
-    const existingScript = document.querySelector(`script[src="${src}"]`);
-    if (existingScript) existingScript.remove(); // Remove old script to reload
-
-    const script = document.createElement("script");
-    script.src = src;
-    script.defer = true;
-    document.body.appendChild(script);
-  });
+const QickByProduct =  {
+  "title": "Product from static json",
+  "description": "Product from static json Api integration is in proggress waiting for api.",
+  "images": [
+    "/images/detail1.webp",
+    "/images/detail2.webp",
+    "/images/detail3.webp",
+    "/images/detail4.webp"
+  ],
+  "is_flashsale": true,
+  "item_left": 15,
+  "category_name": "Electronics",
+  "original_price": 120.0,
+  "sale_price": 99.99,
+  "rating": 4.5,
+  "review_count": 120
 };
 
-onMounted(() => {
-  //loadScripts();
-});
 
-const route = useRoute();
-watch(route, () => {
-  //loadScripts(); // Reload scripts when route changes
-});
+provide('QickByProduct', QickByProduct);
+
+
+
+
+
 </script>
 
 <style>
