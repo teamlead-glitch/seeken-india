@@ -218,6 +218,27 @@ export default defineNuxtConfig({
     }`,
     type: "text/javascript",
         },
+
+        {
+          children: `
+              document.addEventListener("DOMContentLoaded", function () {
+                  window.addEventListener("scroll", function () {
+                      if (window.scrollY > 400) {
+                          document.querySelector(".scrollup")?.classList.add("visible");
+                      } else {
+                          document.querySelector(".scrollup")?.classList.remove("visible");
+                      }
+
+                      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                          document.getElementById("header")?.classList.add("shrink");
+                      } else {
+                          document.getElementById("header")?.classList.remove("shrink");
+                      }
+                  });
+              });
+          `,
+          type: 'text/javascript'
+      },
       ],
     },
   },
