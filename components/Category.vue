@@ -13,7 +13,7 @@
               <div class="category_lists ">
                 
                 
-               <CategorySlider/>
+               <CategorySlider :categories="categories"/>
                 
               </div>
             </div>
@@ -21,3 +21,23 @@
         </div>
       </section>
 </template>
+
+<script setup>
+
+import { useRouter } from 'vue-router';
+import { ref } from 'vue';
+
+const router = useRouter();
+const config = useRuntimeConfig();
+
+
+// Fetch slide data during SSR
+const { data: categories, error } = await useAsyncData('categories', () =>
+  $fetch(`${config.public.apiBase}categories`)
+);
+// Handle errors gracefully
+if (error.value) {
+  console.error('Error fetching slides:', error.value);
+}
+
+</script>
