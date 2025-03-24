@@ -131,7 +131,7 @@
        <LayoutsFooter />
   
   
-  <LazyLayoutsMobileNav />
+  <LayoutsMobileNav />
   
    
   </template>
