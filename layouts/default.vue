@@ -116,7 +116,7 @@
   </div>
   <!-- ------alert box desktop close--- -->
  
- <LayoutsDesktopMenu/>
+ <LayoutsDesktopMenu :categoryTree="cats" :activeIndex="activeIndex" :showSubcategories="showSubcategories"/>
  <LayoutsMobileMenu/>
 
   
@@ -126,198 +126,19 @@
       </main>
 
        <!-- desktop close-->
-  <section class="footer">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <div class="newsletter">
-            <h4>Subscribe our Newsletter and get all of our update</h4>
-          </div>
-        </div>
-        <div class="col-md-6 d-flex justify-content-end">
-          <div class="subscribe_form">
-            <form action="# ">
-              <div class="input-group input-group-lg ">
-                <input type="text " class="form-control input-lg " placeholder="Enter your email">
-                <span class="input-group-btn ">
-                  <button type="submit" class="btn c-theme-btn c-btn-uppercase btn-lg c-btn-bold c-btn-square ">Submit
-                    Now</button>
-                </span>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="line"></div>
-      </div>
-      <div class="row mt-5">
-        <div class="col-md-3">
-          <div class="footer__logo">
-            <img src="/images/logo.svg" alt="seeken" loading="lazy">
-          </div>
-        </div>
-        <div class="col-md-9">
-          <div class="row">
-            <div class="col-md-3 mb-3">
-              <h5>Products</h5>
-              <div class="ftr__list">
-                <ul>
-                  <li><a href="#">Fan</a></li>
-                  <li><a href="#">LP Gas Stove</a></li>
-                  <li><a href="#">Pressure Cooker</a></li>
-                  <li><a href="#">Non Stick Cookware</a></li>
-                  <li><a href="#">Electric Iron</a></li>
-                  <li><a href="#">Smart Watch</a></li>
-                  <li><a href="#">Mobile Accessories</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-3 mb-3">
-              <h5>About company</h5>
-              <div class="ftr__list">
-                <ul>
-                  <li><a href="about-us.html">About Us</a></li>
-                  <li><a href="contact.html">Contact Us</a></li>
-                  <li><a href="#">Press Room</a></li>
-                  <li><a href="#">Blog</a></li>
-                  <li><a href="#">Careers</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-3 mb-3">
-              <h5>Support</h5>
-              <div class="ftr__list">
-                <ul>
-                  <li><a href="#">Support centre</a></li>
-                  <li><a href="contact.html"> Contact us</a></li>
-                  <li><a href="#">Contact us via WhatsApp</a></li>
-                  <li><a href="#">Find a store</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <h5>Social Media</h5>
-              <div class="social-icons">
-                <ul>
-                  <li><a href="#" target="blank"><i class="bi bi-facebook"></i>&nbsp;</a></li>
-                  <li> <a href="#" target="blank"><i class="bi bi-instagram"></i> &nbsp;</a></li>
-                  <li> <a href="#" target="blank"><i class="bi bi-youtube"></i> &nbsp;</a></li>
-                  <li> <a href="#" target="blank"><i class="bi bi-twitter-x"></i>&nbsp;</a></li>
-                  <li> <a href="#" target="blank"><i class="bi bi-linkedin"></i>&nbsp;</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <div class="powered_by">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <ul>
-            <li>© Seeken 2025</li>
-            <li>All Rights Reserved</li>
-            <li><a href="">Legal &amp; Privacy</a> </li>
-            <li><a href="">Your Privacy Choices</a></li>
-            <li>Powered By<a href="http://www.phitany.in/" target="_blank"> Phitany</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- mmobile menu -->
-  <div class="mob__navigation">
-    <ul>
-      <li class="active">
-        <a href="index.html">
-          <div class="icon"><img src="/images/home-hover-menu.svg" alt="seeken"></div>
-          <div class="list"> Home</div>
-        </a>
-      </li>
-      <li>
-        <a href="shop.html">
-          <div class="icon"><img src="/images/shop-menu.svg" alt="seeken"></div>
-          <div class="list">Shop</div>
-        </a>
-      </li>
-      <li>
-        <a href="offers.html">
-          <div class="icon"><img src="/images/offers-menu.svg" alt="seeken"></div>
-          <div class="list">Offers</div>
-
-        </a>
-      </li>
-      <li>
-        <a href="cart.html">
-          <div class="icon"><img src="/images/cart-menu.svg" alt="seeken"></div>
-          <div class="list"> Cart</div>
-        </a>
-      </li>
-      <li type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight_mobmenu"
-        aria-controls="offcanvasRight">
-        <div class="icon"><img src="/images/hamburg-menu.svg" alt="seeken"></div>
-        <div class="list">Menu</div>
-      </li>
-    </ul>
-  </div>
-  <div class="offcanvas offcanvas-end offcanvas-mobmenus" tabindex="-1" id="offcanvasRight_mobmenu"
-    aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-body">
-      <div class="mobile_menu_offcanvas">
-        <div class="mob__menu">
-          <div class="nav"><a href="login.html">Account</a></div>
-          <div class="logo"><img src="/images/logo-blue.svg" alt="logo"></div>
-          <div class="search_wishlist">
-            <!-- <div class="wishlist"> <a href="wishlist.html">
-              <div class="icon"><img src="/images/whislist.svg" alt="search">
-                <div class="count">2</div>
-              </div>
-            </a> </div> -->
-            <div class="search">
-              <div class="icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTopone"
-                aria-controls="offcanvasTop"><img src="/images/search_icon.svg" alt="search"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="account_box">
-        <div class="profile"><img src="/images/profile_icon.webp" alt="seeken" class="img-fluid"></div>
-        <div class="name_designation">
-          <h6>First name Last name</h6>
-          <div class="phone">+91 12345 67890</div>
-        </div>
-      </div>
-      <div class="navs">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="#">Press Room</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">About us</a></li>
-          <li><a href="#">Support Centre</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="social__icons__mobile">
-        <h5>Social Media</h5>
-        <ul>
-          <li><a href="#" target="blank"><i class="bi bi-facebook"></i>&nbsp;</a></li>
-          <li> <a href="#" target="blank"><i class="bi bi-instagram"></i> &nbsp;</a></li>
-          <li> <a href="#" target="blank"><i class="bi bi-youtube"></i> &nbsp;</a></li>
-          <li> <a href="#" target="blank"><i class="bi bi-twitter-x"></i>&nbsp;</a></li>
-          <li> <a href="#" target="blank"><i class="bi bi-linkedin"></i>&nbsp;</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <!-- mobile menu close -->
+  
+  
+       <LayoutsFooter />
+  
+  
+  <LazyLayoutsMobileNav />
   
    
   </template>
 
 <script setup>
+
+const config = useRuntimeConfig();
 
 const QickByProduct =  {
   "title": "Product from static json",
@@ -341,7 +162,21 @@ const QickByProduct =  {
 provide('QickByProduct', QickByProduct);
 
 
+const activeIndex = ref(0);
 
+// Fetch slide data during SSR
+const { data: cats, error } = await useAsyncData('cats', () =>
+  $fetch(`${config.public.apiBase}categories/sub`)
+);
+// Handle errors gracefully
+if (error.value) {
+  console.error('Error fetching slides:', error.value);
+}
+
+// Show subcategories when clicking a category
+const showSubcategories = (index) => {
+  activeIndex.value = index;
+};
 
 
 </script>

@@ -23,7 +23,8 @@
               1024: { slidesPerView: 4, spaceBetween: 30 },
               768: { slidesPerView: 3, spaceBetween: 20 },
               480: { slidesPerView: 1.5, spaceBetween: 15 },
-              380: { slidesPerView: 1, spaceBetween: 10 }
+              380: { slidesPerView: 1, spaceBetween: 10 },
+              0: { slidesPerView: 1, spaceBetween: 10 }
             }"
           class="mySwiper"
           >

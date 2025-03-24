@@ -2,14 +2,18 @@
 <!-- mobile menu -->
 <div class="mobile_menu">
     <div class="mob__menu">
-      <div class="nav"><a href="#">Home</a></div>
-      <div class="logo"><a href="index.html"><img src="/images/logo-blue.svg" alt="logo"></a>  </div>
+      <div class="nav">
+        <NuxtLink to="/login" v-if="!authStore.token && !isLoginPage">Login</NuxtLink>
+        <NuxtLink to="/register" v-if="!authStore.token && isLoginPage">Register</NuxtLink>
+        <NuxtLink to="/profile" v-if="authStore.token">Account</NuxtLink>
+      </div>
+      <div class="logo"><NuxtLink to="/"><img src="/images/logo-blue.svg" alt="logo"></NuxtLink>  </div>
       <div class="search_wishlist">
-        <!-- <div class="wishlist"> <a href="wishlist.html">
+        <div class="wishlist"> <a href="wishlist.html">
             <div class="icon"><img src="/images/whislist.svg" alt="search">
               <div class="count">2</div>
             </div>
-          </a> </div> -->
+          </a> </div>
         <div class="search">
           <div class="icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTopone"
             aria-controls="offcanvasTop"><img src="/images/search_icon.svg" alt="search"></div>
@@ -27,3 +31,13 @@
   </div>
   <!-- mobile menu close -->
 </template>
+
+<script setup lang="ts">
+
+import { useAuthStore } from '~/store/auth';
+const authStore = useAuthStore();
+const route = useRoute();
+
+const isLoginPage = computed(() => route.path === '/login');
+
+</script>
