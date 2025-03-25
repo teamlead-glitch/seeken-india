@@ -8,65 +8,13 @@
   <!--search  offcanvas Popup desktop  -->
   <div class="offcanvas search__popup offcanvas-top" tabindex="-1" id="offcanvasTop"
     aria-labelledby="offcanvasTopLabel">
-    <div class="offcanvas-body">
-      <div class="container">
-        <div class="row justify-content-center align-items-center">
-          <div class="col-md-8 d-flex justify-content-center">
-            <div class="subscribe_form">
-              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"><i
-                  class="bi bi-x-lg"></i></button>
-              <form action="# ">
-                <div class="input-group input-group-lg ">
-                  <input type="text " class="form-control input-lg " placeholder="Search our store">
-                  <span class="input-group-btn ">
-                    <button type="submit" class="btn c-theme-btn c-btn-uppercase btn-lg c-btn-bold c-btn-square "><i
-                        class="bi bi-search"></i></button>
-                  </span>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <LayoutsSearchPopupDesktop :search="handleSearch"/>
   </div>
   <!--search   offcanvas Popup close -->
   <!--search  offcanvas Popup mobile -->
   <div class="offcanvas search__popup__mobile offcanvas-top" tabindex="-1" id="offcanvasTopone"
     aria-labelledby="offcanvasTopLabel">
-    <div class="offcanvas-body">
-      <div class="container">
-        <div class="row justify-content-end  align-items-center">
-          <div class="col-md-12 d-flex justify-content-end flex-column">
-            <div class="btn_forms">
-              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"><i
-                  class="bi bi-arrow-left"></i></button>
-              <div class="subscribe_form">
-                <form action="# ">
-                  <div class="input-group input-group-lg ">
-                    <input type="text " class="form-control input-lg " placeholder="Search">
-                    <span class="input-group-btn ">
-                      <button type="submit" class="btn c-theme-btn c-btn-uppercase btn-lg c-btn-bold c-btn-square "><i
-                          class="bi bi-search"></i></button>
-                    </span>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div class="trending__search">
-              <h6>Trending Search</h6>
-              <ul>
-                <li>Search item 01</li>
-                <li>Search item 02</li>
-                <li>Search item 03</li>
-                <li>Search item 04</li>
-              </ul>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <LayoutsSearchPopupMobile />
   </div>
   <!--search   offcanvas Popup close -->
   <!-- Modal wishlist want to add wishlist-->
@@ -179,6 +127,10 @@ provide('All_categories', cats);
 const showSubcategories = (index) => {
   activeIndex.value = index;
 };
+
+const handleSearch = () => {
+  console.log('search here...')
+}
 
 
 </script>
