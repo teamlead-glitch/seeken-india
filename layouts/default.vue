@@ -1,61 +1,31 @@
 <template>
-    
-    <!-- product detail offcanvas Popup -->
+
+  <!-- product detail offcanvas Popup -->
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <CommonQuickBuyPopup />
   </div>
   <!--product detail  offcanvas Popup close -->
+  
+  
   <!--search  offcanvas Popup desktop  -->
   <div class="offcanvas search__popup offcanvas-top" tabindex="-1" id="offcanvasTop"
     aria-labelledby="offcanvasTopLabel">
-    <LayoutsSearchPopupDesktop :search="handleSearch"/>
+    <LayoutsSearchPopupDesktop :search="handleSearch" />
   </div>
   <!--search   offcanvas Popup close -->
+  
+  
   <!--search  offcanvas Popup mobile -->
   <div class="offcanvas search__popup__mobile offcanvas-top" tabindex="-1" id="offcanvasTopone"
     aria-labelledby="offcanvasTopLabel">
     <LayoutsSearchPopupMobile />
   </div>
   <!--search   offcanvas Popup close -->
-  <!-- Modal wishlist want to add wishlist-->
-  <div class="modal fade wishlist_setting" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title fs-5" id="exampleModalLabel">Add to wishlist</h3>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Do you want to add this product to your wishlist?</p>
-          <div class="col-md-12 mt-4 mb-4 d-flex justify-content-center gap-3">
-            <a class="btn_2" href="index.html">Keep browsing</a> <button class="btn_1" data-bs-toggle="modal"
-              data-bs-target="#exampleModal5">Add to wishlist</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Modal  wishlist close  -->
-  <!-- Modal wishlist item added wishlist -->
-  <div class="modal fade wishlist_setting" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title fs-5" id="exampleModalLabel">Wishlist</h3>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>The item will be added to your wishlist</p>
-          <div class="col-md-12 mt-4 mb-4 d-flex justify-content-center">
-            <a href="index.html"><button class="btn_2">Continue shopping</button> </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Modal edit wishlist close  -->
+  
+  
+  <CommonWishlist />
+
+
   <!-- ------alert box desktop--- -->
   <div id="alertBox" class="alert-box">
     <p>We have a flash sale running with 40-70% off for a limited period and stock. <span> <a id="anchor2"
@@ -63,32 +33,27 @@
     <button class="close-btn" onclick="closeAlert()"><i class="bi bi-x-lg"></i></button>
   </div>
   <!-- ------alert box desktop close--- -->
- 
- <LayoutsDesktopMenu :categoryTree="cats" :activeIndex="activeIndex" :showSubcategories="showSubcategories"/>
- <LayoutsMobileMenu/>
 
-  
-  
-      <main>
-        <slot /> <!-- This is where the page content will be injected -->
-      </main>
+  <LayoutsDesktopMenu :categoryTree="cats" :activeIndex="activeIndex" :showSubcategories="showSubcategories" />
+  <LayoutsMobileMenu />
 
-       <!-- desktop close-->
-  
-  
-       <LayoutsFooter />
-  
-  
+  <main>
+    <slot /> <!-- This is where the page content will be injected -->
+  </main>
+
+  <!-- desktop close-->
+
+  <LayoutsFooter />
+
   <LayoutsMobileNav />
-  
-   
-  </template>
+
+</template>
 
 <script setup>
 
 const config = useRuntimeConfig();
 
-const QickByProduct =  {
+const QickByProduct = {
   "title": "Product from static json",
   "description": "Product from static json Api integration is in proggress waiting for api.",
   "images": [
@@ -136,11 +101,11 @@ const handleSearch = () => {
 </script>
 
 <style>
-.error-message{
+.error-message {
   color: red !important;
 }
-.success-message{
+
+.success-message {
   color: green !important;
 }
 </style>
-  
