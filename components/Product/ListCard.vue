@@ -1,6 +1,7 @@
 
 
 <template>
+    <!-- {{ product }} -->
      <div class="col-md-6 col-lg-4  col-xl-4 col-xxl-3 mb-3">
                                         <a >
                                             <div class="product__box">
@@ -13,15 +14,15 @@
                                                 </div>
                                                 <div class="price__feature">
                                                     <div class="name">
-                                                        <h4>{{ product.title }}</h4>
+                                                        <h4>{{ product.name }}</h4>
                                                     </div>
-                                                    <div class="price"> Rs. 4,400.00 <span>Rs. 5,500.00</span></div>
+                                                    <div class="price"> Rs. {{ product.selling_price }} <span>Rs. {{ product.price }}</span></div>
                                                 </div>
                                             </div>
                                             <div class="top_box">
                                                 <div class="product__img">
                                                    
-                                                        <img v-if="product.images && product.images[0]" :src="product.images[0]" class="img-fluid" alt="seeken" >
+                                                        <img v-if="product.image_path && product.image_path" :src="product.image_path" class="img-fluid" alt="seeken" >
                 
                                                 </div>
                                                
