@@ -19,10 +19,12 @@
                   <div class="full">
                     <div class="left-box">
 
-                      <ul>
+                      <ul v-if="categoryTree && categoryTree.length">
+                        <template v-if="categoryTree.length">
                         <li :class="i == activeIndex ? 'active' : ''" v-for="(cat, i) in categoryTree" :key="cat.id"
                         @click="triggerShowSubcategories(i)">
                           {{ cat.name }}</li>
+                        </template>
 
                       </ul>
                     </div>
@@ -47,7 +49,7 @@
                       <div class="articles">
                         <a href="#">
                           <div class="img__box">
-                            <img src="/images/blog-1.webp" class="img-fluid" alt="seeken" loading="lazy">
+                            <img :src="categoryTree[activeIndex].image_path" class="img-fluid" alt="seeken" loading="lazy">
                           </div>
 
                         </a>
@@ -59,11 +61,7 @@
                         <a href="#">
 
                           <div class="content">
-                            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus voluptas quibusdam
-                              quasi quisquam,
-                              cum similique debitis, odio, nihil alias eveniet harum. Corrupti consectetur provident
-                              dolorem quis
-                              quos nostrum exercitationem sequi.</h3>
+                            <h3>{{ categoryTree[activeIndex].short_description }}</h3>
                             <a class="btn_3" href="">View more <i class="bi bi-arrow-right"></i></a>
                           </div>
                         </a>

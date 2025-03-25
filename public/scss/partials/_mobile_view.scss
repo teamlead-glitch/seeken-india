@@ -1145,10 +1145,12 @@ a{ color: $black-color !important;
     margin-bottom: 40px;
     @media (max-width:767px) {
         height: auto;
-        margin-top: 60px;
+        // margin-top: 60px;
+        margin-top: 0;
        
     }
     @media (max-width:480px) {
-        margin-top: 45px;
+        // margin-top: 45px;
+        margin-top: 0;
     }
 }

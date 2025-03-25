@@ -29,6 +29,9 @@ p {
     line-height: 24px;
     font-weight: 400;
     font-size: 0.875rem;
+    @media (max-width:480px) {
+        font-size: 0.813rem;
+    }
 
 }
 
@@ -209,7 +212,7 @@ section {
     -webkit-backdrop-filter: blur(15px);
     backdrop-filter: blur(15px);
     z-index: 999;
-    top: 40px;
+    top: 34px;
     position: fixed;
 
     .logo {
@@ -406,26 +409,7 @@ section {
 
 }
 
-// .smallogo {
-//     .small_mvr {
-//         @include border(0px 0px 5px 5px);
-//         background: url(../images/logo_mvr.svg);
-//         background-repeat: repeat;
-//         width: 135px;
-//         height: 60px;
-//         position: absolute;
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-//         /* width: 100%; */
-//         margin: 0 auto;
-//         left: 0;
-//         right: 0;
-//         top: 15px;
-//         box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
-//     }
 
-// }
 
 .shrink {
     @include transition;
@@ -746,6 +730,7 @@ section {
     .banner {
         .item {
             height: 100vh;
+            
 
             @media (max-width:767px) {
                 height: auto;
@@ -754,6 +739,7 @@ section {
             img {
                 width: 100%;
                 height: 100vh;
+                object-fit: cover;
 
                 @media (max-width:767px) {
                     height: auto;
@@ -968,6 +954,7 @@ section {
 
         img {
             @include transition;
+            width: 100%;
 
         }
 
@@ -1475,7 +1462,17 @@ section {
         height: 100%;
         position: relative;
         overflow: hidden;
-
+       
+ &::before{
+            position: absolute;
+            top:0;
+            content: "";
+            left: 0;
+            width: 40%;
+            height: 100%;
+            background: rgb(255,255,255);
+            background: linear-gradient(270deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.34450276692708337) 100%);
+        }
         img {
             @include transition;
             @include border(10px);
@@ -1484,7 +1481,7 @@ section {
         }
 
         .content {
-            padding: 3rem 1.5rem;
+            padding: 2rem 1.5rem;
             width: 100%;
             position: absolute;
             display: flex;
@@ -1500,16 +1497,9 @@ section {
             h3 {
                 font-size: 1.2rem;
                 font-weight: 600;
-                text-align: center;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
                 color: $white-color;
-                display: -webkit-box;
-                height: 48px;
-                list-style: 28px;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                margin-bottom: 10px;
+               margin-bottom: 10px;
 
                 @media only screen and (min-width: 992px) and (max-width: 1200px) {
                     text-align: left;
@@ -1522,45 +1512,10 @@ section {
                 }
             }
 
-            .button__box {
-                display: flex;
-                grid-area: 2px;
-                justify-content: center;
-                align-items: center;
-
-                @media only screen and (min-width: 768px) and (max-width: 1200px) {
-                    flex-direction: column;
-                    align-items: flex-start;
-                }
-
-            }
+          
         }
 
-        .content_top {
-            padding-top: 01.5rem;
-            top: 5%;
-            width: 100%;
-
-            h3 {
-                text-align: left;
-
-                @media only screen and (min-width: 768px) and (max-width: 1200px) {
-                    text-align: left;
-                }
-            }
-        }
-
-        .button__box {
-            display: flex;
-            grid: 2px;
-            justify-content: flex-start;
-            align-items: center;
-
-            @media only screen and (min-width: 768px) and (max-width: 1200px) {
-                align-items: left;
-            }
-
-        }
+       
     }
 
     .content_left {
@@ -1578,34 +1533,40 @@ section {
         .button__box {
             display: flex;
             grid: 2px;
+            padding: 0;
             justify-content: flex-start;
             align-items: flex-start;
+            .btn_3{
+                padding: 0;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+            }
 
         }
 
-        .content_bottom {
-            bottom: 10px;
-            width: 100%;
-            top: auto;
-            padding-bottom: 0;
-
-            h3 {
-                text-align: center;
-            }
-
-            .button__box {
-                display: flex;
-                grid: 2px;
-                justify-content: flex-start;
-                align-items: center;
-
-            }
-        }
+       
 
         &:hover {
             img {
                 transform: scale(1.1);
             }
+        }
+    }
+    .content_bottom {
+        bottom: 10px;
+        width: 100%;
+        top: auto;
+        padding-bottom: 0;
+
+        h3 {
+            text-align: center;
+        }
+
+        .button__box {
+            display: flex;
+            grid: 2px;
+            justify-content: flex-start;
+            align-items: center;
+
         }
     }
 
@@ -1640,27 +1601,7 @@ section {
         }
     }
 
-    .content_bottom {
-        bottom: 0px !important;
-        width: 100%;
-        top: auto;
-        height: 100%;
-        padding-bottom: 15px !important;
-
-        justify-content: flex-end;
-
-        h3 {
-            text-align: center;
-        }
-
-        .button__box {
-            display: flex;
-            grid: 2px;
-            justify-content: flex-start;
-            align-items: center;
-
-        }
-    }
+  
 }
 
 // whatsnew desktop close
@@ -1734,7 +1675,7 @@ section {
 
             &:hover {
                 .img_box {
-                    border: 5px solid #00687f5d;
+                    
 
                     img {
                         transform: scale(1.1);
@@ -1905,17 +1846,17 @@ section {
             }
 
             .quick__buy {
-                @include border(5px);
+                @include border(30px);
                 @include transition;
                 position: absolute;
                 left: 50%;
                 cursor: pointer;
                 transform: translate(-50%, -50%);
                 opacity: 0;
-                color: $primery-color;
-                font-weight: 600;
-                font-size: 1rem;
-                background: $white-color;
+                color: $white-color;
+                font-weight: 400;
+                font-size: 0.875rem;
+                background: $black-color;
                 padding: .2rem 1rem;
                 z-index: 9;
                 border: 1px solid #dbdada;
@@ -1941,6 +1882,7 @@ section {
                     height: 40px;
                     cursor: pointer;
                     background: $white-color;
+                    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 
                     i {
                         @include transition;
@@ -1965,8 +1907,7 @@ section {
             position: relative;
             padding: 1.5rem;
 
-            border-top: 1px solid #dbdada;
-
+         
             .top__box {
                 display: flex;
                 width: 100%;
@@ -2037,7 +1978,7 @@ section {
                             align-items: center;
                             justify-content: center;
                             color: $black-color;
-                            font-weight: 700;
+                            font-weight: 400;
                             color: #808080;
                             list-style: none;
                             padding: 0 .2rem;
@@ -2295,13 +2236,16 @@ section {
     .owl-carousel .owl-nav button.owl-prev,
     .owl-nav button.owl-next {
         @include border(50%);
-        background: rgb(202, 201, 201);
+        background: rgba(0, 0, 0, 0.41);
+        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px);
         color: $white-color;
+           
         width: 30px;
         height: 30px;
 
         &:hover {
-            background: #328f89;
+            background: $black-color;
             color: $white-color;
         }
     }
@@ -3275,15 +3219,33 @@ section {
 
     .about_content {
         margin-top: 10vh;
+        @media (max-width:767px) {
+            text-align: center;
+            margin-top: 0;
+        }
 
         span {
             color: $white-color;
+            @media (max-width:767px) {
+                text-align: center;
+            }
         }
 
         h1 {
             color: $white-color;
             font-size: 3rem;
-            font-weight: 700
+            font-weight: 700;
+            @media (max-width:767px) {
+                text-align: center;
+                font-size: 1.50rem;
+                br{
+                    display: none;
+                }
+            }
+            @media (max-width:480px) {
+                font-size: 1.15rem;
+            }
+
         }
     }
 
@@ -3294,6 +3256,16 @@ section {
     object-fit: cover;
     background-position: center center;
     display: flex;
+    @media (max-width:767px) {
+       align-items: center;
+        margin-top: 60px;
+        height: 45vh;
+       
+    }
+    @media (max-width:480px) {
+        margin-top: 45px;
+        height: 35vh;
+    }
 
     .breadcrums {
 
@@ -3323,7 +3295,9 @@ section {
     background: $white-color;
     padding-top: 40px;
     @media (max-width:767px) {
-        margin-top: 80px;
+      
+       padding-top: 120px;
+       margin-bottom: 40px;
     }
   
     h1 {
@@ -3332,6 +3306,11 @@ section {
 
         @media only screen and (min-width: 768px) and (max-width: 992px) {
             font-size: 2.5rem;
+        }
+       
+        @media( width <= 768px){
+            font-size: 1.8rem !important;
+            text-align: left;
         }
 
         span {
@@ -3346,6 +3325,10 @@ section {
         .f16 {
             font-size: 1rem;
             color: $black-color;
+            @media (max-width:767px) {
+                color: $primery-color;
+                font-weight: 500;
+            }
         }
 
         h4 {
@@ -3366,13 +3349,22 @@ section {
         margin-top: 2em;
         @include border(15px);
         background-size: cover;
-        object-fit: cover;
+       
+    background-position: center;
+        
+ @media (max-width:767px) {
+    padding: 6.5rem 1.5rem 1.5rem 1.5rem;
+    background-size:auto;
+ }
 
         h2 {
             font-size: 2rem;
             font-weight: 700;
             color: $white-color;
             margin-bottom: 1rem;
+            
+ @media (max-width:767px) { font-size: 1.50rem;}
+ @media (max-width:480px) { font-size: 1.25rem;}
         }
 
         p {
@@ -4024,7 +4016,7 @@ section {
                     position: relative;
                     padding: 1.5rem;
 
-                    border-top: 1px solid #dbdada;
+                  
 
                     .top__box {
                         display: flex;
@@ -4499,6 +4491,10 @@ section {
         display: flex;
         margin-bottom: 2rem;
         align-items: center;
+        @media ( width <= 480px){
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
 
         span {
             @include border(5px);
@@ -4520,14 +4516,20 @@ section {
             font-size: 1.25rem;
             margin-bottom: 1rem;
             color: $black-color;
+            @media( width <= 480px){
+                font-size: 1rem;  
+            }
         }
 
         h5 {
             font-weight: 600;
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             margin: 1rem 0 .8rem 0;
             color: $black-color;
             display: inline-block;
+            @media( width <= 480px){
+                font-size: 0.938rem;  
+            }
         }
 
         .accordion {
@@ -5113,6 +5115,11 @@ section {
             justify-content: space-between;
             align-items: center;
 
+ @media( width <= 1400px){
+                flex-direction: column;
+                align-items: flex-start;
+               
+            }
             .nav-tabs {
                 @include border(40px);
                 padding: .5rem;
@@ -5121,6 +5128,9 @@ section {
                 --bs-nav-tabs-border-color: $white-color;
                 background: #F0F0F0;
                 width: fit-content;
+                @media( width <= 1400px){ margin-bottom: 1rem;}
+                @media  ( 768px <= width <= 992px) {   gap: 5px;}
+                @media  (  width <= 768px) {   gap: 5px;}
             }
 
             .nav-tabs .nav-link.active {
@@ -5136,9 +5146,12 @@ section {
                 font-size: 0.938rem;
                 text-align: left;
                 border: none;
+                @media  ( 768px <= width <= 992px) {  font-size: 0.813rem;  padding: .5rem .8rem;}
 
+               
+                @media  (  width <= 768px) {   font-size: 0.813rem;  padding: .5rem .8rem;}
                 @media (max-width:480px) {
-                    font-size: 0.813rem;
+                  
                     padding: .5rem;
                 }
 
@@ -5155,6 +5168,7 @@ section {
                     font-weight: 600;
                     color: $black-color;
                     font-family: $font-family;
+                    @media  (  width <= 992px) {   font-size: 0.813rem;  }
                 }
             }
         }
@@ -5175,18 +5189,34 @@ section {
             background: #F0F0F0;
             display: flex;
             justify-content: space-between;
+            @media( width <= 1400px){
+                  flex-wrap: wrap;
+               
+            }
 
             .colums {
+                @media(width <= 1400px){
+                    margin-bottom: 1rem;
+                   
+                }
                 h4 {
                     font-size: 1rem;
                     color: #333333;
                     font-weight: 600;
+                    @media  ( 1200px <= width <=1400px) {  font-size: 0.938rem;}
+                    @media  ( 992px <= width <=1200px) {  font-size: 0.875rem;}
+                    @media  ( 768px <= width <=992px) {  font-size: 0.813rem;}
+                    @media  (  width <=768px) {  font-size: 0.813rem;}
 
                     span {
                         color: #808080;
                         display: block;
                         font-weight: 400;
                         margin-bottom: .5rem;
+                        @media  ( 1200px <= width <=1400px) {  font-size: 0.938rem;}
+                        @media  ( 992px <= width <=1200px) {  font-size: 0.875rem;}
+                        @media  ( 768px <= width <=992px) {  font-size: 0.813rem;}
+                        @media  (  width <=768px) {  font-size: 0.813rem;}
                     }
                 }
 
@@ -5203,11 +5233,15 @@ section {
 
         .content {
             padding: 2.5rem;
+            @media(  width <= 1400px){
+                padding: 1.5rem;
+            }
 
             .order_boxes {
                 width: 100%;
                 padding: 2rem 0;
                 border-bottom: 1px solid #C0C0C0;
+                @media(  width <= 1400px){  padding: 1.5rem 0;}
 
                 &:last-child {
                     border-bottom: none;
@@ -5218,6 +5252,8 @@ section {
                     font-weight: 600;
                     color: #333333;
                     margin-bottom: 1rem;
+                    @media(  width <= 1400px){   font-size: 1.3rem;}
+                    @media(  width <= 480px){   font-size: 1rem;}
                 }
 
                 .full {
@@ -5237,11 +5273,12 @@ section {
 
                     .product__details {
                         padding-left: 2rem;
-
+                        @media(  width <= 992px){   padding-left: 0;}
                         h4 {
                             font-size: 1.25rem;
                             color: $black-color;
                             font-weight: 700;
+                            @media(  width <= 1400px){   font-size: 1rem;}
                         }
 
                         h6 {
@@ -5249,17 +5286,23 @@ section {
                             font-weight: 400;
                             font-size: 1rem;
                             margin-top: .5rem;
+                            @media(  width <= 1400px){   font-size: 0.813rem;}
                         }
 
                         .btn__boxes {
                             margin-top: 1.5rem;
                             display: flex;
                             gap: 8px;
+                            @media(  width <= 1400px){  flex-wrap: wrap;}
+                            @media(  width <= 992px){  display: none;}
 
                             .btn_1 {
                                 border: 2px solid $primery-color;
                                 background: $primery-color;
                                 color: $white-color !important;
+                                @media( 768px <= width <= 1400px){    padding: 3px 20px;}
+                                @media( width <= 768px){    padding: 3px 10px; font-size: 0.813rem;}
+                              
 
                                 &:hover {
                                     background: $black-color;
@@ -5273,6 +5316,8 @@ section {
                                 border: 2px solid $black-color;
                                 background: none;
                                 color: $black-color !important;
+                                @media( 768px <= width <= 1400px){    padding: 3px 20px;}
+                                @media( width <= 768px){    padding: 3px 10px; font-size: 0.813rem;}
 
                                 &:hover {
                                     background: $black-color;
@@ -5282,8 +5327,45 @@ section {
                             }
                         }
                     }
+                  
                 }
+                .btn__boxes__mob {
+                    margin-top: 1.5rem;
+                    display: none;
+                    gap: 8px;
+                   
+                    @media(  width <= 992px){  display: flex; flex: wrap;flex-wrap: wrap;}
 
+                    .btn_1 {
+                        border: 2px solid $primery-color;
+                        background: $primery-color;
+                        color: $white-color !important;
+                        @media( 768px <= width <= 1400px){    padding: 3px 20px;}
+                        @media( width <= 768px){    padding: 3px 10px; font-size: 0.813rem;}
+                      
+
+                        &:hover {
+                            background: $black-color;
+                            border: 2px solid $black-color;
+                            color: $white-color !important;
+                        }
+
+                    }
+
+                    .btn_2 {
+                        border: 2px solid $black-color;
+                        background: none; 
+                        color: $black-color !important;
+                        @media( 768px <= width <= 1400px){    padding: 3px 20px;}
+                        @media( width <= 768px){    padding: 3px 10px; font-size: 0.813rem;}
+
+                        &:hover {
+                            background: $black-color;
+                            border: 2px solid $black-color;
+                            color: $white-color !important;
+                        }
+                    }
+                }
 
 
             }
@@ -5292,17 +5374,29 @@ section {
 
     .login__box {
         padding: 1.5rem;
+        @media ( width <= 768px){
+            text-align: left;
+            padding:  1rem;
+        }
 
         h1 {
             text-align: center;
             font-size: 2rem;
             margin-bottom: 1rem;
+            @media ( width <= 768px){
+                text-align: left;
+                font-size: 1.5rem;
+            }
         }
 
         p {
             text-align: center;
             font-size: 0.938rem;
             color: $black-color;
+            @media ( width <= 768px){
+                text-align: left;
+                font-size: 0.878rem;
+            }
 
             a {
                 color: $primery-color;
@@ -5334,12 +5428,21 @@ section {
             font-size: 1rem;
             border: none;
             width: fit-content;
-
+@media( width <= 480px){
+    padding: .5rem 2rem;  
+    font-size: 0.875rem;
+}
             &:hover {
                 background: $black-color;
             }
         }
 
+    }
+    .text_center{
+        p{ @media( width <= 768px){
+            text-align: center;
+        }}
+        
     }
 
     .profile__container {
@@ -5349,6 +5452,20 @@ section {
             text-align: center;
             margin-bottom: 1.5rem;
             font-size: 2rem;
+            @media(992px <= width <= 1400px){
+                font-size: 1.8rem;
+            }
+            @media(768px <= width <= 992px){
+                font-size: 1.5rem;
+            }
+            @media(width <= 768px){
+                text-align: left;
+                font-size: 1.5rem;
+            }
+            @media(width <= 480px){
+                font-size: 1.2rem;
+                text-align: left;
+            }
         }
 
         .heading {
@@ -5362,6 +5479,14 @@ section {
                 font-size: 1.3rem;
                 font-weight: 600;
                 color: $black-color;
+                @media(width <= 768px){
+                    text-align: left;
+                    font-size: 1.1rem;
+                }
+                @media(width <= 480px){
+                    font-size: 1rem;
+                    text-align: left;
+                }
             }
 
             .right_box {
@@ -5376,6 +5501,7 @@ section {
 
         .full__box {
             margin: 1.5rem 0;
+            @media( width <= 768px){ margin-bottom: 0;}
 
             .profile__pic {
                 @include border(50%);
@@ -5384,6 +5510,11 @@ section {
                     @include border(50%);
                     width: 150px;
                     height: 150px;
+                    @media( width <= 768px){
+                        width: auto;
+                        height: auto;
+                       
+                    }
                 }
             }
 
@@ -5394,9 +5525,17 @@ section {
                         list-style: none;
                         display: flex;
                         gap: 10px;
-
+                        @media( width <= 768px){
+                            flex-direction: column;
+                            padding:  0;
+                            font-size: 0.875rem;
+                        }
                         span {
                             padding-right: 2rem;
+                            @media( width <= 1400px){
+                                padding-right: .5rem;
+                                
+                            }
 
                         }
 
@@ -5420,6 +5559,9 @@ section {
 
             p {
                 color: $black-color;
+                @media( width <= 768px){
+                    margin-bottom: 0;
+                }
             }
 
             h5 {
@@ -5427,6 +5569,7 @@ section {
                 color: $black-color;
                 font-size: 0.875rem;
                 margin-bottom: 1rem;
+               
             }
 
             .no__address {
@@ -5449,6 +5592,11 @@ section {
                 padding: 1.5rem;
                 box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
                 position: relative;
+                height: 100%;
+                @media( width <= 1200px){
+                    padding-top: 2.5rem;
+                  
+                }
 
                 .default {
                     @include border (0 10px 0 5px);
@@ -5520,7 +5668,10 @@ section {
             display: flex;
             margin-top: 1rem;
             align-items: center;
-
+            padding: 0;
+@media( width <= 768px){
+    align-items: flex-start;
+}
             .left {
                 width: 35%;
             }
@@ -5533,14 +5684,31 @@ section {
                     width: 100%;
                     margin-bottom: 4rem;
                     display: flex;
+                    @media (max-width: 1400px) {
+                        flex-direction: column;
+                        margin-bottom: 2rem;
+                        
+                    }
 
                     .product__details {
                         width: 75%;
+                        @media ( width <= 1400px) {
+                            width: 100%;
+                        }
 
                         h4 {
                             font-size: 1.5rem;
                             font-weight: 600;
                             color: $black-color;
+                            @media ( 1200px <= width <= 1400px){
+                                font-size: 1.3rem;
+                            }
+                            @media ( 768px <= width <= 1200px){
+                                font-size: 1.2rem;
+                            }
+                            @media(  width <= 768px){
+                                font-size: 1.2rem;
+                            }
                         }
 
                         .color {
@@ -5552,9 +5720,11 @@ section {
 
                     .price__details {
                         width: 25%;
+                        @media (  width <=1400px){ width: 100%;}
 
                         .price {
                             width: 100%;
+                           
 
                             h3 {
                                 font-size: 1rem;
@@ -5562,6 +5732,10 @@ section {
                                 font-weight: 700;
                                 text-align: right;
                                 margin-bottom: 0rem;
+                                text-align: right;
+                                @media (  width <= 1400px){
+                                    text-align: left;
+                                }
 
                                 span {
                                     margin-top: .5rem;
@@ -5580,6 +5754,9 @@ section {
                             font-size: 0.75rem;
                             font-weight: 400;
                             text-align: right;
+                            @media ( width <= 1400px){
+                                text-align: left;
+                            }
 
                         }
                     }
@@ -5590,6 +5767,10 @@ section {
                     display: flex;
                     justify-content: flex-end;
                     align-items: center;
+                    @media( width <= 1400px){
+                        justify-content: flex-start;
+                        text-align: left;
+                    }
 
                     .quantity-input {
                         @include border(30px);
@@ -5695,12 +5876,18 @@ section {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        @media(width <= 768px){   min-height: 60vh;} 
 
         h5 {
             text-align: center;
             font-weight: 700;
             font-size: 2rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1rem; 
+            @media(width <= 768px){  font-size: 1.5rem; margin-top: 1rem;}
+            @media(width <= 480px){  font-size: 1.3rem;}
+        }
+        img{
+            @media(width <= 768px){  width: 50px;} 
         }
 
         p {
@@ -5712,6 +5899,11 @@ section {
             margin-top: 1rem;
             display: flex;
             gap: 20px;
+            @media(width <= 768px){
+                flex-direction: column;
+                margin-top: .5rem;
+                gap: 5px;
+            }
 
             .btn_1 {
                 border: 2px solid $black-color;
@@ -5738,6 +5930,16 @@ section {
         margin-left: 2rem;
         border: 1px solid #C0C0C0;
         padding: 2rem;
+        @media ( width <=1400px){
+            margin-left: 0;
+            padding: 1.5rem;
+        }
+        @media ( width <=768px){
+           margin-top: 1.5rem;
+        }
+        @media ( width <=480px){
+            margin-top: 1.2rem;
+         }
 
         h4 {
             color: $primery-color;
@@ -5926,6 +6128,9 @@ section {
                         font-weight: 700;
                         font-size: 1.5rem;
                         color: $primery-color;
+                        @media( width <= 1400px){
+                            font-size: 1.2rem;
+                        }
 
                         span {
                             display: block;
@@ -5953,6 +6158,9 @@ section {
                         color: $primery-color;
                         text-align: right;
                         margin-bottom: 0;
+                         @media( width <= 1400px){
+                            font-size: 1.2rem;
+                        }
 
                     }
 
@@ -5969,7 +6177,9 @@ section {
                             font-size: 0.813rem;
                             text-decoration: line-through;
                             font-weight: 400;
-
+@media (768px <= width <= 1400px){
+    display: block;
+}
 
                         }
                     }
@@ -6028,6 +6238,15 @@ section {
             label {
                 font-size: 0.813rem
             }
+            .btn_4{
+                @media ( 768px <= width <= 1200px){
+margin-top: 1rem;
+                }
+                @media( width <= 480px){
+                    padding: 0.5rem 1rem;
+                    font-size: 0.875rem;
+                }
+            }
 
             .form-control {
                 @include border(0px);
@@ -6061,6 +6280,7 @@ section {
         ul {
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
 
             li {
                 list-style: none;
@@ -6068,6 +6288,9 @@ section {
 
                 img {
                     width: 80px;
+                    @media (width <= 768px){
+                        width: 40px;
+                    }
                 }
             }
         }
@@ -6080,10 +6303,21 @@ section {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        @media( width <= 1200px){
+            padding: 1rem;
+        }
+        @media( width <= 768px){
+            flex-direction: column;
+            align-items: flex-start;
+        }
 
         h5 {
             font-size: 0.875rem;
             color: $black-color;
+            @media( width <= 768px){
+                margin-bottom: 1rem;
+               
+            }
         }
 
         .btn_1 {
@@ -6091,6 +6325,242 @@ section {
             color: $white-color !important;
             border: none;
         }
+
+    }
+    .blog__box{
+        border: 1px solid #F4F4F4;
+        @include border(15px);
+        padding: 1.5rem;
+        @media( width <= 768px){
+            padding: 1rem;
+        }
+        .img__box{
+            @include border(10px);
+            margin-bottom: 1rem;
+            @media( width <= 768px){ margin-bottom: 0;}
+            img{@include border(10px);
+                width: 100%;
+                @media( width <= 768px){
+                    min-height: 150px;
+                    object-fit: cover;
+                  
+                }
+                @media( width <= 480px){
+                    min-height: 120px;
+                   
+                }
+            }
+        }
+        .blog_content{
+            padding: 2rem;
+            @media( width <= 992px){
+                padding: 0rem;
+            }
+            .calendar {
+                color: rgba(128, 128, 128, 1);
+                font-size: 0.75rem;
+                font-weight: 400;
+                margin-bottom: 1rem;
+            }
+    
+            h3 {
+                font-size: 1.25rem;
+                display: -webkit-box;
+                height: 50px;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin-bottom: 10px;
+                font-weight: 700;
+                @media( width <= 768px){
+                    font-size: 1.15rem;
+                    height: 45px;
+                }
+                @media( width <= 480px){
+                    font-size: 1rem;
+                    height: 40px;
+                }
+              
+            }
+    
+            p {
+                @include paraghraph;
+                display: -webkit-box;
+                height: 70px;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin-bottom: 1.5rem;
+                @media( width <= 768px){
+                  display: none;
+                }
+            }
+            .btn_1{
+                background: $primery-color;
+                color: $white-color !important;
+                border: none;
+                @media( width <= 768px){
+                    display: none;
+                  }
+                &:hover{
+                    background: $black-color;
+                }
+            }
+        }
+        .blog_content_detail{
+            width: 100%;
+            .calendar {
+                color: rgba(128, 128, 128, 1);
+                font-size: 0.75rem;
+                font-weight: 400;
+                margin-bottom: 1rem;
+            }
+    
+            h3 {
+                font-size: 1.5rem;
+                display: -webkit-box;
+                color: $black-color;
+                margin-bottom: 10px;
+                font-weight: 700;
+                @media( width <= 768px){
+                    font-size: 1.25rem;
+                    
+                }
+                @media( width <= 480px){
+                    font-size: 1.15rem;
+                   
+                }
+              
+            }
+            h4 {
+                font-size: 1.25rem;
+                display: -webkit-box;
+                color: $dark-gray;
+                
+                margin-bottom: 10px;
+                font-weight: 700;
+                @media( width <= 768px){
+                    font-size: 1.15rem;
+                    
+                }
+                @media( width <= 480px){
+                    font-size: 1rem;
+                   
+                }
+              
+            }
+    
+            p {
+                display: -webkit-box;
+                margin-bottom: 1rem;
+                
+            }
+            ul{
+                li{
+                    list-style: none;
+                   
+                    color: $black-color;
+                    line-height: 24px;
+                    font-weight: 400;
+                    font-size: 0.875rem;
+                    padding-left: 1.5rem;
+                    position: relative;
+                    &::before{
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        content: "\F134";
+                        font-family: bootstrap-icons !important;
+                        color: $primery-color;
+                    }
+                    @media (max-width:480px) {
+                        font-size: 0.813rem;
+                    }
+                }
+            }
+          
+        }
+
+
+    }
+    .recentblog{
+        border: 1px solid #F4F4F4;
+        @include border(15px);
+        padding: 1.5rem;
+        @media( width <= 768px){
+            padding: 1rem;
+        }
+        h3{
+            font-weight: 700;
+           color: $black-color;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            @media only screen and (min-width: 768px) and (max-width: 992px) {
+                font-size: 1.6rem;
+            }
+        
+            @media (max-width:767px) {
+                font-size: 1.5rem;
+            }
+        }
+        .img__box{
+            @include border(10px);
+        
+           
+            img{
+                @include border(10px);
+                width: 100%;
+                min-height: 120px;
+                object-fit: cover;
+               
+               
+            }
+        }
+        .blog_content{
+            padding: 0rem;
+            @media (768px <= width <= 1200px){
+            border-bottom: 1px solid #c8c5c5;}
+           
+            .calendar {
+                color: rgba(128, 128, 128, 1);
+                font-size: 0.75rem;
+                font-weight: 400;
+                margin-bottom: .5rem;
+                @media (768px <= width <= 1200px){
+                    margin-top: .5rem;
+                    
+                }
+            }
+    
+            h3 {
+                font-size: 1.15rem;
+                display: -webkit-box;
+                height: 44px;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                color: $black-color;
+                text-overflow: ellipsis;
+                margin-bottom: 10px;
+                font-weight: 700;
+                @media( width <= 768px){
+                    font-size: 1.15rem;
+                    height: 45px;
+                }
+                @media( width <= 480px){
+                    font-size: 1rem;
+                    height: 40px;
+                }
+              
+            }
+    
+          
+        
+        }
+       
+ 
 
     }
 
@@ -6117,6 +6587,9 @@ section {
         flex-direction: column;
         gap: 2px;
         min-height: 240px;
+        @media(width <= 1200px){
+            min-height: auto;
+        }
 
         h4 {
             font-size: 1rem;
@@ -6147,11 +6620,23 @@ section {
     .border_right {
         border-right: 1px solid #C0C0C0;
         padding-right: 3rem;
+        @media(width <=992px){
+            padding-right: 15px;
+        }
+        @media(width <=768px){ border-right: 1px solid $white-color;}
     }
 
     .contact__forms {
         text-align: center;
         padding-left: 2rem;
+        position: sticky;
+        top: 100px;
+        @media(768px <= width <=992px){  padding-left: 1rem;}
+        @media(width <=768px){
+            padding-left: 0px;
+            margin-top: 2rem;
+            padding-bottom: 1.5rem;
+        }
 
         .form-floating input,
         .form-floating textarea {
@@ -6189,8 +6674,14 @@ section {
     .bg_wishlist {
         background: #F7F7F7;
         padding: 2rem;
+        @media( width <= 1400px){
+            padding: 1.5rem;
+        }
+        @media( width <= 768px){  padding: 0;
+        background: none;}
 
         .product__box {
+            height: 100%;
             .product__img {
                 padding: 0 1rem;
             }
@@ -6242,9 +6733,19 @@ section {
 
                 }
             }
-
+           
         }
 
+        .btn_2{
+            background: none;
+            border: 2px solid $black-color !important;
+            color: $black-color !important;
+            &:hover{
+                background: $primery-color;
+                border: 2px solid  $primery-color !important;
+                color: $white-color !important;
+            }
+        }
     }
 
 
@@ -6253,6 +6754,13 @@ section {
 .wl {
     h1 {
         font-size: 2rem !important;
+        @media(768px <= width <= 1200px){
+            font-size: 1.8rem !important;
+        }
+        @media( width <= 768px){
+            font-size: 1.8rem !important;
+            text-align: left;
+        }
     }
 }
 
@@ -6475,8 +6983,14 @@ section {
 
 // modal
 .profile_setting {
+
     .modal-header {
         border-bottom: 0;
+    }
+    .modal-body{
+        @media( width <= 768px){
+            margin-bottom: 40px;
+        }
     }
 
     h1 {
@@ -6505,6 +7019,10 @@ section {
             @include border(50%);
             width: 150px;
             height: 150px;
+            @media( width <= 1400px){
+                width: auto;
+                height: auto;
+            }
         }
     }
 
@@ -6523,9 +7041,19 @@ section {
         width: 40px;
         height: 40px;
         box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+        @media( 768px <= width <= 992px){  width: 30px;
+            height: 30px; 
+            bottom: 10px; }
+        @media( width <= 768px){
+            width: 30px;
+        height: 30px; 
+        bottom: 10px;
+        }
 
         i {
             font-size: 1.5rem;
+            @media( 768px <= width <= 992px){ font-size: 1rem;}
+            @media( width <= 768px){  font-size: 1rem;}
         }
     }
 
