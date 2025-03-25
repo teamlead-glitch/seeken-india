@@ -173,6 +173,8 @@ if (error.value) {
   console.error('Error fetching slides:', error.value);
 }
 
+provide('All_categories', cats);
+
 // Show subcategories when clicking a category
 const showSubcategories = (index) => {
   activeIndex.value = index;

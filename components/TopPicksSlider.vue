@@ -49,7 +49,7 @@
             <h5>{{item.title}}</h5>
             <h4>{{item.description}}</h4>
             <div class="rating">
-              <i class="bi bi-star-fill"></i> 5.0 <span>(16k)</span>
+              <ProductCardRating :rating="item.rating" :reviewCount="item.review_count"/>
             </div>
             <a class="btn_2" href="">Buy Now</a>
           </div>
