@@ -1,27 +1,12 @@
 <template>
     <section class="footer">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <div class="newsletter">
-            <h4>Subscribe our Newsletter and get all of our update</h4>
-          </div>
-        </div>
-        <div class="col-md-6 d-flex justify-content-end">
-          <div class="subscribe_form">
-            <form action="# ">
-              <div class="input-group input-group-lg ">
-                <input type="text " class="form-control input-lg " placeholder="Enter your email">
-                <span class="input-group-btn ">
-                  <button type="submit" class="btn c-theme-btn c-btn-uppercase btn-lg c-btn-bold c-btn-square ">Submit
-                    Now</button>
-                </span>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="line"></div>
-      </div>
+
+      <LayoutsNewsletter/>
+
+     
+
+
       <div class="row mt-5">
         <div class="col-md-3">
           <div class="footer__logo">
