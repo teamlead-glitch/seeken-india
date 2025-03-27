@@ -5,8 +5,8 @@
           <div class="product__box">
             <div class="top_box">
               <div class="product__img">
-                <img v-if="product.images && product.images[0]" :src="product.images[0]" class="img-fluid default-image" alt="seeken" >
-                <img v-if="product.images && product.images[1]" :src="product.images[1]" alt="seeken" class="img-fluid hover-image" >
+                <img v-if="product.image_path" :src="product.image_path" class="img-fluid default-image" alt="seeken" >
+                <img v-if="product.image_path " :src="product.image_path" alt="seeken" class="img-fluid hover-image" >
               </div>
               
               <ProductCardFlashSaleTag :is_flashsale="product.is_flashsale" :item_left="product.item_left" />
@@ -26,8 +26,8 @@
                 <ProductCardRating :rating="product.rating" :reviewCount="product.review_count"/>
               </div>
               <div class="price__feature">
-                <h4>{{ product.title }}</h4>
-                <div class="price">From Rs. {{ product.original_price }} <span>Rs. {{ product.sale_price }}</span></div>
+                <h4>{{ product.name	 }}</h4>
+                <div class="price">From Rs. {{ product.selling_price	 }} <span>Rs. {{ product.price }}</span></div>
                 <ProductCardVarients/>
               </div>
             </div>
