@@ -51,8 +51,10 @@
                                 <div class="row">
                                     
                                     
-                                    <!-- <div class="col-md-6 col-lg-4  col-xl-4 col-xxl-3 mb-3"> -->
-                            <ProductListCard v-for="(item, index) in products.data" :product="item" :key="index"/>   
+                                    <template v-if="products?.data?.length">
+                            <ProductListCard v-for="(item, index) in products.data" :product="item" :key="index"/> 
+                            </template>  
+                            <p v-else>No products found.</p>
 
 
 
@@ -74,33 +76,65 @@
 
 
 import { inject } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
 
 const categories = inject('All_categories');
 const config = useRuntimeConfig();
 
 const sortBy = ref('price_low_high');
-const filterCat = ref(0);
+const filterCat = ref(route.query.category ? Number(route.query.category) : 0);
 
 
-// UseAsyncData to automatically re-fetch on sortBy change
 const { data: products, error } = await useAsyncData(
   'products',
-  () =>
-    $fetch(`${config.public.apiBase}products?skip=0&take=10&sort=${sortBy.value}`),
+  async () => { // Make the function async
+    try {
+      const query = new URLSearchParams({
+        skip: '0',
+        take: '10',
+        sort: sortBy.value,
+      });
+
+      if (filterCat.value !== 0) {
+        query.append('category', filterCat.value);
+      }
+
+      // Await the API response
+      const response = await $fetch(`${config.public.apiBase}products?${query.toString()}`);
+
+      // Check if API returns an error
+      if (response?.error) {
+        return { data: [], total: 0 }; // Return an empty array if no products found
+      }
+
+      return response;
+    } catch (err) {
+      console.error('Fetch error:', err);
+      return { data: [], total: 0 }; // Handle fetch errors gracefully
+    }
+  },
   {
-    watch: [sortBy], // Automatically refetch when sortBy changes
+    watch: [sortBy, filterCat], // Refetch when dependencies change
   }
 );
 
-// Handle errors gracefully
+// Handle API errors
 if (error.value) {
   console.error('Error fetching products:', error.value);
 }
+
 
 console.log(products,'products in list page')
 
 const filterCategory = (cat_id) => {
     filterCat.value = cat_id;
 }
+
+// Watch route query changes and update filterCat
+watch(() => route.query.category, (newCategory) => {
+  filterCat.value = newCategory ? Number(newCategory) : 0;
+});
 
 </script>
