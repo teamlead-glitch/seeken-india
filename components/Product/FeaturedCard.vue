@@ -9,7 +9,7 @@
                 <img v-if="product.image_path " :src="product.image_path" alt="seeken" class="img-fluid hover-image" >
               </div>
               
-              <ProductCardFlashSaleTag :is_flashsale="product.is_flashsale" :item_left="product.item_left" />
+              <ProductCardFlashSaleTag :is_flashsale="product.is_flash_sale" :item_left="product.stock_quantity" />
               <ProductCardCountDown />
               <a data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                 <div class="quick__buy">QUICK BUY</div>
@@ -27,8 +27,8 @@
               </div>
               <div class="price__feature">
                 <h4>{{ product.name	 }}</h4>
-                <div class="price">From Rs. {{ product.selling_price	 }} <span>Rs. {{ product.price }}</span></div>
-                <ProductCardVarients/>
+                <div class="price">From Rs. {{ product.final_price	 }} <span>Rs. {{ product.price }}</span></div>
+                <ProductCardVarients v-if="product.product_variants.length > 0" />
               </div>
             </div>
           </div>
