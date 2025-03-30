@@ -60,21 +60,42 @@
 </template>
 
 <script setup>
-const new_launchs = [
-  { title: "New Prod 1", description: "This is the first slide content." },
-  { title: "New Prod 2", description: "This is the second slide content." },
-  { title: "New Prod 3", description: "This is the third slide content." },
-  { title: "New Prod 4", description: "This is the fourth slide content." },
-  { title: "New Prod 5", description: "This is the fifth slide content." },
-  { title: "New Prod 6", description: "This is the fifth slide content." },
-];
 
-const best_selling = [
-  { title: "Best Prod 1", description: "This is the first slide content." },
-  { title: "Best Prod 2", description: "This is the second slide content." },
-  { title: "Best Prod 3", description: "This is the third slide content." },
-  { title: "Best Prod 4", description: "This is the fourth slide content." },
-  { title: "Best Prod 5", description: "This is the fifth slide content." },
-  { title: "Best Prod 6", description: "This is the fifth slide content." },
-];
+const config = useRuntimeConfig();
+
+
+const { data: new_launchs, error } = await useAsyncData('new_launchs', () =>
+  $fetch(`${config.public.apiBase}new-arrivals`)
+);
+// Handle errors gracefully
+if (error.value) {
+  console.error('Error fetching new_launchs:', error.value);
+}
+
+
+const { data: best_selling, error2 } = await useAsyncData('best_selling', () =>
+  $fetch(`${config.public.apiBase}best-selling-products`)
+);
+// Handle errors gracefully
+if (error2?.value) {
+  console.error('Error fetching best_selling:', error2.value);
+}
+
+// const new_launchs = [
+//   { title: "New Prod 1", description: "This is the first slide content." },
+//   { title: "New Prod 2", description: "This is the second slide content." },
+//   { title: "New Prod 3", description: "This is the third slide content." },
+//   { title: "New Prod 4", description: "This is the fourth slide content." },
+//   { title: "New Prod 5", description: "This is the fifth slide content." },
+//   { title: "New Prod 6", description: "This is the fifth slide content." },
+// ];
+
+// const best_selling = [
+//   { title: "Best Prod 1", description: "This is the first slide content." },
+//   { title: "Best Prod 2", description: "This is the second slide content." },
+//   { title: "Best Prod 3", description: "This is the third slide content." },
+//   { title: "Best Prod 4", description: "This is the fourth slide content." },
+//   { title: "Best Prod 5", description: "This is the fifth slide content." },
+//   { title: "Best Prod 6", description: "This is the fifth slide content." },
+// ];
 </script>

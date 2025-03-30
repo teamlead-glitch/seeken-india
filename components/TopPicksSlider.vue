@@ -39,15 +39,15 @@
           </div>
           <div class="product__img">
             <img
-              src="/images/featured_product_1.webp"
+              :src="item.image_path	"
               class="img-fluid"
               alt="seeken"
               loading="lazy"
             />
           </div>
           <div class="product__content">
-            <h5>{{item.title}}</h5>
-            <h4>{{item.description}}</h4>
+            <h5>{{item.name	}}</h5>
+            <h4>{{item.short_description}}</h4>
             <div class="rating">
               <ProductCardRating :rating="item.rating" :reviewCount="item.review_count"/>
             </div>
