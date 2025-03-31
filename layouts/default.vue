@@ -53,26 +53,9 @@
 
 const config = useRuntimeConfig();
 
-const QickByProduct = {
-  "title": "Product from static json",
-  "description": "Product from static json Api integration is in proggress waiting for api.",
-  "images": [
-    "/images/detail1.webp",
-    "/images/detail2.webp",
-    "/images/detail3.webp",
-    "/images/detail4.webp"
-  ],
-  "is_flashsale": true,
-  "item_left": 15,
-  "category_name": "Electronics",
-  "original_price": 120.0,
-  "sale_price": 99.99,
-  "rating": 4.5,
-  "review_count": 120
-};
+import { useQuickProduct } from '@/composables/useQuickBuy';
 
-
-provide('QickByProduct', QickByProduct);
+useQuickProduct();
 
 
 const activeIndex = ref(0);

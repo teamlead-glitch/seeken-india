@@ -26,6 +26,7 @@
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasRight"
               aria-controls="offcanvasRight"
+              @click="setQuickProduct(item)"
             >
               <div class="view"><i class="bi bi-eye"></i></div>
             </a>
@@ -73,6 +74,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
+
+import { useQuickProductInject } from '@/composables/useQuickBuy';
+
+const { setQuickProduct } = useQuickProductInject();
 
 const router = useRouter();
 import { defineProps } from 'vue';

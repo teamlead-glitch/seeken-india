@@ -1,4 +1,5 @@
 <template>
+  
   <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"><i
     class="bi bi-x-lg"></i></button>
 <div class="offcanvas-body">
@@ -9,7 +10,7 @@
           <!-- Carousel Indicators (Thumbnails) -->
           <div class="carousel-indicators">
            
-            <template v-for="(image, index) in product.images" :key="index">
+            <template v-for="(image, index) in quickProduct?.images" :key="index">
               <button
                 type="button"
                 :data-bs-target="'#carouselExample'"
@@ -25,7 +26,7 @@
           </div>
    <!-- Carousel Slides -->
           <div class="carousel-inner">
-            <template v-for="(image, index) in product.images" :key="index">
+            <template v-for="(image, index) in quickProduct?.images" :key="index">
               <div :class="['carousel-item', { active: index === 0 }]">
                 <img :src="image" class="d-block w-100" :alt="'Slide ' + (index + 1)">
               </div>
@@ -38,57 +39,25 @@
         <div class="top__box">
           <div class="category__name">
             <div class="rating"><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i
-              class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> {{ product.rating }}
-            <span>({{ product.review_count }} Ratings)</span>
+              class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> {{ quickProduct?.rating }}
+            <span>({{ quickProduct?.review_count }} Ratings)</span>
           </div>
-            <h5>{{ product.category_name }}</h5>
+            <h5>{{ quickProduct?.category_name }}</h5>
           </div>
         </div>
         <div class="price__feature">
-          <h4>{{product.title}}</h4>
-          <div class="price"><span>Rs. {{ product.original_price }}</span>Rs. {{ product.sale_price }} </div>
+          <h4>{{quickProduct?.name}}</h4>
+          <div class="price"><span>Rs. {{ quickProduct?.final_price }}</span>Rs. {{ quickProduct?.price }} </div>
         </div>
-        <div class="colors">
-          <ul>
-            <li>Colors</li>
-            <li>
-              <div class="code active"> <img src="/images/color_code/clr-1.webp" class="img-fluid" alt="seeken"
-                  loading="lazy">
-              </div>
-            </li>
-            <li>
-              <div class="code"><img src="/images/color_code/clr-2.webp" class="img-fluid" alt="seeken" loading="lazy">
-              </div>
-            </li>
-            <li>
-              <div class="code"><img src="/images/color_code/clr-3.webp" class="img-fluid" alt="seeken" loading="lazy">
-              </div>
-            </li>
-            <li>
-              <div class="code"><img src="/images/color_code/clr-4.webp" class="img-fluid" alt="seeken" loading="lazy">
-              </div>
-            </li>
-            <li>
-              <div class="code"><img src="/images/color_code/clr-2.webp" class="img-fluid" alt="seeken" loading="lazy">
-              </div>
-            </li>
-            <li>
-              <div class="code"><img src="/images/color_code/clr-3.webp" class="img-fluid" alt="seeken" loading="lazy">
-              </div>
-            </li>
-            <li>
-              <div class="code"><img src="/images/color_code/clr-4.webp" class="img-fluid" alt="seeken" loading="lazy">
-              </div>
-            </li>
-          </ul>
-        </div>
+       
+        <ProductCardVarients v-if="quickProduct?.product_variants?.length > 0" />
       
       </div>
     </div>
   </div>
  <div class="product_details">
   <div class="detail">
-      <p>{{ product.description }}</p>
+      <p>{{ quickProduct?.description }}</p>
    </div>
   </div>
   <div class="full_clm">
@@ -107,10 +76,9 @@
 
 <script lang="ts" setup>
 
-import { inject } from 'vue';
+import { useQuickProductInject } from '@/composables/useQuickBuy';
 
-const product = inject('QickByProduct');
-
+const { quickProduct } = useQuickProductInject();
 
 
 </script>
