@@ -77,14 +77,7 @@ provide('QickByProduct', QickByProduct);
 
 const activeIndex = ref(0);
 
-// Fetch slide data during SSR
-const { data: cats, error } = await useAsyncData('cats', () =>
-  $fetch(`${config.public.apiBase}categories/sub`)
-);
-// Handle errors gracefully
-if (error.value) {
-  console.error('Error fetching slides:', error.value);
-}
+const { data: cats, error, refresh } = useFetchData('cats', 'categories/sub');
 
 provide('All_categories', cats);
 

@@ -87,16 +87,8 @@ const swiperInstance = ref(null);
 const config = useRuntimeConfig();
 
 
+const { data: slides, error, refresh } = useFetchData('slides', 'banners');
 
-
-// Fetch slide data during SSR
-const { data: slides, error } = await useAsyncData('slides', () =>
-  $fetch(`${config.public.apiBase}banners`)
-);
-// Handle errors gracefully
-if (error.value) {
-  console.error('Error fetching slides:', error.value);
-}
 
 // Initialize Swiper instance
 const onSwiperInit = (swiper) => {

@@ -23,38 +23,8 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
-import { ref } from 'vue';
 
-const router = useRouter();
-const config = useRuntimeConfig();
+const { data: categories, error, refresh } = useFetchData('categories', 'categories');
 
-// Define a ref to hold categories data
-const categories = ref([]);
 
-// Fetch slide data during SSR with error handling
-try {
-  const { data, error } = await useAsyncData('categories', async () => {
-    try {
-      // Fetch categories from the API
-      return await $fetch(`${config.public.apiBase}categories`);
-    } catch (err) {
-      // Catch and log fetch errors (500, 404, etc.)
-      console.error('API call failed with error:', err);
-      throw err; // Rethrow to outer catch
-    }
-  });
-
-  // Handle useAsyncData-specific error
-  if (error.value) {
-    console.error('Error fetching slides:', error.value);
-    categories.value = []; // Return empty array if error occurs
-  } else {
-    categories.value = data.value || [];
-  }
-} catch (err) {
-  // Catch any unhandled errors
-  console.error('Unexpected error during API call:', err);
-  categories.value = [];
-}
 </script>

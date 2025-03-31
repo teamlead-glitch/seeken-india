@@ -7,18 +7,6 @@
 
 <script setup>
 
-const config = useRuntimeConfig();
-
-// Fetch slide data during SSR
-const { data: featured_products, error } = await useAsyncData('featured_products', () =>
-  $fetch(`${config.public.apiBase}featured-products`)
-);
-// Handle errors gracefully
-if (error.value) {
-  console.error('Error fetching featured_products:', error.value);
-}
-
-
-
+const { data: featured_products, error, refresh } = useFetchData('featured_products', 'featured-products');
 
 </script>
