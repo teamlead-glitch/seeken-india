@@ -28,7 +28,7 @@
                                 <option value="name_desc">Z to A</option>
                                 <option value="price_low_high">Low to Hight</option>
                                 <option value="price_high_low">High to Low</option>
-                                <option value="old">Old</option>
+                                
                              </select>
                         </div>   </div>
                     </div>

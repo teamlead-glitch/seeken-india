@@ -13,13 +13,13 @@
             <NuxtLink to="/">Home </NuxtLink>
           </li>
           <li><a href="#">Shop <i class="bi bi-chevron-down"></i></a>
-            <div class="megamenu clearfix">
+            <div class="megamenu clearfix" v-if="categoryTree && categoryTree.length">
               <div class="row">
                 <div class="col-md-6">
                   <div class="full">
                     <div class="left-box">
 
-                      <ul v-if="categoryTree && categoryTree.length">
+                      <ul >
                         <template v-if="categoryTree.length">
                         <li :class="i == activeIndex ? 'active' : ''" v-for="(cat, i) in categoryTree" :key="cat.id"
                         @click="triggerShowSubcategories(i)">
@@ -161,9 +161,6 @@ const props = defineProps({
     required: true,
   },
 });
-
-
-
 
 
 
