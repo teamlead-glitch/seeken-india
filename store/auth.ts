@@ -44,7 +44,7 @@ export const useAuthStore = defineStore('auth', {
           headers: { Authorization: `Bearer ${this.token}` },
         });
 
-        this.user = userdata.user;
+        this.user = userdata;
       } catch (error) {
         console.error('Error fetching user:', error);
         this.logout(); // Clear invalid token if request fails

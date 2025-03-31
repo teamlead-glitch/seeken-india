@@ -74,62 +74,12 @@
                 <div class="row align-items-center">
                     <div class="col-md-12 mb-3">
                        <h5>Shipping </h5>
-                       <!-- no address added time -->
-                        <div class="no__address"><h6>You did not add any address yet</h6></div>
-                         <!-- no address added time -->
-                          <!-- premenent address -->
-                           <!-- <div class="row">
-<div class="col-md-6 mb-4">
-    <div class="shipping__boxes">
-        <div class="default">Default</div>
-        <div class="address__list">
-    <ul>
-        <li>
-       <p> <strong>Firstname Lastname</strong>  <br>
-         123 Fake Street, Fakeville, <br>
-            NY, 555555, USA, Near Fake Landmark</p>
-        </li>
-        <li>
-        <p>  +051 12345 67890 <br>
-      <a href="mailto:fakeemail@gmail.com">fakeemail@gmail.com</a>   </p>
-        </li>
-        <li>
-            <p>House (All day delivery)</p>
-        </li>
-    </ul>
-  </div>
-    </div>
-</div>
-<div class="col-md-6 mb-4">
-    <div class="shipping__boxes">
-        <div class="default set">
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option1">
-                <label class="form-check-label" for="inlineRadio4">Se as default</label>
-              </div></div>
-        <div class="address__list">
-    <ul>
-        <li>
-       <p> <strong>Firstname Lastname</strong>  <br>
-         123 Fake Street, Fakeville, <br>
-            NY, 555555, USA, Near Fake Landmark</p>
-        </li>
-        <li>
-        <p>  +051 12345 67890 <br>
-      <a href="mailto:fakeemail@gmail.com">fakeemail@gmail.com</a>   </p>
-        </li>
-        <li>
-            <p>Work (Delivery between 9am - 6pm)</p>
-        </li>
-    </ul>
-  </div>
-    </div>
-</div>
-  </div> -->
+                     
+                           <ProfileListAddress />
    </div>
                 </div>
             </div>
-            <div class="heading">
+            <!-- <div class="heading">
                 <h4>Preferences</h4>
                 <div class="right_box">
             </div>
@@ -140,7 +90,7 @@
                    <h5>Notification Preferences</h5>
                    <p>Marketing information may include channels like SMS, Email, Whatsapp and push notifications.
                  <a href="">Click here</a>    to opt out of Marketing Communication.</p>
-                </div></div></div>
+                </div></div></div> -->
            </div>
 </div>
 </div>
