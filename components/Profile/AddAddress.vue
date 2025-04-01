@@ -9,7 +9,7 @@
         </div>
         <div class="modal-body">
          
-          <ProfileAddressForm />
+          <ProfileAddressForm @close="closePopup"/>
          
          
      </div>

@@ -31,7 +31,7 @@
         <div class="modal-body">
           <p>The item will be added to your wishlist</p>
           <div class="col-md-12 mt-4 mb-4 d-flex justify-content-center">
-            <a href="index.html"><button class="btn_2">Continue shopping</button> </a>
+            <a href="/"><button class="btn_2">Continue shopping</button> </a>
           </div>
         </div>
       </div>

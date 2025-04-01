@@ -70,7 +70,7 @@
       <div class="navs">
         <ul>
           <li><NuxtLink to="/">Home</NuxtLink></li>
-          <li><a href="index.html">Shop</a></li>
+          <li><a href="/">Shop</a></li>
           <!-- <li>
             <a href="javascript:void(0);" @click="toggleSubmenu">Shop</a>
            

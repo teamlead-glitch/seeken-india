@@ -5,7 +5,7 @@
     <div class="header" :class="!isIndexPage ? 'inner_header' : ''" id="header">
       <div class="wrapper clearfix"> </div>
       <nav class="wsmenu clearfix">
-        <a href="index.html">
+        <a href="/">
           <div class="logo clearfix"></div>
         </a>
         <ul class="mobile-sub wsmenu-list">
@@ -77,9 +77,9 @@
           </li>
           <li><a href="b">Blog </a>
           </li>
-          <li><a href="about-us.html">About Us </a>
+          <li><a href="#"> <NuxtLink :to="`/aboutus`" >About Us</NuxtLink> </a>
           </li>
-          <li><a href="contact.html">Contact </a>
+          <li><a href="#"><NuxtLink :to="`/contactus`" >Contact </NuxtLink></a>
           </li>
           <li class="right">
             <ul>

@@ -132,6 +132,7 @@ async function submitForm() {
     // Reset form after submission
     address.value = { ...defaultAddress };
     console.log('Response:', response);
+    closePopup();
   } catch (error) {
     console.error('Error submitting form:', error);
     error.value = 'Failed to save address.';
@@ -139,4 +140,10 @@ async function submitForm() {
     hideLoader();
   }
 }
+
+const emit = defineEmits(["close"]); 
+
+const closePopup = () => {
+  emit("close");
+};
 </script>

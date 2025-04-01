@@ -5,7 +5,7 @@
                 <div class="col-md-12">
                     <div class="breadcrums">
                         <ul>
-                            <li><a href="index.html">
+                            <li><a href="/">
                                     Home</a></li>
                             <li>Profile Settings</li>
                         </ul>
@@ -70,7 +70,7 @@
                                 <div class="col-md-12 mb-3">
                                     <h5>Shipping </h5>
 
-                                    <ProfileListAddress />
+                                    <ProfileListAddress :addPopup="showAddAddressPopup"/>
                                 </div>
                             </div>
                         </div>

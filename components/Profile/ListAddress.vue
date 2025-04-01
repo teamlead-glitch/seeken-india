@@ -28,6 +28,9 @@
                         </li>
                     </ul>
                 </div>
+                <div class="col-md-12 mt-4 mb-4 d-flex justify-content-center gap-2 profile_setting" >
+                  <button class="btn_1" @click="setDefault(adress)">Set As Default</button>
+            </div>
             </div>
         </div>
 
@@ -39,10 +42,46 @@
 <script setup>
 
 import { useAuthStore } from '~/store/auth';
+const { showLoader, hideLoader } = useLoader(); // Use global loader
   
   const authStore = useAuthStore();
 
 
 const { data: result, error, refresh } = useFetchData('result', 'listaddress', true);
+
+const props = defineProps({
+    addPopup: Boolean
+});
+
+
+    async function setDefault(address) {
+    
+    showLoader();
+  
+  try {
+    const config = useRuntimeConfig();
+    address.is_default = 1;
+    const response = await $fetch(`${config.public.apiBase}addaddress`, {
+      method: 'POST',
+      body: address,
+      headers: { Authorization: `Bearer ${authStore.token}` },
+    });
+    refresh();
+    
+  } catch (error) {
+    console.error('Error set default address:', error);
+    error.value = 'Failed to  set default address.';
+  } finally {
+    hideLoader();
+  }
+
+}
+
+// Watch for changes in addPopup prop
+watch(() => props.addPopup, (newValue) => {
+    
+        refresh(); // Call the API again
+    
+});
 
 </script>
