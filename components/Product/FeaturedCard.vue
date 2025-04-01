@@ -11,11 +11,11 @@
               
               <ProductCardFlashSaleTag :is_flashsale="product.is_flash_sale" :item_left="product.stock_quantity" />
               <ProductCardCountDown />
-              <a data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+              <a data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @click="setQuickProduct(product.slug)">
                 <div class="quick__buy">QUICK BUY</div>
               </a>
               
-              <ProductCardWishlist/>
+              <ProductCardWishlist :product="product"/>
             </div>
             <div class="product__content">
               <div class="top__box">
@@ -37,6 +37,10 @@
 
 <script setup>
 import { defineProps } from 'vue';
+import { useQuickProductInject } from '@/composables/useQuickBuy';
+
+const { setQuickProduct } = useQuickProductInject();
+
 // Define the props expected from parent component
 const props = defineProps({
   product: Array

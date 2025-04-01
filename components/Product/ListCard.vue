@@ -28,7 +28,7 @@
                                                
                                                 <ProductCardCountDown />
 
-                                                <ProductCardWishlist/>
+                                                <ProductCardWishlist :product="product"/>
                                             </div>
                                             <div class="bottom__box">
                                                
