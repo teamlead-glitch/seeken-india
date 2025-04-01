@@ -42,8 +42,7 @@ import { useAuthStore } from '~/store/auth';
   
   const authStore = useAuthStore();
 
-let result = await $fetch(`${useRuntimeConfig().public.apiBase}listaddress`, {
-          headers: { Authorization: `Bearer ${authStore.token}` },
-        });
+
+const { data: result, error, refresh } = useFetchData('result', 'listaddress', true);
 
 </script>
