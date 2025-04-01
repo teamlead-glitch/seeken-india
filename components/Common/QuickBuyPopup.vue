@@ -1,5 +1,5 @@
 <template>
-  
+  <!-- {{ quickProduct }} -->
   <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"><i
     class="bi bi-x-lg"></i></button>
 <div class="offcanvas-body">
@@ -10,27 +10,26 @@
           <!-- Carousel Indicators (Thumbnails) -->
           <div class="carousel-indicators">
            
-            <template v-for="(image, index) in quickProduct?.images" :key="index">
+            <template v-for="(image, index) in quickProduct?.product_images" :key="index">
               <button
                 type="button"
                 :data-bs-target="'#carouselExample'"
                 :data-bs-slide-to="index"
                 :class="{ active: index === 0 }"
-                :aria-current="index === 0 ? 'true' : null"
-                :aria-label="'Slide ' + (index + 1)"
+                @click="showImage(image.image_url)"
               >
-                <img :src="image" class="d-block w-100" :alt="'Thumbnail ' + (index + 1)">
+                <img :src="image.image_url" class="d-block w-100" >
               </button>
             </template>
        
           </div>
    <!-- Carousel Slides -->
-          <div class="carousel-inner">
-            <template v-for="(image, index) in quickProduct?.images" :key="index">
-              <div :class="['carousel-item', { active: index === 0 }]">
-                <img :src="image" class="d-block w-100" :alt="'Slide ' + (index + 1)">
+          <div class="carousel-inner" v-if="quickProduct?.product_images">
+            
+              <div :class="['carousel-item', 'active']">
+                <img :src="currentImage" class="d-block w-100" >
               </div>
-            </template>
+            
            
           </div>
         </div>
@@ -38,10 +37,11 @@
       <div class="col-md-7 col-lg-6">
         <div class="top__box">
           <div class="category__name">
-            <div class="rating"><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i
-              class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> {{ quickProduct?.rating }}
-            <span>({{ quickProduct?.review_count }} Ratings)</span>
-          </div>
+            
+           
+
+          <ProductCardRating :rating="quickProduct.rating" :reviewCount="quickProduct.review_count"/>
+
             <h5>{{ quickProduct?.category_name }}</h5>
           </div>
         </div>
@@ -57,14 +57,14 @@
   </div>
  <div class="product_details">
   <div class="detail">
-      <p>{{ quickProduct?.description }}</p>
+      <p>{{ quickProduct?.short_description }}</p>
    </div>
   </div>
   <div class="full_clm">
     <div class="quantity-input">
-      <button class="quantity-btn minus-btn"><i class="bi bi-dash-lg"></i></button>
-      <input type="number" class="quantity" value="1" min="1" max="10">
-      <button class="quantity-btn plus-btn"><i class="bi bi-plus-lg"></i></button>
+      <button class="quantity-btn minus-btn" @click="quantity > 1 ? quantity-- : null"><i class="bi bi-dash-lg"></i></button>
+      <input type="number" class="quantity" v-model="quantity" min="1" max="10">
+      <button class="quantity-btn plus-btn" @click="quantity++"><i class="bi bi-plus-lg"></i></button>
     </div>
     <button class="btn_2">Add to Cart</button>
     <button class="btn_1">Buy Now</button>
@@ -80,6 +80,22 @@ import { useQuickProductInject } from '@/composables/useQuickBuy';
 
 const { quickProduct } = useQuickProductInject();
 
+const currentImage = ref('');
+const quantity = ref(1);
+
+// Watch for changes in quickProduct and set the first image
+watch(quickProduct, (newProduct) => {
+  if (newProduct?.product_images?.length) {
+    currentImage.value = newProduct.product_images[0].image_url;
+  }
+}, { immediate: true });
+
+const showImage = (image_path) => {
+console.log(image_path,'image_path--')
+  if (image_path) {
+    currentImage.value = image_path;
+  }
+}
 
 </script>
 
