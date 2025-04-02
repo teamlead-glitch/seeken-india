@@ -65,48 +65,95 @@
                     </div>
                 </div>
                 <div class="col-md-5 col-xl-4">
+                    <form @submit.prevent="submitForm" >
                     <div class="contact__forms">
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <div class="form-floating ">
-                                    <input type="text" class="form-control border-0 border-bottom rounded-0" name="" id="" value="" placeholder="First name" required>
+                                    <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="contactus.first_name" placeholder="First name" required>
                                     <label for="" class="form-label">First name</label>
                                   </div>
                             </div>
                             <div class="col-md-12 ">
                                 <div class="form-floating ">
-                                    <input type="text" class="form-control border-0 border-bottom rounded-0" name="" id="" value="" placeholder="Last name" required>
+                                    <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="contactus.last_name" placeholder="Last name" required>
                                     <label for="" class="form-label">Last name</label>
                                   </div>
                             </div> <div class="col-md-12 ">
                                 <div class="form-floating ">
-                                    <input type="text" class="form-control border-0 border-bottom rounded-0" name="" id="" value="" placeholder="Email address" required>
+                                    <input type="email" class="form-control border-0 border-bottom rounded-0" v-model="contactus.email" placeholder="Email address" required>
                                     <label for="" class="form-label">Email address</label>
                                   </div>
                             </div>
                             <div class="col-md-12 ">
                                 <div class="form-floating ">
-                                    <input type="text" class="form-control border-0 border-bottom rounded-0" name="" id="" value="" placeholder="Mobile number" required>
+                                    <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="contactus.phone" placeholder="Mobile number" required>
                                     <label for="" class="form-label">Mobile number</label>
                                   </div>
                             </div>
                             <div class="col-md-12 ">
                                 <div class="form-floating ">
-                                    <textarea class="form-control border-0 border-bottom rounded-0" placeholder="Comment" id="floatingTextarea"></textarea>
+                                    <textarea class="form-control border-0 border-bottom rounded-0" v-model="contactus.comments" placeholder="Comment" id="floatingTextarea"></textarea>
                   <label for="floatingTextarea" class="form-label">Comment</label>
                                   </div>
                             </div>
                             <div class="col-md-12 mt-4">
-                                <a class="btn_2" href="">Send us a message</a>
+                                <button class="btn_2" href="">Send us a message</button>
                             </div>
+                            <center><p class="error-message" v-if="error">{{ error }}</p></center>
+                            <center><p class="success-message" v-if="success">{{ success }}</p></center>
                         </div>
 
                     </div>
+                </form>
                 </div>
                </div>
                 </div>
     </section>
 </template>
-<script setup lang="ts">
+<script setup>
+
+import { useLoader } from '@/composables/useLoader';
+const { showLoader, hideLoader } = useLoader(); // Use global loader
+
+const defaultForm = {
+ 
+  first_name: '',
+  last_name: '',
+  email: '',
+  phone: '',
+  comments: '',
+};
+
+const contactus = ref({ ...defaultForm });
+const error = ref('');
+const success = ref('');
+
+async function submitForm() {
+    error.value = success.value = '';
+    showLoader();
+  console.log(contactus,'contactus');
+  
+
+  try {
+    const config = useRuntimeConfig();
+    const response = await $fetch(`${config.public.apiBase}contact`, {
+      method: 'POST',
+      body: contactus.value,
+  
+    });
+
+    success.value = 'Enquiry submitted successfully!';
+    // Reset form after submission
+    contactus.value = { ...defaultForm };
+    console.log('Response:', response);
+    closePopup();
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    error.value = 'Failed to submit enquiry.';
+  } finally {
+    hideLoader();
+  }
+}
 
 </script>
