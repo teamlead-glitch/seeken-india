@@ -249,12 +249,17 @@ section {
 
         .articles {
             @include border(10px);
+           
 
             .img__box {
                 @include border(10px);
+                aspect-ratio: 4/2.5;
 
                 img {
                     @include border(10px);
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                 }
             }
 
@@ -882,6 +887,8 @@ section {
         width: 40px;
         height: 40px;
         object-fit: cover;
+
+
     }
 
     .owl-thumb-item .texts {
@@ -951,10 +958,14 @@ section {
         width: 100%;
         position: relative;
         overflow: hidden;
+        aspect-ratio: 4/3;
+
 
         img {
             @include transition;
             width: 100%;
+            object-fit: cover;
+            height: 100%;
 
         }
 
@@ -1030,6 +1041,7 @@ section {
             @include transition;
             position: relative;
             margin: 0 1rem;
+            aspect-ratio: 4/3;
 
             @media only screen and (min-width: 768px) and (max-width: 992px) {
                 margin: 0 .3rem;
@@ -1037,13 +1049,17 @@ section {
 
             @media (max-width:767px) {
                 margin: 0 .3rem;
+                aspect-ratio: 9/16;
 
                 @media (max-width:767px) {
                     @include border(15px);
                 }
             }
 
-            img {
+            img {height: 100%;
+               
+                width: 100%;
+                object-fit: cover;
                 @media (max-width:767px) {
                     @include border(15px);
                 }
@@ -1383,7 +1399,7 @@ section {
 
     // owls
     .owl-carousel .owl-nav button.owl-prev,
-    .owl-nav button.owl-next {
+    .owl-carousel .owl-nav button.owl-next {
         @include border(50%);
         background: rgba(0, 0, 0, 0.41);
         -webkit-backdrop-filter: blur(15px);
@@ -1392,8 +1408,7 @@ section {
         width: 50px;
         height: 50px;
         font-size: 1.5rem;
-
-        @media (max-width:767px) {
+ @media (max-width:767px) {
             width: 40px;
             height: 40px;
             font-size: 1.4rem;
@@ -1640,10 +1655,13 @@ section {
                 @include transition;
                 overflow: hidden;
                 @include border(50%);
+                aspect-ratio: 1/1;
 
                 img {
                     @include transition;
                     @include border(50%);
+                    height: 100%;
+                    object-fit: cover;
                 }
             }
 
@@ -1778,13 +1796,17 @@ section {
 
             .product__img {
                 @include transition;
-                @include border(10px 10px 10px 10px);
+              
                 position: relative;
-                padding: 0 1rem;
+                padding: 1rem;
+                aspect-ratio: 1/1;
 
                 img {
                     @include transition;
-                    @include border(10px 10px 10px 10px);
+                   
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover
                 }
             }
 
@@ -1880,6 +1902,7 @@ section {
                     justify-content: center;
                     width: 40px;
                     height: 40px;
+                    
                     cursor: pointer;
                     background: $white-color;
                     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
@@ -2133,6 +2156,7 @@ section {
                             width: 40px;
                             height: 40px;
                             cursor: pointer;
+                            box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
                             background: $white-color;
 
                             i {
@@ -2154,13 +2178,17 @@ section {
 
                     .product__img {
                         @include transition;
-                        @include border(10px 10px 10px 10px);
+                       
                         position: relative;
-                        padding: 0 1rem;
+                        padding:  1rem;
+                        aspect-ratio: 1/1;
 
                         img {
                             @include transition;
-                            @include border(10px 10px 10px 10px);
+                           
+                            height: 100%;
+                width: 100%;
+                    object-fit: cover
                         }
                     }
                 }
@@ -2313,9 +2341,13 @@ section {
 
         .img__box {
             @include border(10px);
+            aspect-ratio: 4/2.5;
 
             img {
                 @include border(10px);
+                height: 100%;
+                width: 100%;
+                    object-fit: cover
             }
         }
 
@@ -3380,9 +3412,13 @@ section {
 
         .carousel-item {
             @include border(15px);
+            aspect-ratio: 1/1;
 
             img {
                 @include border(15px);
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
         }
 
@@ -4381,12 +4417,19 @@ section {
 
     .reviewrating_box {
         margin-top: 3rem;
-        position: sticky;
-        top: 100px;
-        @media (max-width:767px) { 
-            margin-top: 0rem;
+       @media (max-width:767px) { 
+            margin-top: 1.5rem;
            
         } 
+        h4{
+            font-size: 2rem;
+            font-weight: 600;
+            color: $black-color;
+            margin-bottom: 1rem;
+            @media(768px <= width <= 992px){ font-size: 1.8rem;}
+
+ @media(  width <= 768px){font-size: 1.5rem;}
+        }
          .form-label {
             color: $black-color;
             font-weight: 500;
@@ -4434,16 +4477,13 @@ section {
         }
 
         .customer_detail {
-            margin-bottom: 1rem;
-
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #C0C0C0;
+           background: #f7f7f7;
+            padding: 1.5rem;
+           margin-bottom: 1rem;
             @media (max-width:767px) { margin-top: 1.5rem;}
 
 
-            &:last-child {
-                border-bottom: none;
-            }
+           
 
             h5 {
                 font-size: 0.938rem;
@@ -4474,6 +4514,41 @@ section {
                 }
             }
         }
+    }
+    .masonry-container {
+        column-gap: 15px;
+        position: relative;
+        height: auto;
+        overflow: hidden;
+        @media (max-width: 991px) { column-gap: 10px; }
+    }
+
+    @media (min-width: 992px) { 
+        .masonry-container {
+            column-count: 3; /* 3 columns on large screens */
+        }
+    }
+
+    @media (max-width: 991px) { 
+        .masonry-container {
+            column-count: 2; /* 2 columns on smaller screens */
+        }
+    }
+
+    .masonry-item {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        overflow: hidden;
+        animation: scrollUp 10s linear infinite;
+        @media (max-width: 991px) {  margin-bottom: 5px; }
+    }
+
+    .masonry-item img {
+        width: 100%;
+        border-radius: 8px;
+        display: block;
     }
     .mb10{
         @media (max-width:767px) {
@@ -4763,22 +4838,25 @@ section {
 
             .product__img {
                 @include transition;
-                @include border(10px 10px 10px 10px);
+                
                 position: relative;
                 overflow: hidden;
-                padding: 0 1rem;
+                padding: 1rem;
+                aspect-ratio: 1/1;
 
-                @media (max-width:767px) {
-                    padding: 0 2.5rem;
-                }
+                // @media (max-width:767px) {
+                //     padding: 0 1.5rem;
+                // }
 
-                @media (max-width:480px) {
-                    padding: 0 4rem;
-                }
+                // @media (max-width:480px) {
+                //     padding: 0 4rem;
+                // }
 
                 img {
                     @include transition;
-                    @include border(10px 10px 10px 10px);
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
 
                 }
             }
@@ -4790,6 +4868,8 @@ section {
                 position: absolute;
                 left: 1.5rem;
                 top: 50%;
+                background: rgb(255,255,255);
+background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
                 transform: translate(0, -50%);
 
                 .countdown-box {
@@ -4836,6 +4916,7 @@ section {
                     width: 40px;
                     height: 40px;
                     cursor: pointer;
+                    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
                     background: $white-color;
 
                     @media (max-width:767px) {
@@ -4864,7 +4945,7 @@ section {
         .product__content {
             width: 100%;
             position: relative;
-            padding: 2.5rem 1.5rem 0rem 1.5rem;
+            padding: 2.5rem 1rem 0rem 1rem;
 
             .top__box {
                 display: flex;
@@ -5248,9 +5329,9 @@ section {
                 }
 
                 h5 {
-                    font-size: 1.5rem;
+                    font-size: 1.4rem;
                     font-weight: 600;
-                    color: #333333;
+                    color: $black-color;
                     margin-bottom: 1rem;
                     @media(  width <= 1400px){   font-size: 1.3rem;}
                     @media(  width <= 480px){   font-size: 1rem;}
@@ -5263,11 +5344,15 @@ section {
 
                     .product__pic {
                         width: 150px;
+                        aspect-ratio: 1/1;
 
                         @include border(10px);
 
                         img {
                             @include border(10px);
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
                         }
                     }
 
@@ -5505,11 +5590,12 @@ section {
 
             .profile__pic {
                 @include border(50%);
-
+aspect-ratio: 1/1;
                 img {
                     @include border(50%);
                     width: 150px;
                     height: 150px;
+                    object-fit: cover;
                     @media( width <= 768px){
                         width: auto;
                         height: auto;
@@ -5674,6 +5760,14 @@ section {
 }
             .left {
                 width: 35%;
+                .img_box{
+                    aspect-ratio: 1/1;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
             }
 
             .right {
@@ -5964,6 +6058,15 @@ section {
 
             .left {
                 width: 25%;
+
+                .img_box{
+                    aspect-ratio: 1/1;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }}
+
             }
 
             .right {
@@ -6337,12 +6440,15 @@ margin-top: 1rem;
         .img__box{
             @include border(10px);
             margin-bottom: 1rem;
+            aspect-ratio: 4 / 2.5;
             @media( width <= 768px){ margin-bottom: 0;}
             img{@include border(10px);
                 width: 100%;
+                height: 100%;
+                object-fit: cover;
                 @media( width <= 768px){
                     min-height: 150px;
-                    object-fit: cover;
+                   
                   
                 }
                 @media( width <= 480px){
@@ -6507,7 +6613,7 @@ margin-top: 1rem;
         }
         .img__box{
             @include border(10px);
-        
+            aspect-ratio: 1/1;
            
             img{
                 @include border(10px);
@@ -6696,10 +6802,12 @@ margin-top: 1rem;
             }
 
             .bottom__box {
+               
                 padding: .5rem 1.5rem 1rem 1.5rem
             }
 
             .btn_box {
+                margin-top: 1rem;
                 @include transition;
                 display: flex;
                 gap: 5px;
@@ -7099,6 +7207,39 @@ margin-top: 1rem;
         color: #808080;
     }
 
+    .btn_2 {
+        border: 2px solid $black-color;
+        color: $black-color !important;
+    }
+
+    .btn_1 {
+        @include transition;
+        @include border(30px);
+        padding: 5px 30px;
+        border: 2px solid $primery-color;
+        color: $white-color !important;
+        background: $primery-color;
+
+    }
+}
+.login_setting {
+    .modal-header {
+        border-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    h3 {
+        font-weight: 700;
+        color: $black-color
+    }
+
+    p {
+        color: #808080;
+    }
+    .form-floating > label {
+       
+        padding: 1rem 0rem;}
+        
     .btn_2 {
         border: 2px solid $black-color;
         color: $black-color !important;
