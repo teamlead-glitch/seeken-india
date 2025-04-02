@@ -5,7 +5,7 @@
     :spaceBetween="30"
     :slidesPerView="4"
     :centeredSlides="false"
-    :loop="true"
+    :loop="false"
     :autoplay="{ delay: 4000, disableOnInteraction: false }"
     :navigation="{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }"
     :breakpoints="{
