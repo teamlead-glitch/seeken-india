@@ -50,7 +50,8 @@
           <div class="price"><span>Rs. {{ quickProduct?.final_price }}</span>Rs. {{ quickProduct?.price }} </div>
         </div>
        
-        <ProductCardVarients v-if="quickProduct?.product_variants?.length > 0" />
+        <ProductCardVarients  />
+        <!-- v-if="quickProduct?.product_variants?.length > 0" -->
       
       </div>
     </div>

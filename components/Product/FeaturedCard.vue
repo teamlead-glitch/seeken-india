@@ -28,7 +28,8 @@
               <div class="price__feature">
                 <h4>{{ product.name	 }}</h4>
                 <div class="price">From Rs. {{ product.final_price	 }} <span>Rs. {{ product.price }}</span></div>
-                <ProductCardVarients v-if="product.product_variants.length > 0" />
+                <ProductCardVarients  />
+                <!-- v-if="product.product_variants.length > 0" -->
               </div>
             </div>
           </div>
