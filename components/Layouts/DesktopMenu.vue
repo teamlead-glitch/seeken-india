@@ -75,11 +75,11 @@
               </div>
             </div>
           </li>
-          <li><a href="b">Blog </a>
+          <li><NuxtLink :to="`/blog`" >Blog </NuxtLink>
           </li>
-          <li><a href="#"> <NuxtLink :to="`/aboutus`" >About Us</NuxtLink> </a>
+          <li> <NuxtLink :to="`/aboutus`" >About Us</NuxtLink> 
           </li>
-          <li><a href="#"><NuxtLink :to="`/contactus`" >Contact </NuxtLink></a>
+          <li><NuxtLink :to="`/contactus`" >Contact </NuxtLink>
           </li>
           <li class="right">
             <ul>

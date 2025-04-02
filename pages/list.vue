@@ -26,7 +26,7 @@
                                 <option selected value="latest">Latest</option>
                                 <option value="name_asc">A to Z</option>
                                 <option value="name_desc">Z to A</option>
-                                <option value="price_low_high">Low to Hight</option>
+                                <option value="price_low_high">Low to High</option>
                                 <option value="price_high_low">High to Low</option>
                                 
                              </select>

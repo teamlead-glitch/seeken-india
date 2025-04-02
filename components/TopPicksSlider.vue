@@ -48,7 +48,7 @@
           </div>
           <div class="product__content">
             <h5>{{item.name	}}</h5>
-            <h4>{{item.short_description}}</h4>
+            
             <div class="rating">
               <ProductCardRating :rating="item.rating" :reviewCount="item.review_count"/>
             </div>
