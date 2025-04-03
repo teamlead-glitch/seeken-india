@@ -9,22 +9,22 @@
             egestas vitae.</p>
         </div>
         <div class="col-xl-6 col-md-4 d-flex justify-content-end">
-          <a class="btn_2">View More <i class="bi bi-arrow-right"></i></a>
+          <NuxtLink :to="`/blog`">View More <i class="bi bi-arrow-right"></i></NuxtLink>
         </div>
       </div>
       <div class="row mt-3">
         <div class="col-md-4 mb-4" v-for="(item, index) in articles" :key="index">
           <div class="articles">
-            <a href="#">
+            <NuxtLink :to="`/blog/${item.slug}`">
               <div class="img__box">
                 <img :src="item.image_path" class="img-fluid" alt="seeken" loading="lazy">
               </div>
               <div class="content">
                 <div class="calendar"><i class="bi bi-calendar4"></i> {{ formatDate(item.created_at)	}}</div>
                 <h3>{{ item.title }}</h3>
-                <p>{{ item.description }}</p>
+                <p>{{ item.short_description }}</p>
               </div>
-            </a>
+            </NuxtLink>
           </div>
         </div>
        

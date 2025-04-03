@@ -10,7 +10,7 @@
             egestas vitae.</p>
         </div>
         <div class="col-md-3 d-flex justify-content-end">
-          <a class="btn_2">View More</a>
+          <NuxtLink to="/list">View More</NuxtLink>
         </div>
       </div>
       <div class="row mt-4">

@@ -6,8 +6,8 @@
                 <div class="col-md-12 mob_none">
                     <div class="breadcrums">
                         <ul>
-                            <li><a href="/">
-                                    Home</a></li>
+                            <li><NuxtLink to="/">
+                                    Home</NuxtLink></li>
                             <li>About Us</li>
                         </ul>
                     </div>
