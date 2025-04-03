@@ -1,7 +1,7 @@
 <template>
   <HomeBanner />
   <HomeSlider />
-  <FlashSale />
+  <FlashSaleSlider />
   <WhatsNewDesktop />
   <WhatsNewMob />
   <Category />

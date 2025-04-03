@@ -1,5 +1,5 @@
 <template>
-  <section class="flash__sale" id="section2">
+  <section class="flash__sale" id="section2" v-if="products.length > 0">
   
   <div class="content-slider ">
     <Swiper
@@ -19,40 +19,24 @@
       class="mySwiper"
     >
     
-      <SwiperSlide v-for="(item, index) in slides" :key="index">
+      <SwiperSlide v-for="(item, index) in products" :key="index">
        
 
         <div class="desktop__parent__div">
-          <img src="/images/flash_slae_img.webp" class="img-fluid banner__desk" alt="seeken" loading="lazy">
+          <img :src="item.flash_sale_image_url" class="img-fluid banner__desk" alt="seeken" loading="lazy">
          
           <!-- desktop  -->
           <div class="sale_box">
             <h5>FLASH SALE</h5>
             <div class="outer__box">
-              <div class="offer">50% OFF</div>
-              <div class="prices">₹4,000 <span>₹8,000</span></div>
+              <div class="offer">{{item.discount}}% OFF</div>
+              <div class="prices">₹{{item.price}} <span>₹{{item.selling_price}}</span></div>
             </div>
-            <h6> <span>10 more</span> items remaining!</h6>
+            <h6> <span>{{ item.stock }} more</span> items remaining!</h6>
             <div class="limiter_offer">
               <div class="limited_offer">LIMITED TIME OFFER</div>
-              <div class="countdown-container" data-endtime="10">
-                <div class="countdown-box">
-                  <span id="days">25</span>
-                  <span class="label">DAYS</span>
-                </div>
-                <div class="countdown-box">
-                  <span id="hours">20</span>
-                  <span class="label">HOURS</span>
-                </div>
-                <div class="countdown-box">
-                  <span id="minutes">10</span>
-                  <span class="label">MINUTES</span>
-                </div>
-                <div class="countdown-box">
-                  <span id="seconds">5</span>
-                  <span class="label">SECONDS</span>
-                </div>
-              </div>
+             
+              <ProductCardCountDown :endTime="item.to_date"/>
               <a class="btn_1" href="#">Add to cart </a>
               <a class="btn_2" href="#" @click="console.log(1)">Buy Now </a>
             </div>
@@ -132,13 +116,7 @@ import 'swiper/css/autoplay';
 
 const router = useRouter();
 
-const slides = [
-  { title: "Slide 1", description: "This is the first slide content." },
-  { title: "Slide 2", description: "This is the second slide content." },
-  { title: "Slide 3", description: "This is the third slide content." },
-  { title: "Slide 4", description: "This is the fourth slide content." },
-  { title: "Slide 5", description: "This is the fifth slide content." }
-];
+const { data: products, error, refresh } = useFetchData('products', 'flash-sale-products?limit=10');
 </script>
 
 <style scoped>
@@ -209,7 +187,7 @@ const slides = [
 
 </style>
 
-<style scoped>
+<style >
  
 
 
