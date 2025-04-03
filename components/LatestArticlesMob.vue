@@ -29,7 +29,7 @@
           class="mySwiper"
           >
             <SwiperSlide v-for="(item, index) in articles" :key="index" class="swiper-slide">
-              <a href="#">
+              <NuxtLink :to="`/blog/${item.slug}`">
                 <div class="img__box">
                   <img :src="item.image_path" class="img-fluid" alt="seeken" loading="lazy">
                 </div>
@@ -38,7 +38,7 @@
                   <h3>{{ item.title }}</h3>
                   <p>{{ item.description }}</p>
                 </div>
-              </a>
+              </NuxtLink>
             </SwiperSlide>
             <div class="swiper-button-prev"><i class="bi bi-arrow-left"></i></div>
             <div class="swiper-button-next"><i class="bi bi-arrow-right"></i></div>
@@ -47,7 +47,7 @@
       </div>
       <div class="row">
         <div class="col-md-12 d-flex justify-content-center">
-          <a class="btn_2">View More <i class="bi bi-arrow-right"></i></a>
+          <NuxtLink to="/blog">View More <i class="bi bi-arrow-right"></i></NuxtLink>
         </div>
       </div>
     </div>
