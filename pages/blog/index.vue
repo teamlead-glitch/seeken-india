@@ -26,15 +26,16 @@
                 <div class="row align-items-center">
                     <div class="col-5 col-md-5">
                         <div class="img__box">
-                            <a href="blog-detail.html"><img :src="blog.image_path" class="img-fluid corner-5" alt="seeken"></a></div>
+                            <NuxtLink :to="`/blog/${blog.slug}`"><img :src="blog.image_path" class="img-fluid corner-5" alt="seeken"></NuxtLink></div>
                         </div>
                     <div class="col-7 col-md-7">
-                        <div class="blog_content"> <a href="blog-detail.html">
+                        <div class="blog_content"> <NuxtLink :to="`/blog/${blog.slug}`">
                             <div class="calendar"><i class="bi bi-calendar4"></i> {{formatDate(blog.created_at)}}</div>
                             <h3>{{blog.title}}</h3>
                               <p>{{blog.short_description}}</p>
-                                <a class="btn_1" href="blog-detail.html">Read More</a>
-                        </a></div>
+                             
+                                    <NuxtLink class="btn_1" :to="`/blog/${blog.slug}`">Read More</NuxtLink>
+                        </NuxtLink></div>
                     </div>
                 </div>
             </div>

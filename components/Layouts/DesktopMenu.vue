@@ -9,10 +9,10 @@
           <div class="logo clearfix"></div>
         </a>
         <ul class="mobile-sub wsmenu-list">
-          <li class="active">
+          <li  :class="{ active: route.path === '/' }">
             <NuxtLink to="/">Home </NuxtLink>
           </li>
-          <li><a href="#">Shop <i class="bi bi-chevron-down"></i></a>
+          <li :class="{ active: route.path === '/list' }"><a href="#">Shop <i class="bi bi-chevron-down"></i></a>
             <div class="megamenu clearfix" v-if="categoryTree && categoryTree.length">
               <div class="row">
                 <div class="col-md-6">
@@ -75,11 +75,11 @@
               </div>
             </div>
           </li>
-          <li><NuxtLink :to="`/blog`" >Blog </NuxtLink>
+          <li :class="{ active: route.path === '/blog' }"><NuxtLink :to="`/blog`" >Blog </NuxtLink>
           </li>
-          <li> <NuxtLink :to="`/aboutus`" >About Us</NuxtLink> 
+          <li :class="{ active: route.path === '/aboutus' }"> <NuxtLink :to="`/aboutus`" >About Us</NuxtLink> 
           </li>
-          <li><NuxtLink :to="`/contactus`" >Contact </NuxtLink>
+          <li :class="{ active: route.path === '/contactus' }"><NuxtLink :to="`/contactus`" >Contact </NuxtLink>
           </li>
           <li class="right">
             <ul>
