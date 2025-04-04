@@ -1,6 +1,6 @@
 <template>
-    <LatestArticlesDesk v-if="!isMobile" :articles="articles"/>
-    <LatestArticlesMob v-if="isMobile" :articles="articles"/>
+    <HomeLatestArticlesDesk v-if="!isMobile" :articles="articles"/>
+    <HomeLatestArticlesMob v-if="isMobile" :articles="articles"/>
 </template>
 
 <script setup>

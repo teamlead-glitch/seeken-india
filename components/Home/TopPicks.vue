@@ -40,7 +40,7 @@
               aria-labelledby="simple-tab-0"
             >
 			
-			<TopPicksSlider :slides="new_launchs"/>
+			<HomeTopPicksSlider :slides="new_launchs"/>
               </div>
 
             <div
@@ -49,7 +49,7 @@
               role="tabpanel"
               aria-labelledby="simple-tab-1"
             >
-			<TopPicksSlider :slides="best_selling"/>
+			<HomeTopPicksSlider :slides="best_selling"/>
              </div>
           </div>
         </div>

@@ -13,7 +13,7 @@
               <div class="category_lists ">
                 
                 
-               <CategorySlider :categories="categories"/>
+               <HomeCategorySlider :categories="categories"/>
                 
               </div>
             </div>

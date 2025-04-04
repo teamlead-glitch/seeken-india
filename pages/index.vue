@@ -1,12 +1,12 @@
 <template>
   <HomeBanner />
   <HomeSlider />
-  <FlashSaleSlider />
-  <WhatsNewDesktop />
-  <WhatsNewMob />
-  <Category />
+  <HomeFlashSaleSlider />
+  <HomeWhatsNewDesktop />
+  <HomeWhatsNewMob />
+  <HomeCategory />
   <HomeFeaturedProducts />
   <HomeAdd />
-  <TopPicks />
-  <LatestArticles />
+  <HomeTopPicks />
+  <HomeLatestArticles />
 </template>
