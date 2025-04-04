@@ -6,33 +6,10 @@
   <div class="product_img_heading">
     <div class="row align-items-center">
       <div class="col-md-5 col-lg-6">
-        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-          <!-- Carousel Indicators (Thumbnails) -->
-          <div class="carousel-indicators">
-           
-            <template v-for="(image, index) in quickProduct?.product_images" :key="index">
-              <button
-                type="button"
-                :data-bs-target="'#carouselExample'"
-                :data-bs-slide-to="index"
-                :class="{ active: index === 0 }"
-                @click="showImage(image.image_url)"
-              >
-                <img :src="image.image_url" class="d-block w-100" style="max-width: 74px;">
-              </button>
-            </template>
-       
-          </div>
-   <!-- Carousel Slides -->
-          <div class="carousel-inner" v-if="quickProduct?.product_images">
-            
-              <div :class="['carousel-item', 'active']">
-                <img :src="currentImage" class="d-block w-100" style="max-height: 451px;object-fit: cover;">
-              </div>
-            
-           
-          </div>
-        </div>
+        
+<ProductCardImages :images="quickProduct?.product_images"/>
+
+
       </div>
       <div class="col-md-7 col-lg-6">
         <div class="top__box">
@@ -81,22 +58,10 @@ import { useQuickProductInject } from '@/composables/useQuickBuy';
 
 const { quickProduct } = useQuickProductInject();
 
-const currentImage = ref('');
+
 const quantity = ref(1);
 
-// Watch for changes in quickProduct and set the first image
-watch(quickProduct, (newProduct) => {
-  if (newProduct?.product_images?.length) {
-    currentImage.value = newProduct.product_images[0].image_url;
-  }
-}, { immediate: true });
 
-const showImage = (image_path) => {
-console.log(image_path,'image_path--')
-  if (image_path) {
-    currentImage.value = image_path;
-  }
-}
 
 </script>
 
