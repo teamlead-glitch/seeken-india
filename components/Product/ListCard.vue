@@ -14,16 +14,18 @@
                                                 </div>
                                                 <div class="price__feature">
                                                     <div class="name">
+                                                        <NuxtLink :to="`/products/${product.slug}`">
                                                         <h4>{{ product.name }}</h4>
+                                                        </NuxtLink>
                                                     </div>
                                                     <div class="price"> Rs. {{ product.selling_price }} <span>Rs. {{ product.price }}</span></div>
                                                 </div>
                                             </div>
                                             <div class="top_box">
                                                 <div class="product__img">
-                                                   
+                                                    <NuxtLink :to="`/products/${product.slug}`">
                                                         <img v-if="product.image_path && product.image_path" :src="product.image_path" class="img-fluid" alt="seeken" >
-                
+                                                    </NuxtLink>
                                                 </div>
                                                
                                                 <ProductCardCountDown />

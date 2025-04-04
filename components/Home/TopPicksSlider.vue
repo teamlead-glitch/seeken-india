@@ -39,12 +39,14 @@
             </div>
           </div>
           <div class="product__img">
+            <NuxtLink :to="`/products/${item.slug}`">
             <img
               :src="item.image_path	"
               class="img-fluid"
               alt="seeken"
               loading="lazy"
             />
+            </NuxtLink>
           </div>
           <div class="product__content">
             <h5>{{item.name	}}</h5>
