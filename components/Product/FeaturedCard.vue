@@ -5,8 +5,10 @@
           <div class="product__box">
             <div class="top_box">
               <div class="product__img">
+                <NuxtLink :to="`/products/${product.slug}`">
                 <img v-if="product.image_path" :src="product.image_path" class="img-fluid default-image" alt="seeken" >
                 <img v-if="product.image_path " :src="product.image_path" alt="seeken" class="img-fluid hover-image" >
+              </NuxtLink>
               </div>
               
               <ProductCardFlashSaleTag :is_flashsale="product.is_flash_sale" :item_left="product.stock_quantity" />
@@ -20,13 +22,17 @@
             <div class="product__content">
               <div class="top__box">
                 <div class="category__name">
+                  
                   <h5>{{ product.category_name }}</h5>
+               
                 </div>
                 
                 <ProductCardRating :rating="product.rating" :reviewCount="product.review_count"/>
               </div>
               <div class="price__feature">
+                <NuxtLink :to="`/products/${product.slug}`">
                 <h4>{{ product.name	 }}</h4>
+              </NuxtLink>
                 <div class="price">From Rs. {{ product.final_price	 }} <span>Rs. {{ product.price }}</span></div>
                 <ProductCardVarients  />
                 <!-- v-if="product.product_variants.length > 0" -->
