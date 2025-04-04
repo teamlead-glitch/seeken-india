@@ -1,100 +1,37 @@
 <template>
-  <div class="inner__banner">
+  
+  <div class="inner__banner" v-if="product">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="breadcrums">
                     <ul>
-                        <li><a href="index.html">
-                                Home</a></li>
-                        <li>Product Name</li>
+                        <li><NuxtLink to="/">
+                          Home</NuxtLink></li>
+                        <li>{{product.name}}</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<section class="inner_container">
+<section class="inner_container" v-if="product">
+  
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-xl-5 mb-4 ">
                 <div class="product_detail">
-                    <div id="carouselExample2" class="carousel slide" data-bs-ride="carousel">
-                        <!-- Carousel Indicators (Thumbnails) -->
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExample2" data-bs-slide-to="0" class="active"
-                                aria-current="true" aria-label="Slide 1">
-                                <img src="/images/detail1.webp" class="d-block w-100" alt="Thumbnail 1">
-                            </button>
-                            <button type="button" data-bs-target="#carouselExample2" data-bs-slide-to="1"
-                                aria-label="Slide 2">
-                                <img src="/images/detail2.webp" class="d-block w-100" alt="Thumbnail 2">
-                            </button>
-                            <button type="button" data-bs-target="#carouselExample2" data-bs-slide-to="2"
-                                aria-label="Slide 3">
-                                <img src="/images/detail3.webp" class="d-block w-100" alt="Thumbnail 3">
-                            </button>
-                            <button type="button" data-bs-target="#carouselExample2" data-bs-slide-to="3"
-                                aria-label="Slide 3">
-                                <img src="/images/detail4.webp" class="d-block w-100" alt="Thumbnail 4">
-                            </button>
-  </div>
-                        <!-- Carousel Slides -->
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="/images/detail1.webp" class="d-block w-100" alt="Slide 1">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/images/detail2.webp" class="d-block w-100" alt="Slide 2">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/images/detail3.webp" class="d-block w-100" alt="Slide 3">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/images/detail4.webp" class="d-block w-100" alt="Slide 4">
-                            </div>
-                        </div>
-                    </div>
+
+                  <ProductCardImages :images="product.product_images" v-if="product?.product_images?.length > 0"/>
                 </div>
             </div>
             <div class="col-md-6 col-xl-7">
                 <div class="product__detail__box">
-                    <h2 class="mob_none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </h2>
-                    <div class="rating"><i class="bi bi-star-fill"></i> 5.0 <span>(2)</span></div>
-                    <div class="color__quantity">
-                        <div class="color">
-                            <h4>Choose Color</h4>
-                            <h5>Color <span>Black</span></h5>
-                            <ul>
-                                <li>
-                                    <div class="code active"> <img src="/images/color_code/clr-1.webp"
-                                            class="img-fluid" alt="seeken" loading="lazy">
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="code"><img src="/images/color_code/clr-2.webp" class="img-fluid"
-                                            alt="seeken" loading="lazy"></div>
-                                </li>
-                                <li>
-                                    <div class="code"><img src="/images/color_code/clr-3.webp" class="img-fluid"
-                                            alt="seeken" loading="lazy"></div>
-                                </li>
-                                <li>
-                                    <div class="code"><img src="/images/color_code/clr-4.webp" class="img-fluid"
-                                            alt="seeken" loading="lazy"></div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="modals">
-                        <h4>Choose Modal</h4>
-                        <ul>
-                            <li>Zephyre</li>
-                            <li>Misto Star</li>
-                            <li>Airosta</li>
-                            <li>Lumi</li>
-                        </ul>
-                    </div>
+                    <h2 class="mob_none">{{product.name}} </h2>
+                    <ProductCardRating :rating="product.rating" :reviewCount="product.review_count"/>
+                    
+                    <ProductCardVarients  v-if="product?.product_variants?.length > 0"/>
+                   
                     <div class="highlights">
                         <h4>Highlights</h4>
                         <ul>
@@ -117,135 +54,17 @@
                         </ul>
                     </div>
                     <div class="product__content">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores mollitia natus
-                            blanditiis at sunt minus ea, officiis suscipit vero architecto sit! Tempore, numquam!
-                            Nobis odio quam exercitationem voluptatibus! Modi, dignissimos?</p>
+                        <p>{{product.short_description}}</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-md-10 col-xl-8">
-                <div class="detail">
-                    <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt saepe minima perferendis
-                        incidunt. Nisi autem corrupti temporibus, maxime deserunt repellat voluptates eum nulla.
-                        Sint dicta error incidunt similique sequi non.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center mt-4">
-            <!-- <div class="col-md-5 mb-3"><img src="/images/detail_product_ad1.webp" class="img-fluid rounded-4"
-                    alt="seeken"> </div>
-            <div class="col-md-5 mb-3"><img src="/images/detail_product_ad2.webp" class="img-fluid rounded-4"
-                    alt="seeken"></div>
-            <div class="col-md-10 mt-3"><img src="/images/detail_product_ad3.webp" class="img-fluid rounded-4"
-                    alt="seeken"></div> -->
-                    <div class="masonry-container">
-                        <div class="masonry-item"><img src="/images/detail_product_ad1.webp" alt="Image 1"></div>
-                        <div class="masonry-item"><img src="/images/detail_product_ad2.webp" alt="Image 2"></div>
-                        <div class="masonry-item"><img src="/images/detail_product_ad3.webp" alt="Image 3"></div>
-                        <div class="masonry-item"><img src="/images/banner2.webp" alt="Image 4"></div>
-                        <div class="masonry-item"><img src="/images/smartwatch-mobile.webp" alt="Image 5"></div>
-                        
-                        <div class="masonry-item"><img src="/images/Aither-BLDC-Mobile.webp" alt="Image 1"></div>
-                        <div class="masonry-item"><img src="/images/blog-1.webp" alt="Image 2"></div>
-                        <div class="masonry-item"><img src="/images/featured_product_4.webp" alt="Image 3"></div>
-                        <div class="masonry-item"><img src="/images/banner2.webp" alt="Image 4"></div>
-                        <div class="masonry-item"><img src="/images/smartwatch-mobile.webp" alt="Image 5"></div>
-                        <div class="masonry-item"><img src="/images/category_cooker.webp" alt="Image 6"></div>
-                 <div class="masonry-item"><img src="/images/blog-1.webp" alt="Image 2"></div>
-                        <div class="masonry-item"><img src="/images/featured_product_4.webp" alt="Image 3"></div>
-                        <div class="masonry-item"><img src="/images/banner2.webp" alt="Image 4"></div>
-                        <div class="masonry-item"><img src="/images/smartwatch-mobile.webp" alt="Image 5"></div>
-                        <div class="masonry-item"><img src="/images/category_cooker.webp" alt="Image 6"></div>
-                        <div class="masonry-item"><img src="/images/Aither-BLDC-Mobile.webp" alt="Image 1"></div>
-                        
-                        <div class="masonry-item"><img src="/images/featured_product_4.webp" alt="Image 3"></div>
-                        <div class="masonry-item"><img src="/images/banner2.webp" alt="Image 4"></div>
-                        <div class="masonry-item"><img src="/images/smartwatch-mobile.webp" alt="Image 5"></div>
-                        <div class="masonry-item"><img src="/images/category_cooker.webp" alt="Image 6"></div><div class="masonry-item"><img src="/images/Aither-BLDC-Mobile.webp" alt="Image 1"></div>
-                      <div class="masonry-item"><img src="/images/category_cooker.webp" alt="Image 6"></div>
-                    </div>
-        </div>
-        <div class="row justify-content-center mt-5">
-            <div class="col-md-10 specification">
-                <h3>Specifications</h3>
-                <div class="specification__box">
-                    <ul>
-                        <li>
-                            <div class="left"> Model Name </div>
-                            <div class="right">ZEPHYRE</div>
-                        </li>
-                        <li>
-                            <div class="left"> Colors </div>
-                            <div class="right">BROWN/IVORY/SMOKEY BROWN
-                            </div>
-                        </li>
-                        <li>
-                            <div class="left"> Sweep </div>
-                            <div class="right">1200MM</div>
-                        </li>
-                        <li>
-                            <div class="left"> Voltage </div>
-                            <div class="right">230V</div>
-                        </li>
-                        <li>
-                            <div class="left"> Watt </div>
-                            <div class="right">70W
-                            </div>
-                        </li>
-                        <li>
-                            <div class="left"> Rpm</div>
-                            <div class="right">390</div>
-                        </li>
-                        <li>
-                            <div class="left"> Air Delivery </div>
-                            <div class="right">210CMM</div>
-                        </li>
-                        <li>
-                            <div class="left"> Mounting Type </div>
-                            <div class="right">DOWNROAD</div>
-                        </li>
-                        <li>
-                            <div class="left"> Control Method </div>
-                            <div class="right">ALUMINIUM/GP</div>
-                        </li>
-                        <li>
-                            <div class="left"> Material </div>
-                            <div class="right">REGULATOR</div>
-                        </li>
-                        <li>
-                            <div class="left"> Country Of Origin </div>
-                            <div class="right">INDIA</div>
-                        </li>
-                        <li>
-                            <div class="left"> Warranty </div>
-                            <div class="right">2 YEAR</div>
-                        </li>
-                        <li>
-                            <div class="left"> No Of Blade </div>
-                            <div class="right">3
-                            </div>
-                        </li>
-                        <li>
-                            <div class="left"> Bee Rating </div>
-                            <div class="right">3 Star</div>
-                        </li>
-                        <li>
-                            <div class="left"> Contents </div>
-                            <div class="right">1 MOTOR UNIT, 1 SHACKLE ASSEY, TOP AND BOTTOM CANOPY, PRECISION
-                                BALANCED BLADE SET ( 3 BLADE)</div>
-                        </li>
-                        <li>
-                            <div class="left"> Dimensions </div>
-                            <div class="right">210M*210M*175M
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+       
+        {{ product.description }}
+        
+        <ProductCardSpecs />
+
+
         <div class="row justify-content-center mt-5">
             <div class="col-md-12 related__products">
                 <h3>You might also like</h3>
@@ -874,6 +693,15 @@
 </template>
 
 <script lang="ts" setup>
+
+import { useRoute } from 'vue-router';
+import { useDateFormat } from '~/composables/useDateFormat';
+const { formatDate } = useDateFormat();
+
+const route = useRoute(); 
+const slug = route.params.slug; // Get slug from URL
+const { data: response, error, refresh } = useFetchData('response', `products/${slug}`);
+const product = computed(() => response.value?.data);
 
 </script>
 

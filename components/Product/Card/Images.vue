@@ -1,7 +1,7 @@
 <template>
   <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
     <!-- Carousel Indicators (Thumbnails) -->
-    <div class="carousel-indicators">
+    <div class="carousel-indicators" v-if="images">
      
       <template v-for="(image, index) in images" :key="index">
         <button
@@ -48,7 +48,7 @@ console.log(image_path,'image_path--')
 
 //Watch for changes in quickProduct and set the first image
 watch(props, (props) => {
-  currentImage.value = props.images[0].image_url;
+  currentImage.value = props?.images[0]?.image_url;
 }, { immediate: true });
 
 </script>

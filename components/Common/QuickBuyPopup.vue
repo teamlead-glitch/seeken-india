@@ -7,7 +7,7 @@
     <div class="row align-items-center">
       <div class="col-md-5 col-lg-6">
         
-<ProductCardImages :images="quickProduct?.product_images"/>
+<ProductCardImages :images="quickProduct?.product_images" v-if="quickProduct && quickProduct?.product_images?.length > 0"/>
 
 
       </div>
