@@ -10,20 +10,20 @@
         </NuxtLink>
       </li>
       <li>
-        <a href="shop.html">
+        <NuxtLink :to="`/list`">
           <div class="icon"><img src="/images/shop-menu.svg" alt="seeken"></div>
           <div class="list">Shop</div>
-        </a>
+        </NuxtLink>
       </li>
       <li>
-        <a href="offers.html">
+        <a href="#">
           <div class="icon"><img src="/images/offers-menu.svg" alt="seeken"></div>
           <div class="list">Offers</div>
 
         </a>
       </li>
       <li>
-        <a href="cart.html">
+        <a href="#">
           <div class="icon"><img src="/images/cart-menu.svg" alt="seeken"></div>
           <div class="list"> Cart</div>
         </a>
@@ -47,7 +47,7 @@
           </div>
           <div class="logo"><img src="/images/logo-blue.svg" alt="logo"></div>
           <div class="search_wishlist">
-            <div class="wishlist"> <a href="wishlist.html">
+            <div class="wishlist"> <a href="#">
               <div class="icon"><img src="/images/whislist.svg" alt="search">
                 <div class="count">2</div>
               </div>
@@ -70,7 +70,7 @@
       <div class="navs">
         <ul>
           <li><NuxtLink to="/">Home</NuxtLink></li>
-          <li><a href="/">Shop</a></li>
+          <li><NuxtLink to="/list">Shop</NuxtLink></li>
           <!-- <li>
             <a href="javascript:void(0);" @click="toggleSubmenu">Shop</a>
            
@@ -80,9 +80,9 @@
         <li><a href="shop/category3.html">Category 3</a></li>
       </ul>
         </li> -->
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="#">About us</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><NuxtLink to="/blog">Blog</NuxtLink></li>
+          <li><NuxtLink to="/aboutus">About us</NuxtLink></li>
+          <li><NuxtLink to="/contactus">Contact</NuxtLink></li>
         </ul>
       </div>
       <div class="social__icons__mobile">

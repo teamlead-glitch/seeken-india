@@ -14,7 +14,9 @@
       :breakpoints="{
         1024: { slidesPerView: 1.9, spaceBetween: 30 },
         768: { slidesPerView: 1.4, spaceBetween: 20 },
-        480: { slidesPerView: 1.1, spaceBetween: 15 }
+        480: { slidesPerView: 1.4, spaceBetween: 15 },
+        380: { slidesPerView: 1, spaceBetween: 10 },
+        0: { slidesPerView: 1, spaceBetween: 10 } 
       }"
       class="mySwiper"
     >
