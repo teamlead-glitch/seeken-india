@@ -62,11 +62,13 @@
        
         {{ product.description }}
         
-        <ProductCardSpecs />
+        <ProductCardSpecs :specs="product.product_specifications	"/>
 
         <ProductRelatedSlider :products="featured_products"/>
 
-       <ProductReviewsSection/>
+        <ProductRatings/>
+        <ProductReviewsAdd/>
+        <ProductReviews/>
 </div>
 
 <div class="fixed_position_rates">
