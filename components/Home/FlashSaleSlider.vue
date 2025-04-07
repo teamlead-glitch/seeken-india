@@ -39,7 +39,7 @@
               <div class="limited_offer">LIMITED TIME OFFER</div>
              
               <ProductCardCountDown :endTime="item.to_date"/>
-              <a class="btn_1" href="#">Add to cart </a>
+              <a class="btn_1"  @click="handleAddToCart(item)">Add to cart </a>
               <NuxtLink :to="`/products/${item.slug}`" class="btn_2">Buy Now </NuxtLink>
             </div>
           </div>
@@ -98,6 +98,10 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
+
+import { useCartActions } from '@/composables/useCartActions'
+
+const { handleAddToCart } = useCartActions()
 
 const router = useRouter();
 
