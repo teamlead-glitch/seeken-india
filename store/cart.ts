@@ -2,10 +2,7 @@ import { defineStore } from 'pinia';
 import { useAuthStore } from '~/store/auth';
 import { useGuestToken } from '@/composables/useGuestToken'
 
-
-
 export const useCartStore = defineStore('cart', {
-  
 
   state: () => ({
     cart: {} as any,
@@ -13,25 +10,28 @@ export const useCartStore = defineStore('cart', {
   actions: {
 
     async fetchCartFromServer() {
-      let item={};
+     
+      let item = {};
       const authStore = useAuthStore();
       let endpoint = `${useRuntimeConfig().public.apiBase}list-cart`;
       const { ensureGuestToken } = useGuestToken();
       const headers: any = {};
 
-      if (authStore.token && authStore.user) {
+      if (authStore.token) {
+        
         headers['Authorization'] = `Bearer ${authStore.token}`;
-        
+
       } else {
+        console.log(2222)
         const guestToken = ensureGuestToken();
-        item = {session_id:guestToken};
-        console.log(item,'item++--')
+        item = { session_id: guestToken };
+        console.log(item, 'item++--')
         if (guestToken) headers['X-Guest-Token'] = guestToken;
-        
+
       }
 
       try {
-       
+
         const response = await $fetch(endpoint, {
           method: 'POST',
           headers,
@@ -50,7 +50,7 @@ export const useCartStore = defineStore('cart', {
 
       const authStore = useAuthStore()
 
-      
+
       const endpoint = `${useRuntimeConfig().public.apiBase}add-to-cart`;
 
       const { ensureGuestToken } = useGuestToken()
@@ -75,19 +75,14 @@ export const useCartStore = defineStore('cart', {
       } catch (error) {
         console.error('Cart sync failed:', error)
       }
-      finally{
+      finally {
         this.fetchCartFromServer();
       }
     },
-    addToCart(product) {
-      // const existingProduct = this.cart.find(item => item.id === product.id);
-      // if (existingProduct) {
-      //   existingProduct.quantity += 1; // Increase quantity if the product exists
-      // } else {
-      //   this.cart.push({ ...product, quantity: 1 }); // Add new product with quantity 1
-      // }
-      let {id }=product;
-      this.syncCartWithServer({product_id:id,quantity:1,action:'add'})
+    addToCart(product_id, quantity=1, action='add') {
+
+      
+      this.syncCartWithServer({ product_id, quantity: quantity, action })
     },
     removeFromCart(productId) {
       this.cart = this.cart.filter(item => item.id !== productId);

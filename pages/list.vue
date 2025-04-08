@@ -1,21 +1,5 @@
 <template>
-
-
-    <div class="inner__banner listing_bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="breadcrums">
-                            <ul>
-                                <li><NuxtLink to="/">
-                                  Home</NuxtLink></li>
-                                <li>Shops</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<CommonInnerBanner page_title="Shop"/>
         <section class="inner_container listing_bg">
             <div class="container">
                 <div class="row mob_none">

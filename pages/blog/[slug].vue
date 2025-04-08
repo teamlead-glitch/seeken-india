@@ -1,21 +1,10 @@
 <template>
-    <div class="inner__banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="breadcrums">
-                        <ul>
-                            <li><NuxtLink to="/">
-                                    Home</NuxtLink></li>
-                                    <li><NuxtLink :to="`/blog`">
-                                      Blog</NuxtLink></li>
-                            <li>Blog Details</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <CommonInnerBanner page_title="Blog Details">
+        <template #sub>
+            <li><NuxtLink :to="`/blog`">
+                Blog</NuxtLink></li>
+        </template>
+    </CommonInnerBanner>
     <section class="inner_container">
         <div class="container">
             <div class="row">

@@ -121,11 +121,11 @@
                 </div>
               </li>
               <li>
-                <a href="cart.html">
+                <NuxtLink to="/cart">
                   <div class="icon"><img src="/images/cart_icon.svg" alt="search">
                     <div class="count">{{ cartCount }}</div>
                   </div>
-                </a>
+                </NuxtLink>
               </li>
               <li><a href="wishlist.html">
                   <div class="icon"><img src="/images/whislist.svg" alt="search">
@@ -164,7 +164,7 @@ const props = defineProps({
 });
 
 const cartStore = useCartStore();
-const cartCount = computed(() => cartStore.cart.items.length);
+const cartCount = computed(() => (cartStore.cart?.items || []).length);
 
 const authStore = useAuthStore();
 console.log(authStore, 'authStore in desktopmenu')

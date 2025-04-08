@@ -1,20 +1,7 @@
 <template>
-  
-  <div class="inner__banner" v-if="product">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="breadcrums">
-                    <ul>
-                        <li><NuxtLink to="/">
-                          Home</NuxtLink></li>
-                        <li>{{product.name}}</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+<CommonInnerBanner :page_title="product.name" v-if="product"/>
+    
 <section class="inner_container" v-if="product">
   
     <div class="container">

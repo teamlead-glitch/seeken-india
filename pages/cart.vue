@@ -1,209 +1,149 @@
 <template>
-  <div class="cart-container">
-    <h2 class="cart-title">Your Cart</h2>
-    <div v-if="cartStore.cart.length">
-      <div v-for="item in cartStore.cart" :key="item.id" class="cart-item">
-        <div class="item-info">
-          <h3>{{ item.name }}</h3>
-          <p class="price">$ {{ item.price }} x {{ item.quantity }}</p>
-          <div class="quantity-controls">
-            <button class="quantity-btn" @click="decreaseQuantity(item.id)">-</button>
-            <span class="quantity">{{ item.quantity }}</span>
-            <button class="quantity-btn" @click="increaseQuantity(item.id)">+</button>
+    <CommonInnerBanner page_title="Cart"/>
+  <section class="inner_container" v-if="cart?.items?.length">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-7 col-xl-7">
+          <div class="cart_left">
+            <h6>You have <span>{{ cart.total_quantity }} item(s)</span> in your cart</h6>
+
+            <div
+              class="full__boxes"
+              v-for="item in cart.items"
+              :key="item.id"
+            >
+              <div class="left">
+                <div class="img_box">
+                  <img :src="item.product_image" class="img-fluid" :alt="item.product_name" />
+                </div>
+              </div>
+              <div class="right">
+                <div class="full__container">
+                  <div class="product__details">
+                    <h4>{{ item.product_name }}</h4>
+                  </div>
+                  <div class="price__details">
+                    <div class="price">
+                      <h3>
+                        ₹ {{ item.selling_price }}
+                        <span v-if="Number(item.discount_amount) > 0">₹ {{ item.price }}</span>
+                      </h3>
+                    </div>
+                    <div class="save" v-if="Number(item.discount_amount) > 0">
+                      Save ₹ {{ item.discount_amount }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="quantity__boxes">
+                  <div class="quantity-input">
+                    <button class="quantity-btn minus-btn" @click="updateQuantity(item, item.quantity - 1,'minus')"><i class="bi bi-dash-lg"></i></button>
+                    <input type="number" class="quantity" :value="item.quantity" min="1" max="10">
+                    <button class="quantity-btn plus-btn" @click="updateQuantity(item, item.quantity + 1)"><i class="bi bi-plus-lg"></i></button>
+                  </div>
+                  <div class="delete">
+                    <i class="bi bi-trash"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="total__price">
+              <h6>Price Breakdown</h6>
+              <div class="pricing">
+                <div class="left">Subtotal</div>
+                <div class="right">₹ {{ cart.total_price }}</div>
+                <div class="left">Discount</div>
+                <div class="right">₹ {{ cart.total_discount }}</div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="item-total">
-          <p>Total: $ {{ (item.price * item.quantity).toFixed(2) }}</p>
-          <button class="remove-btn" @click="handleRemove(item.id)">Remove</button>
+
+        <div class="col-md-5 col-xl-4">
+          <div class="total_prices">
+            <div class="coupon">
+            <div class="row">
+                <div class="col-md-12"><label>Voucher Code</label></div>
+                <div class="col-8 col-md-12 col-xl-8">
+                   <input type="text" class="form-control" name="email" placeholder="Enter Voucher">
+                </div>
+                <div class="col-4 col-md-12 col-xl-4">
+                    <button class="btn_4">Apply</button>
+                </div>
+            </div>
+        </div>
+        <div class="total__price">
+            <h6>Price Breakdown</h6>
+            <div class="pricing">
+                <div class="left">Subtotal</div>
+                <div class="right">₹ {{ cart.total_price }}</div>
+                <div class="left">Discount</div>
+                <div class="right">₹ {{ cart.total_discount }}</div>
+              </div>
+        </div>
+            <div class="total__price">
+              <h6>Total</h6>
+              <div class="pricing_two">
+                <div class="left"><h3>Total <span>Includes GST*</span></h3></div>
+                <div class="right">
+                  <h3>₹ {{ cart.grand_total }}</h3>
+                  <h5 v-if="Number(cart.total_discount) > 0">
+                    <span>₹ {{ cart.total_price }}</span>
+                    save ₹ {{ cart.total_discount }}
+                  </h5>
+                </div>
+              </div>
+            </div>
+
+            <div class="checkout__btn">
+              <NuxtLink to="/check-out">
+                <button class="btn_2">Continue to Checkout</button>
+              </NuxtLink>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="cart-total">
-        <p>Total: <strong>$ {{ total }}</strong></p>
-        <NuxtLink to="/checkout">
-          <button class="checkout-button">Pay Now</button>
-        </NuxtLink>
-      </div>
+      <div class="row justify-content-center">
+    <div class="col-md-12"></div>
+    <div class="support_card">
+        <h5>Supported Card types</h5>
+        <ul>
+            <li><img :src="'/images/visa.svg'" alt="visa"></li>
+            <li><img :src="`/images/maestro.svg`" alt="visa"></li>
+            <li><img :src="`/images/mastercard.svg`" alt="visa"></li>
+            <li><img :src="`/images/rupay.svg`" alt="visa"></li>
+            <li><img :src="`/images/american-express.svg`" alt="visa"></li>
+       </ul>
     </div>
-    <div v-else class="empty-cart">
-      <p>Your cart is empty.</p>
-      <NuxtLink to="/">
-        <button class="start-shop-button">Start Shopping</button>
-      </NuxtLink>
+</div>
     </div>
-  </div>
+  </section>
 </template>
 
+
 <script setup lang="ts">
-import { useCartStore } from '~/store/cart';
+import { onMounted, computed } from 'vue'
+import { useCartStore } from '~/store/cart'
 
-const cartStore = useCartStore();
+const cartStore = useCartStore()
+const cart = computed(() => cartStore.cart)
 
-// Computed property for total price
-const total = computed(() => {
-  return cartStore.cart
-    .reduce((sum, item) => sum + item.price * item.quantity, 0)
-    .toFixed(2);
-});
+onMounted(() => {
+  cartStore.fetchCartFromServer()
+})
 
-// Handle item removal
-const handleRemove = (productId) => {
-  if (window.confirm('Are you sure you want to remove this item from your cart?')) {
-    cartStore.removeFromCart(productId);
-  }
-};
+const updateQuantity = async (item, newQty: number, action='add') => {
+  if (newQty < 1 || newQty > 10) return;
 
-// Adjust quantity methods
-const increaseQuantity = (productId) => {
-  cartStore.updateCartQuantity(productId, 1);
-};
+  await cartStore.addToCart(item.product_id,1,action)
+}
 
-const decreaseQuantity = (productId) => {
-  const item = cartStore.cart.find((item) => item.id === productId);
-  if (item.quantity > 1) {
-    cartStore.updateCartQuantity(productId, -1);
-  } else {
-    handleRemove(productId);
-  }
-};
+
+
 </script>
 
 <style scoped>
-.cart-container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px 30px;
-  background: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
 
-.cart-title {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  margin-bottom: 15px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-}
-
-.item-info {
-  flex: 2;
-}
-
-.item-info h3 {
-  font-size: 1.2rem;
-  color: #333;
-}
-
-.price {
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.quantity-controls {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.quantity-btn {
-  background: #5cb85c;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  cursor: pointer;
-  margin: 0 5px;
-}
-
-.quantity-btn:hover {
-  background: #4cae4c;
-}
-
-.quantity {
-  font-size: 1rem;
-  color: #333;
-}
-
-.item-total {
-  flex: 1;
-  text-align: right;
-}
-
-.item-total p {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.remove-btn {
-  background: #dc3545;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.remove-btn:hover {
-  background: #c82333;
-}
-
-.cart-total {
-  text-align: center;
-  margin-top: 20px;
-  padding: 15px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-}
-
-.checkout-button {
-  background: #5cb85c;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.checkout-button:hover {
-  background: #4cae4c;
-}
-
-.empty-cart {
-  text-align: center;
-  margin-top: 50px;
-}
-
-.start-shop-button {
-  background: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.start-shop-button:hover {
-  background: #0056b3;
-}
 </style>
