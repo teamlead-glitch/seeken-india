@@ -44,7 +44,7 @@
       <input type="number" class="quantity" v-model="quantity" min="1" max="10">
       <button class="quantity-btn plus-btn" @click="quantity++"><i class="bi bi-plus-lg"></i></button>
     </div>
-    <button class="btn_2">Add to Cart</button>
+    <button class="btn_2" @click="handleAddToCart(quickProduct)">Add to Cart</button>
     <button class="btn_1">Buy Now</button>
   </div>
   <div class="view_detail"><a class="btn_3" href="detail.html">More Details</a></div>
@@ -55,6 +55,9 @@
 <script lang="ts" setup>
 
 import { useQuickProductInject } from '@/composables/useQuickBuy';
+import { useCartActions } from '@/composables/useCartActions'
+
+const { handleAddToCart } = useCartActions()
 
 const { quickProduct } = useQuickProductInject();
 

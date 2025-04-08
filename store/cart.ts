@@ -8,32 +8,39 @@ export const useCartStore = defineStore('cart', {
   
 
   state: () => ({
-    cart: [],
+    cart: {} as any,
   }),
   actions: {
 
     async fetchCartFromServer() {
+      let item={};
       const authStore = useAuthStore();
-      let endpoint = `${useRuntimeConfig().public.apiBase}cart`;
+      let endpoint = `${useRuntimeConfig().public.apiBase}list-cart`;
       const { ensureGuestToken } = useGuestToken();
       const headers: any = {};
 
       if (authStore.token && authStore.user) {
         headers['Authorization'] = `Bearer ${authStore.token}`;
+        
       } else {
         const guestToken = ensureGuestToken();
+        item = {session_id:guestToken};
+        console.log(item,'item++--')
         if (guestToken) headers['X-Guest-Token'] = guestToken;
-        endpoint += `?session_id=${guestToken}`;
+        
       }
 
       try {
+       
         const response = await $fetch(endpoint, {
-          method: 'GET',
+          method: 'POST',
           headers,
+          body: item
         });
 
         // Assuming the response is an array of cart items
-        this.cart = response || [];
+        const { cart } = response || {}
+        this.cart = cart || {}
       } catch (error) {
         console.error('Failed to fetch cart:', error);
       }

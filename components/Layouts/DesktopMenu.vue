@@ -123,7 +123,7 @@
               <li>
                 <a href="cart.html">
                   <div class="icon"><img src="/images/cart_icon.svg" alt="search">
-                    <div class="count">10</div>
+                    <div class="count">{{ cartCount }}</div>
                   </div>
                 </a>
               </li>
@@ -146,6 +146,7 @@
 <script setup lang="ts">
 
 import { useAuthStore } from '~/store/auth';
+import { useCartStore } from '~/store/cart';
 const route = useRoute();
 
 const isIndexPage = computed(() => route.path === '/');
@@ -162,7 +163,8 @@ const props = defineProps({
   },
 });
 
-
+const cartStore = useCartStore();
+const cartCount = computed(() => cartStore.cart.items.length);
 
 const authStore = useAuthStore();
 console.log(authStore, 'authStore in desktopmenu')
