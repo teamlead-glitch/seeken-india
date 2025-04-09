@@ -1,5 +1,5 @@
 <template>
-    <CommonInnerBanner page_title="Cart"/>
+  <CommonInnerBanner page_title="Cart" />
   <section class="inner_container" v-if="cart?.items?.length">
     <div class="container">
       <div class="row justify-content-center">
@@ -7,11 +7,7 @@
           <div class="cart_left">
             <h6>You have <span>{{ cart.total_quantity }} item(s)</span> in your cart</h6>
 
-            <div
-              class="full__boxes"
-              v-for="item in cart.items"
-              :key="item.id"
-            >
+            <div class="full__boxes" v-for="item in cart.items" :key="item.id">
               <div class="left">
                 <div class="img_box">
                   <img :src="item.product_image" class="img-fluid" :alt="item.product_name" />
@@ -37,12 +33,14 @@
 
                 <div class="quantity__boxes">
                   <div class="quantity-input">
-                    <button class="quantity-btn minus-btn" @click="updateQuantity(item, item.quantity - 1,'minus')"><i class="bi bi-dash-lg"></i></button>
+                    <button class="quantity-btn minus-btn" @click="updateQuantity(item, 1, 'minus')"><i
+                        class="bi bi-dash-lg"></i></button>
                     <input type="number" class="quantity" :value="item.quantity" min="1" max="10">
-                    <button class="quantity-btn plus-btn" @click="updateQuantity(item, item.quantity + 1)"><i class="bi bi-plus-lg"></i></button>
+                    <button class="quantity-btn plus-btn" @click="updateQuantity(item, 1)"><i
+                        class="bi bi-plus-lg"></i></button>
                   </div>
                   <div class="delete">
-                    <i class="bi bi-trash"></i>
+                    <i class="bi bi-trash" @click="updateQuantity(item, item.quantity, 'minus')"></i>
                   </div>
                 </div>
               </div>
@@ -63,29 +61,31 @@
         <div class="col-md-5 col-xl-4">
           <div class="total_prices">
             <div class="coupon">
-            <div class="row">
+              <div class="row">
                 <div class="col-md-12"><label>Voucher Code</label></div>
                 <div class="col-8 col-md-12 col-xl-8">
-                   <input type="text" class="form-control" name="email" placeholder="Enter Voucher">
+                  <input type="text" class="form-control" name="email" placeholder="Enter Voucher">
                 </div>
                 <div class="col-4 col-md-12 col-xl-4">
-                    <button class="btn_4">Apply</button>
+                  <button class="btn_4">Apply</button>
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="total__price">
-            <h6>Price Breakdown</h6>
-            <div class="pricing">
+            <div class="total__price">
+              <h6>Price Breakdown</h6>
+              <div class="pricing">
                 <div class="left">Subtotal</div>
                 <div class="right">₹ {{ cart.total_price }}</div>
                 <div class="left">Discount</div>
                 <div class="right">₹ {{ cart.total_discount }}</div>
               </div>
-        </div>
+            </div>
             <div class="total__price">
               <h6>Total</h6>
               <div class="pricing_two">
-                <div class="left"><h3>Total <span>Includes GST*</span></h3></div>
+                <div class="left">
+                  <h3>Total <span>Includes GST*</span></h3>
+                </div>
                 <div class="right">
                   <h3>₹ {{ cart.grand_total }}</h3>
                   <h5 v-if="Number(cart.total_discount) > 0">
@@ -97,7 +97,7 @@
             </div>
 
             <div class="checkout__btn">
-              <NuxtLink to="/check-out">
+              <NuxtLink to="/cart">
                 <button class="btn_2">Continue to Checkout</button>
               </NuxtLink>
             </div>
@@ -106,18 +106,36 @@
       </div>
 
       <div class="row justify-content-center">
-    <div class="col-md-12"></div>
-    <div class="support_card">
-        <h5>Supported Card types</h5>
-        <ul>
+        <div class="col-md-12"></div>
+        <div class="support_card">
+          <h5>Supported Card types</h5>
+          <ul>
             <li><img :src="'/images/visa.svg'" alt="visa"></li>
             <li><img :src="`/images/maestro.svg`" alt="visa"></li>
             <li><img :src="`/images/mastercard.svg`" alt="visa"></li>
             <li><img :src="`/images/rupay.svg`" alt="visa"></li>
             <li><img :src="`/images/american-express.svg`" alt="visa"></li>
-       </ul>
+          </ul>
+        </div>
+      </div>
     </div>
-</div>
+  </section>
+
+
+  <section class="inner_container" v-else>
+    <div class="container">
+      <div  class="empty-cart" style="margin:0 30%;">
+      
+      <div class="total_prices">
+        <p>Your cart is empty.</p>
+      <div class="checkout__btn">
+      <NuxtLink to="/">
+        
+        <button class="btn_2">Start Shopping</button>
+      </NuxtLink>
+      </div>
+    </div>
+    </div>
     </div>
   </section>
 </template>
@@ -134,16 +152,14 @@ onMounted(() => {
   cartStore.fetchCartFromServer()
 })
 
-const updateQuantity = async (item, newQty: number, action='add') => {
+const updateQuantity = async (item, newQty: number = 1, action = 'add') => {
   if (newQty < 1 || newQty > 10) return;
 
-  await cartStore.addToCart(item.product_id,1,action)
+  await cartStore.addToCart(item.product_id, newQty, action)
 }
 
 
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

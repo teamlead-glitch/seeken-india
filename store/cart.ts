@@ -42,7 +42,8 @@ export const useCartStore = defineStore('cart', {
         const { cart } = response || {}
         this.cart = cart || {}
       } catch (error) {
-        console.error('Failed to fetch cart:', error);
+        this.cart = {};
+        console.error('Failed to fetch cart1233:', error);
       }
     },
 
