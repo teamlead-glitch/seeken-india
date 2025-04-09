@@ -129,7 +129,7 @@
               </li>
               <li><a href="wishlist.html">
                   <div class="icon"><img src="/images/whislist.svg" alt="search">
-                    <div class="count">2</div>
+                    <div class="count">{{ wishlistCount }}</div>
                   </div>
                 </a>
               </li>
@@ -147,6 +147,7 @@
 
 import { useAuthStore } from '~/store/auth';
 import { useCartStore } from '~/store/cart';
+import { useWishlistStore } from '@/store/wishlist'
 const route = useRoute();
 
 const isIndexPage = computed(() => route.path === '/');
@@ -165,6 +166,9 @@ const props = defineProps({
 
 const cartStore = useCartStore();
 const cartCount = computed(() => (cartStore.cart?.items || []).length);
+
+const wishlistStore = useWishlistStore()
+const wishlistCount = computed(() => (wishlistStore.list || []).length);
 
 const authStore = useAuthStore();
 console.log(authStore, 'authStore in desktopmenu')

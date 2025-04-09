@@ -111,7 +111,7 @@ const addToWishlist = () => {
   if (!authStore.token) {
     showLogin.value = true;
   } else {
-    //add to wishlist api
+    wishlistStore.addToWishlist();
     showSuccess.value = true;
   }
 }
