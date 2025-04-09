@@ -21,23 +21,9 @@
      
       <div class="product__box">
         <div class="top_box">
-          <div class="view__wishlist">
-            <a
-              data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasRight"
-              aria-controls="offcanvasRight"
-              @click="setQuickProduct(item.slug)"
-            >
-              <div class="view"><i class="bi bi-eye"></i></div>
-            </a>
-            <div
-              class="wishlist"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal4"
-            >
-              <i class="bi bi-heart"></i>
-            </div>
-          </div>
+        
+
+          <ProductCardWishlist :product="item"/>
           <div class="product__img">
             <NuxtLink :to="`/products/${item.slug}`">
             <img
