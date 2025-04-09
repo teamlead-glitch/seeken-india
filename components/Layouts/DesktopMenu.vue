@@ -127,11 +127,11 @@
                   </div>
                 </NuxtLink>
               </li>
-              <li><a href="wishlist.html">
+              <li><NuxtLink to="/wishlist">
                   <div class="icon"><img src="/images/whislist.svg" alt="search">
                     <div class="count">{{ wishlistCount }}</div>
                   </div>
-                </a>
+                </NuxtLink>
               </li>
             </ul>
           </li>
