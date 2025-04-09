@@ -23,7 +23,7 @@
   <!--search   offcanvas Popup close -->
   
   
-  <CommonWishlist />
+  <CommonAddToWishlist />
 
 
   <!-- ------alert box desktop--- -->
