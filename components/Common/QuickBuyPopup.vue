@@ -27,7 +27,7 @@
           <div class="price"><span>Rs. {{ quickProduct?.final_price }}</span>Rs. {{ quickProduct?.price }} </div>
         </div>
        
-        <ProductCardVarients  />
+        <ProductCardVarients  :varients="quickProduct?.product_variants" :product_slug="quickProduct?.slug"/>
         <!-- v-if="quickProduct?.product_variants?.length > 0" -->
       
       </div>
@@ -47,7 +47,9 @@
     <button class="btn_2" @click="handleAddToCart(quickProduct?.id,quantity)">Add to Cart</button>
     <button class="btn_1">Buy Now</button>
   </div>
-  <div class="view_detail"><a class="btn_3" href="detail.html">More Details</a></div>
+  <div class="view_detail">
+    <NuxtLink class="btn_3" :to="`/products/${quickProduct?.slug}`">More Details</NuxtLink>
+  </div>
 
 </div>
 </template>

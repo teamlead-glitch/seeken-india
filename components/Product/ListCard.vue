@@ -36,7 +36,7 @@
                                                
                                                 <ProductCardRating :rating="product.rating" :reviewCount="product.review_count"/>
                                                 
-                                                <ProductCardVarients/>
+                                                <ProductCardVarients :varients="product?.product_variants" :product_slug="product?.slug"/>
                                            </div>
                                          </div></a>
                                     </div>

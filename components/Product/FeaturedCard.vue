@@ -34,7 +34,7 @@
                 <h4>{{ product.name	 }}</h4>
               </NuxtLink>
                 <div class="price">From Rs. {{ product.final_price	 }} <span>Rs. {{ product.price }}</span></div>
-                <ProductCardVarients  />
+                <ProductCardVarients  :varients="product?.product_variants" :product_slug="product?.slug"/>
                 <!-- v-if="product.product_variants.length > 0" -->
               </div>
             </div>

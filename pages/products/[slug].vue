@@ -17,7 +17,9 @@
                     <h2 class="mob_none">{{product.name}} </h2>
                     <ProductCardRating :rating="product.rating" :reviewCount="product.review_count"/>
                     
-                    <ProductCardVarients  v-if="product?.product_variants?.length > 0"/>
+                    
+                    <ProductCardVarientsChoose   :varients="product?.product_variants"/>
+                    
                    
                     <div class="highlights">
                         <h4>Highlights</h4>

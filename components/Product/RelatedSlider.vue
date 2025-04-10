@@ -58,7 +58,7 @@
             </div>
             <div class="bottom__box">
                 <ProductCardRating :rating="product.rating" :reviewCount="product.review_count"/>
-                <ProductCardVarients  />
+                <ProductCardVarients  :varients="product?.product_variants"/>
                 <!-- v-if="product.product_variants.length > 0" -->
               
             </div>
