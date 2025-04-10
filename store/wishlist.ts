@@ -63,6 +63,35 @@ export const useWishlistStore = defineStore('wishlist', {
             this.fetchWishlists();
           }
         },
+        async removeFromWishlist(product_id){
+
+          
+          const authStore = useAuthStore();
+          const endpoint = `${useRuntimeConfig().public.apiBase}wishlist/delete`;
+
+          const headers: any = {}
+    
+          if (authStore.token && authStore.user) {
+            const authToken = authStore.token;
+            if (authToken) headers['Authorization'] = `Bearer ${authToken}`
+          } else {
+           return false;
+          }
+
+          try {
+            await $fetch(endpoint, {
+              method: 'DELETE',
+              body: {product_id},
+              headers
+            })
+          } catch (error) {
+            console.error('Wishlist sync failed:', error)
+          }
+          finally {
+            this.fetchWishlists();
+          }
+
+        },
     openAddTo(product) {
       this.AddToshow = true
       this.AddToproduct = product
