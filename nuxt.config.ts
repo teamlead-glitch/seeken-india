@@ -248,8 +248,14 @@ export default defineNuxtConfig({
   //   },
 
   nitro: {
+    // prerender: {
+    //   routes: ["/"], // Manually set valid routes
+    //   ignore: ["/b"], // Ignore invalid route
+    // }
+
     prerender: {
-      routes: ["/"], // Manually set valid routes
+      routes: ["/"],       // Only prerender the index page
+      crawlLinks: false,   // Prevent crawling links to auto-discover routes
       ignore: ["/b"], // Ignore invalid route
     }
   }
