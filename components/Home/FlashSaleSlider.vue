@@ -32,7 +32,7 @@
             <h5>FLASH SALE</h5>
             <div class="outer__box">
               <div class="offer">{{item.discount}}% OFF</div>
-              <div class="prices">₹{{item.price}} <span>₹{{item.selling_price}}</span></div>
+              <div class="prices">₹{{item.selling_price}} <span>₹{{item.price}}</span></div>
             </div>
             <h6> <span>{{ item.stock }} more</span> items remaining!</h6>
             <div class="limiter_offer">
