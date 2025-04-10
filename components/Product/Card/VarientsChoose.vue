@@ -1,5 +1,5 @@
 <template>
-
+{{ product.product_options }}
 <div class="color__quantity">
                             <div class="color">
                                 <h4>Choose Color</h4>
@@ -29,8 +29,8 @@
 
 <script setup>
   defineProps({
-    varients: {
-      type: Array,
+    product: {
+      type: {},
       required: true,
     }
   

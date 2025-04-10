@@ -18,7 +18,7 @@
                     <ProductCardRating :rating="product.rating" :reviewCount="product.review_count"/>
                     
                     
-                    <ProductCardVarientsChoose   :varients="product?.product_variants"/>
+                    <ProductCardVarientsChoose   :product="product"/>
                     
                    
                     <div class="highlights">
