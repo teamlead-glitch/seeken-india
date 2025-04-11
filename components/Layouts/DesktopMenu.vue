@@ -5,9 +5,9 @@
     <div class="header" :class="!isIndexPage ? 'inner_header' : ''" id="header">
       <div class="wrapper clearfix"> </div>
       <nav class="wsmenu clearfix">
-        <a href="/">
+        <NuxtLink to="/">
           <div class="logo clearfix"></div>
-        </a>
+        </NuxtLink>
         <ul class="mobile-sub wsmenu-list">
           <li  :class="{ active: route.path === '/' }">
             <NuxtLink to="/">Home </NuxtLink>
@@ -112,8 +112,8 @@
                     <li>
                       <NuxtLink to="/profile">My Page</NuxtLink>
                     </li>
-                    <li><a href="/">Orders</a></li>
-                    <li><a href="/">Wishlist</a></li>
+                    <li><<NuxtLink to="/">Orders</NuxtLink></li>
+                    <li><NuxtLink to="/wishlist">Wishlist</NuxtLink></li>
                     <li>
                       <NuxtLink @click="logout" href="/">Logout</NuxtLink>
                     </li>
