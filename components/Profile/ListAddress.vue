@@ -11,6 +11,11 @@
            
             <div class="shipping__boxes">
                 <div class="default" v-if="adress.is_default">Default</div>
+                <div class="default set" v-if="!adress.is_default">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option1" @click="setDefault(adress)">
+                <label class="form-check-label" for="inlineRadio4">Se as default</label>
+              </div></div>
                 <div class="address__list">
                     <ul>
                         <li>
@@ -28,9 +33,9 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-12 mt-4 mb-4 d-flex justify-content-center gap-2 profile_setting" >
+                <!-- <div class="col-md-12 mt-4 mb-4 d-flex justify-content-center gap-2 profile_setting" >
                   <button class="btn_1" @click="setDefault(adress)">Set As Default</button>
-            </div>
+            </div> -->
             </div>
         </div>
 
