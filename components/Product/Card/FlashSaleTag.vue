@@ -1,6 +1,6 @@
 <template>
 
-<div class="items">Only {{ item_left }} more left</div>
+<div class="items" v-if="item_left">Only {{ item_left }} more left</div>
 <div class="flash__combo" v-if="is_flashsale">Flash Sale</div>
 </template>
 
