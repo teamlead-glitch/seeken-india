@@ -78,7 +78,7 @@
                            <button class="quantity-btn plus-btn" @click="quantity++"><i class="bi bi-plus-lg"></i></button>
                        </div>
                    </div>
-                   <button class="btn_1">Add to Cart</button>
+                   <button class="btn_1" @click="handleAddToCart(product?.id,quantity)">Add to Cart</button>
                    <button class="btn_2">Buy Now</button>
                </div>
            </div>
@@ -96,6 +96,9 @@
 
 import { useRoute } from 'vue-router';
 import { useDateFormat } from '~/composables/useDateFormat';
+import { useCartActions } from '@/composables/useCartActions'
+
+const { handleAddToCart } = useCartActions()
 const { formatDate } = useDateFormat();
 
 const route = useRoute(); 
