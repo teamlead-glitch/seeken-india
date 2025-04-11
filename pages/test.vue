@@ -4,14 +4,12 @@
     </div>
 </template>
 
-<script>
-export default {
-    setup () {
-        
+<script setup>
 
-        return {}
-    }
-}
+const { addToast } = useToast()
+addToast('Item added to cart!', 'success')
+addToast('Something went wrong!', 'error')
+
 </script>
 
 <style lang="scss" scoped>

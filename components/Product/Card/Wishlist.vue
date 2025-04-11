@@ -12,6 +12,9 @@
 import { defineProps } from 'vue';
 import { useQuickProductInject } from '@/composables/useQuickBuy';
 import { useWishlistStore } from '@/store/wishlist'
+
+const { addToast } = useToast()
+
 const wishlistStore = useWishlistStore()
 
 const isInWishlist = computed(() => {
@@ -23,7 +26,7 @@ const onHeartClick = (product) => {
   //console.log(isInWishlist,'isInWishlist')
   if(isInWishlist.value){
     removeFromWishlist(product.id)
-    alert('Item Removed From Your wishlist');
+    addToast('Item Removed From Your wishlist','success');
     return false;
   }
   wishlistStore.openAddTo(product)

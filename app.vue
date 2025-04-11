@@ -4,6 +4,7 @@
     <NuxtLayout>
       <LayoutsGlobalLoader />
       <NuxtPage />
+      <CommonToaster />
     </NuxtLayout>
     
    
