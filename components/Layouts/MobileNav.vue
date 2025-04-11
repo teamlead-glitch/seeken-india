@@ -23,10 +23,10 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <NuxtLink to="/cart">
           <div class="icon"><img src="/images/cart-menu.svg" alt="seeken"></div>
           <div class="list"> Cart</div>
-        </a>
+        </NuxtLink>
       </li>
       <li type="button" ref="mobMenuBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight_mobmenu"
         aria-controls="offcanvasRight">
@@ -47,11 +47,11 @@
           </div>
           <div class="logo"><img src="/images/logo-blue.svg" alt="logo"></div>
           <div class="search_wishlist">
-            <div class="wishlist"> <a href="#">
+            <div class="wishlist"> <NuxtLink to="/wishlist" @click="closeMobMenu">
               <div class="icon"><img src="/images/whislist.svg" alt="search">
-                <div class="count">2</div>
+                <!-- <div class="count">2</div> -->
               </div>
-            </a> </div>
+            </NuxtLink> </div>
             <div class="search">
               <div class="icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTopone"
                 aria-controls="offcanvasTop"><img src="/images/search_icon.svg" alt="search"></div>
@@ -69,8 +69,8 @@
       </div>
       <div class="navs">
         <ul>
-          <li><NuxtLink to="/">Home</NuxtLink></li>
-          <li><NuxtLink to="/list">Shop</NuxtLink></li>
+          <li><NuxtLink to="/"  @click="closeMobMenu">Home</NuxtLink></li>
+          <li><NuxtLink to="/list"  @click="closeMobMenu">Shop</NuxtLink></li>
           <!-- <li>
             <a href="javascript:void(0);" @click="toggleSubmenu">Shop</a>
            
@@ -80,9 +80,9 @@
         <li><a href="shop/category3.html">Category 3</a></li>
       </ul>
         </li> -->
-          <li><NuxtLink to="/blog">Blog</NuxtLink></li>
-          <li><NuxtLink to="/aboutus">About us</NuxtLink></li>
-          <li><NuxtLink to="/contactus">Contact</NuxtLink></li>
+          <li><NuxtLink to="/blog"  @click="closeMobMenu">Blog</NuxtLink></li>
+          <li><NuxtLink to="/aboutus"  @click="closeMobMenu">About us</NuxtLink></li>
+          <li><NuxtLink to="/contactus"  @click="closeMobMenu">Contact</NuxtLink></li>
         </ul>
       </div>
       <div class="social__icons__mobile">

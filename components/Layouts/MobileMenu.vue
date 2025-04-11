@@ -9,11 +9,11 @@
       </div>
       <div class="logo"><NuxtLink to="/"><img src="/images/logo-blue.svg" alt="logo"></NuxtLink>  </div>
       <div class="search_wishlist">
-        <div class="wishlist"> <a href="wishlist.html">
+        <div class="wishlist"> <NuxtLink to="/wishlist">
             <div class="icon"><img src="/images/whislist.svg" alt="search">
-              <div class="count">2</div>
+              <!-- <div class="count">2</div> -->
             </div>
-          </a> </div>
+          </NuxtLink> </div>
         <div class="search">
           <div class="icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTopone"
             aria-controls="offcanvasTop"><img src="/images/search_icon.svg" alt="search"></div>
