@@ -26,7 +26,7 @@
           <div class="modal-body">
             <p>The item will be added to your wishlist</p>
             <div class="col-md-12 mt-4 mb-4 d-flex justify-content-center">
-              <NuxtLink to="/"><button class="btn_2">Continue shopping</button> </NuxtLink>
+              <NuxtLink to="/" @click="wishlistStore.closeAddTo()"><button class="btn_2">Continue shopping</button> </NuxtLink>
             </div>
           </div>
         </div>
