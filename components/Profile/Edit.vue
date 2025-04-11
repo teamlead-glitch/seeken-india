@@ -36,7 +36,7 @@
                     </div>  -->
                     <div class="col-md-12 ">
                         <div class="form-floating ">
-                            <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="email" placeholder="Email address" required>
+                            <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="email" placeholder="Email address" required readonly>
                             <label for="" class="form-label">Email address</label>
                           </div>
                     </div>

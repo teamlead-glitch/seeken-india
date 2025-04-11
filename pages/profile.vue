@@ -48,8 +48,9 @@
                                                 {{ authStore.user?.name ?? 'Guest' }}
 
                                             </li>
-                                            <li><span class="primery">{{ authStore.user?.email ?? '-' }}</span><span>{{
-                                                    authStore.user?.mobile ?? '-' }}</span></li>
+                                            <li><span class="primery">{{ authStore.user?.email ?? '-' }}</span>
+                                            <span>{{
+                                                    authStore.user?.mobile ?? '' }}</span></li>
 
                                         </ul>
                                     </div>

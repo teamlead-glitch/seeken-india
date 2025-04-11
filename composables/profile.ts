@@ -16,7 +16,7 @@ export const useProfile = () => {
         method: 'POST',
         body: payLoad
       });
-
+      authStore.fetchUser();
       return { success: true, data: result, error: null };
     } catch (errors: any) {
       
