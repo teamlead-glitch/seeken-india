@@ -1,19 +1,6 @@
 <template>
-    <div class="inner__banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="breadcrums">
-                        <ul>
-                            <li><a href="/">
-                                    Home</a></li>
-                            <li>Profile Settings</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  
+    <CommonInnerBanner page_title="Profile Settings" />
 
     <CommonOverlayPopup :show="showEditPopup">
         <ProfileEdit @close="showEditPopup = false"></ProfileEdit>

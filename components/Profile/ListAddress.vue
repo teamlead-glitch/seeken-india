@@ -29,7 +29,9 @@
                             </p>
                         </li>
                         <li>
-                            <p>House (All day delivery)</p>
+                            <p v-if="adress.type == 1">House (All day delivery)</p>
+                            <p v-if="adress.type == 2">Work (Delivery between 9am - 6pm)</p>
+                            <p v-if="adress.type == 3">Neighbour</p>
                         </li>
                     </ul>
                 </div>
