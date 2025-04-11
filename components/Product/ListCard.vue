@@ -18,7 +18,7 @@
                                                         <h4>{{ product.name }}</h4>
                                                         </NuxtLink>
                                                     </div>
-                                                    <div class="price"> Rs. {{ product.selling_price }} <span>Rs. {{ product.price }}</span></div>
+                                                    <div class="price"> Rs. {{ product.final_price }} <span>Rs. {{ product.price }}</span></div>
                                                 </div>
                                             </div>
                                             <div class="top_box">
