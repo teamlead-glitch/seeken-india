@@ -34,7 +34,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-floating">
-                    <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="address.pincode"  placeholder="Pin code" required>
+                    <input type="text" class="form-control border-0 border-bottom rounded-0" v-numeric-only v-model="address.pincode"  placeholder="Pin code" required maxlength="6">
                     <label for="" class="form-label">Pin code</label>
                   </div>
             </div>
@@ -46,8 +46,8 @@
             </div>
             <div class="col-md-6">
                 <div class="form-floating">
-                    <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="address.phone"  placeholder="Mobile number" required>
-                    <label for="" class="form-label">Mobile number</label>
+                    <input type="text" class="form-control border-0 border-bottom rounded-0" v-numeric-only v-model="address.phone"  placeholder="Mobile number" required maxlength="10">
+                    <label for="" class="form-label">Mobile number1</label>
                   </div>
             </div>
             <div class="col-md-6">
