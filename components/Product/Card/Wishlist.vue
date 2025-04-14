@@ -26,7 +26,8 @@ const onHeartClick = (product) => {
   //console.log(isInWishlist,'isInWishlist')
   if(isInWishlist.value){
     removeFromWishlist(product.id)
-    addToast('Item Removed From Your wishlist','success');
+    // addToast('Item Removed From Your wishlist','success');
+    alert('Item Removed From Your wishlist');
     return false;
   }
   wishlistStore.openAddTo(product)
