@@ -46,6 +46,8 @@ console.log(image_path,'image_path--')
   }
 }
 
+defineExpose({ showImage });
+
 //Watch for changes in quickProduct and set the first image
 watch(props, (props) => {
   currentImage.value = props?.images[0]?.image_url;

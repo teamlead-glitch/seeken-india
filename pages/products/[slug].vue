@@ -9,7 +9,7 @@
             <div class="col-md-6 col-xl-5 mb-4 ">
                 <div class="product_detail">
 
-                  <ProductCardImages :images="product.product_images" v-if="product?.product_images?.length > 0"/>
+                  <ProductCardImages ref="imageRef" :images="product.product_images" v-if="product?.product_images?.length > 0"/>
                 </div>
             </div>
             <div class="col-md-6 col-xl-7">
@@ -138,6 +138,10 @@ const fetchVariant = async (selectedOptions) => {
       console.log('Matched variant:', variant_response.data);
       product.value.final_price = variant_response.data.final_price;
       product.value.price = variant_response.data.price;
+if(variant_response.data.variant_images.length >0 && variant_response.data.variant_images[0]['image_url']){
+    triggerShowImage(variant_response.data.variant_images[0]['image_url']);
+}
+      
     } else {
       alert('Selected variant option is not available.');
     }
@@ -153,6 +157,13 @@ const fetchVariant = async (selectedOptions) => {
     }
   }
 
+};
+
+const imageRef = ref(null);
+
+// Call this to trigger child method
+const triggerShowImage = (imgPath) => {
+  imageRef.value?.showImage(imgPath);
 };
 
 </script>
