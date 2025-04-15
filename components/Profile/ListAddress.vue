@@ -14,7 +14,7 @@
                 <div class="default set" v-if="!adress.is_default">
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option1" @click="setDefault(adress)">
-                <label class="form-check-label" for="inlineRadio4">Se as default</label>
+                <label class="form-check-label" for="inlineRadio4">Set as default</label>
               </div></div>
                 <div class="address__list">
                     <ul>
