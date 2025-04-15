@@ -18,7 +18,7 @@
                     <ProductCardRating :rating="product.rating" :reviewCount="product.review_count"/>
                     
                     
-                    <ProductCardVarientsChoose   :product="product"/>
+                    <ProductCardVarientsChoose   :product="product" @variant-chosen="onVariantChosen"/>
                     
                    
                     <div class="highlights">
@@ -108,6 +108,52 @@ const product = computed(() => response.value?.data);
 const quantity = ref(1);
 
 const { data: featured_products, error1, refresh1 } = useFetchData('featured_products', 'featured-products');
+
+
+
+function onVariantChosen(selectedOptions) {
+    console.log(selectedOptions,'selectedOptions++')
+   
+    fetchVariant(selectedOptions);
+}
+
+const fetchVariant = async (selectedOptions) => {
+  const productId = product.value?.id;
+
+  
+  console.log(selectedOptions,'selectedOptions.value++')
+  const optionIds = Object.values(selectedOptions).join(',');
+
+  
+  try {
+    const variant_response = await $fetch(`${useRuntimeConfig().public.apiBase}product-variant`, {
+      method: 'POST',
+      body: {
+        product_id: productId,
+        option_ids: optionIds,
+      },
+    });
+
+    if (variant_response && variant_response.data) {
+      console.log('Matched variant:', variant_response.data);
+      product.value.final_price = variant_response.data.final_price;
+      product.value.price = variant_response.data.price;
+    } else {
+      alert('Selected variant option is not available.');
+    }
+  } catch (error) {
+    if (error?.response?.status === 404) {
+      alert('Variant not found (404).');
+    }else if (error?.response?.status === 400) {
+    console.error('400 Bad Request:', error.response._data);
+    alert('Selected variant option is not available. Please check selected options.');
+  } else {
+      console.error('Error fetching variant:', error);
+      alert('An error occurred while fetching variant.');
+    }
+  }
+
+};
 
 </script>
 
