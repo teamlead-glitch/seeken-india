@@ -97,6 +97,7 @@
 import { useRoute } from 'vue-router';
 import { useDateFormat } from '~/composables/useDateFormat';
 import { useCartActions } from '@/composables/useCartActions'
+const { addToast } = useToast()
 
 const { handleAddToCart } = useCartActions()
 const { formatDate } = useDateFormat();
@@ -149,17 +150,18 @@ if(variant_response.data.variant_images.length >0 && variant_response.data.varia
 }
       
     } else {
-      alert('Selected variant option is not available.');
+       
+        addToast('Selected variant option is not available.','error');
     }
   } catch (error) {
     if (error?.response?.status === 404) {
-      alert('Variant not found (404).');
+        addToast('Variant not found (404).','error');
     }else if (error?.response?.status === 400) {
     console.error('400 Bad Request:', error.response._data);
-    alert('Selected variant option is not available. Please check selected options.');
+    addToast('Please select Varients.','error');
   } else {
       console.error('Error fetching variant:', error);
-      alert('An error occurred while fetching variant.');
+      addToast('An error occurred while fetching variant.','error');
     }
   }
 
@@ -177,7 +179,7 @@ const cartAdd = (id,quantity) => {
        if(selectedVariantId.value > 0){
         handleAddToCart(id,quantity,selectedVariantId.value);
        }else{
-alert("Please select any varient options")
+        addToast("Please select any varient options",'error')
        }
     }else{
         handleAddToCart(id,quantity,false);
