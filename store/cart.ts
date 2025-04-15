@@ -80,10 +80,10 @@ export const useCartStore = defineStore('cart', {
         this.fetchCartFromServer();
       }
     },
-    addToCart(product_id, quantity=1, action='add') {
+    addToCart(product_id, quantity=1,varient_id=0, action='add') {
 
       
-      this.syncCartWithServer({ product_id, quantity: quantity, action })
+      this.syncCartWithServer({ product_id, quantity: quantity,varient_id, action })
     },
     removeFromCart(productId) {
       this.cart = this.cart.filter(item => item.id !== productId);

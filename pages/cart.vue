@@ -155,7 +155,7 @@ onMounted(() => {
 const updateQuantity = async (item, newQty: number = 1, action = 'add') => {
   if (newQty < 1 || newQty > 10) return;
 
-  await cartStore.addToCart(item.product_id, newQty, action)
+  await cartStore.addToCart(item.product_id, newQty, false, action)
 }
 
 

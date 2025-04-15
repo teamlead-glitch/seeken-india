@@ -78,7 +78,7 @@
                            <button class="quantity-btn plus-btn" @click="quantity++"><i class="bi bi-plus-lg"></i></button>
                        </div>
                    </div>
-                   <button class="btn_1" @click="handleAddToCart(product?.id,quantity)">Add to Cart</button>
+                   <button class="btn_1" @click="cartAdd(product?.id,quantity)">Add to Cart</button>
                    <button class="btn_2">Buy Now</button>
                </div>
            </div>
@@ -106,12 +106,14 @@ const slug = route.params.slug; // Get slug from URL
 const { data: response, error, refresh } = useFetchData('response', `products/${slug}`);
 const product = computed(() => response.value?.data);
 const quantity = ref(1);
+const selectedVariantId = ref(0);
 
 const { data: featured_products, error1, refresh1 } = useFetchData('featured_products', 'featured-products');
 
 
 
 function onVariantChosen(selectedOptions) {
+    selectedVariantId.value = 0;
     console.log(selectedOptions,'selectedOptions++')
    
     fetchVariant(selectedOptions);
@@ -138,7 +140,11 @@ const fetchVariant = async (selectedOptions) => {
       console.log('Matched variant:', variant_response.data);
       product.value.final_price = variant_response.data.final_price;
       product.value.price = variant_response.data.price;
+
+      selectedVariantId.value = variant_response.data.id;
+
 if(variant_response.data.variant_images.length >0 && variant_response.data.variant_images[0]['image_url']){
+    
     triggerShowImage(variant_response.data.variant_images[0]['image_url']);
 }
       
@@ -165,6 +171,25 @@ const imageRef = ref(null);
 const triggerShowImage = (imgPath) => {
   imageRef.value?.showImage(imgPath);
 };
+
+const cartAdd = (id,quantity) => {
+    if(product.value && product.value.product_options?.length > 0){
+       if(selectedVariantId.value > 0){
+        handleAddToCart(id,quantity,selectedVariantId.value);
+       }else{
+alert("Please select any varient options")
+       }
+    }else{
+        handleAddToCart(id,quantity,false);
+    }
+    
+}
+
+watchEffect(() => {
+  if (product.value && product.value.product_variants?.length > 0) {
+    selectedVariantId.value = product.value.product_variants[0].id;
+  }
+});
 
 </script>
 
