@@ -9,7 +9,7 @@
                                             <div class="product__content">
                                                 <div class="top__box">
                                                     <div class="category__name">
-                                                        <h5>Fann</h5>
+                                                        <h5>{{ product.category_name }}</h5>
                                                     </div>
                                                 </div>
                                                 <div class="price__feature">
