@@ -155,7 +155,12 @@ onMounted(() => {
 const updateQuantity = async (item, newQty: number = 1, action = 'add') => {
   if (newQty < 1 || newQty > 10) return;
 
-  await cartStore.addToCart(item.product_id, newQty, false, action)
+  const message = action === 'add'
+    ? 'Increase quantity of this item?'
+    : 'Decrease quantity of this item?'
+    if (confirm(message)) {
+  await cartStore.addToCart(item.product_id, newQty, 0, action)
+    }
 }
 
 

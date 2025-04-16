@@ -10,6 +10,8 @@ export const useCartStore = defineStore('cart', {
   actions: {
 
     async fetchCartFromServer() {
+
+      const { showLoader, hideLoader } = useLoader(); // Use global loader
      
       let item = {};
       const authStore = useAuthStore();
@@ -31,7 +33,7 @@ export const useCartStore = defineStore('cart', {
       }
 
       try {
-
+        showLoader()
         const response = await $fetch(endpoint, {
           method: 'POST',
           headers,
@@ -44,6 +46,8 @@ export const useCartStore = defineStore('cart', {
       } catch (error) {
         this.cart = {};
         console.error('Failed to fetch cart1233:', error);
+      }finally{
+        hideLoader()
       }
     },
 
@@ -81,8 +85,8 @@ export const useCartStore = defineStore('cart', {
       }
     },
     addToCart(product_id, quantity=1,varient_id=0, action='add') {
-
-      
+      const { showLoader, hideLoader } = useLoader(); // Use global loader
+      showLoader()
       this.syncCartWithServer({ product_id, quantity: quantity,varient_id, action })
     },
     removeFromCart(productId) {
