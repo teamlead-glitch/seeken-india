@@ -11,7 +11,7 @@
           :class="{ active: index === 0 }"
           @click="showImage(image.image_url)"
         >
-          <img :src="image.image_url" class="d-block w-100" style="max-width: 74px;">
+          <img :src="image.image_url" class="d-block w-100" ><!--style="max-width: 74px;"-->
         </button>
       </template>
  
@@ -20,7 +20,7 @@
     <div class="carousel-inner" v-if="images">
       
         <div :class="['carousel-item', 'active']">
-          <img :src="currentImage" class="d-block w-100" style="max-height: 451px;object-fit: cover;">
+          <img :src="currentImage" class="d-block w-100" > <!--style="max-height: 451px;object-fit: cover;"-->
         </div>
       
      
