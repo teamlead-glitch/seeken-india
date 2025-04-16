@@ -159,7 +159,7 @@ const updateQuantity = async (item, newQty: number = 1, action = 'add') => {
     ? 'Increase quantity of this item?'
     : 'Decrease quantity of this item?'
     if (confirm(message)) {
-  await cartStore.addToCart(item.product_id, newQty, 0, action)
+  await cartStore.addToCart(item.product_id, newQty, item.variant_id?item.variant_id:0, action)
     }
 }
 
