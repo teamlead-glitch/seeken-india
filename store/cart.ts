@@ -84,10 +84,13 @@ export const useCartStore = defineStore('cart', {
         this.fetchCartFromServer();
       }
     },
-    addToCart(product_id, quantity=1,varient_id=0, action='add') {
+    addToCart(product_id, quantity=1,variant_id=0, action='add') {
       const { showLoader, hideLoader } = useLoader(); // Use global loader
       showLoader()
-      this.syncCartWithServer({ product_id, quantity: quantity,varient_id, action })
+      if(variant_id ==0){
+        variant_id=null;
+      }
+      this.syncCartWithServer({ product_id, quantity: quantity,variant_id, action })
     },
     removeFromCart(productId) {
       this.cart = this.cart.filter(item => item.id !== productId);
