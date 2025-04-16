@@ -94,6 +94,8 @@ async function setDefault(address) {
 
 async function deleteAddress(address) {
 
+  if (confirm("Are you sure you want to delete this address?")) {
+
 showLoader();
 
 try {
@@ -111,6 +113,8 @@ try {
 } finally {
   hideLoader();
 }
+
+  }
 
 }
 
