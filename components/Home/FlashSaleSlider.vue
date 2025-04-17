@@ -40,7 +40,7 @@
              
               <ProductCardCountDown :endTime="item.to_date"/>
               <a class="btn_1"  @click="handleAddToCart(item?.id)">Add to cart </a>
-              <NuxtLink :to="`/products/${item.slug}`" class="btn_2">Buy Now </NuxtLink>
+              <NuxtLink :to="`/buy-now/${item.slug}`" class="btn_2">Buy Now </NuxtLink>
             </div>
           </div>
           <!-- desktop close  -->

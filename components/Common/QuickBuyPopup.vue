@@ -45,7 +45,7 @@
       <button class="quantity-btn plus-btn" @click="quantity++"><i class="bi bi-plus-lg"></i></button>
     </div>
     <button class="btn_2" @click="cartAdd(quickProduct,quantity)" data-bs-dismiss="offcanvas">Add to Cart</button>
-    <button class="btn_1">Buy Now</button>
+    <button @click="buyNow(quickProduct.slug)"  class="btn_1" data-bs-dismiss="offcanvas">Buy Now</button>
   </div>
   <div class="view_detail">
     <NuxtLink class="btn_3" :to="`/products/${quickProduct?.slug}`">More Details</NuxtLink>
@@ -58,6 +58,7 @@
 
 import { useQuickProductInject } from '@/composables/useQuickBuy';
 import { useCartActions } from '@/composables/useCartActions'
+const router = useRouter()
 
 const { handleAddToCart } = useCartActions()
 
@@ -71,6 +72,10 @@ const cartAdd = (quickProduct,quantity) => {
   handleAddToCart(quickProduct?.id,quantity, quickProduct.variant_id?quickProduct.variant_id:0)
    
     
+}
+
+const buyNow = (slug) => {
+  router.push('/buy-now/'+slug)
 }
 
 
