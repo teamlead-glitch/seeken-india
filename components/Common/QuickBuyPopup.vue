@@ -44,7 +44,7 @@
       <input type="number" class="quantity" v-model="quantity" min="1" max="10">
       <button class="quantity-btn plus-btn" @click="quantity++"><i class="bi bi-plus-lg"></i></button>
     </div>
-    <button class="btn_2" @click="handleAddToCart(quickProduct?.id,quantity)" data-bs-dismiss="offcanvas">Add to Cart</button>
+    <button class="btn_2" @click="cartAdd(quickProduct,quantity)" data-bs-dismiss="offcanvas">Add to Cart</button>
     <button class="btn_1">Buy Now</button>
   </div>
   <div class="view_detail">
@@ -65,6 +65,13 @@ const { quickProduct } = useQuickProductInject();
 
 
 const quantity = ref(1);
+
+const cartAdd = (quickProduct,quantity) => {
+
+  handleAddToCart(quickProduct?.id,quantity, quickProduct.variant_id?quickProduct.variant_id:0)
+   
+    
+}
 
 
 
