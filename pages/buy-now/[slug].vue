@@ -3,7 +3,7 @@
   <section class="inner_container" v-if="product">
         <div class="container">
          <div class="row justify-content-center">
-           <CheckoutContactInfo/>
+           <CheckoutContactInfo :billing_address="billing_address" :shipping_address="shipping_address"/>
            <!-- {{ product }} -->
 <div class="col-md-5 col-xl-4">
     <div class="total_prices ">
@@ -74,6 +74,8 @@ const route = useRoute();
 const slug = route.params.slug; // Get slug from URL
 const { data: response, error, refresh } = useFetchData('response', `products/${slug}`);
 const product = computed(() => response.value?.data);
+const billing_address = ref({});
+const shipping_address = ref({});
 
 const payNow = () => {
   addToast("⚠️ Payment integration is in progress. We'll be launching soon!", 'error')
