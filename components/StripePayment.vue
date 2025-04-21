@@ -1,5 +1,20 @@
 <!-- components/StripePayment.vue -->
 <template>
+  
+  <!-- replace this button with paynow -->
+  <button class="btn_2" data-bs-toggle="offcanvas" data-bs-target="#paymentOffcanvas">Pay Now</button>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="paymentOffcanvas" >
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Secure Payment</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"><i
+      class="bi bi-x-lg"></i></button>
+  </div>
+  <div class="offcanvas-body">
+    
+
+
+     <!-- stripe component -->
   <div class="container mt-5">
     <div class="card shadow m-5">
       <div class="card-body ">
@@ -24,7 +39,7 @@
           :disabled="loading"
           class="btn btn-primary w-100 ml-5 mr-5"
         >
-          <span v-if="!loading">Pay $20.00</span>
+          <span v-if="!loading">Pay ${{amount}}</span>
           <span v-else>Processing...</span>
         </button>
 
@@ -36,6 +51,20 @@
       </div>
     </div>
   </div>
+   <!-- stripe component ends-->
+
+
+
+
+  </div>
+</div>
+  
+  
+ 
+
+
+
+
 </template>
 
 <script setup>
@@ -53,6 +82,10 @@ const error = ref(null)
 const success = ref(false)
 const loading = ref(false)
 
+const props = defineProps({
+  amount:  Number | String
+});
+
 onMounted(async () => {
   stripe = await loadStripe(stripePublicKey)
   elements = stripe.elements()
@@ -68,7 +101,7 @@ const handlePayment = async () => {
   // 🔁 Replace with API call
   // const { data } = await useFetch('/api/create-payment-intent', {
   //   method: 'POST',
-  //   body: { amount: 2000 }
+  //   body: { amount: props.amount }
   // })
 
   const clientSecret = 'pi_XXX_secret_XXX' // Replace with your real one

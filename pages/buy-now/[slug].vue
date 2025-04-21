@@ -46,7 +46,8 @@
             </div>
         </div>
         <div class="checkout__btn">
-            <button class="btn_2" @click="payNow">Pay Now</button>
+            <!-- <button class="btn_2" @click="payNow">Pay Now</button> -->
+            <StripePayment :amount="product.final_price"/>
         </div>
         <div class="cancellation">
             <h5>Order Cancellation Charges</h5>
