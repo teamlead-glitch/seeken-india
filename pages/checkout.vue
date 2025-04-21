@@ -3,7 +3,7 @@
  <section class="inner_container">
         <div class="container">
          <div class="row justify-content-center">
-          <CheckoutContactInfo/>
+          <CheckoutContactInfo :billing_address="billing_address" :shipping_address="shipping_address"/>
 <div class="col-md-5 col-xl-4">
     <div class="total_prices ">
         <h3>View Order</h3>
@@ -73,7 +73,8 @@ import { onMounted, computed } from 'vue'
 import { useCartStore } from '~/store/cart'
 const { addToast } = useToast()
 
-
+const billing_address = ref({});
+const shipping_address = ref({});
 
 const cartStore = useCartStore()
 const cart = computed(() => cartStore.cart)
