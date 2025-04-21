@@ -1,0 +1,88 @@
+<!-- components/StripePayment.vue -->
+<template>
+  <div class="container mt-5">
+    <div class="card shadow m-5">
+      <div class="card-body ">
+        <h5 class="card-title d-flex align-items-center gap-2 mb-4">
+          <img src="https://stripe.com/img/v3/powered_by_stripe.png" alt="Stripe" height="18" />
+          Secure Payment
+        </h5>
+
+        <!-- Card Brand Icons -->
+        <div class="mb-3 d-flex gap-3 align-items-center">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" height="25" alt="Visa" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" height="25" alt="MasterCard" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo_%282018%29.svg" height="25" alt="Amex" />
+        </div>
+
+        <!-- Stripe Card Element -->
+        <div id="card-element" class="form-control p-3 mb-4"></div>
+
+        <!-- Payment Button -->
+        <button
+          @click="handlePayment"
+          :disabled="loading"
+          class="btn btn-primary w-100 ml-5 mr-5"
+        >
+          <span v-if="!loading">Pay $20.00</span>
+          <span v-else>Processing...</span>
+        </button>
+
+        <!-- Feedback -->
+        <div class="mt-3">
+          <div v-if="error" class="alert alert-danger">{{ error }}</div>
+          <div v-if="success" class="alert alert-success">✅ Payment successful!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { onMounted, ref } from 'vue'
+import { loadStripe } from '@stripe/stripe-js'
+
+const config = useRuntimeConfig()
+const stripePublicKey = config.public.stripePublicKey
+
+let stripe
+let elements
+let card
+
+const error = ref(null)
+const success = ref(false)
+const loading = ref(false)
+
+onMounted(async () => {
+  stripe = await loadStripe(stripePublicKey)
+  elements = stripe.elements()
+  card = elements.create('card')
+  card.mount('#card-element')
+})
+
+const handlePayment = async () => {
+  error.value = null
+  success.value = false
+  loading.value = true
+
+  // 🔁 Replace with API call
+  // const { data } = await useFetch('/api/create-payment-intent', {
+  //   method: 'POST',
+  //   body: { amount: 2000 }
+  // })
+
+  const clientSecret = 'pi_XXX_secret_XXX' // Replace with your real one
+
+  const result = await stripe.confirmCardPayment(clientSecret, {
+    payment_method: { card }
+  })
+
+  if (result.error) {
+    error.value = result.error.message
+  } else if (result.paymentIntent.status === 'succeeded') {
+    success.value = true
+  }
+
+  loading.value = false
+}
+</script>
