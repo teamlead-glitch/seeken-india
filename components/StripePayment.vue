@@ -25,9 +25,13 @@
 
         <!-- Card Brand Icons -->
         <div class="mb-3 d-flex gap-3 align-items-center">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" height="25" alt="Visa" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" height="25" alt="MasterCard" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo_%282018%29.svg" height="25" alt="Amex" />
+       
+          <img :src="`/images/visa.svg`" alt="visa" height="45">
+            <img :src="`/images/maestro.svg`" alt="visa" height="45">
+            <img :src="`/images/mastercard.svg`" alt="visa" height="45">
+            <img :src="`/images/rupay.svg`" alt="visa" height="45">
+            <img :src="`/images/american-express.svg`" alt="visa" height="45">
+        
         </div>
 
         <!-- Stripe Card Element -->
