@@ -23,7 +23,7 @@
             <li>
               <p> <strong>{{ adress.first_name }} {{ adress.last_name }}</strong> <br>
                 {{ adress.address }} <br>
-                {{ adress.city }}, {{ adress.location }}, {{ adress.landmark }}, {{ adress.pincode }}</p>
+                {{ adress.city }}, {{ adress.location }}, {{ adress.pincode }}, {{ adress.landmark }}</p>
             </li>
             <li>
               <p> {{ adress.phone }}<br>
