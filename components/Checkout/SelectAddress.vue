@@ -14,7 +14,7 @@
           <div class="col-md-6 mb-4" v-for="adress in result.addresses">
 
             <div class="shipping__boxes">
-              <div class="default" v-if="adress.id == billing_address.id">Selected</div>
+              <div class="default" v-if="adress.id == shipping_address.id">Selected</div>
 
               <div class="address__list">
                 <ul>
