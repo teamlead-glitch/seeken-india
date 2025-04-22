@@ -74,7 +74,7 @@
                        <h4>Quatity</h4>
                        <div class="quantity-input">
                            <button class="quantity-btn minus-btn" @click="quantity > 1 ? quantity-- : null"><i class="bi bi-dash-lg"></i></button>
-                           <input type="number" class="quantity" v-model="quantity" min="1" max="10">
+                           <input type="number" class="quantity" v-model="quantity">
                            <button class="quantity-btn plus-btn" @click="quantity++"><i class="bi bi-plus-lg"></i></button>
                        </div>
                    </div>

@@ -141,7 +141,7 @@ onMounted(() => {
 })
 
 const updateQuantity = async (item, newQty: number = 1, action = 'add') => {
-  if (newQty < 1 || newQty > 10) return;
+  //if (item.quantity < 1 || item.quantity > 10) return;
 
   let message = action === 'add'
     ? 'Increase quantity of this item?'
