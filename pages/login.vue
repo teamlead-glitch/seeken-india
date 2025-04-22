@@ -39,8 +39,12 @@
               </div>
               <div class="col-12 mb-3">
                 <div class="form-floating mb-3">
-                  <input type="password" class="form-control border-0 border-bottom rounded-0" v-model="password"
-                    placeholder="Password" required>
+                 
+                          <div class="password"><i class="bi " :class="showPassword ? 'bi-eye' : 'bi-eye-slash'" @click="showPassword = !showPassword"></i></div>
+
+                  <input :type="showPassword ? 'text' : 'password'" class="form-control border-0 border-bottom rounded-0" v-model="password"
+                    placeholder="Password" required >
+                   
                   <label for="password" class="form-label">Password</label>
                 </div>
                 <p class="success-message" v-if="success">{{ success }}</p>
@@ -148,6 +152,7 @@ const authStore = useAuthStore();
 const reset_email = ref('');
 
 const isShowLogin = ref(true);
+const showPassword = ref(false);
 
 onMounted(() => {
   

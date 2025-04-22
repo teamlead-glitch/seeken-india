@@ -16,7 +16,7 @@
             </div>
             <div class="col-md-12 ">
                 <div class="form-floating ">
-                    <textarea v-model="address.address" class="form-control border-0 border-bottom rounded-0" placeholder="Address" id="floatingTextarea"></textarea>
+                    <textarea v-model="address.address" class="form-control border-0 border-bottom rounded-0" placeholder="Address" id="floatingTextarea" required></textarea>
   <label for="floatingTextarea" class="form-label">Address</label>
                   </div>
             </div>
