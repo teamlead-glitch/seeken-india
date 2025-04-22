@@ -41,13 +41,13 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="shipping_address.pincode"  placeholder="Pin code" required>
+                            <input type="text" class="form-control border-0 border-bottom rounded-0" v-numeric-only v-model="shipping_address.pincode"  placeholder="Pin code" required maxlength="6">
                             <label for="" class="form-label">Pin code</label>
                           </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="shipping_address.phone"  placeholder="Pin code" required>
+                            <input type="text" class="form-control border-0 border-bottom rounded-0" v-numeric-only v-model="shipping_address.phone"  placeholder="Mobile" required maxlength="10">
                             <label for="" class="form-label">Mobile</label>
                           </div>
                     </div>
@@ -92,13 +92,13 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="billing_address.pincode"  placeholder="Pin code" required>
+                            <input type="text" class="form-control border-0 border-bottom rounded-0" v-numeric-only v-model="billing_address.pincode"  placeholder="Pin code" required maxlength="6">
                             <label for="" class="form-label">Pin code</label>
                           </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="billing_address.phone"  placeholder="Pin code" required>
+                            <input type="text" class="form-control border-0 border-bottom rounded-0" v-numeric-only v-model="billing_address.phone"  placeholder="Pin code" required maxlength="10">
                             <label for="" class="form-label">Mobile</label>
                           </div>
                     </div>
