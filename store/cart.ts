@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { useAuthStore } from '~/store/auth';
 import { useGuestToken } from '@/composables/useGuestToken'
+const { addToast } = useToast()
 
 export const useCartStore = defineStore('cart', {
 
@@ -91,19 +92,20 @@ export const useCartStore = defineStore('cart', {
         variant_id=null;
       }
       this.syncCartWithServer({ product_id, quantity: quantity,variant_id, action })
+      addToast("The cart was updated successfully.!", 'success')
     },
-    removeFromCart(productId) {
-      this.cart = this.cart.filter(item => item.id !== productId);
-    },
-    updateCartQuantity(productId, change) {
-      const item = this.cart.find((item) => item.id === productId);
-      if (item) {
-        item.quantity += change;
-        if (item.quantity <= 0) {
-          this.cart = this.cart.filter((item) => item.id !== productId);
-        }
-      }
-    }
+    // removeFromCart(productId) {
+    //   this.cart = this.cart.filter(item => item.id !== productId);
+    // },
+    // updateCartQuantity(productId, change) {
+    //   const item = this.cart.find((item) => item.id === productId);
+    //   if (item) {
+    //     item.quantity += change;
+    //     if (item.quantity <= 0) {
+    //       this.cart = this.cart.filter((item) => item.id !== productId);
+    //     }
+    //   }
+    // }
   },
   persist: true, // Enable persistence
 });
