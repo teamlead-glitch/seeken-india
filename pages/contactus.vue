@@ -73,7 +73,7 @@
                             </div>
                             <div class="col-md-12 ">
                                 <div class="form-floating ">
-                                    <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="contactus.phone" placeholder="Mobile number" required>
+                                    <input type="text" class="form-control border-0 border-bottom rounded-0" v-numeric-only v-model="contactus.phone" placeholder="Mobile number" maxlength="10" required>
                                     <label for="" class="form-label">Mobile number</label>
                                   </div>
                             </div>
