@@ -79,7 +79,7 @@
                        </div>
                    </div>
                    <button class="btn_1" @click="cartAdd(product?.id,quantity)">Add to Cart</button>
-                   <button class="btn_2">Buy Now</button>
+                   <NuxtLink class="btn_2" :to="`/buy-now/${product?.slug}`">Buy Now</NuxtLink>
                </div>
            </div>
        </div>
