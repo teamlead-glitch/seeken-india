@@ -2,7 +2,7 @@
 <template>
   
   <!-- replace this button with paynow -->
-  <button class="btn_2" data-bs-toggle="offcanvas" data-bs-target="#paymentOffcanvas">Pay Now</button>
+  <button class="btn_2" @click="validateBeforeOpening">Pay Now</button>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="paymentOffcanvas" >
   <div class="offcanvas-header">
@@ -19,7 +19,7 @@
     <div class="card shadow m-5">
       <div class="card-body ">
         <h5 class="card-title d-flex align-items-center gap-2 mb-4">
-          <img src="https://stripe.com/img/v3/powered_by_stripe.png" alt="Stripe" height="18" />
+          <img :src="`/images/stripe.png`" alt="Stripe" height="38" />
           Secure Payment
         </h5>
 
@@ -87,7 +87,8 @@ const success = ref(false)
 const loading = ref(false)
 
 const props = defineProps({
-  amount:  Number | String
+  amount:  Number | String,
+  validation: Function
 });
 
 onMounted(async () => {
@@ -96,6 +97,17 @@ onMounted(async () => {
   card = elements.create('card')
   card.mount('#card-element')
 })
+
+const validateBeforeOpening = () => {
+  if (props.validation && !props.validation()) {
+    return // Don't open if validation fails
+  }
+
+  // Open the offcanvas manually using Bootstrap's JS API
+  const offcanvasEl = document.getElementById('paymentOffcanvas')
+  const offcanvas = new bootstrap.Offcanvas(offcanvasEl)
+  offcanvas.show()
+}
 
 const handlePayment = async () => {
   error.value = null

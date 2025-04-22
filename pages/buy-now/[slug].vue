@@ -47,7 +47,7 @@
         </div>
         <div class="checkout__btn">
             <!-- <button class="btn_2" @click="payNow">Pay Now</button> -->
-            <StripePayment :amount="product.final_price"/>
+            <StripePayment :amount="product.final_price" :validation="validateInputs"/>
         </div>
         <div class="cancellation">
             <h5>Order Cancellation Charges</h5>
@@ -78,9 +78,41 @@ const product = computed(() => response.value?.data);
 const billing_address = ref({});
 const shipping_address = ref({});
 
-const payNow = () => {
-  addToast("⚠️ Payment integration is in progress. We'll be launching soon!", 'error')
+const validateInputs = () => {
+  //addToast("⚠️ Payment integration is in progress. We'll be launching soon!", 'error')
+  const is_valid_shipping_address = validateAddress()
+  if(is_valid_shipping_address){
+    const is_valid_billing_address = validateAddress(billing_address.value)
+    if(is_valid_billing_address){
+        return true;
+    }
+  }
+  return false;
 }
+
+
+const validateAddress = (validate_obj=shipping_address.value) => {
+  const requiredFields = [
+    'first_name',
+    'last_name',
+    'address',
+    'city',
+    'location',
+    'pincode',
+    'phone',
+    
+  ];
+
+  for (let field of requiredFields) {
+    if (!validate_obj[field]) {
+      const formattedField = field.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      addToast(`${formattedField} is required`, 'error');
+      return false;
+    }
+  }
+
+  return true; // All fields are valid
+};
 
 </script>
 

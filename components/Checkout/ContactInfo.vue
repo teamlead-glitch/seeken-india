@@ -126,10 +126,9 @@ function toggleRadio() {
       address: '',
       city: '',
       location: '',
-      landmark: '',
       pincode: '',
       phone: '',
-      email: ''
+     
     })
   } else {
     addressOption.value = 'option1'
