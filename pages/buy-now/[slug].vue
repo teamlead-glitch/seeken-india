@@ -46,8 +46,9 @@
             </div>
         </div>
         <div class="checkout__btn">
-            <!-- <button class="btn_2" @click="payNow">Pay Now</button> -->
-            <StripePayment :amount="product.final_price" :validation="validateInputs"/>
+            
+            <!-- <StripePayment :amount="product.final_price" :validation="validateInputs"/> -->
+            <RazorpayPayment :amount="product.final_price" :validation="validateInputs"/>
         </div>
         <div class="cancellation">
             <h5>Order Cancellation Charges</h5>
