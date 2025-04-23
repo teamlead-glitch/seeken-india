@@ -110,7 +110,9 @@ const validateAddress = (validate_obj=shipping_address.value) => {
   ];
 
   for (let field of requiredFields) {
-    if (!validate_obj[field]) {
+    const value = validate_obj[field];
+
+    if (!value || String(value).trim() === '') {
       const formattedField = field.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
       addToast(`${formattedField} is required`, 'error');
       return false;
