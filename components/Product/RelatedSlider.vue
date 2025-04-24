@@ -124,7 +124,7 @@ const props = defineProps({
 .swiper-button-next,
 .swiper-button-prev {
   position: absolute;
-  top: 50%;
+  top: 38%;
   transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.7); /* Black with transparency */
   border-radius: 50%;

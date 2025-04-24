@@ -126,4 +126,8 @@ const props = defineProps({
   color: white;
   font-size: 20px;
 }
+
+.top__picks .tab-pane .top_picks .product__box .top_box .view__wishlist{
+  top: 24%;
+}
 </style>
