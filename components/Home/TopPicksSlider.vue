@@ -5,7 +5,7 @@
     :spaceBetween="30"
     :slidesPerView="4"
     :centeredSlides="false"
-    :loop="true"
+    :loop="false"
     :autoplay="{ delay: 4000, disableOnInteraction: false }"
     :navigation="showArrows ? { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' } : false"
     :breakpoints="{
@@ -150,5 +150,9 @@ const showArrows = computed(() => props.slides?.length > currentSlidesPerView.va
 
 .top__picks .tab-pane .top_picks .product__box .top_box .view__wishlist{
   top: 24%;
+}
+
+.swiper-button-disabled{
+  display: none;
 }
 </style>
