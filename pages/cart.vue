@@ -105,33 +105,43 @@
         </div>
       </div>
 
-      <CheckoutSupportedPayments/>
+      <CheckoutSupportedPayments />
     </div>
   </section>
 
 
   <section class="inner_container" v-else>
+
+
     <div class="container">
-      <div  class="empty-cart" style="margin:0 30%;">
-      
-      <div class="total_prices">
-        <p>Your cart is empty.</p>
-      <div class="checkout__btn">
-      <NuxtLink to="/">
-        
-        <button class="btn_2">Start Shopping</button>
-      </NuxtLink>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="empty__cart">
+            <img src="/images/empyt-cart.svg" alt="seeken">
+            <h5>Your cart is empty</h5>
+            <p>Sign in to your Seeken account to view your saved items or continue shopping</p>
+            <div class="btn_box">
+              <NuxtLink to="/" class="btn_1">Continue shopping</NuxtLink>
+              <NuxtLink to="/login" class="btn_2" v-if="!authStore.token">Sign in</NuxtLink>
+            </div>
+          </div>
+        </div>
       </div>
+      <CheckoutSupportedPayments />
     </div>
-    </div>
-    </div>
+
   </section>
+
+
 </template>
 
 
 <script setup lang="ts">
 import { onMounted, computed } from 'vue'
 import { useCartStore } from '~/store/cart'
+import { useAuthStore } from '~/store/auth';
+
+const authStore = useAuthStore();
 
 const cartStore = useCartStore()
 const cart = computed(() => cartStore.cart)
@@ -148,12 +158,12 @@ const updateQuantity = async (item, newQty: number = 1, action = 'add') => {
     : 'Decrease quantity of this item?'
 
 
-  if(action == 'minus' && newQty == item.quantity){
+  if (action == 'minus' && newQty == item.quantity) {
     message = 'Are you sure you want to delete this item from the cart?';
   }
-    if (confirm(message)) {
-  await cartStore.addToCart(item.product_id, newQty, item.variant_id?item.variant_id:0, action)
-    }
+  if (confirm(message)) {
+    await cartStore.addToCart(item.product_id, newQty, item.variant_id ? item.variant_id : 0, action)
+  }
 }
 
 
