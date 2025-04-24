@@ -11,7 +11,7 @@
       <div class="search_wishlist">
         <div class="wishlist"> <NuxtLink to="/wishlist">
             <div class="icon"><img src="/images/whislist.svg" alt="search">
-              <!-- <div class="count">2</div> -->
+              <div class="count">{{ wishlistCount }}</div>
             </div>
           </NuxtLink> </div>
         <div class="search">
@@ -35,9 +35,13 @@
 <script setup lang="ts">
 
 import { useAuthStore } from '~/store/auth';
+import { useWishlistStore } from '@/store/wishlist'
 const authStore = useAuthStore();
 const route = useRoute();
 
 const isLoginPage = computed(() => route.path === '/login');
+
+const wishlistStore = useWishlistStore()
+const wishlistCount = computed(() => (wishlistStore.list || []).length);
 
 </script>
