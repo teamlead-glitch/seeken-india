@@ -36,7 +36,7 @@
                 <div class="content">
                   <div class="calendar"><i class="bi bi-calendar4"></i> {{ formatDate(item.created_at) }}</div>
                   <h3>{{ item.title }}</h3>
-                  <p>{{ item.description }}</p>
+                  <p>{{ item.short_description }}</p>
                 </div>
               </NuxtLink>
             </SwiperSlide>
@@ -46,8 +46,10 @@
         </div>
       </div>
       <div class="row">
+       
         <div class="col-md-12 d-flex justify-content-center">
-          <NuxtLink to="/blog">View More <i class="bi bi-arrow-right"></i></NuxtLink>
+         
+          <NuxtLink to="/blog" class="btn_2">View More <i class="bi bi-arrow-right"></i></NuxtLink>
         </div>
       </div>
     </div>
