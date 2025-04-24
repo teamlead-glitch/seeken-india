@@ -48,7 +48,7 @@
     <button @click="buyNow(quickProduct.slug)"  class="btn_1" data-bs-dismiss="offcanvas">Buy Now</button>
   </div>
   <div class="view_detail">
-    <NuxtLink class="btn_3" :to="`/products/${quickProduct?.slug}`">More Details</NuxtLink>
+    <button class="btn_3" @click="moredetails(quickProduct.slug)" data-bs-dismiss="offcanvas">More Details</button>
   </div>
 
 </div>
@@ -76,6 +76,10 @@ const cartAdd = (quickProduct,quantity) => {
 
 const buyNow = (slug) => {
   router.push('/buy-now/'+slug)
+}
+
+const moredetails = (slug) => {
+  router.push('/products/'+slug)
 }
 
 
