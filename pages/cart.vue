@@ -116,7 +116,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-6">
-          <div class="empty__cart">
+          <div class="empty__cart" style="min-height: auto;">
             <img src="/images/empyt-cart.svg" alt="seeken">
             <h5>Your cart is empty</h5>
             <p>Sign in to your Seeken account to view your saved items or continue shopping</p>
