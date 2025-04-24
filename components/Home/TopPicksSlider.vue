@@ -7,7 +7,7 @@
     :centeredSlides="false"
     :loop="true"
     :autoplay="{ delay: 4000, disableOnInteraction: false }"
-    :navigation="{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }"
+    :navigation="showArrows ? { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' } : false"
     :breakpoints="{
         1024: { slidesPerView: 4, spaceBetween: 30 },
         768: { slidesPerView: 3, spaceBetween: 20 },
@@ -48,8 +48,8 @@
     
     </SwiperSlide>
     <!-- Navigation Arrows -->
-    <div class="swiper-button-next"><i class="bi bi-arrow-right"></i></div>
-    <div class="swiper-button-prev"><i class="bi bi-arrow-left"></i></div>
+    <div v-if="showArrows" class="swiper-button-next"><i class="bi bi-arrow-right"></i></div>
+    <div v-if="showArrows" class="swiper-button-prev"><i class="bi bi-arrow-left"></i></div>
   </Swiper>
 </div>
 </template>
@@ -75,6 +75,27 @@ const props = defineProps({
   slides: Array
 });
 
+
+const currentSlidesPerView = ref(4) // default for desktop
+
+const updateSlidesPerView = () => {
+  const width = window.innerWidth
+  if (width >= 1024) currentSlidesPerView.value = 4
+  else if (width >= 768) currentSlidesPerView.value = 3
+  else if (width >= 480) currentSlidesPerView.value = 2
+  else currentSlidesPerView.value = 1
+}
+
+onMounted(() => {
+  updateSlidesPerView()
+  window.addEventListener('resize', updateSlidesPerView)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateSlidesPerView)
+})
+
+const showArrows = computed(() => props.slides?.length > currentSlidesPerView.value)
 
 </script>
 
