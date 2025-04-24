@@ -1,5 +1,5 @@
 <template>
-    <button @click="makePayment(amount)" class="btn_2">Pay Nowww</button>
+    <button @click="makePayment(amount)" class="btn_2">Pay Now</button>
   </template>
   
   <script setup>
