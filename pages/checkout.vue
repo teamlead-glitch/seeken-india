@@ -72,7 +72,10 @@
 
 import { onMounted, computed } from 'vue'
 import { useCartStore } from '~/store/cart'
+import { useCheckoutAddressValidator } from '~/composables/useCheckoutAddressValidator'
+
 const { addToast } = useToast()
+const { validateAddress } = useCheckoutAddressValidator()
 
 const contactInfoRef = ref(null);
 
@@ -88,9 +91,9 @@ onMounted(() => {
 
 const validateInputs = () => {
   //addToast("⚠️ Payment integration is in progress. We'll be launching soon!", 'error')
-  const is_valid_shipping_address = validateAddress(shipping_address.value, 'ship')
+  const is_valid_shipping_address = validateAddress(shipping_address.value, contactInfoRef, 'ship')
   if(is_valid_shipping_address){
-    const is_valid_billing_address = validateAddress(billing_address.value, 'bill')
+    const is_valid_billing_address = validateAddress(billing_address.value, contactInfoRef, 'bill')
     if(is_valid_billing_address){
         return true;
     }
@@ -99,37 +102,37 @@ const validateInputs = () => {
 }
 
 
-const validateAddress = (validate_obj = shipping_address.value, type = 'ship') => {
-  const requiredFields = [
-    'first_name',
-    'last_name',
-    'address',
-    'city',
-    'location',
-    'pincode',
-    'phone',
-  ];
+// const validateAddress = (validate_obj = shipping_address.value, type = 'ship') => {
+//   const requiredFields = [
+//     'first_name',
+//     'last_name',
+//     'address',
+//     'city',
+//     'location',
+//     'pincode',
+//     'phone',
+//   ];
 
-  const refs =
-    type === 'ship'
-      ? contactInfoRef.value?.ship_fieldRefs
-      : contactInfoRef.value?.bill_fieldRefs;
+//   const refs =
+//     type === 'ship'
+//       ? contactInfoRef.value?.ship_fieldRefs
+//       : contactInfoRef.value?.bill_fieldRefs;
 
-  for (let field of requiredFields) {
-    const value = validate_obj[field];
+//   for (let field of requiredFields) {
+//     const value = validate_obj[field];
 
-    if (!value || String(value).trim() === '') {
-      const formattedField = field.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
-      addToast(`${formattedField} is required`, 'error');
+//     if (!value || String(value).trim() === '') {
+//       const formattedField = field.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+//       addToast(`${formattedField} is required`, 'error');
 
-      // Focus the input
-      refs?.[field]?.value?.focus();
-      return false;
-    }
-  }
+//       // Focus the input
+//       refs?.[field]?.value?.focus();
+//       return false;
+//     }
+//   }
 
-  return true;
-};
+//   return true;
+// };
 
 
 </script>
