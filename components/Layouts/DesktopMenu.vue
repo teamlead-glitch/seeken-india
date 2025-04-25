@@ -31,9 +31,9 @@
                     <!-- Right Box -->
                     <div class="right-box">
                       <div id="content1" class="content active">
-                        <ul v-if="categoryTree[activeIndex]?.sub_categories?.length">
-                          <li v-for="sub in categoryTree[activeIndex].sub_categories" :key="sub.id">
-                            <a href="listing.html">{{ sub.name }}</a>
+                        <ul v-if="categoryTree[activeIndex]?.children?.length">
+                          <li v-for="sub in categoryTree[activeIndex].children" :key="sub.id">
+                            <NuxtLink :to="`/list?category=${sub.id}`">{{ sub.name }}</NuxtLink>
                           </li>
                         </ul>
                         <p v-else>No subcategories available.</p>
