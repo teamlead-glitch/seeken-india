@@ -112,7 +112,7 @@
                     <li>
                       <NuxtLink to="/profile">My Page</NuxtLink>
                     </li>
-                    <li><NuxtLink to="/">Orders</NuxtLink></li>
+                    <li><NuxtLink to="/orders">Orders</NuxtLink></li>
                     <li><NuxtLink to="/wishlist">Wishlist</NuxtLink></li>
                     <li>
                       <NuxtLink @click="logout" href="/">Logout</NuxtLink>
