@@ -24,9 +24,9 @@
             <div class="colums">
               <h4>Order #{{ order.order_id }}</h4>
               <div class="orderdetail">
-                <a :href="order.details_url">View Order details</a>
+                <a href="#">View Order details</a>
                 <span>|</span>
-                <a :href="order.invoice_url">View Invoice</a>
+                <a href="#">View Invoice</a>
               </div>
             </div>
           </div>
@@ -55,17 +55,17 @@
                     {{ item.return_eligible_till }}
                   </h6>
                   <div class="btn__boxes">
-                    <a :href="item.actions.buy_again" class="btn_1">Buy it again</a>
-                    <a :href="item.actions.view_item" class="btn_2">View your item</a>
-                    <a :href="item.actions.track_package" class="btn_2">Track package</a>
+                    <a href="#" class="btn_1">Buy it again</a>
+                    <a href="#" class="btn_2">View your item</a>
+                    <a href="#" class="btn_2">Track package</a>
                   </div>
                 </div>
               </div>
               <!-- Mobile buttons -->
               <div class="btn__boxes__mob">
-                <a :href="item.actions.buy_again" class="btn_1">Buy it again</a>
-                <a :href="item.actions.view_item" class="btn_2">View your item</a>
-                <a :href="item.actions.track_package" class="btn_2">Track package</a>
+                <a href="#" class="btn_1">Buy it again</a>
+                <a href="#" class="btn_2">View your item</a>
+                <a href="#" class="btn_2">Track package</a>
               </div>
             </div>
           </div>
