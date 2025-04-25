@@ -33,7 +33,7 @@
                       <div id="content1" class="content active">
                         <ul v-if="categoryTree[activeIndex]?.children?.length">
                           <li v-for="sub in categoryTree[activeIndex].children" :key="sub.id">
-                            <NuxtLink :to="`/list?category=${sub.id}`">{{ sub.name }}</NuxtLink>
+                            <NuxtLink :to="`/list?category=${categoryTree[activeIndex]?.id}&sub=${sub.id}`">{{ sub.name }}</NuxtLink>
                           </li>
                         </ul>
                         <p v-else>No subcategories available.</p>
