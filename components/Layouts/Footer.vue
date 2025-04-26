@@ -19,13 +19,8 @@
               <h5>Products</h5>
               <div class="ftr__list">
                 <ul>
-                  <li><a href="#">Fan</a></li>
-                  <li><a href="#">LP Gas Stove</a></li>
-                  <li><a href="#">Pressure Cooker</a></li>
-                  <li><a href="#">Non Stick Cookware</a></li>
-                  <li><a href="#">Electric Iron</a></li>
-                  <li><a href="#">Smart Watch</a></li>
-                  <li><a href="#">Mobile Accessories</a></li>
+                  <li v-for="cat in categories"><NuxtLink :to="`/list?category=${cat.id}`">{{ cat.name }}</NuxtLink></li>
+                  
                 </ul>
               </div>
             </div>
@@ -33,10 +28,10 @@
               <h5>About company</h5>
               <div class="ftr__list">
                 <ul>
-                  <li><a href="about-us.html">About Us</a></li>
-                  <li><a href="contact.html">Contact Us</a></li>
-                  <li><a href="#">Press Room</a></li>
-                  <li><a href="#">Blog</a></li>
+                  <li><NuxtLink to="aboutus">About Us</NuxtLink></li>
+                  <li><NuxtLink to="contactus">Contact Us</NuxtLink></li>
+                 
+                  <li><NuxtLink to="blog">Blog</NuxtLink></li>
                   <li><a href="#">Careers</a></li>
                 </ul>
               </div>
@@ -45,9 +40,9 @@
               <h5>Support</h5>
               <div class="ftr__list">
                 <ul>
-                  <li><a href="#">Support centre</a></li>
-                  <li><a href="contact.html"> Contact us</a></li>
-                  <li><a href="#">Contact us via WhatsApp</a></li>
+                  <!-- <li><a href="#">Support centre</a></li> -->
+                  <li><NuxtLink to="contactus">Contact Us</NuxtLink></li>
+                  <li><NuxtLink to="contactus">Contact us via WhatsApp</NuxtLink></li>
                   <li><a href="#">Find a store</a></li>
                 </ul>
               </div>
@@ -85,3 +80,11 @@
     </div>
   </div>
 </template>
+
+<script setup>
+
+
+import { inject } from 'vue';
+const categories = inject('All_categories');
+
+</script>
