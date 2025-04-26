@@ -160,10 +160,13 @@ const updateQuantity = async (item, newQty: number = 1, action = 'add') => {
 
   if (action == 'minus' && newQty == item.quantity) {
     message = 'Are you sure you want to delete this item from the cart?';
-  }
-  if (confirm(message)) {
+    if (confirm(message)) {
     await cartStore.addToCart(item.product_id, newQty, item.variant_id ? item.variant_id : 0, action)
   }
+  }else{
+    await cartStore.addToCart(item.product_id, newQty, item.variant_id ? item.variant_id : 0, action)
+  }
+ 
 }
 
 
