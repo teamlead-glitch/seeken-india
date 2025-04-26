@@ -45,5 +45,11 @@
     opacity: 0;
     transform: translateY(-20px);
   }
+
+  @media (max-width: 370px) {
+  .toast {
+    width: 100%;
+  }
+}
   </style>
   
