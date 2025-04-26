@@ -82,11 +82,11 @@ const props = defineProps({
 
 /* Centering the arrows */
 .swiper-button-prev {
-  left: 15px;
+  left: 15px !important;
 }
 
 .swiper-button-next {
-  right: 15px;
+  right: 15px !important;
 }
 
 /* Hover effect */
