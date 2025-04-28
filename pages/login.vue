@@ -57,8 +57,8 @@
                   <p style="color: #00687f;">Forgot your Password?</p>
                  
                 </a>
-                <!-- <center>- OR -</center>
-                <NuxtLink to="/register"><button class="btn_1 mt-3">Register</button></NuxtLink> -->
+                <!-- <center>- OR -</center> -->
+                <NuxtLink to="/register">Don't have an account? Sign up</NuxtLink>
               </div>
 
             </form>
