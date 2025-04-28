@@ -2,12 +2,12 @@
 <div class="profile__container">
   <div class="full__box">
     <div class="row align-items-center">
-      <div class="col-md-12 mb-3">
+      <div class="col-md-12 mb-3" v-if="result.addresses && result.addresses.length > 0">
         <h5>Saved Address </h5>
 
 
 
-        <div class="row" v-if="result.addresses && result.addresses.length > 0">
+        <div class="row" >
 
 
 
