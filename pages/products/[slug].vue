@@ -67,7 +67,7 @@
            <div class="full__container">
                <div class="product__name">
                 <h5>{{product.name}}   <span>|</span>   {{product.category_name}}</h5>
-                <div class="prices"><span>Rs. {{ product?.price }}</span>{{ product?.final_price }} </div>
+                <div class="prices"><span>Rs. {{ product?.price }}</span>Rs. {{ product?.final_price }} </div>
                </div>
                <div class="total__rate">
                    <div class="quantity">
