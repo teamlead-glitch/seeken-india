@@ -71,7 +71,7 @@
                </div>
                <div class="total__rate">
                    <div class="quantity">
-                       <h4>Quatity</h4>
+                       <h4>Quantity</h4>
                        <div class="quantity-input">
                            <button class="quantity-btn minus-btn" @click="quantity > 1 ? quantity-- : null"><i class="bi bi-dash-lg"></i></button>
                            <input type="number" class="quantity" v-model="quantity">
