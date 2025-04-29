@@ -88,6 +88,17 @@ import { useLoader } from '@/composables/useLoader';
 const { showLoader, hideLoader } = useLoader(); // Use global loader
 
 import { useAuthStore } from '~/store/auth';
+
+const props = defineProps({
+  addressSelected: {
+    type: Object,
+    default: () => null,  // Default to null
+  },
+  edit: {
+    type: Boolean,
+    default: () => false,  // Default to null
+  },
+});
   
   const authStore = useAuthStore();
 
@@ -111,7 +122,11 @@ import { useAuthStore } from '~/store/auth';
 
 const address = ref({ ...defaultAddress });
 
-
+if (props.edit && props.addressSelected) {
+  //console.log(props.addressSelected,'props.addressSelected')
+  address.value = { ...props.addressSelected }; // When 'edit' is true, use 'addressSelected'
+  addressType.value = props.addressSelected.type;
+}
 
 const error = ref('');
 const success = ref('');
@@ -149,4 +164,6 @@ const emit = defineEmits(["close"]);
 const closePopup = () => {
   emit("close");
 };
+
+
 </script>

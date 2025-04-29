@@ -1,4 +1,9 @@
 <template>
+
+    <CommonOverlayPopup :show="showEditAddressPopup">
+        <ProfileEditAddress @close="showEditAddressPopup = false" :addressSelected="editAddress"></ProfileEditAddress>
+    </CommonOverlayPopup>
+
   <div class="no__address" v-if="!result.addresses || result.addresses.length == 0">
     <h6>You did not add any address yet</h6>
   </div>
@@ -21,7 +26,11 @@
         <div class="address__list">
           <ul>
             <li>
-              <p> <strong>{{ adress.first_name }} {{ adress.last_name }}</strong> <br>
+              <p> <strong>{{ adress.first_name }} {{ adress.last_name }}</strong> 
+                <button class="btn btn-sm  m-1"  @click="edit(adress)">
+          <i class="bi bi-pencil"></i>
+        </button>
+                <br>
                 {{ adress.address }} <br>
                 {{ adress.city }}, {{ adress.location }}, {{ adress.pincode }}, {{ adress.landmark }}</p>
             </li>
@@ -60,7 +69,8 @@ const { showLoader, hideLoader } = useLoader(); // Use global loader
 const config = useRuntimeConfig();
 
 const authStore = useAuthStore();
-
+const editAddress = ref({});
+const showEditAddressPopup = ref(false);
 
 const { data: result, error, refresh } = useFetchData('result', 'listaddress', true);
 
@@ -118,11 +128,25 @@ try {
 
 }
 
+const edit = (adress) => {
+
+  editAddress.value = adress;
+  showEditAddressPopup.value=true;
+}
+
 // Watch for changes in addPopup prop
 watch(() => props.addPopup, (newValue) => {
 
   refresh(); // Call the API again
 
 });
+
+watch(() => showEditAddressPopup.value, (newValue) => {
+
+refresh(); // Call the API again
+
+});
+
+
 
 </script>
