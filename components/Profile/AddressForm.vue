@@ -4,13 +4,13 @@
             <div class="col-md-12 mb-2"><h6>Shipping Address</h6></div>
             <div class="col-md-6 mb-3">
                 <div class="form-floating ">
-                    <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="address.first_name"  placeholder="First name" required>
-                    <label for="" class="form-label">First name</label>
+                    <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="address.first_name"  placeholder="First name" required maxlength="18">
+                    <label for="" class="form-label" >First name</label>
                   </div>
             </div>
             <div class="col-md-6 ">
                 <div class="form-floating ">
-                    <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="address.last_name"  placeholder="Last name" required>
+                    <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="address.last_name"  placeholder="Last name" required maxlength="18">
                     <label for="" class="form-label">Last name</label>
                   </div>
             </div>
