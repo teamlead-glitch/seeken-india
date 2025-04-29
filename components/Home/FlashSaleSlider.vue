@@ -5,7 +5,7 @@
     <Swiper
       :modules="[Autoplay, Navigation, Pagination]"
       :spaceBetween="30"
-      :slidesPerView="products.length > 3 ? 2.5 : 2.3"
+      :slidesPerView="products.length > 3 ? 2.5 : 2"
       :centeredSlides="products.length > 3 ? true : false"
       :loop="true"
       :autoplay="{ delay: 4000, disableOnInteraction: false }"
