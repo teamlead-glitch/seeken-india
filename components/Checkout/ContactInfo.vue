@@ -20,6 +20,18 @@
                             <label for="" class="form-label">Last name</label>
                           </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="email" class="form-control border-0 border-bottom rounded-0" ref="ship_email"  v-model="shipping_address.email"  placeholder="Email" required >
+                            <label for="" class="form-label">Email</label>
+                          </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control border-0 border-bottom rounded-0" ref="ship_phone" v-numeric-only v-model="shipping_address.phone"  placeholder="Mobile" required maxlength="10">
+                            <label for="" class="form-label">Mobile</label>
+                          </div>
+                    </div>
                     <div class="col-md-12 mb-2 mt-5"><h6>Delivery Address</h6></div>
                     <div class="col-md-12 ">
                         <div class="form-floating ">
@@ -45,12 +57,7 @@
                             <label for="" class="form-label">Pin code</label>
                           </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-floating">
-                            <input type="text" class="form-control border-0 border-bottom rounded-0" ref="ship_phone" v-numeric-only v-model="shipping_address.phone"  placeholder="Mobile" required maxlength="10">
-                            <label for="" class="form-label">Mobile</label>
-                          </div>
-                    </div>
+                   
                     <div class="col-md-12 mb-2 mt-5"><h6>Billing Address</h6></div>
                     <div class="col-md-12 mt-4 mb-4">
                         <div class="form-check form-check-inline">
@@ -71,6 +78,21 @@
                             <label for="" class="form-label">Last name</label>
                           </div>
                     </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="email" class="form-control border-0 border-bottom rounded-0" ref="bill_email"  v-model="billing_address.email"  placeholder="Email" required >
+                            <label for="" class="form-label">Email</label>
+                          </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control border-0 border-bottom rounded-0" ref="bill_phone" v-numeric-only v-model="billing_address.phone"  placeholder="Pin code" required maxlength="10">
+                            <label for="" class="form-label">Mobile</label>
+                          </div>
+                    </div>
+                    
                    
                     <div class="col-md-12 ">
                         <div class="form-floating ">
@@ -96,12 +118,7 @@
                             <label for="" class="form-label">Pin code</label>
                           </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-floating">
-                            <input type="text" class="form-control border-0 border-bottom rounded-0" ref="bill_phone" v-numeric-only v-model="billing_address.phone"  placeholder="Pin code" required maxlength="10">
-                            <label for="" class="form-label">Mobile</label>
-                          </div>
-                    </div>
+                    
                 </div>
          </div>
 </template>
@@ -128,6 +145,7 @@ function toggleRadio() {
       location: '',
       pincode: '',
       phone: '',
+      email: '',
      
     })
   } else {
@@ -143,6 +161,7 @@ const bill_city = ref(null);
 const bill_location = ref(null);
 const bill_pincode = ref(null);
 const bill_phone = ref(null);
+const bill_email = ref(null);
 
 const ship_first_name = ref(null);
 const ship_last_name = ref(null);
@@ -151,6 +170,7 @@ const ship_city = ref(null);
 const ship_location = ref(null);
 const ship_pincode = ref(null);
 const ship_phone = ref(null);
+const ship_email = ref(null);
 
 const bill_fieldRefs = {
   first_name: bill_first_name,
@@ -160,6 +180,7 @@ const bill_fieldRefs = {
   location: bill_location,
   pincode: bill_pincode,
   phone: bill_phone,
+  email: bill_email
 };
 
 const ship_fieldRefs = {
@@ -170,6 +191,7 @@ const ship_fieldRefs = {
   location: ship_location,
   pincode: ship_pincode,
   phone: ship_phone,
+  email: ship_email
 };
 
 defineExpose({

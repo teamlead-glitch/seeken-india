@@ -11,11 +11,14 @@ export const useCheckoutAddressValidator = () => {
     const requiredFields = [
       'first_name',
       'last_name',
+      'email',
+      'phone',
       'address',
       'city',
       'location',
       'pincode',
-      'phone'
+     
+      
     ]
 
     const refs =
