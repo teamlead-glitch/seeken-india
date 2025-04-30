@@ -11,7 +11,7 @@ export const useWishlistStore = defineStore('wishlist', {
   actions: {
     async fetchWishlists() {
       const authStore = useAuthStore();
-      let endpoint = `${useRuntimeConfig().public.apiBase}wishlist`;
+      let endpoint = `${useRuntimeConfig().public.apiBase}wishlist?skip=0&take=50`;
       const headers: any = {};
 
       if (authStore.token) {
@@ -28,8 +28,8 @@ export const useWishlistStore = defineStore('wishlist', {
         });
 
         // Assuming the response is an array of cart items
-        const { products } = response || {}
-        this.list = products || []
+        const { data } = response || []
+        this.list = data || []
       } catch (error) {
         this.list = [];
         console.error('Failed to fetch wishlist:', error);
