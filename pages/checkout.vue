@@ -51,7 +51,7 @@
               </div>
             </div>
         <div class="checkout__btn">
-          <RazorpayPayment :amount="cart.grand_total" :validation="validateInputs"/>
+          <RazorpayPayment :amount="cart.grand_total" :validation="validateInputs" :billing_address="billing_address" :shipping_address="shipping_address"/>
             <!-- <StripePayment :amount="cart.grand_total" :validation="validateInputs"/> -->
         </div>
         <div class="cancellation">
@@ -102,37 +102,7 @@ const validateInputs = () => {
 }
 
 
-// const validateAddress = (validate_obj = shipping_address.value, type = 'ship') => {
-//   const requiredFields = [
-//     'first_name',
-//     'last_name',
-//     'address',
-//     'city',
-//     'location',
-//     'pincode',
-//     'phone',
-//   ];
 
-//   const refs =
-//     type === 'ship'
-//       ? contactInfoRef.value?.ship_fieldRefs
-//       : contactInfoRef.value?.bill_fieldRefs;
-
-//   for (let field of requiredFields) {
-//     const value = validate_obj[field];
-
-//     if (!value || String(value).trim() === '') {
-//       const formattedField = field.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
-//       addToast(`${formattedField} is required`, 'error');
-
-//       // Focus the input
-//       refs?.[field]?.value?.focus();
-//       return false;
-//     }
-//   }
-
-//   return true;
-// };
 
 
 </script>
