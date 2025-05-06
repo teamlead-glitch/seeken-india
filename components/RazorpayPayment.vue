@@ -64,7 +64,7 @@ const makePayment = async () => {
 
     const guestToken = ensureGuestToken();
     combinedAddress.session_id =  guestToken ;
-    console.log(item, 'item++--')
+    console.log(combinedAddress, 'combinedAddress++--')
     if (guestToken) headers['X-Guest-Token'] = guestToken;
 
   }
