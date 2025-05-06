@@ -4,8 +4,9 @@ export default defineNuxtConfig({
   // Config for runtime environment variables
   runtimeConfig: {
     public: {
-      apiBase: process.env.API_BASE_URL || 'https://seeken.pbsmokeup.in/api/',//'https://mynuxtapp-laravel.pbsmokeup.in/api/', // Set your backend URL
-      stripePublicKey: process.env.STRIPE_PUBLIC_KEY || 'pk_test_51RGK4c4FQAlBFkIpnXSniLE6O6qvRe15iqmx23HmCGa1ffJRB4pj4GtbBkWi5hmuqGZ2vo2XkUXbZ8uOyFbKp7AD00rNxgAJcr'
+      apiBase: process.env.API_BASE_URL ,
+      stripePublicKey: process.env.STRIPE_PUBLIC_KEY ,
+      razorpayKey : process.env.RAZORPAY_KEY ,
     },
   },
 

@@ -84,7 +84,7 @@ const makePayment = async () => {
   // Step 2: Proceed with Razorpay
 
   const options = {
-    key: 'rzp_test_sKkiPjwQ28WnBN', // Replace with your Razorpay sandbox key
+    key: `${useRuntimeConfig().public.razorpayKey}`, // Replace with your Razorpay sandbox key
     amount: props.amount * 100, // Amount in paisa
     currency: 'INR',
     name: 'Sherin P R',
