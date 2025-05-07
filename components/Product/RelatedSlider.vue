@@ -1,8 +1,9 @@
 <template>
-  
-  <div class="row justify-content-center mt-5">
+ 
+  <div class="row justify-content-center mt-5" v-if="products">
     <div class="col-md-12 related__products">
         <h3>You might also like</h3>
+      
         <div class="relatedproducts ">
 
 
@@ -23,12 +24,13 @@
       }"
     class="mySwiper"
   >
-    <SwiperSlide v-for="(product, index) in products" :key="index">
+    <SwiperSlide v-for="product in products" >
      
      
       <div class="swiper-slide">
 
         <div class="product__box"> 
+       
             <ProductCardFlashSaleTag :is_flashsale="product.is_flash_sale" :item_left="product.stock_quantity" />
             <div class="product__content">
                 <div class="top__box">
@@ -87,12 +89,10 @@
 </div>
 </template>
 
+
+
+
 <script lang="ts" setup>
-
-</script>
-
-
-<script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Navigation, Pagination } from "swiper/modules"; // Import required modules
 import { useRouter } from "vue-router";
@@ -108,6 +108,8 @@ import { defineProps } from 'vue';
 const props = defineProps({
   products: Array
 });
+
+
 
 
 </script>

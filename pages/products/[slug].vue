@@ -21,25 +21,14 @@
                     <ProductCardVarientsChoose   :product="product" @variant-chosen="onVariantChosen"/>
                     
                    
-                    <div class="highlights">
+                    <div class="highlights" v-if="highlightedSpecifications && highlightedSpecifications.length >0">
                         <h4>Highlights</h4>
                         <ul>
-                            <li>
-                                <div class="img_box"><img src="/images/highlight1.svg" alt="seeken"></div>
-                                <h4> <span>Sweep</span> 1200 MM</h4>
+                            <li v-for="h_spec in highlightedSpecifications">
+                                <div class="img_box"><img :src="h_spec.icon" alt="seeken"></div>
+                                <h4> <span>{{ h_spec.title }}</span> {{ h_spec.description }}</h4>
                             </li>
-                            <li>
-                                <div class="img_box"><img src="/images/highlight2.svg" alt="seeken"></div>
-                                <h4> <span>Voltage</span> 230V</h4>
-                            </li>
-                            <li>
-                                <div class="img_box"><img src="/images/highlight3.svg" alt="seeken"></div>
-                                <h4> <span>RPM</span> 390 rpm</h4>
-                            </li>
-                            <li>
-                                <div class="img_box"><img src="/images/highlight4.svg" alt="seeken"></div>
-                                <h4> <span>Air Delivery</span> 210 CM</h4>
-                            </li>
+                            
                         </ul>
                     </div>
                     <div class="product__content">
@@ -53,7 +42,7 @@
         
         <ProductCardSpecs :specs="product.product_specifications	"/>
 
-        <ProductRelatedSlider :products="featured_products"/>
+        <ProductRelatedSlider :products="relatedProducts"/>
 
         <ProductRatings/>
         <ProductReviewsAdd/>
@@ -106,10 +95,15 @@ const route = useRoute();
 const slug = route.params.slug; // Get slug from URL
 const { data: response, error, refresh } = useFetchData('response', `products/${slug}`);
 const product = computed(() => response.value?.data);
+
+const highlightedSpecifications = computed(() => {
+  return product.value?.product_specifications?.filter(spec => spec.is_highlight === 1) || [];
+});
+
 const quantity = ref(1);
 const selectedVariantId = ref(0);
 
-const { data: featured_products, error1, refresh1 } = useFetchData('featured_products', 'featured-products');
+
 
 
 
@@ -192,6 +186,28 @@ watchEffect(() => {
     selectedVariantId.value = product.value.product_variants[0].id;
   }
 });
+
+
+
+let relatedProducts = ref([]);
+
+// 3. Fetch related products after the product ID is available
+watch(
+  () => product.value?.id,
+  async (id) => {
+    if (id) {
+      try {
+        // Fetch related products once product ID is available
+        const { data: featured_products, error1, refresh1 } = useFetchData('featured_products', `related-products?product_id=${id}&limit=10`);
+        relatedProducts = featured_products;
+        
+      } catch (err) {
+        console.log('error fetching related products')
+      }
+    }
+  },
+  { immediate: true } // Trigger immediately if product ID is already available
+);
 
 </script>
 
