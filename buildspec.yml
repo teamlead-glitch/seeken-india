@@ -1,21 +1,19 @@
 version: 0.2
 
 phases:
-  # Install dependencies and build the Nuxt.js application
   install:
     runtime-versions:
-      nodejs: 18  # Adjust the Node.js version as needed
+      nodejs: 18
     commands:
       - echo Installing dependencies...
-      - npm install  # Or `yarn install` if you're using Yarn
+      - npm install
+      - apt-get install -y jq  # Install jq to handle the SSH private key parsing
 
-  # Build the Nuxt.js SSR application
   build:
     commands:
       - echo Building the Nuxt.js application...
       - npm run build  # Build the SSR application
 
-  # Deploy the application after the build
   post_build:
     commands:
       - echo Deploying the Nuxt.js app to EC2...
@@ -31,19 +29,22 @@ phases:
       # SSH into the EC2 instance and deploy
       # Make sure to replace the placeholders with your actual EC2 IP address
       - |
-        ssh -o StrictHostKeyChecking=no -i key ubuntu@13.232.44.241 << 'EOF'
+        ssh -v -o StrictHostKeyChecking=no -i key ubuntu@13.232.44.241 << 'EOF'
+          echo "Starting SSH connection..."
+
           echo "Pulling the latest changes from the repository"
-          cd /home/ubuntu/nuxt-app  # Replace with the path to your app on EC2
+          cd /home/ubuntu/nuxt-app || exit 1  # Replace with the path to your app on EC2
           
           # Install dependencies (if needed)
-          npm install  # Or `yarn install`
+          npm install || exit 1  # Or `yarn install`
           
           # Build the Nuxt.js app (if necessary)
-          npm run build  # Or `yarn build`
+          npm run build || exit 1  # Or `yarn build`
           
           # Restart the application (e.g., using pm2 or a similar process manager)
-          pm2 start .output/server/index.mjs --interpreter=node --name nuxt-app
-          pm2 save  # Replace with your pm2 app name if using pm2
+          pm2 start .output/server/index.mjs --interpreter=node --name nuxt-app || exit 1
+          pm2 save || exit 1  # Replace with your pm2 app name if using pm2
+          
           echo "Deployment completed successfully!"
         EOF
 
