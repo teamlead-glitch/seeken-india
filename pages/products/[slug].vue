@@ -37,9 +37,19 @@
                 </div>
             </div>
         </div>
+
+        <div class="row justify-content-center">
+                <div class="col-md-10 col-xl-8">
+                    <div class="detail">
+                        <h3>{{ product.name }}</h3>
+                        <p>{{ product.description }}</p>
+                    </div>
+                </div>
+            </div>
        
-        {{ product.description }}
+       
         
+        <ProductBrochure :productId="product?.id"/>
         <ProductCardSpecs :specs="product.product_specifications	"/>
 
         <ProductRelatedSlider :products="relatedProducts"/>
