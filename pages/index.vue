@@ -2,7 +2,7 @@
   <HomeBanner />
   <HomeSlider />
   <HomeFlashSaleSlider />
-  <HomeWhatsNewDesktop />
+  <HomeWhatsNewDesktop :whats_new="whats_new"/>
   <HomeWhatsNewMob />
   <HomeCategory />
   <HomeFeaturedProducts />
@@ -10,3 +10,10 @@
   <HomeTopPicks />
   <HomeLatestArticles />
 </template>
+
+<script setup>
+
+
+const { data: whats_new, error, refresh } = useFetchData('whats_new', 'whatsnew');
+
+</script>
