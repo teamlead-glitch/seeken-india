@@ -1,46 +1,37 @@
 version: 0.2
 
+env:
+  variables:
+    S3_BUCKET: nuxt-ssr-artifact
+    CODEDEPLOY_BUCKET: nuxt-ssr-artifact-bucket
+    APP_NAME: nuxt-app
+
 phases:
   install:
     runtime-versions:
-      nodejs: 18  # Adjust the Node.js version as needed
+      nodejs: 14
     commands:
-      - echo Installing dependencies...
-      - npm install  # Or `yarn install` if you're using Yarn
-
+      - echo "Installing dependencies..."
+      - npm install
+  pre_build:
+    commands:
+      - echo "Running pre-build phase..."
   build:
     commands:
-      - echo Building the Nuxt.js application...
-      - npm run build  # Build the SSR application
-
+      - echo "Building the app..."
+      - npm run build
   post_build:
     commands:
-      - echo Deploying the Nuxt.js app to EC2...
-      
-      # Add SSH private key from environment variable into a file
-      - echo "$PRIVATE_KEY" > key
-      - chmod 600 key
-
-      # SSH into the EC2 instance and deploy
-      # Replace EC2_IP_ADDRESS with your actual EC2 instance IP
-      - |
-        ssh -v -o StrictHostKeyChecking=no -i key ubuntu@13.232.44.241 << 'EOF'
-          echo "Pulling the latest changes from the repository"
-          cd /home/ubuntu/nuxt-app  # Replace with the path to your app on EC2
-          
-          # Install dependencies (if needed)
-          npm install  # Or `yarn install`
-          
-          # Build the Nuxt.js app (if necessary)
-          npm run build  # Or `yarn build`
-          
-          # Restart the application (e.g., using pm2 or a similar process manager)
-          pm2 start .output/server/index.mjs --interpreter=node --name nuxt-app
-          pm2 save  # Replace with your pm2 app name if using pm2
-          echo "Deployment completed successfully!"
-        EOF
+      - echo "Uploading build artifacts to S3..."
+      - aws s3 sync .output/ s3://$S3_BUCKET/$APP_NAME/ --exclude "node_modules/*"
+      - echo "Preparing the CodeDeploy artifact..."
+      - mkdir -p ./deploy
+      - cp -r .output ./deploy/
+      - echo "Creating CodeDeploy zip artifact..."
+      - zip -r ./deploy/$APP_NAME.zip ./deploy/
+      - aws s3 cp ./deploy/$APP_NAME.zip s3://$CODEDEPLOY_BUCKET/$APP_NAME.zip
 
 artifacts:
   files:
-    - '**/*'
+    - deploy/$APP_NAME.zip
   discard-paths: yes
