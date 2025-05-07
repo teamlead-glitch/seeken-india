@@ -3,7 +3,7 @@
   <HomeSlider />
   <HomeFlashSaleSlider />
   <HomeWhatsNewDesktop :whats_new="whats_new"/>
-  <HomeWhatsNewMob />
+  <HomeWhatsNewMob :whats_new="whats_new"/>
   <HomeCategory />
   <HomeFeaturedProducts />
   <HomeAdd />
