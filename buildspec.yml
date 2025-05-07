@@ -1,32 +1,53 @@
 version: 0.2
 
 phases:
+  # Install dependencies and build the Nuxt.js application
   install:
     runtime-versions:
-      nodejs: 18
+      nodejs: 18  # Adjust the Node.js version as needed
     commands:
-      - echo "Installing dependencies"
-      - npm install -g pm2
+      - echo Installing dependencies...
+      - npm install  # Or `yarn install` if you're using Yarn
 
-  pre_build:
-    commands:
-      - echo "Fetching SSH private key from Secrets Manager"
-      - SECRET=$(aws secretsmanager get-secret-value --secret-id ec2-ssh-private-key --query SecretString --output text)
-      - echo "$SECRET" | jq -r .ssh_private_key > key.pem
-      - chmod 400 key.pem
-
+  # Build the Nuxt.js SSR application
   build:
     commands:
-      - echo "Copying source files to EC2 instance"
-      - scp -o StrictHostKeyChecking=no -i key.pem -r . ubuntu@13.232.44.241:/home/ubuntu/nuxt-app
+      - echo Building the Nuxt.js application...
+      - npm run build  # Build the SSR application
 
-      - echo "Deploying on EC2 via SSH"
-      - ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@13.232.44.241 << 'EOF'
-          cd ~/nuxt-app
-          npm install
-          npm run build
-          pm2 restart nuxt-app || pm2 start .output/server/index.mjs --interpreter=node --name nuxt-app
-          pm2 save
-          echo "Restarting Nginx"
-          sudo systemctl restart nginx
+  # Deploy the application after the build
+  post_build:
+    commands:
+      - echo Deploying the Nuxt.js app to EC2...
+      - echo "Retrieving SSH key from Secrets Manager"
+      
+      # Retrieve SSH private key from Secrets Manager and store it in a temporary file
+      - |
+        aws secretsmanager get-secret-value --secret-id ssh_private_key --query SecretString --output text > key.json
+        export PRIVATE_KEY=$(jq -r '.private-key' key.json)
+        echo "$PRIVATE_KEY" > key
+        chmod 600 key
+
+      # SSH into the EC2 instance and deploy
+      # Make sure to replace the placeholders with your actual EC2 IP address
+      - |
+        ssh -o StrictHostKeyChecking=no -i key ubuntu@13.232.44.241 << 'EOF'
+          echo "Pulling the latest changes from the repository"
+          cd /home/ubuntu/nuxt-app  # Replace with the path to your app on EC2
+          
+          # Install dependencies (if needed)
+          npm install  # Or `yarn install`
+          
+          # Build the Nuxt.js app (if necessary)
+          npm run build  # Or `yarn build`
+          
+          # Restart the application (e.g., using pm2 or a similar process manager)
+          pm2 start .output/server/index.mjs --interpreter=node --name nuxt-app
+          pm2 save  # Replace with your pm2 app name if using pm2
+          echo "Deployment completed successfully!"
         EOF
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: yes
