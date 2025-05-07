@@ -7,7 +7,7 @@ phases:
     commands:
       - echo Installing dependencies...
       - npm install
-      - apt-get install -y jq  # Install jq to handle the SSH private key parsing
+      - npm install -g jq  # Use npm to install jq globally (Node.js environment)
 
   build:
     commands:
@@ -27,23 +27,19 @@ phases:
         chmod 600 key
 
       # SSH into the EC2 instance and deploy
-      # Make sure to replace the placeholders with your actual EC2 IP address
       - |
         ssh -v -o StrictHostKeyChecking=no -i key ubuntu@13.232.44.241 << 'EOF'
           echo "Starting SSH connection..."
 
           echo "Pulling the latest changes from the repository"
-          cd /home/ubuntu/nuxt-app || exit 1  # Replace with the path to your app on EC2
+          cd /home/ubuntu/nuxt-app || exit 1
           
-          # Install dependencies (if needed)
-          npm install || exit 1  # Or `yarn install`
+          npm install || exit 1
           
-          # Build the Nuxt.js app (if necessary)
-          npm run build || exit 1  # Or `yarn build`
+          npm run build || exit 1
           
-          # Restart the application (e.g., using pm2 or a similar process manager)
           pm2 start .output/server/index.mjs --interpreter=node --name nuxt-app || exit 1
-          pm2 save || exit 1  # Replace with your pm2 app name if using pm2
+          pm2 save || exit 1
           
           echo "Deployment completed successfully!"
         EOF
