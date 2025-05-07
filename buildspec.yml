@@ -3,11 +3,10 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 18
+      nodejs: 18  # Adjust the Node.js version as needed
     commands:
       - echo Installing dependencies...
-      - npm install
-      - npm install -g jq  # Use npm to install jq globally (Node.js environment)
+      - npm install  # Or `yarn install` if you're using Yarn
 
   build:
     commands:
@@ -17,30 +16,27 @@ phases:
   post_build:
     commands:
       - echo Deploying the Nuxt.js app to EC2...
-      - echo "Retrieving SSH key from Secrets Manager"
       
-      # Retrieve SSH private key from Secrets Manager and store it in a temporary file
-      - |
-        aws secretsmanager get-secret-value --secret-id ssh_private_key --query SecretString --output text > key.json
-        export PRIVATE_KEY=$(jq -r '.private-key' key.json)
-        echo "$PRIVATE_KEY" > key
-        chmod 600 key
+      # Add SSH private key from environment variable into a file
+      - echo "$PRIVATE_KEY" > key
+      - chmod 600 key
 
       # SSH into the EC2 instance and deploy
+      # Replace EC2_IP_ADDRESS with your actual EC2 instance IP
       - |
         ssh -v -o StrictHostKeyChecking=no -i key ubuntu@13.232.44.241 << 'EOF'
-          echo "Starting SSH connection..."
-
           echo "Pulling the latest changes from the repository"
-          cd /home/ubuntu/nuxt-app || exit 1
+          cd /home/ubuntu/nuxt-app  # Replace with the path to your app on EC2
           
-          npm install || exit 1
+          # Install dependencies (if needed)
+          npm install  # Or `yarn install`
           
-          npm run build || exit 1
+          # Build the Nuxt.js app (if necessary)
+          npm run build  # Or `yarn build`
           
-          pm2 start .output/server/index.mjs --interpreter=node --name nuxt-app || exit 1
-          pm2 save || exit 1
-          
+          # Restart the application (e.g., using pm2 or a similar process manager)
+          pm2 start .output/server/index.mjs --interpreter=node --name nuxt-app
+          pm2 save  # Replace with your pm2 app name if using pm2
           echo "Deployment completed successfully!"
         EOF
 
