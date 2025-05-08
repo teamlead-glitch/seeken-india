@@ -7,23 +7,20 @@ phases:
     commands:
       - echo Installing dependencies...
       - npm install
+
   build:
     commands:
       - echo Building the Nuxt SSR app...
       - npm run build
+
   post_build:
     commands:
-      - echo Preparing artifacts...
+      - echo Preparing output directory...
       - mkdir -p output
-      - cp -r .output output/.output
-      - cp -r .nuxt output/.nuxt || true
-      - cp -r node_modules output/node_modules
-      - cp -r public output/public || true
-      - cp package*.json output/
-      - cp ecosystem.config.js output/ || true
-      - cp test.sh output/test.sh
-      - echo "All necessary files copied to output."
-      - ls -l output/ 
+      - echo Copying everything to output directory...
+      - cp -a . output/
+      - echo Listing contents of output directory:
+      - ls -al output
       - echo Build completed.
 
 artifacts:
