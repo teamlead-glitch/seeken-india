@@ -48,7 +48,7 @@
         <div class="checkout__btn">
             
             <!-- <StripePayment :amount="product.final_price" :validation="validateInputs"/> -->
-            <RazorpayPayment :amount="product.final_price" :validation="validateInputs"/>
+            <RazorpayPayment :billing_address="billing_address" :shipping_address="shipping_address" :amount="product.final_price" :validation="validateInputs"/>
         </div>
         <div class="cancellation">
             <h5>Order Cancellation Charges</h5>
