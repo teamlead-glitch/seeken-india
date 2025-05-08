@@ -1,37 +1,29 @@
 version: 0.2
 
-env:
-  variables:
-    S3_BUCKET: nuxt-ssr-artifact
-    CODEDEPLOY_BUCKET: nuxt-ssr-artifact-bucket
-    APP_NAME: nuxt-app
-
 phases:
   install:
     runtime-versions:
-      nodejs: 14
+      nodejs: 18
     commands:
-      - echo "Installing dependencies..."
+      - echo Installing dependencies...
       - npm install
-  pre_build:
-    commands:
-      - echo "Running pre-build phase..."
   build:
     commands:
-      - echo "Building the app..."
+      - echo Building the Nuxt SSR app...
       - npm run build
   post_build:
     commands:
-      - echo "Uploading build artifacts to S3..."
-      - aws s3 sync .output/ s3://$S3_BUCKET/$APP_NAME/ --exclude "node_modules/*"
-      - echo "Preparing the CodeDeploy artifact..."
-      - mkdir -p ./deploy
-      - cp -r .output ./deploy/
-      - echo "Creating CodeDeploy zip artifact..."
-      - zip -r ./deploy/$APP_NAME.zip ./deploy/
-      - aws s3 cp ./deploy/$APP_NAME.zip s3://$CODEDEPLOY_BUCKET/$APP_NAME.zip
+      - echo Preparing artifacts...
+      - mkdir -p output
+      - cp -r .output output/.output
+      - cp -r .nuxt output/.nuxt || true
+      - cp -r node_modules output/node_modules
+      - cp -r public output/public || true
+      - cp package*.json output/
+      - cp ecosystem.config.js output/ || true
+      - echo Build completed.
 
 artifacts:
   files:
-    - deploy/$APP_NAME.zip
-  discard-paths: yes
+    - '**/*'
+  base-directory: output
