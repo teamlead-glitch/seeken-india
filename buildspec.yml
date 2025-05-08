@@ -21,6 +21,7 @@ phases:
       - cp -r public output/public || true
       - cp package*.json output/
       - cp ecosystem.config.js output/ || true
+      - cp test.sh output/          
       - echo Build completed.
 
 artifacts:
