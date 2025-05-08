@@ -14,7 +14,7 @@
 
 
           <div class="order__history">
-            <div class="heading">
+            <!-- <div class="heading">
               <ul class="nav nav-tabs " role="tablist">
                 <li class="nav-item" role="presentation">
                   <a class="nav-link" :class="{ active: activeTab === 'orders' }" @click="activeTab = 'orders'"
@@ -36,7 +36,7 @@
                   <option value="3">Past 1 year</option>
                 </select>
               </div>
-            </div>
+            </div> -->
             <div class="tab-content orders_list">
               <div class="tab-pane active">
 
