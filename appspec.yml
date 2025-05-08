@@ -1,5 +1,6 @@
 version: 0.0
 os: linux
+
 files:
   - source: /
     destination: /home/ubuntu/nuxt-app
@@ -15,6 +16,6 @@ hooks:
       timeout: 300
       runas: ubuntu
   AfterAllowTestTraffic:
-    - location: test.sh
+    - location: /home/ubuntu/nuxt-app/test.sh  
       timeout: 60
       runas: ubuntu
