@@ -78,21 +78,32 @@ export const useCartStore = defineStore('cart', {
           body: item,
           headers
         })
+        addToast('The cart was updated successfully.!', 'success')
+        return true
       } catch (error) {
         console.error('Cart sync failed:', error)
+        const message =
+        error?.response?._data?.message || 'Unknown error while syncing cart.'
+    
+      addToast(message, 'error') // Optional: user feedback
+        return false
       }
       finally {
         this.fetchCartFromServer();
       }
     },
-    addToCart(product_id, quantity=1,variant_id=0, action='add') {
+    async addToCart(product_id, quantity=1,variant_id=0, action='add') {
+      const router = useRouter()
       const { showLoader, hideLoader } = useLoader(); // Use global loader
       showLoader()
       if(variant_id ==0){
         variant_id=null;
       }
-      this.syncCartWithServer({ product_id, quantity: quantity,variant_id, action })
-      addToast("The cart was updated successfully.!", 'success')
+      const success = await this.syncCartWithServer({ product_id, quantity: quantity,variant_id, action })
+      
+      if(success){
+        router.push('/cart')
+      }
     },
     // removeFromCart(productId) {
     //   this.cart = this.cart.filter(item => item.id !== productId);

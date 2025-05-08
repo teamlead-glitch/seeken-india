@@ -39,7 +39,7 @@
               <div class="limited_offer">LIMITED TIME OFFER</div>
              
               <ProductCardCountDown :endTime="item.to_date"/>
-              <a class="btn_1"  @click="handleAddToCart(item?.id)">Add to cart </a>
+              <a class="btn_1"  @click="handleAddToCart(item?.product_id, 1, item.variant_id?item.variant_id:0)">Add to cart </a>
               <NuxtLink :to="`/buy-now/${item.slug}`" class="btn_2">Buy Now </NuxtLink>
             </div>
           </div>
