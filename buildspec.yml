@@ -15,12 +15,11 @@ phases:
 
   post_build:
     commands:
-      - echo Preparing output directory...
+      - echo Preparing artifacts...
       - mkdir -p output
-      - echo Copying everything to output directory...
-      - cp -a . output/
-      - echo Listing contents of output directory:
-      - ls -al output
+      - cp -r * output/
+      - echo "All necessary files copied to output."
+      - ls -l output/
       - echo Build completed.
 
 artifacts:
