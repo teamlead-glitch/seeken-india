@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/ubuntu/nuxt-app/seeken-nuxt
+cd /home/ubuntu/seeken-nuxt
 npm install -g pm2
 
 
