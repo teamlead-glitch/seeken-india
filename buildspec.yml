@@ -15,7 +15,7 @@ phases:
       - mkdir -p output
       - echo "Copying files to output directory..."
       - cp -r ./.* ./output/ || echo "No files to copy"
-
-
-  
-  
+artifacts:
+  files:
+    - '**/*'
+  base-directory: output
