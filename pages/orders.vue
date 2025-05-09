@@ -7,12 +7,14 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-7 col-xl-9 ">
-          <div class="orders">Your Orders <span>2</span></div>
+          <div class="orders">Your Orders 
+            <!-- <span>2</span> -->
+          </div>
 
 
 
           <div class="order__history">
-            <div class="heading">
+            <!-- <div class="heading">
               <ul class="nav nav-tabs " role="tablist">
                 <li class="nav-item" role="presentation">
                   <a class="nav-link" :class="{ active: activeTab === 'orders' }" @click="activeTab = 'orders'"
@@ -34,18 +36,18 @@
                   <option value="3">Past 1 year</option>
                 </select>
               </div>
-            </div>
+            </div> -->
             <div class="tab-content orders_list">
               <div class="tab-pane active">
 
                 <div class="accordion accordion-flush">
 
-                  <!-- <OrdersAccordionItem v-if="orders && orders.data.length > 0" v-for="(order, index) in orders.data"
+                  <OrdersAccordionItem v-if="orders && orders?.data?.length > 0" v-for="(order, index) in orders?.data"
                     :key="order.order_id" :order="order" :index="index" />
                   <template v-else>
                     <div class="text-center py-4 text-muted">No orders found.</div>
-                  </template> -->
-                  <div class="text-center py-4 text-muted">No orders found.</div>
+                  </template>
+                 
 
                 </div>
               </div>
