@@ -14,7 +14,8 @@ phases:
       - echo "Skipping build step (No `npm run build` needed)"
       - mkdir -p output
       - echo "Copying files to output directory..."
-      - cp -r ./* output/
+      - cp -r ./.* ./output/ || echo "No files to copy"
+
 
   
   
