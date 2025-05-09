@@ -13,18 +13,5 @@ phases:
     commands:
       - echo "Skipping build step (No `npm run build` needed)"
 
-  post_build:
-    commands:
-      - echo "Preparing output directory for artifact packaging..."
-      - mkdir -p output
-      - rsync -av --exclude=output ./ output/
-      - echo "Build completed. Contents of output directory:"
-      - ls -al output/
-
-artifacts:
-  files:
-    - '**/*'
-  base-directory: output
-  name: "${APP_ENV}-$(date +%Y-%m-%d).zip"
-
+  
   
