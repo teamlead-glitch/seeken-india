@@ -1,4 +1,3 @@
----
 version: 0.2
 
 phases:
@@ -14,7 +13,8 @@ phases:
       - echo "Skipping build step (No `npm run build` needed)"
       - mkdir -p output
       - echo "Copying files to output directory..."
-      - cp -r ./.* ./output/ || echo "No files to copy"
+      - cp -r ./* ./.* ./output/ 2>/dev/null || echo "No files to copy"
+
 artifacts:
   files:
     - '**/*'
