@@ -1,6 +1,5 @@
 #!/bin/bash
 
-cd /home/ubuntu/seeken-nuxt
 
 # 🔧 Force ownership to ubuntu
 chown -R ubuntu:ubuntu /home/ubuntu/seeken-nuxt
