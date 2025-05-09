@@ -17,8 +17,10 @@ phases:
     commands:
       - echo Preparing artifacts...
       - mkdir -p output
-      - cp -r . output/
+      - rsync -av --exclude=output ./ output/
       - echo "All necessary files copied to output."
+      - "ls -l output/"
+      - echo Build completed.
 
 artifacts:
   files:
