@@ -1,23 +1,19 @@
 #!/bin/bash
 
-# Navigate to project directory
 cd /home/ubuntu/seeken-nuxt
 
-# Ensure correct ownership
+# 🔧 Force ownership to ubuntu
 chown -R ubuntu:ubuntu /home/ubuntu/seeken-nuxt
 
-# Clean and stop existing PM2 apps
+# 🔁 Switch to ubuntu user for everything else
+sudo -u ubuntu -H bash <<EOF
+cd /home/ubuntu/seeken-nuxt
 pm2 delete all || true
-
-# Install dependencies
 npm install
-
-# Build the Nuxt application
 npm run build
-
-# Start the app using PM2
 pm2 start .output/server/index.mjs --interpreter=node --name nuxt-app
 pm2 save
+EOF
 
-# Restart NGINX
+# 🔁 Restart nginx as root (needed for system-level service)
 systemctl restart nginx
