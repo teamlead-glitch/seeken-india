@@ -54,14 +54,7 @@
 
         <ProductRelatedSlider :products="relatedProducts"/>
 
-       <ProductRatings
-  :averageRating="3.3"
-  :totalRatings="122"
-  :recommendationPercentage="86"
-  :recommendedCount="13"
-  :totalRecommended="15"
-  :ratingDistribution="{ 5: 98, 4: 34, 3: 27, 2: 10, 1: 3 }"
-/>
+       <ProductRatings :productId="product?.id"/>
         <ProductReviewsAdd v-if="authStore.token" :productId="product?.id"/>
         <ProductReviews/>
 </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="row justify-content-center mt-3 mt-md-5">
+  <div v-if="loaded" class="row justify-content-center mt-3 mt-md-5">
     <div class="col-md-12 review_rating">
       <h4>Customer reviews & ratings</h4>
       <div class="review_star">
@@ -28,7 +28,7 @@
           <div class="recommended">
             <h3>{{ recommendationPercentage }}%</h3>
             <div class="total__rating">
-              Recommended <span>({{ recommendedCount }} of {{ totalRecommended }})</span>
+              Recommended <span>({{ recommendedCount }} of {{ totalRatings }})</span>
             </div>
           </div>
         </div>
@@ -60,52 +60,63 @@
 </template>
 
 <script setup>
+import { ref, onMounted, watch } from 'vue'
+
 const props = defineProps({
-  averageRating: {
-    type: Number,
+  productId: {
+    type: [Number, String],
     required: true,
-  },
-  totalRatings: {
-    type: Number,
-    required: true,
-  },
-  recommendationPercentage: {
-    type: Number,
-    required: true,
-  },
-  recommendedCount: {
-    type: Number,
-    required: true,
-  },
-  totalRecommended: {
-    type: Number,
-    required: true,
-  },
-  ratingDistribution: {
-    type: Object,
-    default: () => ({
-      5: 0,
-      4: 0,
-      3: 0,
-      2: 0,
-      1: 0,
-    }),
   },
 })
 
-// Compute percentage width for each star row
+const averageRating = ref(0)
+const totalRatings = ref(0)
+const recommendationPercentage = ref(0)
+const recommendedCount = ref(0)
+const ratingDistribution = ref({ 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 })
+const loaded = ref(false)
+
+const fetchRatings = async () => {
+  try {
+     const config = useRuntimeConfig();
+    const { data } = await useFetch(`${config.public.apiBase}products/${props.productId}/reviews/overview`)
+
+    const res = data.value
+
+    if (res) {
+      averageRating.value = res.average_rating || 0
+      totalRatings.value = res.total_reviews || 0
+      recommendationPercentage.value = res.average_rating_percentage || 0
+      recommendedCount.value = Math.round((res.average_rating_percentage / 100) * res.total_reviews)
+
+      // Normalize star counts
+      const dist = {}
+      for (let i = 1; i <= 5; i++) {
+        dist[i] = res.rating_distribution?.[i]?.count || 0
+      }
+      ratingDistribution.value = dist
+
+      loaded.value = true
+    }
+  } catch (err) {
+    console.error('Failed to load ratings:', err)
+  }
+}
+
+onMounted(fetchRatings)
+watch(() => props.productId, fetchRatings)
+
 const getStarPercentage = (star) => {
-  const count = props.ratingDistribution?.[star] || 0
-  return props.totalRatings ? ((count / props.totalRatings) * 100).toFixed(0) : 0
+  const count = ratingDistribution.value[star] || 0
+  return totalRatings.value ? ((count / totalRatings.value) * 100).toFixed(0) : 0
 }
 </script>
 
 <style scoped>
-/* Optional styling; ensure Bootstrap icons & progress classes are available */
 .review_star .bi {
-  color: #ffc107; /* gold stars */
+  color: #ffc107;
 }
 .review_star .bi-star {
-  color: #dee2e6; /* light gray for empty */
+  color: #dee2e6;
 }
 </style>
