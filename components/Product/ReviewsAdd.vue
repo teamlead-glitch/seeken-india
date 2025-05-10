@@ -67,7 +67,7 @@ const props = defineProps({
 
 function handleStarClick(rating) {
   selectedRating.value = rating
-  alert(`You clicked ${rating} star${rating > 1 ? 's' : ''}`)
+  //alert(`You clicked ${rating} star${rating > 1 ? 's' : ''}`)
 }
 
 
