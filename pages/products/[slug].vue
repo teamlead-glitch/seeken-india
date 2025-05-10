@@ -54,8 +54,15 @@
 
         <ProductRelatedSlider :products="relatedProducts"/>
 
-        <ProductRatings/>
-        <ProductReviewsAdd/>
+       <ProductRatings
+  :averageRating="3.3"
+  :totalRatings="122"
+  :recommendationPercentage="86"
+  :recommendedCount="13"
+  :totalRecommended="15"
+  :ratingDistribution="{ 5: 98, 4: 34, 3: 27, 2: 10, 1: 3 }"
+/>
+        <ProductReviewsAdd v-if="authStore.token" :productId="product?.id"/>
         <ProductReviews/>
 </div>
 
@@ -96,6 +103,9 @@
 import { useRoute } from 'vue-router';
 import { useDateFormat } from '~/composables/useDateFormat';
 import { useCartActions } from '@/composables/useCartActions'
+import { useAuthStore } from '~/store/auth';
+
+const authStore = useAuthStore();
 const { addToast } = useToast()
 
 const { handleAddToCart } = useCartActions()
