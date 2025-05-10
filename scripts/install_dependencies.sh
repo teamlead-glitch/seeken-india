@@ -1,4 +1,5 @@
 #!/bin/bash
-npm install -g pm2
+chown -R ubuntu:ubuntu /home/ubuntu/seeken-nuxt
+
 
 
