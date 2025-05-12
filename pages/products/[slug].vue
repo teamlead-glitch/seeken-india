@@ -55,7 +55,7 @@
         <ProductRelatedSlider :products="relatedProducts"/>
 
        <ProductRatings :productId="product?.id" :refreshKey="refreshKey"/>
-        <ProductReviewsAdd v-if="authStore.token" :productId="product?.id" @review-submitted="triggerRefresh"/>
+        <ProductReviewsAdd v-if="authStore.token && isProductPurchased" :productId="product?.id" @review-submitted="triggerRefresh"/>
         <ProductReviews :productId="product?.id" :refreshKey="refreshKey"/>
 </div>
 
@@ -108,6 +108,7 @@ const route = useRoute();
 const slug = route.params.slug; // Get slug from URL
 const { data: response, error, refresh } = useFetchData('response', `products/${slug}`);
 const product = computed(() => response.value?.data);
+const isProductPurchased = ref(false);
 
 const highlightedSpecifications = computed(() => {
   return product.value?.product_specifications?.filter(spec => spec.is_highlight === 1) || [];
@@ -226,6 +227,28 @@ const refreshKey = ref(0)
 const triggerRefresh  = () => {
   refreshKey.value++
 }
+
+// Watch product ID and check purchase
+watch(
+  () => product.value?.id,
+  async (id) => {
+    if (!id) return
+
+    try {
+      const res = await $fetch(`${useRuntimeConfig().public.apiBase}check-product-purchased/${id}`, {
+        headers: {
+          Authorization: `Bearer ${authStore.token}`,
+        },
+      })
+
+      isProductPurchased.value = res.result === 'success'
+    } catch (err) {
+      console.error('Error checking purchase status:', err)
+      isProductPurchased.value = false
+    }
+  },
+  { immediate: true }
+)
 
 </script>
 
