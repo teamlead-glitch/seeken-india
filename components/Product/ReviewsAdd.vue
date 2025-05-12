@@ -47,6 +47,8 @@ import { ref } from 'vue'
 import { useLoader } from '@/composables/useLoader';
 import { useAuthStore } from '~/store/auth';
 
+const emit = defineEmits(['review-submitted'])
+
 const authStore = useAuthStore();
 const { addToast } = useToast()
 
@@ -75,7 +77,10 @@ async function submitForm() {
     
     showLoader();
     const payload = { product_id : props.productId , rating : selectedRating.value , title : reviewTitle.value , comment : reviewText.value  };
-  console.log(payload,'payload');
+  if (myReview.value) {
+payload.id=myReview.value.id
+  }
+    console.log(payload,'payload');
   
 
   try {
@@ -87,13 +92,36 @@ async function submitForm() {
     });
 
    addToast('Your rating and review have been added successfully..!', 'success')
+   emit('review-submitted')
    
   } catch (error) {
     //cant manage error response api different structure
     addToast('An error occurred while submitting your rating and review. Please try again later..!', 'error')
     
+    
   } finally {
     hideLoader();
   }
 }
+
+const myReview = ref({
+  // id: 3,
+  // user_id: 2,
+  // product_id: 23,
+  // rating: 2,
+  // title: "2 star",
+  // comment: "test sherin test sherintest sherintest...",
+  // is_approved: 0,
+  // created_at: "2025-05-12T08:59:11.000000Z",
+  // updated_at: "2025-05-12T08:59:11.000000Z",
+  // customer_name: "Super Admin",
+})
+
+watchEffect(() => {
+  if (myReview.value) {
+    selectedRating.value = myReview.value.rating || 0
+    reviewTitle.value = myReview.value.title || ''
+    reviewText.value = myReview.value.comment || ''
+  }
+})
 </script>
