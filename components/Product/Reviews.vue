@@ -1,5 +1,5 @@
 <template>
-    {{reviews}}
+    <!-- {{reviews}} -->
      <div class="row reviewrating_box mb10" data-masonry='{"percentPosition": true }' v-if='reviews && reviews.length >0'>
 
 
