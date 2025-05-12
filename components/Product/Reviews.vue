@@ -40,14 +40,18 @@ const props = defineProps({
     type: [Number, String],
     required: true,
   },
+  refreshKey: {
+    type: Number,
+    default: 0,
+  },
 })
 
 const reviews = ref(null)
 const error = ref(null)
 
 watch(
-  () => props.productId,
-  async (id) => {
+  () => [props.productId, props.refreshKey],
+  async ([id]) => {
     if (!id) return
    const config = useRuntimeConfig();
     const { data, error: fetchError } = await useFetch(

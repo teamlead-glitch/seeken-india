@@ -54,9 +54,9 @@
 
         <ProductRelatedSlider :products="relatedProducts"/>
 
-       <ProductRatings :productId="product?.id"/>
-        <ProductReviewsAdd v-if="authStore.token" :productId="product?.id"/>
-        <ProductReviews :productId="product?.id"/>
+       <ProductRatings :productId="product?.id" :refreshKey="refreshKey"/>
+        <ProductReviewsAdd v-if="authStore.token" :productId="product?.id" @review-submitted="triggerRefresh"/>
+        <ProductReviews :productId="product?.id" :refreshKey="refreshKey"/>
 </div>
 
 <div class="fixed_position_rates">
@@ -221,6 +221,11 @@ watch(
   },
   { immediate: true } // Trigger immediately if product ID is already available
 );
+
+const refreshKey = ref(0)
+const triggerRefresh  = () => {
+  refreshKey.value++
+}
 
 </script>
 

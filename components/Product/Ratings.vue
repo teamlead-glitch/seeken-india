@@ -67,6 +67,10 @@ const props = defineProps({
     type: [Number, String],
     required: true,
   },
+  refreshKey: {
+    type: Number,
+    default: 0,
+  },
 })
 
 const averageRating = ref(0)
@@ -104,7 +108,11 @@ const fetchRatings = async () => {
 }
 
 onMounted(fetchRatings)
-watch(() => props.productId, fetchRatings)
+watch(
+  () => [props.productId, props.refreshKey],
+  fetchRatings,
+  { immediate: true }
+)
 
 const getStarPercentage = (star) => {
   const count = ratingDistribution.value[star] || 0
