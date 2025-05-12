@@ -26,7 +26,10 @@
                         <div class="full__box">
                             <div class="row align-items-center">
                                 <div class="col-md-4 mb-3">
-                                    <div class="profile__pic"><img src="/images/profile_icon.webp" alt="seeken"></div>
+                                    <div class="profile__pic">
+                                        <!-- <img src="/images/profile_icon.webp" alt="seeken"> -->
+                                         <CommonAvatar :name="authStore.user?.name ?? 'Guest'"   />
+                                    </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="lists">
