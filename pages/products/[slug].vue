@@ -56,7 +56,7 @@
 
        <ProductRatings :productId="product?.id"/>
         <ProductReviewsAdd v-if="authStore.token" :productId="product?.id"/>
-        <ProductReviews/>
+        <ProductReviews :productId="product?.id"/>
 </div>
 
 <div class="fixed_position_rates">
