@@ -105,7 +105,10 @@
                   <ul v-if="authStore.token">
                     <li>
                       <div class="profile">
-                        <div class="profile_icon"><img src="/images/profile_icon.webp" alt=""></div>
+                        <div class="profile_icon">
+                          <!-- <img src="/images/profile_icon.webp" alt=""> -->
+                           <CommonAvatar :name="authStore.user?.name ?? 'Guest'" :size="50"  />
+                        </div>
                         <h6>Hi, {{ authStore.user?.name ?? 'Guest' }}!</h6>
                       </div>
                     </li>

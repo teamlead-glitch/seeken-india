@@ -10,9 +10,11 @@ export function useFetchData(key, endpoint, auth = false) {
 
   const { $pinia } = useNuxtApp(); // Ensure Pinia is available
   const authStore = $pinia ? useAuthStore() : null; // Access store safely
+  const { showLoader, hideLoader } = useLoader(); // Use global loader
 
   async function fetchData() {
     try {
+      showLoader()
       const headers = {};
 
       // Add authorization header if auth is true
@@ -46,6 +48,9 @@ export function useFetchData(key, endpoint, auth = false) {
       console.error(`UseFetch composible : Unexpected error fetching ${endpoint}:`, err);
       error.value = err;
       data.value = [];
+    }
+    finally{
+      hideLoader()
     }
   }
 

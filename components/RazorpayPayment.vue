@@ -5,6 +5,7 @@
 <script setup lang="ts">
 import { useAuthStore } from '~/store/auth';
 import { useGuestToken } from '@/composables/useGuestToken'
+const router = useRouter()
 
 // Define the `amount` prop
 const props = defineProps({
@@ -92,6 +93,10 @@ const makePayment = async () => {
     order_id: data?.value?.razorpay_order_id,
     handler: function (response) {
       console.log('Payment Successful:', response);
+      router.push({
+    path: '/order-placed',
+    query: { order_id: response?.order_id } // optional: pass order ID
+  })
     },
     prefill: {
       name: 'Test User',

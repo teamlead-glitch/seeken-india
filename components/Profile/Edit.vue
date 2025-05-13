@@ -12,10 +12,11 @@
             <div class="col-md-12 mb-5"><h6>Edit Profile Details</h6></div>
             <div class="col-md-3 mb-3">
                 <div class="profile-picture-upload">
-                   <img src="/images/profile_icon.webp" class="img-fluid" alt="seeken">
+                  <CommonAvatar :name="name"   />
+                   <!-- <img src="/images/profile_icon.webp" class="img-fluid" alt="seeken">
                     <label for="profile-picture-input" class="upload-label">
                         <i class="bi bi-camera-fill"></i> 
-                    </label>
+                    </label> -->
                       <!-- Hidden File Input (No div wrapper) -->
         <input type="file" id="profile-picture-input" accept="image/*">
               </div>

@@ -1,28 +1,29 @@
 <template>
-    
-    <div class="accordion-item border">
-      <h3 class="accordion-header" :id="`heading-${order.order_id}`">
+    <!-- {{ order }} -->
+    <div class="accordion-item border" v-if="order">
+      
+      <h3 class="accordion-header" :id="`heading-${order.id}`">
         <button
           class="accordion-button bg-transparent"
           :class="{ collapsed: index !== 0 }"
           type="button"
           data-bs-toggle="collapse"
-          :data-bs-target="`#collapse-${order.order_id}`"
+          :data-bs-target="`#collapse-${order.id}`"
           aria-expanded="true"
-          :aria-controls="`collapse-${order.order_id}`"
+          :aria-controls="`collapse-${order.id}`"
         >
           <div class="headings">
             <div class="colums">
-              <h4><span>Order placed</span>{{ order.order_placed_date }}</h4>
+              <h4><span>Order placed</span>{{ formatDate(order.created_at) }}</h4>
             </div>
             <div class="colums">
-              <h4><span>Total</span>₹{{ order.total_amount.toFixed(2) }}</h4>
+              <h4><span>Total</span>₹{{ order?.grand_total }}</h4>
             </div>
             <div class="colums">
-              <h4><span>Ship to</span>{{ order.ship_to }}</h4>
+              <h4><span>Ship to</span>{{ order.shipping_first_name+' '+order.shipping_last_name }}</h4>
             </div>
             <div class="colums">
-              <h4>Order #{{ order.order_id }}</h4>
+              <h4>Order #{{ order.order_no }}</h4>
               <div class="orderdetail">
                 <a href="#">View Order details</a>
                 <span>|</span>
@@ -34,38 +35,39 @@
       </h3>
   
       <div
-        :id="`collapse-${order.order_id}`"
+        :id="`collapse-${order.id}`"
         class="accordion-collapse collapse "
         :class="{ show: index === 0 }"
-        :aria-labelledby="`heading-${order.order_id}`"
+        :aria-labelledby="`heading-${order.id}`"
         data-bs-parent="#accordionAbout6"
       >
         <div class="accordion-body">
           <div class="content">
             <div v-for="(item, index) in order.items" :key="index" class="order_boxes">
-              <h5>Delivered {{ item.delivered_date }}</h5>
+              <h5>{{ order.order_status??'-' }} </h5>
               <div class="full">
                 <div class="product__pic">
-                  <img :src="item.image" class="img-fluid" alt="product image" />
+                  <img :src="item.product.default_image??''" class="img-fluid" alt="product image" />
                 </div>
                 <div class="product__details">
                   <h4>{{ item.product_name }}</h4>
                   <h6>
                     Return or replace items: Eligible through
-                    {{ item.return_eligible_till }}
+                    {{ formatDate(order.created_at) }}
                   </h6>
                   <div class="btn__boxes">
-                    <a href="#" class="btn_1">Buy it again</a>
-                    <a href="#" class="btn_2">View your item</a>
-                    <a href="#" class="btn_2">Track package</a>
+                    
+                    <NuxtLink :to="`/buy-now/${item.product.slug}`" class="btn_1">Buy it again</NuxtLink>
+                    <NuxtLink :to="`/products/${item.product.slug}`" class="btn_2">View your item</NuxtLink>
+                  
                   </div>
                 </div>
               </div>
               <!-- Mobile buttons -->
               <div class="btn__boxes__mob">
-                <a href="#" class="btn_1">Buy it again</a>
-                <a href="#" class="btn_2">View your item</a>
-                <a href="#" class="btn_2">Track package</a>
+                <NuxtLink :to="`/buy-now/${item.product.slug}`" class="btn_1">Buy it again</NuxtLink>
+                <NuxtLink :to="`/products/${item.product.slug}`" class="btn_2">View your item</NuxtLink>
+                <!-- <a href="#" class="btn_2">Track package</a> -->
               </div>
             </div>
           </div>
@@ -78,24 +80,9 @@
   defineProps<{
     index:Number,
     order: {
-      order_id: string
-      order_placed_date: string
-      total_amount: number
-      ship_to: string
-      invoice_url: string
-      details_url: string
-      items: Array<{
-        delivered_date: string
-        product_name: string
-        return_eligible_till: string
-        image: string
-        actions: {
-          buy_again: string
-          view_item: string
-          track_package: string
-        }
-      }>
     }
   }>()
+
+  const { formatDate } = useDateFormat();
   </script>
   
