@@ -45,7 +45,8 @@
       <button class="quantity-btn plus-btn" @click="quantity++"><i class="bi bi-plus-lg"></i></button>
     </div>
     <button class="btn_2" @click="cartAdd(quickProduct,quantity)" data-bs-dismiss="offcanvas">Add to Cart</button>
-    <button @click="buyNow(quickProduct.slug)"  class="btn_1" data-bs-dismiss="offcanvas">Buy Now</button>
+    <!-- <button @click="buyNow(quickProduct.slug)"  class="btn_1" data-bs-dismiss="offcanvas">Buy Now</button> -->
+    <button @click="buyNow(quickProduct,quantity)"  class="btn_1" data-bs-dismiss="offcanvas">Buy Now</button>
   </div>
   <div class="view_detail">
     <button class="btn_3" @click="moredetails(quickProduct.slug)" data-bs-dismiss="offcanvas">More Details</button>
@@ -74,8 +75,11 @@ const cartAdd = (quickProduct,quantity) => {
     
 }
 
-const buyNow = (slug) => {
-  router.push('/buy-now/'+slug)
+// const buyNow = (slug) => {
+//   router.push('/buy-now/'+slug)
+// }
+const buyNow = (quickProduct,quantity) => {
+  handleAddToCart(quickProduct?.id,quantity, quickProduct.variant_id?quickProduct.variant_id:0,true)
 }
 
 const moredetails = (slug) => {

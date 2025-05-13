@@ -92,7 +92,7 @@ export const useCartStore = defineStore('cart', {
         this.fetchCartFromServer();
       }
     },
-    async addToCart(product_id, quantity=1,variant_id=0, action='add') {
+    async addToCart(product_id, quantity=1,variant_id=0, action='add', buy_now=false) {
       const router = useRouter()
       const { showLoader, hideLoader } = useLoader(); // Use global loader
       showLoader()
@@ -101,7 +101,7 @@ export const useCartStore = defineStore('cart', {
       }
       const success = await this.syncCartWithServer({ product_id, quantity: quantity,variant_id, action })
       
-      if(success){
+      if(success && buy_now){
         router.push('/cart')
       }
     },

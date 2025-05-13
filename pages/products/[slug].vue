@@ -78,7 +78,8 @@
                        </div>
                    </div>
                    <button class="btn_1" @click="cartAdd(product?.id,quantity)">Add to Cart</button>
-                   <NuxtLink class="btn_2" :to="`/buy-now/${product?.slug}`">Buy Now</NuxtLink>
+                   <!-- <NuxtLink class="btn_2" :to="`/buy-now/${product?.slug}`">Buy Now</NuxtLink> -->
+                   <button class="btn_2" @click="cartAdd(product?.id,quantity,true)">Buy Now</button>
                </div>
            </div>
        </div>
@@ -182,15 +183,15 @@ const triggerShowImage = (imgPath) => {
   imageRef.value?.showImage(imgPath);
 };
 
-const cartAdd = (id,quantity) => {
+const cartAdd = (id,quantity,buy_now=false) => {
     if(product.value && product.value.product_options?.length > 0){
        if(selectedVariantId.value > 0){
-        handleAddToCart(id,quantity,selectedVariantId.value);
+        handleAddToCart(id,quantity,selectedVariantId.value,buy_now);
        }else{
         addToast("Please select any varient options",'error')
        }
     }else{
-        handleAddToCart(id,quantity,false);
+        handleAddToCart(id,quantity,false,buy_now);
     }
     
 }
