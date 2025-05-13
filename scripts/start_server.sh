@@ -1,6 +1,12 @@
 #!/bin/bash
-cd /var/www/nuxt-app
-pm2 delete nuxt-app || true
+
+runuser -l ubuntu -c '
+cd /home/ubuntu/seeken-nuxt
+pm2 delete all || true
+npm install
+npm run build
 pm2 start .output/server/index.mjs --interpreter=node --name nuxt-app
 pm2 save
+'
 
+systemctl restart nginx

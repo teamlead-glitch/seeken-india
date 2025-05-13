@@ -5,23 +5,15 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      - echo Installing dependencies...
+      - echo "Installing Node dependencies..."
       - npm install
+
   build:
     commands:
-      - echo Building the Nuxt SSR app...
-      - npm run build
-  post_build:
-    commands:
-      - echo Preparing artifacts...
+      - echo "Skipping build step (No `npm run build` needed)"
       - mkdir -p output
-      - cp -r .output output/.output
-      - cp -r .nuxt output/.nuxt || true
-      - cp -r node_modules output/node_modules
-      - cp -r public output/public || true
-      - cp package*.json output/
-      - cp ecosystem.config.js output/ || true
-      - echo Build completed.
+      - echo "Copying files to output directory..."
+      - cp -r ./* ./.* ./output/ 2>/dev/null || echo "No files to copy"
 
 artifacts:
   files:
