@@ -23,6 +23,10 @@
     product: {
       type: {},
       required: true,
+    },
+    selectedVariantId: {
+      type: Number,
+      required: true,
     }
   
   });
@@ -41,8 +45,10 @@
 
 onMounted(() => {
   if (props.product?.product_variants?.length > 0) {
-    
-     defaultOptionIdArray.value = props.product.product_variants[0].id_combination.split('--').map(Number);
+    let defaultVarient=props.product.product_variants.find(variant => variant.id === props.selectedVariantId)
+   
+    // defaultOptionIdArray.value = props.product.product_variants[0].id_combination.split('--').map(Number);
+    defaultOptionIdArray.value = defaultVarient.id_combination.split('--').map(Number);
    
 console.log(defaultOptionIdArray,'defaultOptionIdArray++')
    
