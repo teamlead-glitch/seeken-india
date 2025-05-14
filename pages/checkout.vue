@@ -102,7 +102,14 @@ const validateInputs = () => {
 }
 
 
-
+useHead({
+      title: 'Seeken | Checkout',
+      meta: [
+        { name: 'description', content:  'Seeken Checkout' },
+       
+      ],
+      
+    });
 
 
 </script>

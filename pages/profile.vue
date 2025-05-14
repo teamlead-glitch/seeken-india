@@ -90,4 +90,13 @@ const showPassword = ref(false);
 definePageMeta({
     middleware: 'auth'
 })
+
+useHead({
+      title: 'Seeken | Profile',
+      meta: [
+        { name: 'description', content:  'Seeken Profile' },
+       
+      ],
+      
+    });
 </script>

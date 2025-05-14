@@ -156,4 +156,13 @@ definePageMeta({
 
 const { data: orders, error, refresh } = useFetchData('orders', 'list-orders?skip=0&take=10', true);
 
+useHead({
+      title: 'Seeken | Orders',
+      meta: [
+        { name: 'description', content:  'Seeken Orders' },
+       
+      ],
+      
+    });
+
 </script>

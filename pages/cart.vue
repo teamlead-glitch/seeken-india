@@ -169,7 +169,14 @@ const updateQuantity = async (item, newQty: number = 1, action = 'add') => {
  
 }
 
-
+useHead({
+      title: 'Seeken | Cart',
+      meta: [
+        { name: 'description', content:  'Seeken Cart' },
+       
+      ],
+      
+    });
 
 </script>
 

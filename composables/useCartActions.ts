@@ -4,10 +4,10 @@ export const useCartActions = () => {
   const cartStore = useCartStore()
 
   const handleAddToCart = (product: any, quantity=1, varient_id=0, buy_now=false) => {
-    if (window.confirm('Are you sure you want to add this item to the cart?')) {
+    //if (window.confirm('Are you sure you want to add this item to the cart?')) {
       cartStore.addToCart(product,quantity,varient_id, 'add', buy_now)
       
-    }
+   // }
   }
 
   return {

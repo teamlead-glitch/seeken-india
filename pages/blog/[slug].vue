@@ -68,4 +68,19 @@ const { data: blog, error, refresh } = useFetchData('blog', `blog-details/${slug
 
 const { data: articles, error2, refresh2 } = useFetchData('articles', 'blogs?skip=0&take=4');
 
+watchEffect(() => {
+  if (blog?.value?.title) {
+   
+
+    useHead({
+      title:  blog?.value?.title || 'Seeken Blog',
+      meta: [
+        { name: 'description', content: blog?.value?.short_description || 'Seeken Blog' },
+       
+      ],
+      
+    });
+  }
+});
+
 </script>

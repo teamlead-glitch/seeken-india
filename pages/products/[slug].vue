@@ -253,6 +253,21 @@ watch(
   { immediate: true }
 )
 
+watchEffect(() => {
+  if (product?.value?.name) {
+   
+
+    useHead({
+      title:  product?.value?.name || 'Seeken Product',
+      meta: [
+        { name: 'description', content: product?.value?.short_description || 'Seeken Product' },
+       
+      ],
+      
+    });
+  }
+});
+
 </script>
 
 <style>

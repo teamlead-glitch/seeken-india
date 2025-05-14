@@ -21,23 +21,13 @@
             </div>
         </div>
     </div>
-    <section class="inner_container">
+    <section class="inner_container" v-if="page_content.page_content">
         <div class="container">
+            <!-- {{ page_content }} -->
             <div class="row">
                 <div class="col-md-12">
-                    <div class="about_contents">
-                        <p class="f16">Since its inception in 2013, Seeken has focused on delivering high-quality,
-                            long-lasting consumer electronic products that provide exceptional value to our customers.
-                            We believe in empowering users with technology that enhances their lives. Our commitment to
-                            quality and customer satisfaction has fueled our expansion into five global markets,
-                            demonstrating our consistent growth and dedication to excellence over the past decade.</p>
-                        <h4>Expanding Our Horizons</h4>
-                        <p> Building on our success in the consumer electronics market, Seeken has expanded its
-                            offerings with the launch of two specialized sub-brands. Soundbreeze (est. 2023) delivers
-                            high-fidelity audio products with exceptional sound clarity and distinctive design,
-                            while Gravity focuses on cutting-edge wearable technology, including smartwatches and smart
-                            rings. Both sub-brands embody Seeken's commitment to providing premium quality, long-lasting
-                            products that offer exceptional value and a superior user experience.</p>
+                    <div class="about_contents" v-html="page_content.page_content.content">
+                       
                     </div>
                 </div>
             </div>
@@ -49,12 +39,10 @@
                 data-desktop="/images/vision-mision-bg.webp" data-mobile="/images/mission__mob__bg.webp"
                 >
                     <div class="row">
-                        <div class="col-md-6 col-xl-5">
+                        <div class="col-md-6 col-xl-5" >
                             <h2>Our Vision &amp; Mission</h2>
-                            <p>To build a legacy of excellence in consumer electronics, driven by integrity and customer
-                                focus</p>
-                            <p>To create technologically advanced products that seamlessly integrate into our customers'
-                                lives, providing exceptional quality and enduring performance</p>
+                            <p v-html="page_content.page_content.blocks[0].block_content"></p>
+                           
                         </div>
                     </div>
                 </div></div>
@@ -65,13 +53,8 @@
                     <div class="row">
                         <div class="col-md-6 col-xl-5">
                             <h2>Goals</h2>
-                            <p><strong> Innovate:</strong> Continuously create cutting-edge products that enhance
-                                customer experiences.</p>
-                            <p><strong>Expand:</strong> Increase global reach and brand presence in key markets.
-                            </p>
-                            <p><strong>Satisfy:</strong> Achieve exceptional customer satisfaction through product
-                                quality and support.</p>
-                            <p><strong> Grow:</strong> Foster a culture of learning and development for employees</p>
+                            <p v-html="page_content.page_content.blocks[1].block_content"></p>
+                           
                         </div>
                     </div>
                 </div></div>
@@ -82,15 +65,7 @@
                     <div class="row">
                         <div class="col-md-6 col-xl-5">
                             <h2>Values</h2>
-                            <p><strong> Integrity:</strong>Act with honesty and ethical principles in all business
-                                practices.</p>
-                            <p><strong>Customer-Centric:</strong> Prioritize customer needs and satisfaction above all
-                                else.
-                            </p>
-                            <p><strong> Quality-driven:</strong> Maintain uncompromising standards for product
-                                excellence and durability.</p>
-                            <p><strong>Innovation-focused:</strong> Embrace creativity and a passion for developing
-                                advanced technology.</p>
+                           <p v-html="page_content.page_content.blocks[2].block_content"></p>
                         </div>
                     </div>
                 </div></div>
@@ -101,13 +76,7 @@
                     <div class="row justify-content-end">
                         <div class="col-md-6 col-xl-5">
                             <h2>Global Presence</h2>
-                            <p>Over the past decade, Seeken has experienced significant growth, establishing a strong
-                                presence in key global markets. Our commitment to quality and customer satisfaction has
-                                fueled our expansion, resulting in a network of over 1,000 retail shops across the UAE
-                                and a robust presence in Singapore and India. In recent years, we have further expanded
-                                our reach, bringing our exceptional products to new markets like Malaysia and Zambia.
-                                Today, Seeken proudly serves customers in five major markets globally, with ambitious
-                                plans for continued expansion in the years to come.</p>
+                           <p v-html="page_content.page_content.blocks[3].block_content"></p>
                         </div>
                     </div>
                 </div></div>
@@ -117,6 +86,34 @@
     </section>
   </template>
 
-  <script setup lang="ts">
- 
-  </script>
+  <script setup>
+
+
+
+
+const { data: page_content, error:error2, refresh:refresh2 } = useFetchData('page_content', 'page/about-us');
+
+
+// Watch or compute seo when page_content is ready
+watchEffect(() => {
+  if (page_content?.value?.seo) {
+    const seo = page_content.value.seo;
+
+    useHead({
+      title: seo.meta_title || page_content.value.page_content.title || 'Default Title',
+      meta: [
+        { name: 'description', content: seo.meta_description || 'Default description' },
+        { name: 'keywords', content: seo.meta_keywords || '' },
+        { property: 'og:title', content: seo.og_title || '' },
+        { property: 'og:description', content: seo.og_description || '' },
+        { property: 'og:image', content: seo.og_image || '' },
+        { name: 'twitter:title', content: seo.twitter_title || '' },
+        { name: 'twitter:description', content: seo.twitter_description || '' },
+        { name: 'twitter:image', content: seo.twitter_image || '' },
+      ],
+      link: seo.canonical_url ? [{ rel: 'canonical', href: seo.canonical_url }] : [],
+    });
+  }
+});
+
+</script>

@@ -154,6 +154,15 @@ const wishlist = computed(() => wishlistStore.list);
 onMounted(() => {
   wishlistStore.fetchWishlists();
 });
+
+useHead({
+      title: 'Seeken | Wishlist',
+      meta: [
+        { name: 'description', content:  'Seeken Wishlist' },
+       
+      ],
+      
+    });
 </script>
 
 <style></style>

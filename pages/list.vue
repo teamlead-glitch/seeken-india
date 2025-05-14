@@ -171,4 +171,13 @@ onMounted(async () => {
   }
 })
 
+ useHead({
+      title: 'Seeken | Shop',
+      meta: [
+        { name: 'description', content:  'Seeken Shop' },
+       
+      ],
+      
+    });
+
 </script>
