@@ -43,7 +43,10 @@
                     </div>
                     <div class="col-md-12 ">
                         <div class="form-floating ">
-                            <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="mobile" placeholder="Phone number" required>
+                            <input type="tel" v-numeric-only class="form-control border-0 border-bottom rounded-0" v-model="mobile" placeholder="Phone number" required maxlength="10"
+                            pattern="\d{10}"
+  @invalid="e => e.target.setCustomValidity('Please enter a valid 10-digit number')"
+  @input="e => e.target.setCustomValidity('')">
                             <label for="" class="form-label">Phone number</label>
                           </div>
                           
