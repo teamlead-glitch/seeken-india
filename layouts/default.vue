@@ -29,8 +29,8 @@
   <!-- ------alert box desktop--- -->
   <div id="alertBox" class="alert-box">
     <p>We have a flash sale running with 40-70% off for a limited period and stock. <span> <a id="anchor2"
-          rel="#section2">Grab your Flash Deals Now</a> </span></p>
-    <button class="close-btn" onclick="closeAlert()"><i class="bi bi-x-lg"></i></button>
+          href="#section2">Grab your Flash Deals Now</a> </span></p>
+    <!-- <button class="close-btn" onclick="closeAlert()"><i class="bi bi-x-lg"></i></button> -->
   </div>
   <!-- ------alert box desktop close--- -->
 

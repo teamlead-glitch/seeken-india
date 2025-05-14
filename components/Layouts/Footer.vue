@@ -71,8 +71,8 @@
           <ul>
             <li>© Seeken 2025</li>
             <li>All Rights Reserved</li>
-            <li><a href="">Legal &amp; Privacy</a> </li>
-            <li><a href="">Your Privacy Choices</a></li>
+            <li><NuxtLink to="/terms-of-services"> Terms and Conditions</NuxtLink> </li>
+            <li><NuxtLink to="/privacy-policy"> Privacy Policy</NuxtLink></li>
             <li>Powered By<a href="http://www.phitany.in/" target="_blank"> Phitany</a></li>
           </ul>
         </div>
