@@ -153,10 +153,20 @@ const filterCategory = (cat_id) => {
 }
 
 // Watch route query changes and update filterCat
-watch(() => route.query.category, (newCategory) => {
-  console.log(newCategory,'newCategory via url')
-  page.value = 0;fullyLoaded.value = false;
-  filterCat.value = newCategory ? Number(newCategory) : 0;
+// watch(() => route.query.category, (newCategory) => {
+//   console.log(newCategory,'newCategory via url')
+//   page.value = 0;fullyLoaded.value = false;
+//   filterCat.value = newCategory ? Number(newCategory) : 0;
+// });
+
+watchEffect(() => {
+  if (process.client) {
+    const newCategory = route.query.category;
+    console.log(newCategory, 'newCategory via url');
+    page.value = 0;
+    fullyLoaded.value = false;
+    filterCat.value = newCategory ? Number(newCategory) : 0;
+  }
 });
 
 onMounted(async () => {
