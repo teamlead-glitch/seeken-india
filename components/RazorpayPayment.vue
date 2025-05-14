@@ -36,7 +36,7 @@ const makePayment = async () => {
     billing_pincode: billing_address.pincode,
     billing_phone: billing_address.phone,
     billing_email: billing_address.email,
-    billing_state: 'b-state',
+    billing_state: billing_address.state,
 
 
     shipping_first_name: shipping_address.first_name,
@@ -48,7 +48,7 @@ const makePayment = async () => {
     shipping_pincode: shipping_address.pincode,
     shipping_phone: shipping_address.phone,
     shipping_email: shipping_address.email,
-    shipping_state: 's-state',
+    shipping_state: shipping_address.state,
   };
   console.log(combinedAddress, 'combinedAddress')
 
