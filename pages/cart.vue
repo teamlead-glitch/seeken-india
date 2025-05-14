@@ -60,7 +60,7 @@
 
         <div class="col-md-5 col-xl-4">
           <div class="total_prices">
-            <div class="coupon">
+            <!-- <div class="coupon">
               <div class="row">
                 <div class="col-md-12"><label>Voucher Code</label></div>
                 <div class="col-8 col-md-12 col-xl-8">
@@ -70,7 +70,7 @@
                   <button class="btn_4">Apply</button>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="total__price">
               <h6>Price Breakdown</h6>
               <div class="pricing">

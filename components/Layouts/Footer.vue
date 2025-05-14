@@ -32,7 +32,7 @@
                   <li><NuxtLink to="contactus">Contact Us</NuxtLink></li>
                  
                   <li><NuxtLink to="blog">Blog</NuxtLink></li>
-                  <li><a href="#">Careers</a></li>
+                  <li><NuxtLink to="faq">FAQ</NuxtLink></li>
                 </ul>
               </div>
             </div>
