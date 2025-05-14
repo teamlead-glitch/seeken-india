@@ -45,6 +45,12 @@
                             <label for="" class="form-label">City</label>
                           </div>
                     </div>
+                     <div class="col-md-6 ">
+                        <div class="form-floating ">
+                            <input type="text" class="form-control border-0 border-bottom rounded-0" ref="ship_state" v-model="shipping_address.state"  placeholder="State" required>
+                            <label for="" class="form-label">State</label>
+                          </div>
+                    </div>
                     <div class="col-md-6 ">
                         <div class="form-floating ">
                             <input type="text" class="form-control border-0 border-bottom rounded-0" ref="ship_location" v-model="shipping_address.location"  placeholder="Locatione" required>
@@ -108,6 +114,12 @@
                     </div>
                     <div class="col-md-6 ">
                         <div class="form-floating ">
+                            <input type="text" class="form-control border-0 border-bottom rounded-0" ref="bill_state" v-model="billing_address.state"  placeholder="State" required>
+                            <label for="" class="form-label">State</label>
+                          </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="form-floating ">
                             <input type="text" class="form-control border-0 border-bottom rounded-0" ref="bill_location" v-model="billing_address.location"  placeholder="Locatione" required>
                             <label for="" class="form-label">Location</label>
                           </div>
@@ -142,6 +154,7 @@ function toggleRadio() {
       last_name: '',
       address: '',
       city: '',
+      state: '',
       location: '',
       pincode: '',
       phone: '',
@@ -158,6 +171,7 @@ const bill_first_name = ref(null);
 const bill_last_name = ref(null);
 const bill_address = ref(null);
 const bill_city = ref(null);
+const bill_state = ref(null);
 const bill_location = ref(null);
 const bill_pincode = ref(null);
 const bill_phone = ref(null);
@@ -167,6 +181,7 @@ const ship_first_name = ref(null);
 const ship_last_name = ref(null);
 const ship_address = ref(null);
 const ship_city = ref(null);
+const ship_state = ref(null);
 const ship_location = ref(null);
 const ship_pincode = ref(null);
 const ship_phone = ref(null);
@@ -177,6 +192,7 @@ const bill_fieldRefs = {
   last_name: bill_last_name,
   address: bill_address,
   city: bill_city,
+  state: bill_state,
   location: bill_location,
   pincode: bill_pincode,
   phone: bill_phone,
@@ -188,6 +204,7 @@ const ship_fieldRefs = {
   last_name: ship_last_name,
   address: ship_address,
   city: ship_city,
+  state: ship_state,
   location: ship_location,
   pincode: ship_pincode,
   phone: ship_phone,

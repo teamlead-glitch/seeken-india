@@ -15,6 +15,7 @@ export const useCheckoutAddressValidator = () => {
       'phone',
       'address',
       'city',
+      'state',
       'location',
       'pincode',
      

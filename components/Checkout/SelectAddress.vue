@@ -21,7 +21,7 @@
                   <li>
                     <p> <strong>{{ adress.first_name }} {{ adress.last_name }}</strong> <br>
                       {{ adress.address }} <br>
-                      {{ adress.city }}, {{ adress.location }}, {{ adress.landmark }}, {{ adress.pincode }}</p>
+                      {{ adress.location }}, {{ adress.city }}, {{ adress.state }}, {{ adress.pincode }}</p>
                   </li>
                   <li>
                     <p> {{ adress.phone }}<br>
@@ -78,6 +78,7 @@ props.shipping_address.first_name = adress.first_name
 props.shipping_address.last_name = adress.last_name
 props.shipping_address.address = adress.address
 props.shipping_address.city = adress.city
+props.shipping_address.state = adress.state
 props.shipping_address.location = adress.location
 props.shipping_address.landmark = adress.landmark
 props.shipping_address.pincode = adress.pincode
