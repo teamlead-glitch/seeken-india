@@ -22,14 +22,20 @@
             </div>
             <div class="col-md-6 ">
                 <div class="form-floating ">
+                    <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="address.location"  placeholder="Locatione" required>
+                    <label for="" class="form-label">Location</label>
+                  </div>
+            </div>
+            <div class="col-md-6 ">
+                <div class="form-floating ">
                     <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="address.city"  placeholder="City" required>
                     <label for="" class="form-label">City</label>
                   </div>
             </div>
             <div class="col-md-6 ">
                 <div class="form-floating ">
-                    <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="address.location"  placeholder="Locatione" required>
-                    <label for="" class="form-label">Location</label>
+                    <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="address.state"  placeholder="State" required>
+                    <label for="" class="form-label">State</label>
                   </div>
             </div>
             <div class="col-md-6">
@@ -38,12 +44,12 @@
                     <label for="" class="form-label">Pin code</label>
                   </div>
             </div>
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
                 <div class="form-floating">
                     <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="address.land_mark"  placeholder="Landmark" required>
                     <label for="" class="form-label">Landmark</label>
                   </div>
-            </div>
+            </div> -->
             <div class="col-md-6">
                 <div class="form-floating">
                     <input type="tel" class="form-control border-0 border-bottom rounded-0" v-numeric-only v-model="address.phone"  placeholder="Mobile number" required  maxlength="10"
@@ -117,7 +123,8 @@ const props = defineProps({
   email: '',
   is_default: 0,
   user_id: authStore.user.id,
-  type: addressType
+  type: addressType,
+  state: ''
 };
 
 const address = ref({ ...defaultAddress });

@@ -32,7 +32,7 @@
         </button>
                 <br>
                 {{ adress.address }} <br>
-                {{ adress.city }}, {{ adress.location }}, {{ adress.pincode }}, {{ adress.landmark }}</p>
+                {{ adress.location }}, {{ adress.city }}, {{ adress.state }}, {{ adress.pincode }}</p>
             </li>
             <li>
               <p> {{ adress.phone }}<br>
