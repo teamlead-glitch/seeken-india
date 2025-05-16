@@ -21,13 +21,18 @@
             </div>
             <div class="colums">
               <h4><span>Ship to</span>{{ order.shipping_first_name+' '+order.shipping_last_name }}</h4>
+              <p>{{ order.shipping_location }}, {{ order.shipping_city }}
+              <br></br>
+              {{ order.shipping_state }}, {{ order.shipping_pincode }}
+              </p>
+              
             </div>
             <div class="colums">
               <h4>Order #{{ order.order_no }}</h4>
               <div class="orderdetail">
                 <a href="#">View Order details</a>
-                <span>|</span>
-                <a href="#">View Invoice</a>
+                <!-- <span>|</span>
+                <a href="#">View Invoice</a> -->
               </div>
             </div>
           </div>
@@ -44,7 +49,8 @@
         <div class="accordion-body">
           <div class="content">
             <div v-for="(item, index) in order.items" :key="index" class="order_boxes">
-              <h5>{{ order.order_status??'-' }} </h5>
+              <h5 style="width: 60%;float: left;">{{ order.order_status??'-' }} </h5>
+              <a href="#" style="float: right;text-decoration: underline;font-size: 1rem;font-weight: 600">View Invoice</a>
               <div class="full">
                 <div class="product__pic">
                   <img :src="item.product.default_image??''" class="img-fluid" alt="product image" />
