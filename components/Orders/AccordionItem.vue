@@ -50,7 +50,7 @@
           <div class="content">
             <div v-for="(item, index) in order.items" :key="index" class="order_boxes">
               <h5 style="width: 60%;float: left;">{{ order.order_status??'-' }} </h5>
-              <a href="/" target="_blank" style="float: right;text-decoration: underline;font-size: 1rem;font-weight: 600">View Invoice</a>
+              <a v-if="order.order_status != 'pending'" :href="order.invoice_url" target="_blank" style="float: right;text-decoration: underline;font-size: 1rem;font-weight: 600">View Invoice</a>
               <div class="full">
                 <div class="product__pic">
                   <img :src="item.product.default_image??''" class="img-fluid" alt="product image" />
