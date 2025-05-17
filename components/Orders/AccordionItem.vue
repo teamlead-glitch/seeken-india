@@ -77,7 +77,7 @@
               </div>
             </div>
 
-             <div class="my-4 p-4 border rounded bg-light">
+             <div v-if="order.order_status == 'pending'" class="my-4 p-4 border rounded bg-light">
     <div v-if="!showReason">
       <div class="d-flex justify-content-between align-items-center">
         <span class="text-danger fw-semibold">Do you want to cancel your order?</span>
