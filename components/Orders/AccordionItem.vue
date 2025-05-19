@@ -49,7 +49,7 @@
         <div class="accordion-body">
           <div class="content">
             <div v-for="(item, index) in order.items" :key="index" class="order_boxes">
-              <h5 v-if="index==0" style="width: 60%;float: left;">{{ order.order_status??'-' }} </h5>
+              <h5  style="width: 60%;float: left;">{{ order.order_status??'-' }} </h5>
               <a v-if="order.order_status != 'pending' && index==0" :href="order.invoice_url" target="_blank" style="float: right;text-decoration: underline;font-size: 1rem;font-weight: 600">View Invoice</a>
               <div class="full">
                 <div class="product__pic">
@@ -75,13 +75,12 @@
                 <NuxtLink :to="`/products/${item.product?.slug}`" class="btn_2">View your item</NuxtLink>
                 <!-- <a href="#" class="btn_2">Track package</a> -->
               </div>
-            </div>
 
-             <div v-if="order.order_status == 'pending'" class="my-4 p-4 border rounded bg-light">
-    <div v-if="!showReason">
+              <div v-if="order.order_status == 'pending'" class="my-4 p-4 border rounded bg-light">
+    <div v-if="!showReason[order.id]?.[item.id]">
       <div class="d-flex justify-content-between align-items-center">
-        <span class="text-danger fw-semibold">Do you want to cancel your order?</span>
-        <button class="btn btn-outline-danger" @click="showReason = true">
+        <span class="text-danger fw-semibold">Do you want to cancel this order item?</span>
+        <button class="btn btn-outline-danger" @click="toggleReason(order.id, item.id)">
           Cancel Order
         </button>
       </div>
@@ -98,13 +97,16 @@
       ></textarea>
 
       <div class="d-flex justify-content-end">
-        <button class="btn btn-secondary me-2" @click="showReason = false">Back</button>
-        <button class="btn btn-danger" @click="submitCancellation(order.id)" :disabled="!reasons[order.id]?.trim()">
+        <button class="btn btn-secondary me-2" @click="toggleReason(order.id, item.id)">Back</button>
+        <button class="btn btn-danger" @click="submitCancellation(order.id, item.product_id)" :disabled="!reasons[order.id]?.trim()">
           Submit Cancellation
         </button>
       </div>
     </div>
   </div>
+            </div>
+
+             
 
           </div>
         </div>
@@ -127,17 +129,24 @@ const authStore = useAuthStore();
 
   const { formatDate } = useDateFormat();
 
-  const showReason = ref(false)
+  const showReason = ref({})
 const reasons = ref({})
 
+function toggleReason(orderId, itemId) {
+  if (!showReason.value[orderId]) {
+    showReason.value[orderId] = {}
+  }
+  showReason.value[orderId][itemId] = !showReason.value[orderId][itemId]
+}
+
 // Submit cancellation
-async function submitCancellation(id){
+async function submitCancellation(id,product_id){
   const reason = reasons.value[id]?.trim()
   if (reason) {
     
 
      showLoader();
-    const payload = { order_no : id , reason : reason   };
+    const payload = { order_no : id , reason : reason, product_id   };
 
   
 
