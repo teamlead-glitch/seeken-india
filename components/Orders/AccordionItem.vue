@@ -90,7 +90,7 @@
       <label for="cancelReason" class="form-label fw-semibold">Reason for cancellation:</label>
       <textarea
         id="cancelReason"
-        v-model="reasons[order.id]"
+        v-model="reasons[order.id][item.product_id]"
         rows="4"
         class="form-control mb-3"
         placeholder="Type your reason here..."
@@ -98,7 +98,7 @@
 
       <div class="d-flex justify-content-end">
         <button class="btn btn-secondary me-2" @click="toggleReason(order.id, item.id)">Back</button>
-        <button class="btn btn-danger" @click="submitCancellation(order.id, item.product_id)" :disabled="!reasons[order.id]?.trim()">
+        <button class="btn btn-danger" @click="submitCancellation(order.id, item.product_id, order.order_no)" :disabled="!reasons[order.id]?.[item.product_id]?.trim()">
           Submit Cancellation
         </button>
       </div>
@@ -137,16 +137,19 @@ function toggleReason(orderId, itemId) {
     showReason.value[orderId] = {}
   }
   showReason.value[orderId][itemId] = !showReason.value[orderId][itemId]
+
+  if (!reasons.value[orderId]) reasons.value[orderId] = {};
+  if (!reasons.value[orderId][itemId]) reasons.value[orderId][itemId] = '';
 }
 
 // Submit cancellation
-async function submitCancellation(id,product_id){
-  const reason = reasons.value[id]?.trim()
+async function submitCancellation(id, product_id, order_no){
+  const reason = reasons.value[id]?.[product_id]?.trim();
   if (reason) {
     
 
      showLoader();
-    const payload = { order_no : id , reason : reason, product_id   };
+    const payload = { order_no : order_no , reason : reason, product_id   };
 
   
 
