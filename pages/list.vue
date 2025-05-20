@@ -67,29 +67,39 @@
 </template>
 
 <script setup>
-
-
-import { inject } from 'vue';
+import { ref, watch, onMounted, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
+import { useAsyncData, useRuntimeConfig, useHead } from '#imports';
 
 const route = useRoute();
+const config = useRuntimeConfig();
 
-const productsList = ref([]); // Store the combined product list
+const productsList = ref([]);
 const page = ref(0);
 const perPage = 4;
 const loadMoreTrigger = ref(null);
 const fullyLoaded = ref(false);
 
-const categories = inject('All_categories');
-const config = useRuntimeConfig();
-
 const sortBy = ref('price_low_high');
-const filterCat = ref(route.query.category ? Number(route.query.category) : 0);
+const filterCat = ref(0); // Init to 0 by default
 
+// Injected categories
+const categories = inject('All_categories');
 
+// Watch route.query.category and update filterCat only on client
+onMounted(() => {
+  nextTick(() => {
+    const newCategory = route.query.category;
+    if (newCategory) {
+      filterCat.value = Number(newCategory);
+    }
+  });
+});
+
+// Async fetch
 const { data: products, error } = await useAsyncData(
   'products',
-  async () => { // Make the function async
+  async () => {
     try {
       const query = new URLSearchParams({
         skip: page.value,
@@ -101,94 +111,62 @@ const { data: products, error } = await useAsyncData(
         query.append('category', filterCat.value);
       }
 
-      // Await the API response
       const response = await $fetch(`${config.public.apiBase}products?${query.toString()}`);
-
-      // Check if API returns an error
       if (response?.error) {
-        return { data: [], total: 0 }; // Return an empty array if no products found
+        return { data: [], total: 0 };
       }
-      if (page.value === 0) {
-    productsList.value = response?.data || [];
-  }
+
       return response;
     } catch (err) {
       console.error('Fetch error:', err);
-      return { data: [], total: 0 }; // Handle fetch errors gracefully
+      return { data: [], total: 0 };
     }
   },
   {
-    watch: [sortBy, filterCat, page], // Refetch when dependencies change
+    watch: [sortBy, filterCat, page],
   }
 );
 
-// Handle API errors
 if (error.value) {
   console.error('Error fetching products:', error.value);
 }
 
-
-console.log(products, 'products in list page')
-
-// Append logic
+// Append products
 watch(products, (newVal) => {
-
-  if(newVal?.data.length < perPage){
-      fullyLoaded.value = true;
-    }
+  if (newVal?.data.length < perPage) {
+    fullyLoaded.value = true;
+  }
 
   if (page.value === 0) {
     productsList.value = newVal?.data || [];
   } else {
-    
     productsList.value.push(...(newVal?.data || []));
   }
-
-  
 });
 
+// Filter by category click
 const filterCategory = (cat_id) => {
-  page.value = 0;fullyLoaded.value = false;
+  page.value = 0;
+  fullyLoaded.value = false;
   filterCat.value = cat_id;
-}
+};
 
-// Watch route query changes and update filterCat
-// watch(() => route.query.category, (newCategory) => {
-//   console.log(newCategory,'newCategory via url')
-//   page.value = 0;fullyLoaded.value = false;
-//   filterCat.value = newCategory ? Number(newCategory) : 0;
-// });
-
-watchEffect(() => {
-  if (process.client) {
-    const newCategory = route.query.category;
-    console.log(newCategory, 'newCategory via url');
-    page.value = 0;
-    fullyLoaded.value = false;
-    filterCat.value = newCategory ? Number(newCategory) : 0;
-  }
-});
-
-onMounted(async () => {
-  page.value = 0;fullyLoaded.value = false;
+// Infinite scroll
+onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting && !fullyLoaded.value && productsList.value.length >0) {
-      page.value = page.value + perPage
+    if (entries[0].isIntersecting && !fullyLoaded.value && productsList.value.length > 0) {
+      page.value = page.value + perPage;
     }
-  })
+  });
 
   if (loadMoreTrigger.value) {
-    observer.observe(loadMoreTrigger.value)
+    observer.observe(loadMoreTrigger.value);
   }
-})
+});
 
- useHead({
-      title: 'Seeken | Shop',
-      meta: [
-        { name: 'description', content:  'Seeken Shop' },
-       
-      ],
-      
-    });
-
+// Page metadata
+useHead({
+  title: 'Seeken | Shop',
+  meta: [{ name: 'description', content: 'Seeken Shop' }],
+});
 </script>
