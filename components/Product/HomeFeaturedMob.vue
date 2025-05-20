@@ -34,7 +34,7 @@
        
        <div class="col-md-12 d-flex justify-content-center">
         
-         <NuxtLink to="/list" class="btn_2">View More <i class="bi bi-arrow-right"></i></NuxtLink>
+         <!-- <NuxtLink to="/list" class="btn_2">View More <i class="bi bi-arrow-right"></i></NuxtLink> -->
        </div>
      </div>
 
