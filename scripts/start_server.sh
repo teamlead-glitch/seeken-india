@@ -2,7 +2,7 @@
 
 
 echo "Running app setup as ubuntu user..."
-runuser -l ubuntu -c '
+sudo runuser -l ubuntu -c '
   cd /home/ubuntu/seeken-nuxt
   npm install
   npm run build
