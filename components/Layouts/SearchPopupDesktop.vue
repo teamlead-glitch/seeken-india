@@ -7,11 +7,11 @@
             <div class="subscribe_form">
               <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"><i
                   class="bi bi-x-lg"></i></button>
-              <form action="# ">
+              <form action="# " @submit.prevent="submitSearch">
                 <div class="input-group input-group-lg ">
-                  <input type="text " class="form-control input-lg " placeholder="Search our store">
+                  <input type="text " class="form-control input-lg " v-model="searchQuery" placeholder="Search our store">
                   <span class="input-group-btn ">
-                    <button @click="triggerSearch" type="submit" class="btn c-theme-btn c-btn-uppercase btn-lg c-btn-bold c-btn-square "><i
+                    <button  type="submit" class="btn c-theme-btn c-btn-uppercase btn-lg c-btn-bold c-btn-square "><i
                         class="bi bi-search"></i></button>
                   </span>
                 </div>
@@ -24,6 +24,10 @@
 </template>
 
 <script setup lang="ts">
+
+const searchQuery = ref('')
+const router = useRouter()
+
 const props = defineProps({
     
     search: {
@@ -32,8 +36,12 @@ const props = defineProps({
     }
   });
 
-  const triggerSearch = () => {
-  
-  props.search();
-};
+  const submitSearch = () => {
+  if (searchQuery.value.trim()) {
+    router.push({
+      path: '/search-result',
+      query: { q: searchQuery.value }
+    })
+  }
+}
   </script>

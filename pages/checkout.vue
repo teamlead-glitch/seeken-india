@@ -19,7 +19,7 @@
         <div class="full__container">
             <div class="product__details">
                 <h4>{{ item.product_name }} </h4>
-                <div class="color">Brown</div>
+                <!-- <div class="color">Brown</div> -->
                 <h3>₹ {{ item.selling_price }} </h3>
             </div>
     </div>
