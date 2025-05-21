@@ -5,8 +5,7 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      - echo "Installing Node dependencies..."
-      - npm install
+      - echo "STARTING"
 
   build:
     commands:
