@@ -63,7 +63,9 @@
                           <div class="content">
                             <h3>{{ categoryTree[activeIndex].short_description }}</h3>
                             <a class="btn_3">
-                              <NuxtLink :to="`/list?category=${categoryTree[activeIndex].id}`">View more <i class="bi bi-arrow-right"></i></NuxtLink>
+                              <a :href="`/list?category=${categoryTree[activeIndex].id}`">View more <i class="bi bi-arrow-right"></i></a>
+
+                              <!-- <NuxtLink :to="`/list?category=${categoryTree[activeIndex].id}`">View more <i class="bi bi-arrow-right"></i></NuxtLink> -->
                               </a>
                           </div>
                         </a>

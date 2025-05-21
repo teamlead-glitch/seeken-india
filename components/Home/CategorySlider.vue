@@ -10,7 +10,7 @@
   >
     <SwiperSlide v-for="(item, index) in categories" :key="index">
       <div class="items">
-        <NuxtLink :to="`/list?category=${item.id}`">
+        <a :href="`/list?category=${item.id}`">
           <div class="category__img__box">
             <div class="img_box">
               <img
@@ -25,7 +25,7 @@
               <h6>{{ item.product_count }} Items</h6>
             </div>
           </div>
-        </NuxtLink>
+        </a>
       </div>
     </SwiperSlide>
   </Swiper>

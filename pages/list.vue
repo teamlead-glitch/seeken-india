@@ -87,11 +87,24 @@ const filterCat = ref(0); // Init to 0 by default
 const categories = inject('All_categories');
 
 // Watch route.query.category and update filterCat only on client
+
+// onMounted(() => {
+//   nextTick(() => {
+//     const newCategory = route.query.category;
+//     if (newCategory) {
+//       filterCat.value = Number(newCategory);
+//     }
+//   });
+// });
+
 onMounted(() => {
   nextTick(() => {
     const newCategory = route.query.category;
     if (newCategory) {
       filterCat.value = Number(newCategory);
+      fetchProducts(newCategory)
+    }else{
+       fetchProducts()
     }
   });
 });
@@ -163,6 +176,31 @@ onMounted(() => {
     observer.observe(loadMoreTrigger.value);
   }
 });
+
+const fetchProducts = async (cat=false) => {
+  try {
+     const config = useRuntimeConfig();
+     const query = new URLSearchParams({
+        skip: 0,
+        take: 4,
+        sort: sortBy.value,
+      });
+
+      if (cat) {
+        query.append('category', cat);
+      }
+    const { data } = await useFetch(`${config.public.apiBase}products?${query.toString()}`)
+
+    const res = data.value
+
+    if (res) {
+     console.log(res,'res+++')
+     productsList.value=res.data;
+    }
+  } catch (err) {
+    console.error('Failed to fetch products:', err)
+  }
+}
 
 // Page metadata
 useHead({
