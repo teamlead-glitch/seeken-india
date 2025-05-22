@@ -14,6 +14,6 @@ sudo runuser -l ubuntu -c '
 '
 
 echo "Restarting Nginx..."
-systemctl restart nginx
+sudo systemctl restart nginx
 
 echo "Deployment complete."
