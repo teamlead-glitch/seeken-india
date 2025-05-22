@@ -3,9 +3,10 @@
 
   <section class="inner_container listing_bg">
     <div class="container">
-      <div class="row mob_none">
+      <div class="row ">
         <div class="col-md-6">
           <h1 class="mb-5">Search Results <span>Seeken</span></h1>
+          <p>{{'Results for "' +searchQuery+'"'}}</p>
         
         </div>
       </div>
