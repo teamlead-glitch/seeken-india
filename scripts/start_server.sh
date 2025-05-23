@@ -17,7 +17,7 @@ sudo runuser -l ubuntu -c '
   echo "Restarting Nuxt with PM2..."
   pm2 restart nuxt-app
   pm2 start npm --name "nuxt-app" -- run start
-  pm2 save
+  
 '
 
 echo "Restarting Nginx..."
