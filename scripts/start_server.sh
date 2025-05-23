@@ -9,13 +9,13 @@ sudo runuser -l ubuntu -c '
   rm -rf node_modules package-lock.json
 
   echo "Installing npm packages with legacy peer deps..."
-  npm install --legacy-peer-deps
+  npm install 
 
   echo "Building Nuxt app..."
   npm run build
 
   echo "Restarting Nuxt with PM2..."
-  pm2 delete all || true
+  pm2 restart nuxt-app
   pm2 start npm --name "nuxt-app" -- run start
   pm2 save
 '
