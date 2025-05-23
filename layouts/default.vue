@@ -28,8 +28,8 @@
 
   <!-- ------alert box desktop--- -->
   <div id="alertBox" class="alert-box">
-    <p v-if="isIndex">We have a flash sale running with 40-70% off for a limited period and stock. <span> <a id="anchor2"
-          href="#section2">Grab your Flash Deals Now</a> </span></p>
+    <p v-if="isIndex && hasFlashSaleProducts">We have a flash sale running with 40-70% off for a limited period and stock. <span> <a id="anchor2"
+          href="#section2">Grab your Flash Deals Now </a> </span></p>
     <p v-else>
       <span>Free shipping all over INDIA on orders above RS 750 </span>
     </p>
@@ -78,6 +78,9 @@ const handleSearch = () => {
 
 const route = useRoute();
 const isIndex = computed(() => route.path === '/');
+
+const { data: products, error:error1, refresh:refresh1 } = useFetchData('products', 'flash-sale-products?limit=10');
+const hasFlashSaleProducts = computed(() => (products.value?.length || 0) > 0)
 
 </script>
 
