@@ -28,8 +28,8 @@
 
   <!-- ------alert box desktop--- -->
   <div id="alertBox" class="alert-box">
-    <p v-if="isIndex && hasFlashSaleProducts">We have a flash sale running with 40-70% off for a limited period and stock. <span> <a id="anchor2"
-          href="#section2">Grab your Flash Deals Now </a> </span></p>
+    <p v-if="hasFlashSaleProducts">We have a flash sale running with 40-70% off for a limited period and stock. <span> <NuxtLink id="anchor2"
+          :to="'/sales'">Grab your Flash Deals Now </NuxtLink> </span></p>
     <p v-else>
       <span>Free shipping all over INDIA on orders above RS 750 </span>
     </p>

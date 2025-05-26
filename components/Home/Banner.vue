@@ -59,7 +59,7 @@
      <div class="owl-thumbs">
       <div class="owl-thumb-item" v-for="(slide, index) in slides" 
       :key="'thumb-' + index" >
-        <img :src="slide.mobile_banner" alt="Thumb 1" @click="goToSlide(index)">
+        <img :src="slide.image_path" alt="Thumb 1" @click="goToSlide(index)">
         <div class="texts" @click="goToSlide(index)">
           <!-- <h4><span>Next</span>{{slide.sub_title??'Sub title'}}</h4> -->
            <h4><span>{{slide.sub_title??'Sub title'}}</span></h4>

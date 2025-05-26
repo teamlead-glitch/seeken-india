@@ -19,10 +19,11 @@ const { data: prime_products, error:error1, refresh:refresh1 } = useFetchData('p
 
 
 
-const config = useRuntimeConfig();
-const { data: page_content  } = await useAsyncData('home', () =>
-  $fetch(`${config.public.apiBase}page/home`)
-);
+// const config = useRuntimeConfig();
+// const { data: page_content  } = await useAsyncData('home', () =>
+//   $fetch(`${config.public.apiBase}page/home`)
+// );
+const { data: page_content, error:error2, refresh:refresh2 } = useFetchData('page_content', 'page/home');
 
 const seo = page_content.value?.seo;
 const title = page_content.value?.page_content?.title;

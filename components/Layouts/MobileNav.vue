@@ -16,11 +16,11 @@
         </NuxtLink>
       </li>
       <li>
-        <a href="#">
+        <NuxtLink :to="`/sales`">
           <div class="icon"><img src="/images/offers-menu.svg" alt="seeken"></div>
           <div class="list">Offers</div>
 
-        </a>
+        </NuxtLink>
       </li>
       <li>
         <NuxtLink to="/cart">
