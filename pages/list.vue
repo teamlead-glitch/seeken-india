@@ -11,7 +11,7 @@
           <div class="select_range">
             <div class="sort">Sort By</div>
             <div class="select__box">
-              <select v-model="sortBy" class="form-select" aria-label="Default select example">
+              <select v-model="sortBy" class="form-select" aria-label="Default select example" style="padding: .375rem 2.25rem .375rem .75rem;">
                 <option selected value="latest">Latest</option>
                 <option value="name_asc">A to Z</option>
                 <option value="name_desc">Z to A</option>
