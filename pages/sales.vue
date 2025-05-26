@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-const { data: productsList, error, refresh } = useFetchData('productsList', 'flash-sale-products?limit=10');
+const { data: productsList, error, refresh } = useFetchData('productsList', 'flash-sale-products?limit=100');
 
 // Meta tags
 useHead({
