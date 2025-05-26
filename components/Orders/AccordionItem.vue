@@ -50,7 +50,7 @@
           <div class="content">
             <div v-for="(item, index) in order.items" :key="index" class="order_boxes">
               <h5  style="width: 60%;float: left;">{{ order.order_status??'-' }} </h5>
-              <a v-if="order.order_status != 'pending' && index==0" :href="order.invoice_url" target="_blank" style="float: right;text-decoration: underline;font-size: 1rem;font-weight: 600">View Invoice</a>
+              <a v-if="statusAllowedInvoice.includes(order.order_status) && index==0" :href="order.invoice_url" target="_blank" style="float: right;text-decoration: underline;font-size: 1rem;font-weight: 600">View Invoice</a>
               <div class="full">
                 <div class="product__pic">
                   <img :src="item.product?.default_image??''" class="img-fluid" alt="product image" />
@@ -76,8 +76,9 @@
                 <!-- <a href="#" class="btn_2">Track package</a> -->
               </div>
 
-              <div v-if="order.order_status == 'pending'" class="my-4 p-4 border rounded bg-light">
+              <div v-if="statusAllowedCancel.includes(order.order_status)" class="my-4 p-4 border rounded bg-light">
     <div v-if="!showReason[order.id]?.[item.id]">
+      
       <div class="d-flex justify-content-between align-items-center">
         <span class="text-danger fw-semibold">Do you want to cancel this order item?</span>
         <button class="btn btn-outline-danger" @click="toggleReason(order.id, item.id)">
@@ -126,6 +127,29 @@ const authStore = useAuthStore();
     order: {
     }
   }>()
+
+  const statusAllowedCancel = [
+  "pending",
+  "confirmed",
+  "processing",
+  "delivered",
+  "failed"
+];
+
+const statusAllowedInvoice = [
+  //"pending",
+  //"confirmed",
+  //"processing",
+  //"shipped",
+  //"in_transit",
+  //"out_for_delivery",
+  "delivered",
+  "cancelled",
+  "returned",
+  "refunded",
+  "partially-refunded",
+  //"failed"
+];
 
   const { formatDate } = useDateFormat();
 
