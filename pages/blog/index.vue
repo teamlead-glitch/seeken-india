@@ -63,13 +63,13 @@ const { formatDate } = useDateFormat();
 const config = useRuntimeConfig();
 
 // SSR: Load first 4 blogs
-const { data: initialBlogs } = await useAsyncData('blogs-initial', () =>
-  $fetch(`${config.public.apiBase}blogs?skip=0&take=4`)
-);
+// const { data: initialBlogs } = await useAsyncData('blogs-initial', () =>
+//   $fetch(`${config.public.apiBase}blogs?skip=0&take=4`)
+// );
 
 // Setup blog state
-const blogs = ref(initialBlogs.value || []);
-const skip = ref(4);
+const blogs = ref( []);
+const skip = ref(0);
 const take = 4;
 const loadingMore = ref(false);
 const noMoreBlogs = ref(false);
