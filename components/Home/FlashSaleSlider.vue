@@ -35,10 +35,13 @@
               <div class="prices">₹{{item.selling_price}} <span>₹{{item.price}}</span></div>
             </div>
             <h6> <span>{{ item.stock }} more</span> items remaining!</h6>
-            <div class="limiter_offer">
+            <div class="limiter_offer" :class="{ outOfStock: !item.stock || item.stock < 1 }">
+              <template v-if="item.stock > 0">
               <div class="limited_offer">LIMITED TIME OFFER</div>
              
               <ProductCardCountDown :endTime="item.to_date"/>
+              </template>
+              <h6 v-else>  Out of Stock !</h6>
               <a class="btn_1"  @click="handleAddToCart(item?.product_id, 1, item.variant_id?item.variant_id:0)">Add to cart </a>
               <NuxtLink class="btn_2" :to="`products/${item.slug}`">Buy </NuxtLink>
               <!-- <a class="btn_2"  @click="handleAddToCart(item?.product_id, 1, item.variant_id?item.variant_id:0,'add',true)">Buy Now </a> -->
@@ -54,7 +57,7 @@
   
   
     
-    <div class="mobile__parent__div" >
+    <div class="mobile__parent__div" :class="{ outOfStock: !item.stock || item.stock < 1 }">
   
       <NuxtLink :to="`/products/${item.slug}`">
           <img :src="item.flash_sale_image_url"  class="img-fluid banner__mob" alt="seeken" loading="lazy">
@@ -69,8 +72,10 @@
                 <p>{{ item.short_description }}</p>
               </div>
               <div class="bottom_boxes">
+                <template v-if="item.stock > 0">
                 <div class="limited_offer">LIMITED TIME OFFER</div>
                 <ProductCardCountDown :endTime="item.to_date"/>
+                </template>
                 <h6> <span>{{ item.stock }} more</span> items remaining!</h6>
                 <div class="offer">{{item.discount}}% OFF</div>
               </div>
@@ -764,5 +769,13 @@ const { data: products, error, refresh } = useFetchData('products', 'flash-sale-
   .desktop__parent__div{
     display: none;
   }}
+</style>
+
+<style>
+.outOfStock {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
 </style>
 
