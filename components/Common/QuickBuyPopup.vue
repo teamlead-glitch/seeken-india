@@ -24,7 +24,8 @@
         </div>
         <div class="price__feature">
           <h4>{{quickProduct?.name}}</h4>
-          <div class="price"><span>Rs. {{ quickProduct?.final_price }}</span>Rs. {{ quickProduct?.price }} </div>
+          <div class="price" v-if="quickProduct?.price > quickProduct?.final_price"><span>Rs. {{ quickProduct?.price }}</span>Rs. {{ quickProduct?.final_price }} </div>
+          <div class="price" v-else>Rs. {{ quickProduct?.final_price }} </div>
         </div>
        
         <ProductCardVarients  :varients="quickProduct?.product_variants" :product_slug="quickProduct?.slug"/>

@@ -18,7 +18,8 @@
                                                         <h4>{{ product.name }}</h4>
                                                         </NuxtLink>
                                                     </div>
-                                                    <div class="price"> Rs. {{ product.final_price }} <span>Rs. {{ product.price }}</span></div>
+                                                    <div class="price" v-if="product.price > product.final_price"> Rs. {{ product.final_price }} <span>Rs. {{ product.price }}</span></div>
+                                                    <div class="price" v-else> Rs. {{ product.final_price }} </div>
                                                 </div>
                                             </div>
                                             <div class="top_box">
