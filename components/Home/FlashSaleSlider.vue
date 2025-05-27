@@ -57,7 +57,7 @@
   
   
     
-    <div class="mobile__parent__div" >
+    <div class="mobile__parent__div" :class="{ outOfStock: !item.stock || item.stock < 1 }">
   
       <NuxtLink :to="`/products/${item.slug}`">
           <img :src="item.flash_sale_image_url"  class="img-fluid banner__mob" alt="seeken" loading="lazy">
