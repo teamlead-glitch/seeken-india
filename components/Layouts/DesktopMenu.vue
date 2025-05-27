@@ -49,7 +49,9 @@
                       <div class="articles">
                         <a href="#">
                           <div class="img__box">
+                            <a :href="`/list?category=${categoryTree[activeIndex].id}`">
                             <img :src="categoryTree[activeIndex].image_path" class="img-fluid" alt="seeken" loading="lazy">
+                            </a>
                           </div>
 
                         </a>
@@ -63,7 +65,7 @@
                           <div class="content">
                             <h3>{{ categoryTree[activeIndex].short_description }}</h3>
                             <a class="btn_3">
-                              <a :href="`/list?category=${categoryTree[activeIndex].id}`">View more <i class="bi bi-arrow-right"></i></a>
+                              <a :href="`/list?category=${categoryTree[activeIndex].id}`">View Products <i class="bi bi-arrow-right"></i></a>
 
                               <!-- <NuxtLink :to="`/list?category=${categoryTree[activeIndex].id}`">View more <i class="bi bi-arrow-right"></i></NuxtLink> -->
                               </a>
