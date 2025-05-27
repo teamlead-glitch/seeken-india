@@ -6,6 +6,7 @@
 import { useAuthStore } from '~/store/auth';
 import { useGuestToken } from '@/composables/useGuestToken'
 const router = useRouter()
+ const { addToast } = useToast()
 
 // Define the `amount` prop
 const props = defineProps({
@@ -73,11 +74,20 @@ const makePayment = async () => {
   const { data, error } = await useFetch(`${useRuntimeConfig().public.apiBase}place-order`, {
     method: 'POST',
     headers,
-    body: combinedAddress
+    body: combinedAddress,
+     onResponseError({ response }) {
+    // This captures the full error body, like { error: true, message: "Product Infrared Cooktop is out of stock" }
+    if (response._data?.message) {
+      //alert(response._data.message);
+      addToast(response._data.message, 'error')
+    } else {
+      addToast('Failed to create Razorpay order', 'error');
+    }
+  }
   });
 
   if (error.value || !data.value?.order_id) {
-    alert('Failed to create Razorpay order');
+    //addToast('Failed to create Razorpay order');
     return;
   }
 
