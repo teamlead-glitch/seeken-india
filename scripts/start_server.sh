@@ -1,13 +1,16 @@
 #!/bin/bash
 
-# Ensure the directory and contents are owned by ubuntu
+# Kill PM2 daemons running as ssm-user and root (to avoid conflicts)
+sudo pkill -u ssm-user pm2 || true
+sudo pkill -u root pm2 || true
+
+# Ensure directory ownership
 sudo chown -R ubuntu:ubuntu /home/ubuntu/seeken-nuxt
 
-# Run installation, build, and start as ubuntu
-sudo -u ubuntu bash -c "
+# Run install, build and restart pm2 as ubuntu user
+sudo -u ubuntu bash -c '
   cd /home/ubuntu/seeken-nuxt &&
   npm install &&
   npm run build &&
-  pm2 stop nuxt-app || true &&
-  pm2 start nuxt-app --update-env
-"
+  pm2 restart nuxt-app --update-env
+'
