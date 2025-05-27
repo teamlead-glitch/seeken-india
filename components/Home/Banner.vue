@@ -22,7 +22,6 @@
     
       <SwiperSlide v-for="(item, index) in slides" :key="index">
        
-{{ item }}
         <div class="item">
           <img :src="item.image_path" class="img-fluid banner__desk" alt="">
           <img :src="item.mobile_banner" class="img-fluid banner__mob" alt="">
