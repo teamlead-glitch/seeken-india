@@ -2,7 +2,7 @@
 
 <template>
     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6  mb-5">
-          <div class="product__box">
+          <div class="product__box" :class="{ outOfStock: !product.stock_quantity || product.stock_quantity < 1 }">
             <div class="top_box">
               <div class="product__img">
                 <NuxtLink :to="`/products/${product.slug}`">
@@ -56,3 +56,11 @@ const props = defineProps({
 
 
 </script>
+
+<style>
+.outOfStock {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+</style>
