@@ -28,7 +28,7 @@
           <div class="price" v-else>Rs. {{ quickProduct?.final_price }} </div>
         </div>
        
-        <ProductCardVarients  :varients="quickProduct?.product_variants" :product_slug="quickProduct?.slug"/>
+        <!-- <ProductCardVarients  :varients="quickProduct?.product_variants" :product_slug="quickProduct?.slug"/> -->
         <!-- v-if="quickProduct?.product_variants?.length > 0" -->
       
       </div>
