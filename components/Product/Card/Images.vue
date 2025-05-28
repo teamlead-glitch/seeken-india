@@ -8,10 +8,10 @@
           type="button"
           :data-bs-target="'#carouselExample'"
           :data-bs-slide-to="index"
-          
+          :class="{ active: image.image_url== currentImage}"
           @click="showImage(image.image_url)"
         >
-        <!-- :class="{ active: index === 0 }" -->
+       
           <img :src="image.image_url" class="d-block w-100" ><!--style="max-width: 74px;"-->
         </button>
       </template>
