@@ -3,7 +3,7 @@ os: linux
 
 files:
   - source: /
-    destination: /home/ubuntu/seeken-nuxt
+    destination: /opt/seeken-nuxt
     overwrite: yes
 
 hooks:
@@ -15,14 +15,14 @@ hooks:
   AfterInstall:
     - location: scripts/install_dependencies.sh
       timeout: 300
-      runas: root
+      runas: ssm-user
 
   ApplicationStart:
-    - location: scripts/start_server.sh
+    - location: scripts/start_service.sh
       timeout: 300
-      runas: ubuntu
+      runas: root
 
-  AfterAllowTestTraffic:
-    - location: test.sh
+  ValidateService:
+    - location: scripts/health_check.sh
       timeout: 60
-      runas: ubuntu
+      runas: ssm-user
