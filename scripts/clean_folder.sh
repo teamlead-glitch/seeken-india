@@ -1,6 +1,3 @@
 #!/bin/bash
-
-echo "Cleaning up previous deployment..."
-
+echo "Cleaning old files..."
 rm -rf /opt/seeken-nuxt/*
-chown -R ssm-user:ssm-user /opt/seeken-nuxt
