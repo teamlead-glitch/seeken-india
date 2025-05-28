@@ -12,9 +12,11 @@ phases:
       - echo "Skipping build step (No `npm run build` needed)"
       - mkdir -p output
       - echo "Copying files to output directory..."
-      - cp -r ./* ./.* ./output/ 2>/dev/null || echo "No files to copy"
+      - shopt -s dotglob
+      - cp -r ./* output/
 
 artifacts:
   files:
     - '**/*'
   base-directory: output
+
