@@ -3505,7 +3505,11 @@ section {
     .product_detail {
         position: sticky;
         top: 100px;
-
+.carousel-inner{
+   @include border(15px);  
+   border: 1px solid #B5B8B8;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
         .carousel-item {
             @include border(15px);
             aspect-ratio: 1/1;
@@ -3546,8 +3550,9 @@ section {
             height: auto;
             opacity: 1;
             margin: 0 5px;
-            border: 4px solid #ffffff4f;
+              border: 4px solid rgb(0 101 128 / 52%);
             transition: opacity 0.3s ease;
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 6px;
 
             @media (max-width:767px) {
                 width: 60px;
@@ -3568,6 +3573,7 @@ section {
 
         .carousel-indicators .active {
             opacity: 1;
+             border: 4px solid rgb(0, 100, 128);
 
         }
     }
