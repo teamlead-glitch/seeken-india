@@ -78,7 +78,7 @@ export const useCartStore = defineStore('cart', {
           body: item,
           headers
         })
-        addToast('The cart was updated successfully.!', 'success')
+        addToast('The cart was updated successfully.', 'success')
         return true
       } catch (error) {
         console.error('Cart sync failed:', error)
