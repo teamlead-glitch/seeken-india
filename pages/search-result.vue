@@ -1,5 +1,5 @@
 <template>
-  <CommonInnerBanner :page_title="`Results for '${searchQuery}'`" />
+  <CommonInnerBanner :page_title="`Search our store`" />
 
   <section class="inner_container listing_bg">
     <div class="container">
