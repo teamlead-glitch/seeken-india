@@ -35,7 +35,7 @@
                                                     </NuxtLink>
                                                 </div>
                                                
-                                                <ProductCardCountDown />
+                                                <ProductCardCountDown v-if="product.to_date" :endTime="product.to_date"/>
 
                                                 <ProductCardWishlist :product="product"/>
                                             </div>
