@@ -1,9 +1,9 @@
 #!/bin/bash
+cd /opt/seeken-nuxt
 
-cd /opt/seeken-nuxt || exit 1
+# Ensure correct permissions
+sudo chown -R ssm-user:ssm-user .
 
-echo "Installing npm dependencies..."
+# Install dependencies
 npm install
-
-echo "Building Nuxt SSR app..."
 npm run build
