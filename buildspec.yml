@@ -10,6 +10,7 @@ phases:
   build:
     commands:
       - echo "Zipping project into build_output.zip..."
+      - chmod +x scripts/clean_folder.sh
       - zip -r ../build_output.zip . 
       - mkdir -p output
       - mv ../build_output.zip output/
