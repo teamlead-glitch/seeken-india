@@ -1,3 +1,3 @@
 #!/bin/bash
 echo "Cleaning old files..."
-rm -rf /opt/seeken-nuxt/*
+find /opt/seeken-nuxt -mindepth 1 -delete
