@@ -10,7 +10,6 @@ phases:
   build:
     commands:
       - mkdir -p output
-      - bash -c 'shopt -s dotglob nullglob && cp -r -- * output/'
       - zip -r build_output.zip . -x "./output/*"
 
 artifacts:
