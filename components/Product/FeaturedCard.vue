@@ -6,7 +6,7 @@
             <div class="top_box">
               <div class="product__img">
                 <NuxtLink :to="`/products/${product.slug}`">
-                <img v-if="product.image_path" :src="product.image_path" class="img-fluid default-image" alt="seeken" >
+                <img v-if="product.default_image" :src="product.default_image" class="img-fluid default-image" alt="seeken" >
                 <img v-if="product.image_path " :src="product.image_path" alt="seeken" class="img-fluid hover-image" >
               </NuxtLink>
               </div>
