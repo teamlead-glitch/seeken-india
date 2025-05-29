@@ -12,7 +12,7 @@
 
 
 
-
+<span v-if="faqs.length ==0">No FAQ found. Please check back later for updates</span>
 
                     <div class="accordion accordion-flush" id="accordionExample">
     <div class="accordion-item" v-for="(faq, index) in faqs" :key="index">

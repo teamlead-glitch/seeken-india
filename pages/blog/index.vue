@@ -9,6 +9,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
+           <span v-if="blogs.length ==0">No blog posts found. Please check back later for updates</span>
           <div
             class="blog__box mb-3"
             v-for="(blog, index) in blogs"
