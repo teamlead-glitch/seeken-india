@@ -17,6 +17,7 @@
                 <div class="full__container">
                   <div class="product__details">
                     <h4>{{ item.product_name }}</h4>
+                    <span v-if="item.variant_name" style="font-size: 0.875rem">{{ cleanedVariantName(item.variant_name)	 }}</span>
                   </div>
                   <div class="price__details">
                     <div class="price">
@@ -167,6 +168,10 @@ const updateQuantity = async (item, newQty: number = 1, action = 'add') => {
     await cartStore.addToCart(item.product_id, newQty, item.variant_id ? item.variant_id : 0, action)
   }
  
+}
+
+const cleanedVariantName = (name = '') => {
+  return name.replace(/-/g, ' ').trim()
 }
 
 useHead({
