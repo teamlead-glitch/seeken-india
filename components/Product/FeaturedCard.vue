@@ -2,7 +2,7 @@
 
 <template>
     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6  mb-5">
-          <div class="product__box">
+          <div class="product__box" :class="{ outOfStock: !product.stock_quantity || product.stock_quantity < 1 }">
             <div class="top_box">
               <div class="product__img">
                 <NuxtLink :to="`/products/${product.slug}`">
@@ -33,7 +33,8 @@
                 <NuxtLink :to="`/products/${product.slug}`">
                 <h4>{{ product.name	 }}</h4>
               </NuxtLink>
-                <div class="price">From Rs. {{ product.final_price	 }} <span>Rs. {{ product.price }}</span></div>
+                <div class="price" v-if="product?.price > product?.final_price">From Rs. {{ product.final_price	 }} <span>Rs. {{ product.price }}</span></div>
+                <div class="price" v-else>From  Rs. {{ product.final_price	 }}</div>
                 <ProductCardVarients  :varients="product?.product_variants" :product_slug="product?.slug"/>
                 <!-- v-if="product.product_variants.length > 0" -->
               </div>
@@ -55,3 +56,11 @@ const props = defineProps({
 
 
 </script>
+
+<style>
+.outOfStock {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+</style>

@@ -7,7 +7,7 @@
             <li v-for="(varient, index) in varients">
                 <div class="code " v-if="index<4"> <!--active-->
                    
-                    <img :src="`${variant_image_path??'/images/color_code/clr-1.webp'}`" class="img-fluid" :alt="varient.product_code"
+                    <img :src="`${varient.variant_image_path??'/images/color_code/clr-1.webp'}`" class="img-fluid" :alt="varient.product_code"
                         loading="lazy" :title="varient.product_code">
                 </div>
             </li>

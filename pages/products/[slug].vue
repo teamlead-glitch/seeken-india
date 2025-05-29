@@ -41,7 +41,7 @@
         <div class="row justify-content-center">
                 <div class="col-md-10 col-xl-8">
                     <div class="detail">
-                        <h3>{{ product.name }}</h3>
+                        <!-- <h3>{{ product.name }}</h3> -->
                         <p>{{ product.description }}</p>
                     </div>
                 </div>
@@ -66,7 +66,8 @@
            <div class="full__container">
                <div class="product__name">
                 <h5>{{product.name}}   <span>|</span>   {{product.category_name}}</h5>
-                <div class="prices"><span>Rs. {{ product?.price }}</span>Rs. {{ product?.final_price }} </div>
+                <div class="prices" v-if="product?.price > product?.final_price"><span>Rs. {{ product?.price }}</span>Rs. {{ product?.final_price }} </div>
+                <div class="prices" v-else>Rs. {{ product?.final_price }} </div>
                </div>
                <div class="total__rate">
                    <div class="quantity">

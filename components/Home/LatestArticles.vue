@@ -14,6 +14,6 @@ const config = useRuntimeConfig();
 const isMobile = useMediaQuery('(max-width: 768px)');
 console.log(isMobile.value,'ismob')
 
-const { data: articles, error, refresh } = useFetchData('articles', 'blogs?skip=0&take=4');
+const { data: articles, error, refresh } = useFetchData('articles', 'blogs?skip=0&take=3');
 
 </script>

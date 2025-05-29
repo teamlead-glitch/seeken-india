@@ -1,6 +1,6 @@
 <template>
  
-  <div class="row justify-content-center mt-5" v-if="products">
+  <div class="row justify-content-center mt-5" v-if="products && products.length >0">
     <div class="col-md-12 related__products">
         <h3>You might also like</h3>
       

@@ -22,7 +22,6 @@
     
       <SwiperSlide v-for="(item, index) in slides" :key="index">
        
-
         <div class="item">
           <img :src="item.image_path" class="img-fluid banner__desk" alt="">
           <img :src="item.mobile_banner" class="img-fluid banner__mob" alt="">
@@ -34,7 +33,7 @@
                   <h2>{{ item.title }} </h2>
                   <!-- <p>{{ item.sub_title }} </p> -->
                   <div class="btn_boxes">
-                    <a v-if="item.url" class="btn_1" :href=item.url  target="_blank" rel="noopener noreferrer">Buy </a>
+                    <a v-if="item.url" class="btn_1" :href=item.url  target="_blank" rel="noopener noreferrer">{{ item.button_text	 }} </a>
                    
                   </div>
                 </div>
