@@ -57,6 +57,7 @@
                 </div>
                 <div class="product__details">
                   <h4>{{ item.product_name }}</h4>
+                   <h6 v-if="item.variant_name" style="font-size: 0.875rem">{{ cleanedVariantName(item.variant_name)	 }}</h6>
                   <h6>
                     Return or replace items: Eligible through
                     {{ formatDate(order.created_at) }}
@@ -198,6 +199,9 @@ async function submitCancellation(id, product_id, order_no){
   }
     
   }
+}
+const cleanedVariantName = (name = '') => {
+  return name.replace(/-/g, ' ').trim()
 }
   </script>
   
