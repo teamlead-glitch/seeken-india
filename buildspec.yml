@@ -9,10 +9,10 @@ phases:
 
   build:
     commands:
-      - echo "Skipping build step (No \`npm run build\` needed)"
+      - echo "Skipping build step (No `npm run build` needed)"
       - mkdir -p output
-      - echo "Copying files to output directory..."
-      - bash -c 'shopt -s dotglob && cp -r ./* output/'
+      - echo "Copying all files (including hidden) to output directory..."
+      - cp -r ./* ./.??* output/ 2>/dev/null || true
 
 artifacts:
   files:
