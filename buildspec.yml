@@ -9,10 +9,9 @@ phases:
 
   build:
     commands:
-      - echo "Skipping build step (No `npm run build` needed)"
       - mkdir -p output
-      - echo "Copying all files (including hidden) to output directory..."
       - bash -c 'shopt -s dotglob nullglob && cp -r -- * output/'
+      - zip -r build_output.zip . -x "./output/*"
 
 artifacts:
   files:
