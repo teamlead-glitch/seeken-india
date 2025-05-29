@@ -13,8 +13,11 @@ phases:
       - zip -r ../build_output.zip . 
       - mkdir -p output
       - mv ../build_output.zip output/
+      - echo "Copying test.sh to output directory as unzipped..."
+      - cp test.sh output/
 
 artifacts:
   files:
     - build_output.zip
+    - test.sh
   base-directory: output
