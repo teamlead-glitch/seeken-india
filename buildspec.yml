@@ -10,8 +10,11 @@ phases:
   build:
     commands:
       - echo "Zipping project into build_output.zip..."
-      - zip -r build_output.zip . 
+      - zip -r ../build_output.zip . 
+      - mkdir -p output
+      - mv ../build_output.zip output/
 
 artifacts:
   files:
     - build_output.zip
+  base-directory: output
