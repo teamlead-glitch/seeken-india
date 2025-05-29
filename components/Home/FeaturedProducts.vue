@@ -7,6 +7,6 @@
 
 <script setup>
 
-const { data: featured_products, error, refresh } = useFetchData('featured_products', 'featured-products');
+const { data: featured_products, error, refresh } = useFetchDataCache('featured_products', 'featured-products');
 
 </script>
