@@ -190,8 +190,12 @@ async function submitCancellation(id, product_id, order_no){
   
    
   } catch (error) {
-    //cant manage error response api different structure
-    addToast('An error occurred while submitting your Request. Please try again later..!', 'error')
+    
+     // Extract and show the specific error message from the API response
+  const errorMessage =
+    error?.data?.message || error?.message || 'An error occurred while submitting your request. Please try again later.';
+  
+  addToast(errorMessage, 'error');
     
     
   } finally {
