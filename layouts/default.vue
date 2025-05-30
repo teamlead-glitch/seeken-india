@@ -79,7 +79,7 @@ const handleSearch = () => {
 const route = useRoute();
 const isIndex = computed(() => route.path === '/');
 
-const { data: products, error:error1, refresh:refresh1 } = useFetchData('products', 'flash-sale-products?limit=10');
+const { data: products, error:error1, refresh:refresh1 } = useFetchData('products', 'flash-sale-products?limit=1');
 const hasFlashSaleProducts = computed(() => (products.value?.length || 0) > 0)
 
 </script>

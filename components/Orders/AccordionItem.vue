@@ -58,10 +58,10 @@
                 <div class="product__details">
                   <h4>{{ item.product_name }}</h4>
                    <h6 v-if="item.variant_name" style="font-size: 0.875rem">{{ cleanedVariantName(item.variant_name)	 }}</h6>
-                  <h6>
+                  <!-- <h6>
                     Return or replace items: Eligible through
                     {{ formatDate(order.created_at) }}
-                  </h6>
+                  </h6> -->
                   <div class="btn__boxes">
                     
                     <NuxtLink :to="`/buy-now/${item.product?.slug}`" class="btn_1">Buy it again</NuxtLink>
