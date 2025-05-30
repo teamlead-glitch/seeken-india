@@ -24,7 +24,7 @@ export function useFetchData(key, endpoint, auth = false) {
 
       const response = await $fetch(`${config.public.apiBase}${endpoint}`, {
         headers,
-        cache: 'no-cache', // Ensure no browser caching
+        //cache: 'no-cache', // Ensure no browser caching
       });
 
       data.value = response || [];

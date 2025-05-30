@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    <section class="inner_container">
+    <section class="inner_container" v-if="page_content">
         <div class="container">
             <div class="row mb-4">
                 <div class="col-md-12 text-center"><h1>Cancellation policy</h1>
@@ -31,15 +31,8 @@
 
 <script lang="ts" setup>
 
-const config = useRuntimeConfig();
-const { data: page_content  } = await useAsyncData('cancellation-policy', () =>
-  $fetch(`${config.public.apiBase}page/cancellation-policy`)
-);
 
-const seo = page_content?.value?.seo;
-const title = page_content?.value?.page_content?.title;
-
-useSeoMeta(seo, title, 'Cancellation-policy');
+const { page_content, title } = await usePageContent('cancellation-policy', 'Cancellation-policy');
 
 </script>
 
