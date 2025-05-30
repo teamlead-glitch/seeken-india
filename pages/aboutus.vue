@@ -88,17 +88,7 @@
 
   <script setup>
 
-const config = useRuntimeConfig();
-const { data: page_content  } = await useAsyncData('privacy-policy', () =>
-  $fetch(`${config.public.apiBase}page/about-us`)
-);
-
-const seo = page_content.value?.seo;
-const title = page_content.value?.page_content?.title;
-
-useSeoMeta(seo, title, 'About us');
-
-
+const { page_content, title } = await usePageContent('about-us', 'About Us');
 
 
 </script>

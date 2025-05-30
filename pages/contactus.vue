@@ -143,15 +143,6 @@ async function submitForm() {
 }
 
 
-
-const config = useRuntimeConfig();
-const { data: page_content  } = await useAsyncData('contact-us', () =>
-  $fetch(`${config.public.apiBase}page/contact-us`)
-);
-
-const seo = page_content.value?.seo;
-const title = page_content.value?.page_content?.title;
-
-useSeoMeta(seo, title, 'Contact us');
+const { page_content, title } = await usePageContent('contact-us', 'Contact us');
 
 </script>

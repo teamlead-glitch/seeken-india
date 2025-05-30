@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    <section class="inner_container">
+    <section class="inner_container" v-if="page_content">
         <div class="container">
             <div class="row mb-4">
                 <div class="col-md-12 text-center"><h1>Terms of service</h1>
@@ -32,15 +32,8 @@
 <script lang="ts" setup>
 
 
-const config = useRuntimeConfig();
-const { data: page_content  } = await useAsyncData('terms-and-conditions', () =>
-  $fetch(`${config.public.apiBase}page/terms-and-conditions`)
-);
 
-const seo = page_content.value?.seo;
-const title = page_content.value?.page_content?.title;
-
-useSeoMeta(seo, title, 'Terms-and-conditions');
+const { page_content, title } = await usePageContent('terms-and-conditions', 'Terms-and-conditions');
 
 </script>
 
