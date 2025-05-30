@@ -77,7 +77,7 @@
               <div class="pricing">
                 <div class="left">Subtotal</div>
                 <div class="right">₹ {{ cart.total_price }}</div>
-                <div class="left">Discount</div>
+                <div class="left">You have saved</div>
                 <div class="right">₹ {{ cart.total_discount }}</div>
               </div>
             </div>
