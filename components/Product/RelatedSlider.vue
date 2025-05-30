@@ -72,8 +72,8 @@
     
     </SwiperSlide>
     <!-- Navigation Arrows -->
-    <div class="swiper-button-next"><i class="bi bi-arrow-right"></i></div>
-    <div class="swiper-button-prev"><i class="bi bi-arrow-left"></i></div>
+    <div v-if="products.length >4" class="swiper-button-next"><i class="bi bi-arrow-right"></i></div>
+    <div v-if="products.length >4" class="swiper-button-prev"><i class="bi bi-arrow-left"></i></div>
   </Swiper>
            
            

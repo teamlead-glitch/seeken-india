@@ -87,6 +87,17 @@ const moredetails = (slug) => {
   router.push('/products/'+slug)
 }
 
+watch(
+  () => quickProduct.value, // Watch the reactive `quickProduct`
+  (newVal) => {
+    // Handle the change
+    if (newVal) {
+     quantity.value=1;
+    } 
+  },
+  { immediate: true, deep: true } // Optional: immediate to run on mount, deep if quickProduct is an object
+);
+
 
 
 </script>

@@ -10,13 +10,17 @@
             <div class="full__boxes" v-for="item in cart.items" :key="item.id">
               <div class="left">
                 <div class="img_box">
+                  <NuxtLink :to="`/products/${item.product?.product_slug}`" >
                   <img :src="item.product_image" class="img-fluid" :alt="item.product_name" />
+                  </NuxtLink>
                 </div>
               </div>
               <div class="right">
                 <div class="full__container">
                   <div class="product__details">
+                    <NuxtLink :to="`/products/${item.product?.product_slug}`" >
                     <h4>{{ item.product_name }}</h4>
+                    </NuxtLink>
                     <span v-if="item.variant_name" style="font-size: 0.875rem">{{ cleanedVariantName(item.variant_name)	 }}</span>
                   </div>
                   <div class="price__details">
