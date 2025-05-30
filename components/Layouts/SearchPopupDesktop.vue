@@ -11,7 +11,7 @@
                 <div class="input-group input-group-lg ">
                   <input type="text " class="form-control input-lg " v-model="searchQuery" placeholder="Search our store">
                   <span class="input-group-btn ">
-                    <button  type="submit" data-bs-dismiss="offcanvas" class="btn c-theme-btn c-btn-uppercase btn-lg c-btn-bold c-btn-square "><i
+                    <button :disabled="!searchQuery.trim()"  type="submit" data-bs-dismiss="offcanvas" class="btn c-theme-btn c-btn-uppercase btn-lg c-btn-bold c-btn-square "><i
                         class="bi bi-search"></i></button>
                   </span>
                 </div>
