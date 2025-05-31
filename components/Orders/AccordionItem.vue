@@ -65,7 +65,7 @@
                   <div class="btn__boxes">
                     
                     <NuxtLink :to="`/buy-now/${item.product?.slug}`" class="btn_1">Buy it again</NuxtLink>
-                    <NuxtLink :to="`/products/${item.product?.slug}`" class="btn_2">View your item</NuxtLink>
+                    <NuxtLink :to="`/products/${item.product?.slug}`" class="btn_2">View Product</NuxtLink>
                   
                   </div>
                 </div>
@@ -73,7 +73,7 @@
               <!-- Mobile buttons -->
               <div class="btn__boxes__mob">
                 <NuxtLink :to="`/buy-now/${item.product?.slug}`" class="btn_1">Buy it again</NuxtLink>
-                <NuxtLink :to="`/products/${item.product?.slug}`" class="btn_2">View your item</NuxtLink>
+                <NuxtLink :to="`/products/${item.product?.slug}`" class="btn_2">View Product</NuxtLink>
                 <!-- <a href="#" class="btn_2">Track package</a> -->
               </div>
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="countdown-container" v-if="endTime">
+    <div class="countdown-container" v-if="endTime && timeLeft > 0">
                 <div class="countdown-box">
                   <span id="days">{{days}}</span>
                   <span class="label">DAYS</span>
