@@ -32,7 +32,8 @@
                         </ul>
                     </div>
                     <div class="product__content">
-                        <p>{{product.short_description}}</p>
+                        <!-- <p>{{product.short_description}}</p> -->
+                         <p>{{ product.description }}</p>
                     </div>
                 </div>
             </div>
@@ -42,7 +43,7 @@
                 <div class="col-md-10 col-xl-8">
                     <div class="detail">
                         <!-- <h3>{{ product.name }}</h3> -->
-                        <p>{{ product.description }}</p>
+                        <!-- <p>{{ product.description }}</p> -->
                     </div>
                 </div>
             </div>
