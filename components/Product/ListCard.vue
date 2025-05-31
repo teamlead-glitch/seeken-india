@@ -41,7 +41,7 @@
                                             </div>
                                             <div class="bottom__box">
                                                
-                                                <ProductCardRating :rating="product.rating" :reviewCount="product.review_count"/>
+                                                <ProductCardRating v-if="product.rating" :rating="product.rating" :reviewCount="product.review_count"/>
                                                 
                                                 <ProductCardVarients :varients="product?.product_variants" :product_slug="product?.slug"/>
                                            </div>
