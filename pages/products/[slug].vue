@@ -71,13 +71,16 @@
                 <div class="prices" v-else>Rs. {{ product?.final_price }} </div>
                </div>
                <div class="total__rate">
-                   <div class="quantity">
+                   <div class="quantity" v-if="product.stock_quantity > 0">
                        <h4>Quantity</h4>
                        <div class="quantity-input">
                            <button class="quantity-btn minus-btn" @click="quantity > 1 ? quantity-- : null"><i class="bi bi-dash-lg"></i></button>
                            <input type="number" class="quantity" v-model="quantity">
                            <button class="quantity-btn plus-btn" @click="quantity++"><i class="bi bi-plus-lg"></i></button>
                        </div>
+                   </div>
+                   <div class="quantity" v-else>
+                   <h4 style="color: red;">Out of stock</h4>
                    </div>
                   
                    
