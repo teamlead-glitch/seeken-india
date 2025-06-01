@@ -79,9 +79,12 @@
                            <button class="quantity-btn plus-btn" @click="quantity++"><i class="bi bi-plus-lg"></i></button>
                        </div>
                    </div>
-                   <button class="btn_1" @click="cartAdd(product?.id,quantity)">Add to Cart</button>
+                  
+                   
+                   <button  class="btn_1" :class="{ outOfStock: !product.stock_quantity || product.stock_quantity < 1 }" @click="cartAdd(product?.id,quantity)">Add to Cart</button>
                    <!-- <NuxtLink class="btn_2" :to="`/buy-now/${product?.slug}`">Buy Now</NuxtLink> -->
-                   <button class="btn_2" @click="cartAdd(product?.id,quantity,true)">Buy Now</button>
+                   <button class="btn_2" :class="{ outOfStock: !product.stock_quantity || product.stock_quantity < 1 }" @click="cartAdd(product?.id,quantity,true)">Buy Now</button>
+                  
                </div>
            </div>
        </div>
@@ -152,6 +155,7 @@ const fetchVariant = async (selectedOptions) => {
       console.log('Matched variant:', variant_response.data);
       product.value.final_price = variant_response.data.final_price;
       product.value.price = variant_response.data.price;
+      product.value.stock_quantity = variant_response.data.stock;
 
       selectedVariantId.value = variant_response.data.id;
 
@@ -273,5 +277,10 @@ watchEffect(() => {
 </script>
 
 <style>
+
+.outOfStock {
+  opacity: 0.4;
+  pointer-events: none;
+}
 
 </style>
