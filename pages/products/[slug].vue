@@ -31,9 +31,8 @@
                             
                         </ul>
                     </div>
-                    <div class="product__content">
-                        <!-- <p>{{product.short_description}}</p> -->
-                         <p>{{ product.description }}</p>
+                    <div class="product__content" v-html="product?.description">
+                       
                     </div>
                 </div>
             </div>
