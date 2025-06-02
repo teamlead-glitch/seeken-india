@@ -25,7 +25,7 @@
        
 
         <div class="desktop__parent__div">
-          <img :src="item.flash_sale_image_url"  class="img-fluid banner__desk" alt="seeken" loading="lazy" style="max-height: 525px;object-fit: cover;">
+          <img :src="item.flash_sale_image_url"  class="img-fluid banner__desk" alt="seeken" loading="lazy" style="height: 100%;object-fit: cover;">
           <!-- style="max-height: 425px;object-fit: cover;" -->
           <!-- desktop  -->
           <div class="sale_box">
