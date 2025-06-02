@@ -40,7 +40,8 @@
             <div class="rating">
               <ProductCardRating :rating="item.rating" :reviewCount="item.review_count"/>
             </div>
-            <a class="btn_2" href="">Buy Now</a>
+            
+            <NuxtLink :to="`/products/${item.slug}`" class="btn_2">Buy Now</NuxtLink>
           </div>
         </div>
       </div>
