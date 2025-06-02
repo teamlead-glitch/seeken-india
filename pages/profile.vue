@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="lists">
-                                        {{ authStore.user }}
+                                        
                                         <ul>
                                             <li>
                                                 {{ authStore.user?.name ?? 'Guest' }}
@@ -60,7 +60,7 @@
                         <div class="full__box">
                             <div class="row align-items-center">
                                 <div class="col-md-12 mb-3">
-                                    <h5>Shipping </h5>
+                                    
 
                                     <ProfileListAddress :addPopup="showAddAddressPopup"/>
                                 </div>
