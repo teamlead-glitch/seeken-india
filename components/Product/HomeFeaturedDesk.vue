@@ -10,7 +10,7 @@
             egestas vitae.</p>
         </div>
         <div class="col-md-3 d-flex justify-content-end">
-          <a href="/list">View All Products</a>
+          <a class="btn_2" href="/list">View All Products</a>
         </div>
       </div>
       <div class="row mt-4">

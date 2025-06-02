@@ -10,7 +10,7 @@
             <div class="full__boxes" v-for="item in cart.items" :key="item.id">
               <div class="left">
                 <div class="img_box">
-                  <NuxtLink :to="`/products/${item.product?.product_slug}`" >
+                  <NuxtLink :to="`/products/${item.product_slug}`" >
                   <img :src="item.product_image" class="img-fluid" :alt="item.product_name" />
                   </NuxtLink>
                 </div>
