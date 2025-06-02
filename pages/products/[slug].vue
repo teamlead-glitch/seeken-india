@@ -55,7 +55,7 @@
         <ProductRelatedSlider :products="relatedProducts"/>
 
        <ProductRatings :productId="product?.id" :refreshKey="refreshKey"/>
-        <ProductReviewsAdd v-if="authStore.token && isProductPurchased" :productId="product?.id" @review-submitted="triggerRefresh"/>
+        <ProductReviewsAdd v-if="authStore.token && isProductPurchased" :productId="product?.id" @review-submitted="triggerRefresh" :myReview="myReview"/>
         <ProductReviews :productId="product?.id" :refreshKey="refreshKey"/>
 </div>
 
@@ -117,6 +117,7 @@ const slug = route.params.slug; // Get slug from URL
 const { data: response, error, refresh } = useFetchData('response', `products/${slug}`);
 const product = computed(() => response.value?.data);
 const isProductPurchased = ref(false);
+const myReview = ref({});
 
 const highlightedSpecifications = computed(() => {
   return product.value?.product_specifications?.filter(spec => spec.is_highlight === 1) || [];
@@ -253,6 +254,9 @@ watch(
       })
 
       isProductPurchased.value = res.result === 'success'
+      if(isProductPurchased.value){
+        myReview.value = res.review;
+      }
     } catch (err) {
       console.error('Error checking purchase status:', err)
       isProductPurchased.value = false
