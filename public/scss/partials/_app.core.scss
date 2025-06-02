@@ -1085,8 +1085,7 @@ section {
 
             img {
                 height: 100%;
-
-                width: 100%;
+  width: 100%;
                 object-fit: cover;
 
                 @media (max-width:767px) {
@@ -4800,47 +4799,46 @@ section {
     }
 
     .masonry-container {
-        column-gap: 15px;
+        // column-gap: 15px;
         position: relative;
         height: auto;
         overflow: hidden;
-
-        @media (max-width: 991px) {
-            column-gap: 10px;
-        }
+        display: flex;
+        flex-wrap: wrap;
+       /*  column-count: 3;  default for medium screens */
+          @media (min-width: 1200px) {
+     /*   column-count: 4;  for large screens */
     }
-
-    @media (min-width: 992px) {
-        .masonry-container {
-            column-count: 3;
-            /* 3 columns on large screens */
-        }
+//    @media (max-width: 991px) {
+//             column-gap: 10px;
+//         }
+//          @media (min-width: 992px) {
+//          column-count: 3;
+           
+//    }
+ @media (max-width: 991px) {
+        // column-count: 2;
     }
-
-    @media (max-width: 991px) {
-        .masonry-container {
-            column-count: 2;
-            /* 2 columns on smaller screens */
-        }
-    }
-
-    .masonry-item {
+      .masonry-item {
         display: inline-block;
-        width: 100%;
-        margin-bottom: 15px;
+        width: 33.3%;
+       padding: 10px;
         border-radius: 8px;
         overflow: hidden;
         animation: scrollUp 10s linear infinite;
-border: 1px solid $paragraph;
-        @media (max-width: 991px) {
-            margin-bottom: 5px;
-        }
-    }
 
-    .masonry-item img {
+        @media (max-width: 991px) {
+           
+             width: 50%;
+              padding: 5px;
+        }
+         img {
         width: 100%;
         border-radius: 8px;
         display: block;
+      border: 1px solid $paragraph;
+    }
+    }
     }
 
     .mb10 {
@@ -5185,10 +5183,9 @@ height: 100%;
                 flex-direction: column;
                 justify-content: center;
                 position: absolute;
-                left: 1.5rem;
+                left: 1rem;
                 top: 50%;
-                background: rgb(255, 255, 255);
-                background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+               
                 transform: translate(0, -50%);
 
                 .countdown-box {

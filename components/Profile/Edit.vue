@@ -51,6 +51,20 @@
                           </div>
                           
                     </div>
+
+                     <div class="col-md-12 ">
+                        <div class="form-floating ">
+                            <input type="password" autocomplete="new-password" class="form-control border-0 border-bottom rounded-0" v-model="password" placeholder="Password" >
+                            <label for="" class="form-label">Password</label>
+                          </div>
+                    </div>
+
+                     <div class="col-md-12 ">
+                        <div class="form-floating ">
+                            <input type="password" class="form-control border-0 border-bottom rounded-0" v-model="password_confirmation" placeholder="Re enter Password" >
+                            <label for="" class="form-label">Confirm Password</label>
+                          </div>
+                    </div>
                     
                 </div>
             </div>
@@ -79,7 +93,11 @@ import { useAuthStore } from '~/store/auth';
   const authStore = useAuthStore();
 
   const email = ref(  authStore.user?.email ?? '' );
-  const mobile = ref(authStore.user?.mobile ?? '');
+  const mobile = ref(authStore.user?.phone ?? '');
+
+  const password = ref('');
+  const password_confirmation = ref('');
+
   const error = ref('');
   
   const successMessage = ref('');
@@ -96,10 +114,21 @@ const closePopup = () => {
 const handleEdit = async () => {
     successMessage.value = error.value = '';
 
+
+    const hasPassword = password.value.trim() !== '';
+  const hasConfirmation = password_confirmation.value.trim() !== '';
+
+  if (hasPassword || hasConfirmation) {
+    if (password.value !== password_confirmation.value) {
+      error.value = 'Passwords do not match.';
+      return;
+    }
+  }
+
     
     showLoader();
     try {
-      const payload = { name: name.value, email: email.value, mobile: mobile.value };
+      const payload = { name: name.value, email: email.value, phone: mobile.value, password:password.value, password_confirmation:password_confirmation.value };
       
       const response = await updateProfile(payload);
 

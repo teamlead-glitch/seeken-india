@@ -1,5 +1,5 @@
 <template>
-
+<h5 v-if="result.addresses && result.addresses.length > 0">Shipping </h5>
     <CommonOverlayPopup :show="showEditAddressPopup">
         <ProfileEditAddress @close="showEditAddressPopup = false" :addressSelected="editAddress"></ProfileEditAddress>
     </CommonOverlayPopup>

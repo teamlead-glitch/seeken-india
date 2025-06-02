@@ -61,7 +61,7 @@
         <img :src="slide.image_path" alt="Thumb 1" @click="goToSlide(index)">
         <div class="texts" @click="goToSlide(index)">
           <!-- <h4><span>Next</span>{{slide.sub_title??'Sub title'}}</h4> -->
-           <h4><span>{{slide.sub_title??'Sub title'}}</span></h4>
+           <h4><span>{{slide.title??'Next'}}</span></h4>
         </div>
       </div>
       
