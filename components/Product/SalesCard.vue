@@ -31,7 +31,7 @@
                                             <div class="top_box">
                                                 <div class="product__img">
                                                     <!-- <NuxtLink :to="`/products/${product.slug}`"> -->
-                                                        <img v-if="product.flash_sale_image_mobile_url" :src="product.flash_sale_image_mobile_url" class="img-fluid" alt="seeken" >
+                                                        <img v-if="product.image_path" :src="product.image_path" class="img-fluid" alt="seeken" >
                                                     <!-- </NuxtLink> -->
                                                 </div>
                                                
