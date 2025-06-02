@@ -201,6 +201,7 @@ const { data: products, error, refresh } = useFetchData('products', 'flash-sale-
 }
 .desktop__parent__div img{
   width: 100%;
+  aspect-ratio: 4 / 3;
 }
 @media only screen and (min-width: 768px) and (max-width: 992px) {
   .desktop__parent__div {
@@ -210,6 +211,7 @@ const { data: products, error, refresh } = useFetchData('products', 'flash-sale-
 @media (max-width: 767px) {
   .desktop__parent__div {
     margin: 0 0.3rem;
+    aspect-ratio: 9/16;
   }
 }
 @media (max-width: 767px) and (max-width: 767px) {
