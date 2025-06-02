@@ -79,7 +79,7 @@ import { useAuthStore } from '~/store/auth';
   const authStore = useAuthStore();
 
   const email = ref(  authStore.user?.email ?? '' );
-  const mobile = ref(authStore.user?.mobile ?? '');
+  const mobile = ref(authStore.user?.phone ?? '');
   const error = ref('');
   
   const successMessage = ref('');
@@ -99,7 +99,7 @@ const handleEdit = async () => {
     
     showLoader();
     try {
-      const payload = { name: name.value, email: email.value, mobile: mobile.value };
+      const payload = { name: name.value, email: email.value, phone: mobile.value };
       
       const response = await updateProfile(payload);
 
