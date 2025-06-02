@@ -17,7 +17,7 @@
             <div class="tab-pane active" id="simple-tabpanel-0" role="tabpanel">
               <div class="row">
                 <template v-if="productsList?.length">
-                  <ProductListCard
+                  <ProductSalesCard
                     v-for="(item, index) in productsList"
                     :product="item"
                     :key="index"
