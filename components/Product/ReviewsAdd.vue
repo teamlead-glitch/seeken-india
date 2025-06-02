@@ -63,6 +63,9 @@ const props = defineProps({
   productId: {
     type: Number,
     required: true,
+  },
+  myReview: {
+    type: {},
   }
     })
 
@@ -77,8 +80,8 @@ async function submitForm() {
     
     showLoader();
     const payload = { product_id : props.productId , rating : selectedRating.value , title : reviewTitle.value , comment : reviewText.value  };
-  if (myReview.value) {
-payload.id=myReview.value.id
+  if (props.myReview && props.myReview.id) {
+payload.id=props.myReview.id
   }
     console.log(payload,'payload');
   
@@ -91,12 +94,16 @@ payload.id=myReview.value.id
       headers: { Authorization: `Bearer ${authStore.token}` },
     });
 
-   addToast('Your rating and review have been added successfully..!', 'success')
+   addToast('Your rating and review have been updated successfully..!', 'success')
    emit('review-submitted')
    
   } catch (error) {
     //cant manage error response api different structure
-    addToast('An error occurred while submitting your rating and review. Please try again later..!', 'error')
+     const message =
+        error?.response?._data?.message || 'An error occurred while submitting your rating and review. Please try again later!'
+    
+      addToast(message, 'error')
+    
     
     
   } finally {
@@ -104,24 +111,13 @@ payload.id=myReview.value.id
   }
 }
 
-const myReview = ref({
-  // id: 3,
-  // user_id: 2,
-  // product_id: 23,
-  // rating: 2,
-  // title: "2 star",
-  // comment: "test sherin test sherintest sherintest...",
-  // is_approved: 0,
-  // created_at: "2025-05-12T08:59:11.000000Z",
-  // updated_at: "2025-05-12T08:59:11.000000Z",
-  // customer_name: "Super Admin",
-})
+
 
 watchEffect(() => {
-  if (myReview.value) {
-    selectedRating.value = myReview.value.rating || 0
-    reviewTitle.value = myReview.value.title || ''
-    reviewText.value = myReview.value.comment || ''
+  if (props.myReview) {
+    selectedRating.value = props.myReview.rating || 0
+    reviewTitle.value = props.myReview.title || ''
+    reviewText.value = props.myReview.comment || ''
   }
 })
 </script>
