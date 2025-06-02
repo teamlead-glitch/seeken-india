@@ -59,13 +59,16 @@
     
     <div class="mobile__parent__div" :class="{ outOfStock: !item.stock || item.stock < 1 }">
   
-      <NuxtLink :to="`/products/${item.slug}`">
-          <img :src="item.flash_sale_image_mobile_url"  class="img-fluid banner__mob" alt="seeken" loading="lazy">
-        </NuxtLink>  
+      <!-- <NuxtLink :to="`/products/${item.slug}`"> -->
+        <a href="#" @click="handleAddToCart(item?.product_id, 1, item.variant_id?item.variant_id:0,'add',true)">
+          <img  :src="item.flash_sale_image_mobile_url"  class="img-fluid banner__mob" alt="seeken" loading="lazy">
+        </a>
+        <!-- </NuxtLink>   -->
   
           <!-- mobile view -->
-         <NuxtLink :to="`/products/${item.slug}`">
-            <div class="sale__box__mobile ">
+         <!-- <NuxtLink :to="`/products/${item.slug}`"> -->
+          <a href="#" @click="handleAddToCart(item?.product_id, 1, item.variant_id?item.variant_id:0,'add',true)">
+            <div class="sale__box__mobile " >
               <div class="outer__box">
                 <h5>FLASH SALE</h5>
                 <h4>{{ item.name }}</h4>
@@ -80,7 +83,8 @@
                 <div class="offer">{{item.discount}}% OFF</div>
               </div>
             </div>
-          </NuxtLink>
+            </a>
+          <!-- </NuxtLink> -->
         
           <!-- mobile view -->
         </div>
