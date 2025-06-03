@@ -10,7 +10,12 @@
                 <div class="product_detail">
 
                   <ProductCardImages ref="imageRef" :images="product.product_images" v-if="product?.product_images?.length > 0"/>
-                </div>
+                  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" v-else>
+                    <div class="carousel-inner" >
+                    <img :src="product.image_path" class="d-block w-100" >
+                    </div>
+                  </div>
+                  </div>
             </div>
             <div class="col-md-6 col-xl-7">
                 <div class="product__detail__box">
