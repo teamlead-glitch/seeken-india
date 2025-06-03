@@ -7,7 +7,7 @@
                                 <ul>
                                   <!-- {{ defaultOptionIdArray }} -->
                                     <li v-if="options?.product_option_values?.length > 0" v-for="option_values in options.product_option_values">
-                                        <div style="width: auto; padding: 13px;border-radius: 8%" class="code" :class="{ active: selectedOptions[options.id] === option_values.id || defaultOptionIdArray.includes(option_values.id)}" @click="chooseVariant(options.id, option_values.id)"> 
+                                        <div style="width: auto; padding: 13px;border-radius: 5%" class="code" :class="{ active: selectedOptions[options.id] === option_values.id || defaultOptionIdArray.includes(option_values.id)}" @click="chooseVariant(options.id, option_values.id)"> 
                                           <!-- <img src="/images/color_code/clr-1.webp" class="img-fluid" alt="seeken" loading="lazy"> -->
                                         {{ option_values.value }}
                                         </div>
