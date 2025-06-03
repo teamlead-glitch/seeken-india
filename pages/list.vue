@@ -42,7 +42,7 @@
 
 
                 <template v-if="productsList?.length">
-                  <ProductListCard v-for="(item, index) in productsList" :product="item" :key="index" />
+                  <ProductListCard v-for="(item, index) in productsList" :product="getModifiedProduct(item)" :key="index" />
                  
                 </template>
                 <p v-else>No products found.</p>
@@ -207,4 +207,28 @@ useHead({
   title: 'Seeken | Shop',
   meta: [{ name: 'description', content: 'Seeken Shop' }],
 });
+
+
+const getModifiedProduct = (item) => {
+  if (item.stock_quantity > 0) return item;
+
+  const availableVariant = item.product_variants?.find(
+    v => v.variant_price?.stock_quantity > 0
+  );
+
+  if (availableVariant) {
+    return {
+      ...item,
+      stock_quantity: availableVariant.variant_price.stock_quantity,
+      final_price: availableVariant.variant_price.final_price,
+      price: availableVariant.variant_price.price,
+      selling_price: availableVariant.variant_price.selling_price,
+      ...(availableVariant.variant_image_path
+        ? { image_path: availableVariant.variant_image_path }
+        : {}),
+    };
+  }
+
+  return item;
+};
 </script>
