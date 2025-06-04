@@ -31,7 +31,9 @@
                         <ul>
                             <li v-for="h_spec in highlightedSpecifications">
                                 <div class="img_box"><img :src="h_spec.icon" alt="seeken"></div>
-                                <h4> <span>{{ h_spec.title }}</span> {{ h_spec.description }}</h4>
+                                <h4> <span>{{ h_spec.title }}</span> 
+                                 <span v-html="h_spec.description"></span> 
+                                </h4>
                             </li>
                             
                         </ul>
