@@ -25,7 +25,7 @@
        
 
         <div class="desktop__parent__div">
-          <img :src="item.flash_sale_image_url"  class="img-fluid banner__desk" alt="seeken" loading="lazy" style="height: 100%;object-fit: cover;">
+          <img :src="item.flash_sale_image_url"  class="img-fluid flash_desk" alt="seeken" loading="lazy" style="height: 100%;object-fit: cover;">
           <!-- style="max-height: 425px;object-fit: cover;" -->
           <!-- desktop  -->
           <div class="sale_box">
@@ -61,7 +61,7 @@
   
       <!-- <NuxtLink :to="`/products/${item.slug}`"> -->
         <a href="#" @click="handleAddToCart(item?.product_id, 1, item.variant_id?item.variant_id:0,'add',true)">
-          <img  :src="item.flash_sale_image_mobile_url"  class="img-fluid banner__mob" alt="seeken" loading="lazy">
+          <img  :src="item.flash_sale_image_mobile_url"  class="img-fluid flash_mob" alt="seeken" loading="lazy" >
         </a>
         <!-- </NuxtLink>   -->
   

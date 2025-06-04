@@ -10,7 +10,9 @@ body {
     font-family: $font-family;
     background: white-color
 }
-
+// html, body {
+//   overflow-x: hidden;
+// }
 
 h1,
 h2,
@@ -938,6 +940,21 @@ section {
         display: block;
     }
 }
+.flash__desk {
+    display: block;
+
+    @media (max-width: 768px) {
+        display: none;
+    }
+}
+
+.flash {
+    display: none;
+
+    @media (max-width: 768px) {
+        display: block;
+    }
+}
 
 .mob_none {
 
@@ -1063,6 +1080,7 @@ section {
 .flash__sale {
     width: 100%;
     padding-bottom: 0;
+
 
     .flashsale {
         .item {
@@ -1563,7 +1581,19 @@ section {
                     height: 40px;
                 }
             }
+ .button__box {
+            display: flex;
+            grid: 2px;
+            padding: 0;
+            justify-content: flex-start;
+            align-items: flex-start;
 
+            .btn_3 {
+                padding: 0;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+            }
+
+        }
 
         }
 
@@ -1612,7 +1642,7 @@ section {
         padding-bottom: 0;
 
         h3 {
-            text-align: center;
+            text-align: left;
         }
 
         .button__box {
@@ -1627,7 +1657,7 @@ section {
     .content_center {
         top: 0;
         width: 70%;
-        justify-content: center;
+       
         height: 100%;
 
         @media only screen and (min-width: 768px) and (max-width: 1200px) {
@@ -2368,6 +2398,7 @@ section {
                         opacity: 0;
                         transform: translateY(10px);
 
+ @media(  width <= 767px){ opacity: 1;}
                         &:hover {
                             background: none;
                             border: 2px solid $primery-color;
@@ -4047,7 +4078,7 @@ section {
 
                 li {
 
-                    padding: .5rem 0;
+                    padding-bottom: .2rem;
                     color: #000;
                     line-height: 24px;
                     font-weight: 400;
@@ -5171,7 +5202,7 @@ section {
         .items {
             position: absolute;
             top: 0;
-            padding: .5rem 0 0 1.5rem;
+            padding: .5rem 0 0 1rem;
             left: 0;
             z-index: 99;
             color: rgba(210, 81, 81, 1);

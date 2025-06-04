@@ -30,7 +30,10 @@
                         <h4>Highlights</h4>
                         <ul>
                             <li v-for="h_spec in highlightedSpecifications">
-                                <div class="img_box"><img :src="h_spec.icon" alt="seeken"></div>
+                                <div class="img_box">
+                                  <img v-if="h_spec.icon" :src="h_spec.icon" alt="seeken">
+                                  <img v-else :src="'/images/no-image-icon.svg'" alt="seeken">
+                                </div>
                                 <h4> <span>{{ h_spec.title }}</span> 
                                  <span v-html="h_spec.description"></span> 
                                 </h4>
