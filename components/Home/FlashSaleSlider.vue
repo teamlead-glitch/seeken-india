@@ -217,8 +217,12 @@ const { data: products, error, refresh } = useFetchData('products', 'flash-sale-
     margin: 0 0.3rem;
     aspect-ratio: 9/16;
   }
+  .mobile__parent__div {
+    margin: 0 0.3rem;
+    aspect-ratio: 9/16;
+  }
 
-  .mobile_parent_div img {
+  .mobile__parent__div img {
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
