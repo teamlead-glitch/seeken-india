@@ -7,7 +7,7 @@
             <ul>
                 <li v-for="spec in specs">
                     <div class="left">{{ spec.title }} </div>
-                    <div class="right">{{ spec.description }}</div>
+                    <div class="right" v-html="spec.description"></div>
                 </li>
                 
             </ul>
