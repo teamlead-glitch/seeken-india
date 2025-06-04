@@ -4,7 +4,7 @@
       <div class="row">
         
         
-        <div class="col-md-4 p-0" v-for="(item, index) in prime_products" :key="index">
+        <div class="col-md-4 col-sm-4 p-0" v-for="(item, index) in prime_products" :key="index">
           <div class="products__img">
             <img :src="item.image_path" class="img-fluid" alt="seeken">
             <div class="contents">
