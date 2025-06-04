@@ -24,7 +24,7 @@ const getModifiedProduct = (item) => {
       price: availableVariant.variant_price.price,
       selling_price: availableVariant.variant_price.selling_price,
       ...(availableVariant.variant_image_path
-        ? { image_path: availableVariant.variant_image_path }
+        ? { default_image: availableVariant.variant_image_path }
         : {}),
     };
   }
