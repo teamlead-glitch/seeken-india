@@ -1,7 +1,7 @@
 
 
 <template>
-    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6  mb-5">
+    <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12">
           <div class="product__box" :class="{ outOfStock: !product.stock_quantity || product.stock_quantity < 1 }">
             <div class="top_box">
               <div class="product__img">

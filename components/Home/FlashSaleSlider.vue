@@ -217,6 +217,17 @@ const { data: products, error, refresh } = useFetchData('products', 'flash-sale-
     margin: 0 0.3rem;
     aspect-ratio: 9/16;
   }
+
+  .mobile_parent_div img {
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+      height: 100%;
+  width: 100%;
+                object-fit: cover;
+  }
 }
 @media (max-width: 767px) and (max-width: 767px) {
   .desktop__parent__div {
