@@ -64,7 +64,8 @@
                   </h6> -->
                   <div class="btn__boxes">
                     
-                    <NuxtLink :to="`/buy-now/${item.product?.slug}`" class="btn_1">Buy it again</NuxtLink>
+                    <!-- <NuxtLink :to="`/buy-now/${item.product?.slug}`" class="btn_1">Buy it again</NuxtLink> -->
+                   <a href="#" class="btn_1" @click="buyNow(item,1)">Buy it again</a>
                     <NuxtLink :to="`/products/${item.product?.slug}`" class="btn_2">View Product</NuxtLink>
                   
                   </div>
@@ -120,6 +121,8 @@
   const { addToast } = useToast()
 const { showLoader, hideLoader } = useLoader(); // Use global loader
 import { useAuthStore } from '~/store/auth';
+
+const { handleAddToCart } = useCartActions()
 
 const authStore = useAuthStore();
 
@@ -206,6 +209,10 @@ async function submitCancellation(id, product_id, order_no){
 }
 const cleanedVariantName = (name = '') => {
   return name.replace(/-/g, ' ').trim()
+}
+
+const buyNow = (quickProduct,quantity) => {
+  handleAddToCart(quickProduct?.product_id,quantity, quickProduct.variant_id?quickProduct.variant_id:0,true)
 }
   </script>
   
