@@ -35,8 +35,8 @@
     </div>
   </div>
  <div class="product_details">
-  <div class="detail">
-      <p>{{ quickProduct?.short_description }}</p>
+  <div class="detail" v-html="quickProduct?.description">
+      
    </div>
   </div>
   <div class="full_clm">
