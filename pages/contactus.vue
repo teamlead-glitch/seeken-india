@@ -13,10 +13,11 @@
                         <div class="col-md-12 col-xl-6 col-lg-12 mb-4">
                             <div class="contact__box">
                                 <h4>Address:</h4>
+                               
                                 <div class="content">
-                                    <p class="fw-bolder">Island Valley Electronics LLC</p>
-                                    <p>Westburry Business Tower 1, Business Bay, Dubai, United Arab Emirates</p>
-                                    <p>TRN number: 100299579100003</p>
+                                    <!-- <p class="fw-bolder">Island Valley Electronics LLC</p> -->
+                                    <p>{{ settings.address }}</p>
+                                    <p>{{ settings.phone }}</p>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +46,7 @@
                                 <div class="content">
                                     <p>We'll respond within 24 hours <br> of your request.</p>
                                </div>
-                               <a class="btn_2" href="">Send us an email</a>
+                               <a class="btn_2" :href="`mailto:${settings.email}`">Send us an email</a>
                             </div>
                         </div>
                     </div>
@@ -144,5 +145,7 @@ async function submitForm() {
 
 
 const { page_content, title } = await usePageContent('contact-us', 'Contact us');
+
+const settings = await useSiteSettings();
 
 </script>

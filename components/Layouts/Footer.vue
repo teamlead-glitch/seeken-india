@@ -50,12 +50,13 @@
             <div class="col-md-3">
               <h5>Social Media</h5>
               <div class="social-icons">
+               
                 <ul>
-                  <li><a href="#" target="blank"><i class="bi bi-facebook"></i>&nbsp;</a></li>
-                  <li> <a href="#" target="blank"><i class="bi bi-instagram"></i> &nbsp;</a></li>
-                  <li> <a href="#" target="blank"><i class="bi bi-youtube"></i> &nbsp;</a></li>
-                  <li> <a href="#" target="blank"><i class="bi bi-twitter-x"></i>&nbsp;</a></li>
-                  <li> <a href="#" target="blank"><i class="bi bi-linkedin"></i>&nbsp;</a></li>
+                  <li><a :href="settings.fb_url" target="blank"><i class="bi bi-facebook"></i>&nbsp;</a></li>
+                  <li> <a :href="settings.insta_url" target="blank"><i class="bi bi-instagram"></i> &nbsp;</a></li>
+                  <li> <a :href="settings.youtube_url" target="blank"><i class="bi bi-youtube"></i> &nbsp;</a></li>
+                  <li> <a :href="settings.twitter_url" target="blank"><i class="bi bi-twitter-x"></i>&nbsp;</a></li>
+                  <li> <a :href="settings.linked_in" target="blank"><i class="bi bi-linkedin"></i>&nbsp;</a></li>
                 </ul>
               </div>
             </div>
@@ -86,5 +87,6 @@
 
 import { inject } from 'vue';
 const categories = inject('All_categories');
+const settings = await useSiteSettings();
 
 </script>
