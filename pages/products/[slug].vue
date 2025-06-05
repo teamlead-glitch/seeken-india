@@ -2,7 +2,7 @@
 
 <CommonInnerBanner :page_title="product.name" v-if="product"/>
     
-<section class="inner_container" v-if="product">
+<section class="inner_container mb10" v-if="product">
   
     <div class="container">
         <div class="row">
@@ -19,7 +19,7 @@
             </div>
             <div class="col-md-6 col-xl-7">
                 <div class="product__detail__box">
-                    <h2 class="mob_none">{{product.name}} </h2>
+                    <h2 >{{product.name}} </h2>
                     <ProductCardRating :rating="product.rating" :reviewCount="product.review_count"/>
                     
                     

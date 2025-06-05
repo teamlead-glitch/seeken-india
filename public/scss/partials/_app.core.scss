@@ -992,7 +992,7 @@ section {
 
         .contents {
             position: absolute;
-            left: 100px;
+            left: 10%;
             top: 0;
             align-items: flex-start;
             display: flex;
@@ -1039,9 +1039,9 @@ section {
                 color: $white-color;
                 font-weight: 600;
                 line-height: 26px;
-                height: 80px;
-                margin-bottom: 1rem;
-                -webkit-line-clamp: 3;
+                    height: 50px;
+    margin-bottom: 1rem;
+    -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
 
                 @media only screen and (min-width: 768px) and (max-width: 992px) {
@@ -1050,7 +1050,7 @@ section {
 
                 @media(576px <=width <=768px) {
                     font-size: 0.875rem;
-                    height: 54px;
+                    height: 35px;
                     line-height: 18px;
                 }
             }
@@ -1516,7 +1516,7 @@ section {
     }
 
     h3 {
-        text-align: center;
+        text-align: left;
         font-weight: 800;
         font-size: 2.5rem;
         color: $black-color;
@@ -2524,24 +2524,22 @@ section {
             h3 {
                 font-size: 1.25rem;
                 display: -webkit-box;
-                height: 70px;
-                -webkit-line-clamp: 3;
+                height: 50px;
+                -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 margin-bottom: 10px;
                 font-weight: 700;
 
-                @media only screen and (min-width: 768px) and (max-width: 992px) {
-                    height: 74px;
-                }
+               
             }
 
             p {
                 @include paraghraph;
                 display: -webkit-box;
-                height: 90px;
-                -webkit-line-clamp: 4;
+                height: 75px;
+                -webkit-line-clamp: 3;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -3736,6 +3734,7 @@ section {
 
         @media (max-width:767px) {
             padding-left: 0;
+            margin-top: 2rem;
         }
 
         h2 {
@@ -3750,6 +3749,12 @@ section {
             @media only screen and (min-width: 768px) and (max-width: 992px) {
                 font-size: 1.3rem;
             }
+             @media(  width <= 767px){
+                 font-size: 1.4rem;
+             }
+             @media( width <= 480px){
+                  font-size: 1.2rem;
+             }
         }
 
         .rating {
@@ -3767,11 +3772,15 @@ section {
 
             @media only screen and (min-width: 768px) and (max-width: 992px) {
                 margin: .5rem 0;
-                padding-bottom: .5rem;
+               
             }
 
             @media (max-width:767px) {
-                display: none;
+               font-size: 0.875rem;
+                padding-bottom: .5rem;
+                    margin: .5rem 0;
+    border-bottom: none;
+    padding-bottom: .2rem;
             }
 
             i {
@@ -3789,7 +3798,7 @@ section {
             display: flex;
 
             @media (max-width:767px) {
-                margin-top: 2rem;
+                margin-top: 1 rem;
             }
 
             h4 {
@@ -4052,6 +4061,7 @@ section {
                             font-size: 0.75rem;
                             color: $black-color;
                             margin-top: .5rem;
+                                text-wrap: auto;
                         }
                     }
                 }
@@ -4102,7 +4112,7 @@ section {
         @media (max-width:767px) {
             margin-top: .5rem;
             padding-top: 1rem;
-            border-top: 1px solid #808080;
+            // border-top: 1px solid #808080;
         }
 
         h3 {
@@ -5506,7 +5516,7 @@ section {
 
             .colors {
                 margin: .5rem 0 0 0;
-
+min-height: 30px;
                 @media (max-width:767px) {
                     margin: .5rem 0;
                 }
@@ -7603,6 +7613,14 @@ section {
 
 
 }
+  .mb10 {
+        @media (max-width:767px) {
+            margin-bottom: 7rem;
+        }
+        @media( width <= 480px){
+            margin-bottom: 8.5rem;
+        }
+    }
 
 .about_container {
     @media (max-width:767px) {
@@ -7731,6 +7749,7 @@ section {
                     flex-direction: column-reverse;
                     text-align: right;
                     align-items: flex-end;
+                    width: 50%;
                 }
 
                 span {

@@ -161,9 +161,12 @@
 
             .img__box {
                 @include border(10px);
-
+aspect-ratio: 4/2.5;
                 img {
                     @include border(10px);
+                    object-fit: cover;
+                    height: 100%;
+                    width: 100%;
                 }
             }
 
@@ -180,17 +183,15 @@
                 h3 {
                     font-size: 1.25rem;
                     display: -webkit-box;
-                    height: 70px;
-                    -webkit-line-clamp: 3;
+                    height: 50px;
+                    -webkit-line-clamp: 2;
                     -webkit-box-orient: vertical;
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    margin-bottom: 10px;
+                    margin-bottom: 5px;
                     font-weight: 700;
 
-                    @media only screen and (min-width: 768px) and (max-width: 992px) {
-                        height: 74px;
-                    }
+                   
                 }
 
                 p {
@@ -667,6 +668,7 @@ min-height: 210px;
                 @include border(10px);
                 object-fit: cover;
                 height: 100%;
+                width: 100%;
             }
 
             &::before {
@@ -719,7 +721,7 @@ min-height: 210px;
                 .button__box {
                     display: flex;
                     grid-area: 2px;
-                    justify-content: center;
+                    // justify-content: center;
                     align-items: center;
                     @media (max-width:767px) { flex-direction: column;}
 
