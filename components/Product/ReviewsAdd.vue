@@ -77,6 +77,12 @@ function handleStarClick(rating) {
 
 
 async function submitForm() {
+
+  if(selectedRating.value == 0){
+
+    addToast('Please provide a rating', 'error')
+    return false;
+  }
     
     showLoader();
     const payload = { product_id : props.productId , rating : selectedRating.value , title : reviewTitle.value , comment : reviewText.value  };
