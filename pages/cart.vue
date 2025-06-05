@@ -18,7 +18,7 @@
               <div class="right">
                 <div class="full__container">
                   <div class="product__details">
-                    <NuxtLink :to="`/products/${item.product?.product_slug}`" >
+                    <NuxtLink :to="`/products/${item.product_slug}`" >
                     <h4>{{ item.product_name }}</h4>
                     </NuxtLink>
                     <span v-if="item.variant_name" style="font-size: 0.875rem">{{ cleanedVariantName(item.variant_name)	 }}</span>

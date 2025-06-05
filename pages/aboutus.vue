@@ -21,7 +21,7 @@
             </div>
         </div>
     </div>
-    <section class="inner_container" v-if="page_content">
+    <section class="inner_container about_container" v-if="page_content">
         <div class="container">
             <!-- {{ page_content }} -->
             <div class="row">
