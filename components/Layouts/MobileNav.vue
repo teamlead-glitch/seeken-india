@@ -5,26 +5,38 @@
     <ul>
       <li class="active">
         <NuxtLink to="/">
-          <div class="icon"><img src="/images/home-hover-menu.svg" alt="seeken"></div>
+          <div class="icon">
+            <img v-if="route.path === '/'" src="/images/home-hover-menu.svg" alt="seeken">
+            <img v-else src="/images/home-menu.svg" alt="seeken">
+          </div>
           <div class="list"> Home</div>
         </NuxtLink>
       </li>
       <li>
         <NuxtLink :to="`/list`">
-          <div class="icon"><img src="/images/shop-menu.svg" alt="seeken"></div>
+          <div class="icon">
+            <img v-if="route.path === '/list'" src="/images/shop-hover-menu.svg" alt="seeken">
+            <img v-else src="/images/shop-menu.svg" alt="seeken">
+          </div>
           <div class="list">Shop</div>
         </NuxtLink>
       </li>
       <li>
         <NuxtLink :to="`/sales`">
-          <div class="icon"><img src="/images/offers-menu.svg" alt="seeken"></div>
+          <div class="icon">
+            <img v-if="route.path === '/sales'" src="/images/offers-hover-menu.svg" alt="seeken">
+            <img v-else src="/images/offers-menu.svg" alt="seeken">
+          </div>
           <div class="list">Offers</div>
 
         </NuxtLink>
       </li>
       <li>
         <NuxtLink to="/cart">
-          <div class="icon"><img src="/images/cart-menu.svg" alt="seeken"></div>
+          <div class="icon">
+            <img v-if="route.path === '/cart'" src="/images/cart-hover-menu.svg" alt="seeken">
+            <img v-else src="/images/cart-menu.svg" alt="seeken">
+          </div>
           <div class="list"> Cart</div>
         </NuxtLink>
       </li>
