@@ -37,12 +37,15 @@
                 </div>
 
                 <div class="quantity__boxes">
-                  <div class="quantity-input">
+                  <div class="quantity-input" v-if="!item.is_out_of_stock">
                     <button class="quantity-btn minus-btn" @click="updateQuantity(item, 1, 'minus')"><i
                         class="bi bi-dash-lg"></i></button>
                     <input type="number" class="quantity" :value="item.quantity" min="1" max="10">
                     <button class="quantity-btn plus-btn" @click="updateQuantity(item, 1)"><i
                         class="bi bi-plus-lg"></i></button>
+                  </div>
+                  <div  v-else>
+                  <h4 style="color: red;">Out of stock</h4>
                   </div>
                   <div class="delete">
                     <i class="bi bi-trash" @click="updateQuantity(item, item.quantity, 'minus')"></i>

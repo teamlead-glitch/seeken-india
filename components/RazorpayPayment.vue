@@ -80,6 +80,12 @@ const makePayment = async () => {
     if (response._data?.message) {
       //alert(response._data.message);
       addToast(response._data.message, 'error')
+
+      if(response._data.message == 'Some product is out of stock in your order.'){
+
+        router.push('/cart')
+        
+      }
     } else {
       addToast('Failed to create Razorpay order', 'error');
     }
