@@ -81,7 +81,8 @@ const makePayment = async () => {
       //alert(response._data.message);
       addToast(response._data.message, 'error')
 
-      if(response._data.message == 'Some product is out of stock in your order.'){
+      if(response._data.message == 'Some product is out of stock in your order.' ||
+  response._data.message.toLowerCase().includes('out of stock')){
 
         router.push('/cart')
         
