@@ -143,7 +143,7 @@ async function submitForm() {
     error.value = success.value = '';
     showLoader();
   console.log(address,'address');
-  
+  address.value.type = addressType.value
 
   try {
     const config = useRuntimeConfig();
