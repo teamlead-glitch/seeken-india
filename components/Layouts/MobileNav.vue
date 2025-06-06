@@ -59,11 +59,11 @@
           </div>
           <div class="logo"><img src="/images/logo-blue.svg" alt="logo"></div>
           <div class="search_wishlist">
-            <div class="wishlist"> <NuxtLink to="/wishlist" @click="closeMobMenu">
+            <!-- <div class="wishlist"> <NuxtLink to="/wishlist" @click="closeMobMenu">
               <div class="icon"><img src="/images/whislist.svg" alt="search">
-                <!-- <div class="count">2</div> -->
+                
               </div>
-            </NuxtLink> </div>
+            </NuxtLink> </div> -->
             <div class="search">
               <div class="icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTopone"
                 aria-controls="offcanvasTop"><img src="/images/search_icon.svg" alt="search"></div>
@@ -75,7 +75,7 @@
         <div class="profile"><img src="/images/profile_icon.webp" alt="seeken" class="img-fluid"></div>
         <div class="name_designation">
           <h6> {{ authStore.user?.name ?? 'Guest' }}</h6>
-          <div class="phone">{{ authStore.user?.mobile ?? '-' }}</div>
+          <div class="phone">{{ authStore.user?.phone ?? '-' }}</div>
           <NuxtLink @click="logout" v-if="authStore.token">Logout</NuxtLink>
         </div>
       </div>
