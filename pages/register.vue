@@ -30,7 +30,7 @@
                         </div>
                       </div>
                      
-                      <div class="col-12 mb-3 mt-5">
+                      <div class="col-12 mb-3">
                         <div class="form-floating mb-3">
                           <input autocomplete="off" type="email" class="form-control border-0 border-bottom rounded-0" v-model="email" placeholder="Email address" required>
                           <label for="email" class="form-label">Email address</label>
