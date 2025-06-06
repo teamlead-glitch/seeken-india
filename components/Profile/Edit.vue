@@ -54,14 +54,16 @@
 
                      <div class="col-md-12 ">
                         <div class="form-floating ">
-                            <input type="password" autocomplete="new-password" class="form-control border-0 border-bottom rounded-0" v-model="password" placeholder="Password" >
+                          <div class="password"><i class="bi " :class="showPassword ? 'bi-eye' : 'bi-eye-slash'" @click="togglePassword"></i></div>
+                            <input :type="showPassword ? 'text' : 'password'" autocomplete="new-password" class="form-control border-0 border-bottom rounded-0" v-model="password" placeholder="Password" >
                             <label for="" class="form-label">Password</label>
                           </div>
                     </div>
 
                      <div class="col-md-12 ">
                         <div class="form-floating ">
-                            <input type="password" class="form-control border-0 border-bottom rounded-0" v-model="password_confirmation" placeholder="Re enter Password" >
+                          <div class="password"><i class="bi" :class="showConfirmPassword ? 'bi-eye' : 'bi-eye-slash'" @click="toggleConfirmPassword"></i></div>
+                            <input :type="showConfirmPassword ? 'text':'password'" class="form-control border-0 border-bottom rounded-0" v-model="password_confirmation" placeholder="Re enter Password" >
                             <label for="" class="form-label">Confirm Password</label>
                           </div>
                     </div>
@@ -142,4 +144,26 @@ const handleEdit = async () => {
     hideLoader(); // Hide loader after request completes
   }
   };
+
+  const showPassword = ref(false) // Toggle state
+
+    const togglePassword = () => {
+  showPassword.value = !showPassword.value
+}
+
+const showConfirmPassword = ref(false) // Toggle state
+
+    const toggleConfirmPassword = () => {
+      showConfirmPassword.value = !showConfirmPassword.value
+}
 </script>
+
+<style lang="css" scoped>
+ .password {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+    cursor: pointer;
+    z-index: 99;
+}
+</style>
