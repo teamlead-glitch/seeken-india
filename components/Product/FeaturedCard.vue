@@ -33,7 +33,7 @@
                 <NuxtLink :to="`/products/${product.slug}`">
                 <h4>{{ product.name	 }}</h4>
               </NuxtLink>
-                <div class="price" v-if="product?.price > product?.final_price"> Rs. {{ product.final_price	 }} <span>Rs. {{ product.price }}</span></div>
+                <div class="price" v-if="Number(product?.price) > Number(product?.final_price)"> Rs. {{ product.final_price	 }} <span>Rs. {{ product.price }}</span></div>
                 <div class="price" v-else>  Rs. {{ product.final_price	 }}</div>
                 <ProductCardVarients  :varients="product?.product_variants" :product_slug="product?.slug"/>
                 <!-- v-if="product.product_variants.length > 0" -->
