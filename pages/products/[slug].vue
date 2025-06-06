@@ -1,6 +1,6 @@
 <template>
 
-<CommonInnerBanner :page_title="product.name" v-if="product"/>
+<CommonInnerBanner :page_title="product?.name?product.name:'Product'"/>
     
 <section class="inner_container mb10" v-if="product">
   
@@ -105,6 +105,28 @@
 </div>
 
 </section>
+
+<section class="inner_container" v-else>
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="empty__cart" style="min-height: auto;">
+            <img src="/images/empyt-cart.svg" alt="seeken">
+            <h5>Product not found !</h5>
+            <p>The product you're looking for doesn't exist.</p>
+            <div class="btn_box">
+              <NuxtLink to="/" class="btn_1">Go Home</NuxtLink>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+  </section>
 
 
 </template>
