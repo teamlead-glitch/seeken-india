@@ -1,7 +1,8 @@
 <template>
-  
+   
   <div class="intro">
-    <a id="anchor1"  href="#section2">
+   
+    <a id="anchor1"  href="#section2" v-if="hasFlashSaleProducts">
       <div class="arrow"><img src="/images/arrow.svg" alt="seeken"></div>
     </a>
   <div class="content-slider banner">
@@ -101,6 +102,8 @@ const goToSlide = (index) => {
     swiperInstance.value.slideToLoop(index);  // Ensures it works with looping
   }
 };
+
+const hasFlashSaleProducts = inject('hasFlashSaleProducts', ref(false))
 </script>
 
 <style scoped>

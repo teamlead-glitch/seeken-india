@@ -45,8 +45,10 @@ const handleSubscribe = async () => {
 
     // Assuming the API response contains a success message in `message`
     if (response?.message) {
+      email.value = '';
       success.value = response.message;
     } else {
+      email.value = '';
       success.value = 'Subscription successful!';
     }
     
