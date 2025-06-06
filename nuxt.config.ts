@@ -99,6 +99,7 @@ export default defineNuxtConfig({
         { name: "robots", content: "Index, follow" }
       ],
       link: [
+        { rel: 'manifest', href: '/manifest.webmanifest' },
         // Canonical URL (set dynamically in components if needed)
         { rel: "canonical", href: "" },
 
