@@ -26,7 +26,7 @@
                     <div class="col-12 mb-3 mt-5">
                         <div class="form-floating mb-3">
                           <input autocomplete="off" type="text" class="form-control border-0 border-bottom rounded-0" v-model="name" placeholder="Name" required>
-                          <label for="Name" class="form-label">First name</label>
+                          <label for="Name" class="form-label">Name</label>
                         </div>
                       </div>
                      
