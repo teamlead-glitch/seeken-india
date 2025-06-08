@@ -83,21 +83,22 @@
         <ul>
           <li><NuxtLink to="/"  @click="closeMobMenu">Home</NuxtLink></li>
           <li><NuxtLink to="/list"  @click="closeMobMenu">Shop</NuxtLink></li>
-          <!-- <li>
-            <a href="javascript:void(0);" @click="toggleSubmenu">Shop</a>
-           
-      <ul class="submenu" v-show="isSubmenuVisible">
-        <li><a href="shop/category1.html">Category 1</a></li>
-        <li><a href="shop/category2.html">Category 2</a></li>
-        <li><a href="shop/category3.html">Category 3</a></li>
-      </ul>
-        </li> -->
+           <li v-if="authStore.token"><NuxtLink to="/orders"  @click="closeMobMenu">Your Orders</NuxtLink></li>
+          
           <li><NuxtLink to="/blog"  @click="closeMobMenu">Blog</NuxtLink></li>
           <li><NuxtLink to="/aboutus"  @click="closeMobMenu">About us</NuxtLink></li>
+          <li><NuxtLink to="/terms-of-services"  @click="closeMobMenu">Terms and Conditions</NuxtLink></li>
+          <li><NuxtLink to="/privacy-policy"  @click="closeMobMenu">Privacy Policy</NuxtLink></li>
           <li><NuxtLink to="/contactus"  @click="closeMobMenu">Contact</NuxtLink></li>
+
+          
+          
         </ul>
       </div>
-      <div class="social__icons__mobile">
+
+       <LayoutsNewsletter :isMobile="true"/>
+
+      <div class="social__icons__mobile mt-5">
         <h5>Social Media</h5>
         <ul>
           <li><a href="#" target="blank"><i class="bi bi-facebook"></i>&nbsp;</a></li>

@@ -1,12 +1,13 @@
 <template>
     <div class="row align-items-center">
-        <div class="col-md-6">
+        <div class="col-md-6" v-if="!isMobile">
           <div class="newsletter">
             <h4>Subscribe our Newsletter and get all of our update</h4>
           </div>
         </div>
         <div class="col-md-6 d-flex justify-content-end">
           <div class="subscribe_form">
+             <h5 v-if="isMobile">Subscribe News Letter</h5>
             <form action="# " @submit.prevent="handleSubscribe">
               <div class="input-group input-group-lg ">
                 <input type="email" v-model="email" class="form-control input-lg " required placeholder="Enter your email">
@@ -16,8 +17,11 @@
                 </span>
                 
               </div>
-              <p class="mt-1"><center class="error-message" v-if="error">{{ error }}</center></p>
-              <p class="mt-1"><center class="success-message" v-if="success">{{ success }}</center></p>
+              <p class="mt-1">
+                <center class="error-message" v-if="error">{{ error }}</center>
+                <center class="success-message" v-if="success">{{ success }}</center>
+              </p>
+             
             </form>
           </div>
         </div>
@@ -26,6 +30,13 @@
 </template>
 
 <script setup lang="ts">
+
+defineProps({
+  isMobile: {
+    type: Boolean,
+    default: false // Optional, defaults to false
+  }
+})
 
 const email = ref('');
 const error = ref('');

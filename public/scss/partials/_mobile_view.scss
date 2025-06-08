@@ -226,14 +226,14 @@ aspect-ratio: 4/2.5;
             height: 40px;
             font-size: 1.4rem;
             @media (max-width:767px) {
-                width: 30px;
-                height: 30px;
+                width: 35px;
+                height: 35px;
                 font-size:1.2rem;
                 top: var(--swiper-navigation-top-offset,40%);
             }
             @media (max-width:480px) {
-                width: 25px;
-                height: 25px;
+                width: 30px;
+                height: 30px;
                 font-size:1rem;
                 top: var(--swiper-navigation-top-offset,40%);
             }
@@ -604,14 +604,14 @@ min-height: 210px;
             height: 40px;
             font-size: 1.4rem;
             @media (max-width:767px) {
-                width: 30px;
-                height: 30px;
+                width: 35px;
+                height: 35px;
                 font-size:1.2rem;
                 top: var(--swiper-navigation-top-offset,40%);
             }
             @media (max-width:480px) {
-                width: 25px;
-                height: 25px;
+                width: 30px;
+                height: 30px;
                 font-size:1rem;
                 top: var(--swiper-navigation-top-offset,40%);
             }
@@ -759,16 +759,16 @@ min-height: 210px;
         height: 40px;
         font-size: 1.4rem;
         @media (max-width:767px) {
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             font-size:1.2rem;
-            top: var(--swiper-navigation-top-offset,40%);
+            top: var(--swiper-navigation-top-offset,50%);
         }
         @media (max-width:480px) {
-            width: 25px;
-            height: 25px;
+            width: 30px;
+            height: 30px;
             font-size:1rem;
-            top: var(--swiper-navigation-top-offset,40%);
+            top: var(--swiper-navigation-top-offset,50%);
         }
 
     }
@@ -851,9 +851,12 @@ a{ color: $black-color !important;
 .offcanvas-mobmenus {
     width: 60% !important;
     display: none;
-    @media (max-width:767px) { display: block;}
+    @media (max-width:767px) { display: block;
+      max-height: 100vh;
+    overflow-y: auto;}
     @media (max-width:480px) {
         width: 100% !important;
+      
     }
     .offcanvas-body{
         .mobile_menu_offcanvas {
@@ -933,7 +936,7 @@ a{ color: $black-color !important;
             }
     }
     .account_box{
-        padding: 1.5rem;
+        padding: 1rem 1.5rem;
         display: flex;
         align-items: center;
         .profile{
@@ -971,14 +974,15 @@ a{ color: $black-color !important;
     .navs{  padding: 0 1.5rem 1.5rem 1.5rem;
         ul{width: 100%;
             li{
-                width: 100%;
-                list-style: none;
-                border-bottom: 1px solid #C0C0C0;
-                font-size: 0.875rem;
-                font-weight: 700;
-                color: $black-color;
-                padding: 0.8rem 0 0.3rem 0;
-                position: relative;
+              width: 100%;
+  list-style: none;
+  border-bottom: 1px solid #C0C0C0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #000;
+  padding: 0.4rem 0 0.3rem 0;
+  position: relative;
+
                 &::before{
                    position: absolute; 
                    content: "\F285";
@@ -994,14 +998,71 @@ a{ color: $black-color !important;
             }
         }
     }
+       .subscribe_form {
+        width: 100%;
+        margin-bottom: 1rem;
+        display: inline-block;
+         h5{
+        color: $primery-color;
+        font-size: 1.25rem;
+        font-weight: 600;
+        @media( width <= 480px){
+             font-size: 1rem;
+        }
+        
+     }
+        @include border(5px);
+        width: 100%;
+       
+        height: 45px;
+padding: 0 1.5rem 1.5rem 1.5rem;
+       
+.input-group { border: 1px solid $paragraph;  @include border(30px);
+margin-top: .5rem;}
+        .input-group>.form-control {
+           
+            color: $paragraph;
+            font-size: 0.875rem;
+            box-shadow: none;
+            background: none;
+            border: none;
+            padding: 5px 15px;
+
+            
+        }
+
+        .input-group .btn {
+            @include border(30px);
+            @include transition;
+            padding: .3rem 1rem;
+            font-size: 0.875rem;
+            margin: 3px;
+            font-weight: 500;
+            color: $white-color;
+            background: $light-black;
+
+
+
+            &:hover {
+                background: $primery-color;
+            }
+        }
+
+        .form-control::placeholder {
+            color: #0a0a0a;
+        }
+    }
     .social__icons__mobile{
         width: 100%;
         margin-top: 1.5rem;
      padding: 0 1.5rem 1.5rem 1.5rem;
-     h5{
+ h5{
         color: $primery-color;
         font-size: 1.25rem;
-        font-weight: 700;
+        font-weight: 600;
+        @media( width <= 480px){
+             font-size: 1rem;
+        }
         
      }
      @include socialiocns;
