@@ -158,6 +158,8 @@ const highlightedSpecifications = computed(() => {
 const quantity = ref(1);
 const selectedVariantId = ref(0);
 
+const variantFetched = ref(false);
+
 
 
 
@@ -170,6 +172,7 @@ function onVariantChosen(selectedOptions) {
 }
 
 const fetchVariant = async (selectedOptions) => {
+  variantFetched.value = true;
   const productId = product.value?.id;
 
   
@@ -238,10 +241,15 @@ const cartAdd = (id,quantity,buy_now=false) => {
 }
 
 watchEffect(() => {
-  if (product.value && product.value.product_variants?.length > 0) {
+  if (product.value && product.value.product_variants?.length > 0 && !variantFetched.value) {
+    
     //selectedVariantId.value = product.value.product_variants[0].id;
     selectedVariantId.value = product.value.variant_id;
-    //alert(selectedVariantId.value)
+    const variantInfo = product.value?.product_variants?.find(v => v.id === selectedVariantId.value)
+    if(variantInfo && variantInfo.variant_image_path){
+      //console.log(variantInfo.variant_image_path,'variantInfo')
+      triggerShowImage(variantInfo.variant_image_path)
+    }
   }
 });
 
