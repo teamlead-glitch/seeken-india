@@ -4,7 +4,7 @@
   <div class="mob__navigation">
     <ul>
       <li class="active">
-        <NuxtLink to="/">
+        <NuxtLink to="/" @click="closeMobMenu">
           <div class="icon">
             <img v-if="route.path === '/'" src="/images/home-hover-menu.svg" alt="seeken">
             <img v-else src="/images/home-menu.svg" alt="seeken">
@@ -13,7 +13,7 @@
         </NuxtLink>
       </li>
       <li>
-        <NuxtLink :to="`/list`">
+        <NuxtLink :to="`/list`" @click="closeMobMenu">
           <div class="icon">
             <img v-if="route.path === '/list'" src="/images/shop-hover-menu.svg" alt="seeken">
             <img v-else src="/images/shop-menu.svg" alt="seeken">
@@ -22,7 +22,7 @@
         </NuxtLink>
       </li>
       <li>
-        <NuxtLink :to="`/sales`">
+        <NuxtLink :to="`/sales`" @click="closeMobMenu">
           <div class="icon">
             <img v-if="route.path === '/sales'" src="/images/offers-hover-menu.svg" alt="seeken">
             <img v-else src="/images/offers-menu.svg" alt="seeken">
@@ -32,7 +32,7 @@
         </NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/cart">
+        <NuxtLink to="/cart" @click="closeMobMenu">
           <div class="icon">
             <img v-if="route.path === '/cart'" src="/images/cart-hover-menu.svg" alt="seeken">
             <img v-else src="/images/cart-menu.svg" alt="seeken">
