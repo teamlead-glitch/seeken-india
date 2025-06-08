@@ -21,7 +21,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 col-xl-6 col-lg-12 mb-4">
+                        <!-- <div class="col-md-12 col-xl-6 col-lg-12 mb-4">
                             <div class="contact__box">
                                 <h4>Chat with Us</h4>
                                 <div class="content">
@@ -29,7 +29,7 @@
                                 </div>
                                 <a class="btn_2" href="">Chat with us</a>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-12 col-xl-6 col-lg-12 mb-4">
                             <div class="contact__box">
                                 <h4>WhatsApp Us</h4>

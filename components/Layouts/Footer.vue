@@ -43,7 +43,7 @@
                   <!-- <li><a href="#">Support centre</a></li> -->
                   <li><NuxtLink to="contactus">Contact Us</NuxtLink></li>
                   <li><NuxtLink to="contactus">Contact us via WhatsApp</NuxtLink></li>
-                  <li><a href="#">Find a store</a></li>
+                  <!-- <li><a href="#">Find a store</a></li> -->
                 </ul>
               </div>
             </div>
