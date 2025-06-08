@@ -12,7 +12,7 @@
             <div class="row">
               
                 <template v-if="wishlist?.length">
-                            <ProductListCard v-for="(item, index) in wishlist" :product="item" :key="index"/> 
+                            <ProductWishListCard v-for="(item, index) in wishlist" :product="item" :key="index"/> 
                 </template>  
                 <p v-else>Your wishlist is empty. Start exploring and add your favorite items!</p>
               

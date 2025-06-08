@@ -1,0 +1,96 @@
+
+
+<template>
+    <!-- {{ product }} -->
+     <div class="col-md-6 col-lg-4  col-xl-4 col-xxl-3 mb-3">
+                                        <a >
+                                            <div class="product__box">
+                                              <ProductCardFlashSaleTag :is_flashsale="product.is_flashsale? product.is_flashsale : product.is_flash_sale" :item_left="product.item_left?product.item_left:product.stock_quantity" />
+                                            <div class="product__content">
+                                                <div class="top__box">
+                                                    <div class="category__name">
+                                                        <h5>{{ product.category_name }}</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="price__feature">
+                                                    <div class="name">
+                                                        <NuxtLink :to="`/products/${product.slug}`">
+                                                        <h4>{{ product.name }}</h4>
+                                                        </NuxtLink>
+                                                    </div>
+                                                    <template v-if="product.final_price">
+                                                    <div class="price" v-if="product.price > product.final_price"> Rs. {{ product.final_price }} <span>Rs. {{ product.price }}</span></div>
+                                                    <div class="price" v-else> Rs. {{ product.final_price }} </div>
+                                                    </template>
+                                                    <template v-else>
+                                                    <div class="price" v-if="product.price > product.selling_price"> Rs. {{ product.selling_price }} <span>Rs. {{ product.price }}</span></div>
+                                                    <div class="price" v-else> Rs. {{ product.selling_price }} </div>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                            <div class="top_box">
+                                                <div class="product__img">
+                                                    <NuxtLink :to="`/products/${product.slug}`">
+                                                        <img v-if="product.image_path && product.image_path" :src="product.image_path" class="img-fluid" alt="seeken" >
+                                                    </NuxtLink>
+                                                </div>
+                                               
+                                                <ProductCardCountDown v-if="product.to_date" :endTime="product.to_date"/>
+
+                                                <!-- <ProductCardWishlist :product="product"/> -->
+                                            </div>
+                                            <div class="bottom__box">
+                                               
+                                                <ProductCardRating v-if="product.rating" :rating="product.rating" :reviewCount="product.review_count"/>
+                                                
+                                                <ProductCardVarients :varients="product?.product_variants" :product_slug="product?.slug"/>
+
+                                                 <div class="btn_box">
+                                              <a class="btn_2" href="#" @click="handleAddToCart(product?.product_id, 1, product.variant_id?product.variant_id:0)">Add to Cart</a>
+                                              <a class="delete_btn" href="#" @click="onHeartClick(product)">
+                                                <i class="bi bi-trash"></i>
+                                              </a>
+                                            </div>
+                                           </div>
+                                         </div></a>
+                                    </div>
+</template>
+
+<script setup>
+import { defineProps } from 'vue';
+// Define the props expected from parent component
+const props = defineProps({
+  product: Array
+});
+
+import { useWishlistStore } from '@/store/wishlist'
+const { handleAddToCart } = useCartActions()
+
+const { addToast } = useToast()
+
+const wishlistStore = useWishlistStore()
+
+const isInWishlist = computed(() => {
+ 
+  return wishlistStore.list.some(item => item.id === props.product.id);
+});
+
+const onHeartClick = (product) => {
+  //console.log(isInWishlist,'isInWishlist')
+  if(isInWishlist.value){
+    removeFromWishlist(product.id)
+    // addToast('Item Removed From Your wishlist','success');
+    alert('Item Removed From Your wishlist');
+    return false;
+  }
+  wishlistStore.openAddTo(product)
+}
+
+const removeFromWishlist = (id) => {
+
+
+  wishlistStore.removeFromWishlist(id);
+  
+}
+
+</script>
