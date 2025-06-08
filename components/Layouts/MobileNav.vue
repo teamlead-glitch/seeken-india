@@ -3,8 +3,8 @@
     <!-- mmobile menu -->
   <div class="mob__navigation">
     <ul>
-      <li class="active">
-        <NuxtLink to="/" @click="closeMobMenu">
+      <li :class="{ active: route.path === '/' }">
+        <NuxtLink to="/" @click="closeMobMenu2">
           <div class="icon">
             <img v-if="route.path === '/'" src="/images/home-hover-menu.svg" alt="seeken">
             <img v-else src="/images/home-menu.svg" alt="seeken">
@@ -12,8 +12,8 @@
           <div class="list"> Home</div>
         </NuxtLink>
       </li>
-      <li>
-        <NuxtLink :to="`/list`" @click="closeMobMenu">
+      <li :class="{ active: route.path === '/list' }">
+        <NuxtLink :to="`/list`" @click="closeMobMenu2">
           <div class="icon">
             <img v-if="route.path === '/list'" src="/images/shop-hover-menu.svg" alt="seeken">
             <img v-else src="/images/shop-menu.svg" alt="seeken">
@@ -21,8 +21,8 @@
           <div class="list">Shop</div>
         </NuxtLink>
       </li>
-      <li>
-        <NuxtLink :to="`/sales`" @click="closeMobMenu">
+      <li :class="{ active: route.path === '/sales' }">
+        <NuxtLink :to="`/sales`" @click="closeMobMenu2">
           <div class="icon">
             <img v-if="route.path === '/sales'" src="/images/offers-hover-menu.svg" alt="seeken">
             <img v-else src="/images/offers-menu.svg" alt="seeken">
@@ -31,8 +31,8 @@
 
         </NuxtLink>
       </li>
-      <li>
-        <NuxtLink to="/cart" @click="closeMobMenu">
+      <li :class="{ active: route.path === '/cart' }">
+        <NuxtLink to="/cart" @click="closeMobMenu2">
           <div class="icon">
             <img v-if="route.path === '/cart'" src="/images/cart-hover-menu.svg" alt="seeken">
             <img v-else src="/images/cart-menu.svg" alt="seeken">
@@ -47,7 +47,7 @@
       </li>
     </ul>
   </div>
-  <div class="offcanvas offcanvas-end offcanvas-mobmenus" tabindex="-1" id="offcanvasRight_mobmenu"
+  <div ref="offcanvasRef" class="offcanvas offcanvas-end offcanvas-mobmenus" tabindex="-1" id="offcanvasRight_mobmenu"
     aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-body">
       <div class="mobile_menu_offcanvas">
@@ -139,5 +139,13 @@ const closeMobMenu = () =>{
   mobMenuBtn.value?.click();
 }
 
+const closeMobMenu2 = () =>{
+  if(offcanvasRef.value?.classList.contains('show'))
+{
+ mobMenuBtn.value?.click();
+}
+}
+
 const mobMenuBtn = ref(null);
+const offcanvasRef = ref(null)
 </script>
