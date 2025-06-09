@@ -1,10 +1,13 @@
 <template>
+  <CommonOverlayPopup :show="showLoginPopup">
+  <CommonLoginPopup @close="showLoginPopup = false"> </CommonLoginPopup>
+  </CommonOverlayPopup>
  <div class="col-md-7 col-xl-8">
     
-            <!-- <div class="login_sign">
+            <div class="login_sign" v-if="!authStore.token">
                 <h5>Log in now to unlock your special benefits</h5>
-                <button class="btn_1">Sign up / Sign in</button>
-                </div> -->
+                <button class="btn_1" @click="showLoginPopup = true">Sign up / Sign in</button>
+                </div>
                 <CheckoutSelectAddress :billing_address="billing_address" :shipping_address="shipping_address"/>
                 <div class="row checkout__form">
                     <div class="col-md-12 mb-2 mt-5"><h6>Contact Details</h6></div>
@@ -137,6 +140,9 @@
 
 <script lang="ts" setup>
 
+import { useAuthStore } from '~/store/auth';
+const authStore = useAuthStore();
+
 const props = defineProps({
     billing_address: {},
     shipping_address:{}
@@ -215,6 +221,8 @@ defineExpose({
   bill_fieldRefs,
   ship_fieldRefs
 });
+
+const showLoginPopup = ref(false);
 
 </script>
 
