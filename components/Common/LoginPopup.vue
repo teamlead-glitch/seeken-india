@@ -6,13 +6,13 @@
         
         <div class="modal-content" >
           <div class="modal-header">
-            <h3 class="modal-title fs-5" id="exampleModalLabel">Checkout</h3>
+            <h3 class="modal-title fs-5" id="exampleModalLabel">Login</h3>
             <button type="button" class="btn-close" @click="closePopup"></button>
           </div>
           <div class="modal-body">
             <div class="login__box">
               <form @submit.prevent="handleLogin">
-                <p>You must be logged in to add items to your wishlist.</p>
+                <p>Log in now to unlock your special benefits</p>
                 <div class="col-12 mb-3 mt-5">
                   <div class="form-floating mb-3">
                     <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="email"

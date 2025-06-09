@@ -1,6 +1,6 @@
 <template>
   <CommonOverlayPopup :show="showLoginPopup">
-  <CommonLoginPopup @close="showLoginPopup = false"> </CommonLoginPopup>
+  <CommonLoginPopup @close="showLoginPopup = false"/> 
   </CommonOverlayPopup>
  <div class="col-md-7 col-xl-8">
     
