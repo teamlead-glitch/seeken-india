@@ -137,6 +137,7 @@ import { useRoute } from 'vue-router';
 import { useDateFormat } from '~/composables/useDateFormat';
 import { useCartActions } from '@/composables/useCartActions'
 import { useAuthStore } from '~/store/auth';
+const { showLoader, hideLoader } = useLoader(); // Use global loader
 
 const authStore = useAuthStore();
 const { addToast } = useToast()
@@ -165,6 +166,7 @@ const variantFetched = ref(false);
 
 
 function onVariantChosen(selectedOptions) {
+  showLoader()
     selectedVariantId.value = 0;
     console.log(selectedOptions,'selectedOptions++')
    
@@ -216,6 +218,10 @@ if(variant_response.data.variant_images.length >0 && variant_response.data.varia
       console.error('Error fetching variant:', error);
       addToast('An error occurred while fetching variant.','error');
     }
+  }
+  finally{
+    hideLoader()
+
   }
 
 };
