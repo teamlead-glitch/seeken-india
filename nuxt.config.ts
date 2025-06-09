@@ -29,7 +29,7 @@ export default defineNuxtConfig({
     registerType: 'autoUpdate',
     manifest: {
       name: 'Seeken PWA',
-      short_name: 'SeekenPWA',
+      short_name: 'Seeken',
       description: 'Seeken Progressive Web App',
       theme_color: '#ffffff',
       icons: [
