@@ -5,8 +5,7 @@
       <div class="row align-items-center">
         <div class="col-xl-6 col-md-8  mb-3">
           <h3>Latest Articles</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis aliquet metus, eget ullamcorper nisi
-            egestas vitae.</p>
+          <p>Dive into our freshest posts designed to inform and engage.</p>
         </div>
         <div class="col-xl-6 col-md-4 d-flex justify-content-end">
           <NuxtLink :to="`/blog`">View More <i class="bi bi-arrow-right"></i></NuxtLink>

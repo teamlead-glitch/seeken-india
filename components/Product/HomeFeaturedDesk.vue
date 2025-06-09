@@ -6,8 +6,7 @@
       <div class="row align-items-center">
         <div class="col-md-9 mb-3">
           <h3>Featured Products</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis aliquet metus, eget ullamcorper nisi
-            egestas vitae.</p>
+          <p>Turning ordinary moments into effortless experience</p>
         </div>
         <div class="col-md-3 d-flex justify-content-end">
           <a class="btn_2" href="/list">View All Products</a>
