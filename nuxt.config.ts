@@ -28,9 +28,9 @@ export default defineNuxtConfig({
   pwa: {
     registerType: 'autoUpdate',
     manifest: {
-      name: 'Nuxt 3 PWA',
-      short_name: 'NuxtPWA',
-      description: 'A Nuxt 3 Progressive Web App example',
+      name: 'Seeken PWA',
+      short_name: 'SeekenPWA',
+      description: 'Seeken Progressive Web App',
       theme_color: '#ffffff',
       icons: [
         { src: '/images/app-logos/bg/48x48.png',   sizes: '48x48',   type: 'image/png' },
