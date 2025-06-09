@@ -8,7 +8,8 @@ const defaultSettings = {
   twitter_url: "https://x.com",
   youtube_url: "https://www.youtube.com/",
   linked_in: "https://in.linkedin.com/",
-  insta_url: "https://www.instagram.com/"
+  insta_url: "https://www.instagram.com/",
+  stock_level: 10
 }
 
 let settings: any = null;
