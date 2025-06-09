@@ -53,7 +53,8 @@
               <a v-if="statusAllowedInvoice.includes(order.order_status) && index==0" :href="order.invoice_url" target="_blank" style="float: right;text-decoration: underline;font-size: 1rem;font-weight: 600">View Invoice</a>
               <div class="full">
                 <div class="product__pic">
-                  <img :src="item.product?.default_image??''" class="img-fluid" alt="product image" />
+                  <img v-if="item.product" :src="item.product?.default_image??''" class="img-fluid" alt="product image" />
+                  <img v-else :src="'images/product-not-available.jpg'" class="img-fluid" alt="product image" />
                 </div>
                 <div class="product__details">
                   <h4>{{ item.product_name }}</h4>
@@ -62,7 +63,7 @@
                     Return or replace items: Eligible through
                     {{ formatDate(order.created_at) }}
                   </h6> -->
-                  <div class="btn__boxes">
+                  <div class="btn__boxes" v-if="item.product">
                     
                     <!-- <NuxtLink :to="`/buy-now/${item.product?.slug}`" class="btn_1">Buy it again</NuxtLink> -->
                    <a href="#" class="btn_1" @click="buyNow(item,1)">Buy it again</a>
