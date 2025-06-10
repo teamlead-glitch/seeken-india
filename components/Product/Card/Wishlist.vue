@@ -2,7 +2,7 @@
 
 <div class="view__wishlist">
   
-                <div class="view" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @click="setQuickProduct(product.slug)"><i class="bi bi-eye"></i></div>
+                <div class="view" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @click="setQuickProduct(product)"><i class="bi bi-eye"></i></div>
                 <div class="wishlist" :class="{ wishlisted: isInWishlist }" @click="onHeartClick(product)"><i class="bi bi-heart"></i>
                 </div>
               </div>

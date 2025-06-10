@@ -9,7 +9,8 @@ export function useQuickProduct() {
   const config = useRuntimeConfig();
   const quickProduct = ref(defaultProduct);
 
-  async function setQuickProduct(slug) {
+  async function setQuickProduct(product) {
+    const slug = product.slug;
     try {
       showLoader();
       // Fetch product data from API
@@ -18,6 +19,18 @@ export function useQuickProduct() {
       
       // Update the quickProduct ref
       quickProduct.value = productData.data || productData;
+
+      if (quickProduct.value.stock_quantity < 1){
+        
+        quickProduct.value.final_price = product.final_price;
+        quickProduct.value.price = product.price;
+        quickProduct.value.selling_price = product.selling_price;
+        quickProduct.value.variant_id = product.variant_id;
+
+      }
+
+
+
       console.log('Updated product:', quickProduct.value);
     } catch (error) {
       console.error('Error fetching product:', error);
