@@ -72,7 +72,10 @@
         </div>
       </div>
       <div class="account_box">
-        <div class="profile"><img src="/images/profile_icon.webp" alt="seeken" class="img-fluid"></div>
+        <div class="profile">
+          <!-- <img src="/images/avatar.png" alt="seeken" class="img-fluid"> -->
+           <CommonAvatar :name="authStore.user?.name ?? 'Guest'" :size="80"  />
+        </div>
         <div class="name_designation">
           <h6> {{ authStore.user?.name ?? 'Guest' }}</h6>
           <div class="phone">{{ authStore.user?.phone ?? '-' }}</div>

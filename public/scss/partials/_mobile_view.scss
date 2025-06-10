@@ -295,7 +295,7 @@ aspect-ratio: 4/2.5;
         .swiper-slide {
 
             @include border(10px);
-            box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+           
             background: $white-color;
             position: relative;
 
