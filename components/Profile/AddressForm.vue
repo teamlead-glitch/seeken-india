@@ -34,8 +34,15 @@
             </div>
             <div class="col-md-6 ">
                 <div class="form-floating ">
-                    <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="address.state"  placeholder="State" required>
-                    <label for="" class="form-label">State</label>
+                    <!-- <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="address.state"  placeholder="State" required>
+                    <label for="" class="form-label">State</label> -->
+                    <select class="form-control border-0 border-bottom rounded-0"  v-model="address.state"  placeholder="State" required>
+                              <option value="">Select State</option>
+                              <option v-for="state in states" :key="state" :value="state">
+                               {{ state }}
+                              </option>
+                            </select>
+                            <label for="" class="form-label">State</label>
                   </div>
             </div>
             <div class="col-md-6">
@@ -89,7 +96,7 @@
 </template>
 
 <script setup>
-
+import { states } from '@/data/states.js'
 import { useLoader } from '@/composables/useLoader';
 const { showLoader, hideLoader } = useLoader(); // Use global loader
 
