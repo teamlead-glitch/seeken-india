@@ -79,7 +79,7 @@
               </div>
               <!-- Mobile buttons -->
               <div class="btn__boxes__mob">
-                <NuxtLink :to="`/buy-now/${item.product?.slug}`" class="btn_1">Buy it again</NuxtLink>
+                <a href="#" class="btn_1" @click="buyNow(item,1)">Buy it again</a>
                 <NuxtLink :to="`/products/${item.product?.slug}`" class="btn_2">View Product</NuxtLink>
                 <a href="#" class="btn_2">Order History</a>
               </div>
