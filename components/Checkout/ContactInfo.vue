@@ -50,7 +50,14 @@
                     </div>
                      <div class="col-md-6 ">
                         <div class="form-floating ">
-                            <input type="text" class="form-control border-0 border-bottom rounded-0" ref="ship_state" v-model="shipping_address.state"  placeholder="State" required>
+                            <!-- <input type="text" class="form-control border-0 border-bottom rounded-0" ref="ship_state" v-model="shipping_address.state"  placeholder="State" required>
+                            <label for="" class="form-label">State</label> -->
+                            <select class="form-control border-0 border-bottom rounded-0" ref="bill_state" v-model="shipping_address.state"  placeholder="State" required>
+                              <option value="">Select State</option>
+                              <option v-for="state in states" :key="state" :value="state">
+                               {{ state }}
+                              </option>
+                            </select>
                             <label for="" class="form-label">State</label>
                           </div>
                     </div>
@@ -117,7 +124,15 @@
                     </div>
                     <div class="col-md-6 ">
                         <div class="form-floating ">
-                            <input type="text" class="form-control border-0 border-bottom rounded-0" ref="bill_state" v-model="billing_address.state"  placeholder="State" required>
+                            <!-- <input type="text" class="form-control border-0 border-bottom rounded-0" ref="bill_state" v-model="billing_address.state"  placeholder="State" required>
+                            <label for="" class="form-label">State</label> -->
+
+                             <select class="form-control border-0 border-bottom rounded-0" ref="bill_state" v-model="billing_address.state"  placeholder="State" required>
+                              <option value="">Select State</option>
+                              <option v-for="state in states" :key="state" :value="state">
+                               {{ state }}
+                              </option>
+                            </select>
                             <label for="" class="form-label">State</label>
                           </div>
                     </div>
@@ -139,7 +154,7 @@
 </template>
 
 <script lang="ts" setup>
-
+import { states } from '@/data/states.js'
 import { useAuthStore } from '~/store/auth';
 const authStore = useAuthStore();
 
