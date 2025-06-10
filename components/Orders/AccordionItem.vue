@@ -81,7 +81,7 @@
               <div class="btn__boxes__mob">
                 <a href="#" class="btn_1" @click="buyNow(item,1)">Buy it again</a>
                 <NuxtLink :to="`/products/${item.product?.slug}`" class="btn_2">View Product</NuxtLink>
-                <a href="#" class="btn_2">Order History</a>
+                <a href="#" class="btn_2" @click.prevent="openOrderHistory(order.order_logs)">Order History</a>
               </div>
 
               <div v-if="statusAllowedCancel.includes(order.order_status)" class="my-4 p-4 border rounded bg-light">
