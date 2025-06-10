@@ -63,7 +63,7 @@
 
 const config = useRuntimeConfig();
 
-const { data: new_launchs, error, refresh } = useFetchData('new_launchs', 'new-arrivals');
+const { data: new_launchs, error, refresh } = useFetchData('new_launchs', 'new-arrivals?limit=8');
 const { data: best_selling, error1, refresh1 } = useFetchData('best_selling', 'best-selling-products');
 
 </script>
