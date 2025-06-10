@@ -27,11 +27,11 @@
                     <div class="price">
                       <h3>
                         ₹ {{ item.quantity * item.selling_price }}
-                        <span v-if="Number(item.discount_amount) > 0">₹ {{ item.quantity * item.price }}</span>
+                        <span v-if="Number(item.selling_price) < Number(item.price)">₹ {{ item.quantity * item.price }}</span>
                       </h3>
                     </div>
-                    <div class="save" v-if="Number(item.discount_amount) > 0">
-                      Save ₹ {{ item.quantity * item.discount_amount }}
+                    <div class="save" v-if="Number(item.selling_price) < Number(item.price)">
+                      Save ₹ {{ item.quantity * ( Number(item.price) - Number(item.selling_price)) }}
                     </div>
                   </div>
                 </div>
@@ -59,8 +59,10 @@
               <div class="pricing">
                 <div class="left">Subtotal</div>
                 <div class="right">₹ {{ cart.total_price }}</div>
+                <template v-if="cart.total_price > cart.grand_total">
                 <div class="left">You have saved</div>
-                <div class="right">₹ {{ cart.total_discount }}</div>
+                <div class="right">₹ {{ cart.total_price - cart.grand_total }}</div>
+                </template>
               </div>
             </div>
           </div>
@@ -84,8 +86,10 @@
               <div class="pricing">
                 <div class="left">Subtotal</div>
                 <div class="right">₹ {{ cart.total_price }}</div>
+                <template v-if="cart.total_price > cart.grand_total">
                 <div class="left">You have saved</div>
-                <div class="right">₹ {{ cart.total_discount }}</div>
+                <div class="right">₹ {{ cart.total_price - cart.grand_total }}</div>
+                </template>
               </div>
             </div>
             <div class="total__price">
