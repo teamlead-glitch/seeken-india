@@ -11,7 +11,7 @@
               </NuxtLink>
               </div>
               
-              <ProductCardFlashSaleTag :is_flashsale="product.is_flash_sale" :item_left="product.stock_quantity" />
+              <ProductCardFlashSaleTag :is_flashsale="product.is_flash_sale" :item_left="product.stock_quantity" :endTime="product?.to_date?product?.to_date:null"/>
               <ProductCardCountDown :endTime="product.to_date" v-if="product.to_date"/>
               <a data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @click="setQuickProduct(product.slug)">
                 <div class="quick__buy">QUICK BUY</div>
