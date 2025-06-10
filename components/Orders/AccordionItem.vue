@@ -1,4 +1,8 @@
 <template>
+
+  <CommonOverlayPopup :show="showHistoryPopup">
+  <OrdersHistory @close="showHistoryPopup = false" :orderLogs="orderLogs"/> 
+  </CommonOverlayPopup>
     <!-- {{ order }} -->
     <div class="accordion-item border" v-if="order">
       
@@ -68,7 +72,8 @@
                     <!-- <NuxtLink :to="`/buy-now/${item.product?.slug}`" class="btn_1">Buy it again</NuxtLink> -->
                    <a href="#" class="btn_1" @click="buyNow(item,1)">Buy it again</a>
                     <NuxtLink :to="`/products/${item.product?.slug}`" class="btn_2">View Product</NuxtLink>
-                  
+                    
+                  <a href="#" class="btn_2" @click.prevent="openOrderHistory(order.order_logs)">Order History</a>
                   </div>
                 </div>
               </div>
@@ -76,7 +81,7 @@
               <div class="btn__boxes__mob">
                 <NuxtLink :to="`/buy-now/${item.product?.slug}`" class="btn_1">Buy it again</NuxtLink>
                 <NuxtLink :to="`/products/${item.product?.slug}`" class="btn_2">View Product</NuxtLink>
-                <!-- <a href="#" class="btn_2">Track package</a> -->
+                <a href="#" class="btn_2">Order History</a>
               </div>
 
               <div v-if="statusAllowedCancel.includes(order.order_status)" class="my-4 p-4 border rounded bg-light">
@@ -214,6 +219,13 @@ const cleanedVariantName = (name = '') => {
 
 const buyNow = (quickProduct,quantity) => {
   handleAddToCart(quickProduct?.product_id,quantity, quickProduct.variant_id?quickProduct.variant_id:0,true)
+}
+const orderLogs = ref([]);
+const showHistoryPopup = ref(false);
+
+function openOrderHistory(logs) {
+  orderLogs.value = logs
+  showHistoryPopup.value = true
 }
   </script>
   
