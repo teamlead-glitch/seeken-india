@@ -36,8 +36,8 @@
                 <div class="form-floating ">
                     <!-- <input type="text" class="form-control border-0 border-bottom rounded-0" v-model="address.state"  placeholder="State" required>
                     <label for="" class="form-label">State</label> -->
-                    <select class="form-control border-0 border-bottom rounded-0"  v-model="address.state"  placeholder="State" required>
-                              <option value="">Select State</option>
+                    <select class="form-select border-0 border-bottom rounded-0"  v-model="address.state"  placeholder="State" required>
+                              <option value="" disabled>Select State</option>
                               <option v-for="state in states" :key="state" :value="state">
                                {{ state }}
                               </option>

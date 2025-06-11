@@ -52,8 +52,8 @@
                         <div class="form-floating ">
                             <!-- <input type="text" class="form-control border-0 border-bottom rounded-0" ref="ship_state" v-model="shipping_address.state"  placeholder="State" required>
                             <label for="" class="form-label">State</label> -->
-                            <select class="form-control border-0 border-bottom rounded-0" ref="bill_state" v-model="shipping_address.state"  placeholder="State" required>
-                              <option value="">Select State</option>
+                            <select class="form-select border-0 border-bottom rounded-0" ref="bill_state" v-model="shipping_address.state"  placeholder="State" required>
+                              <option value="" disabled>Select State</option>
                               <option v-for="state in states" :key="state" :value="state">
                                {{ state }}
                               </option>
@@ -127,8 +127,8 @@
                             <!-- <input type="text" class="form-control border-0 border-bottom rounded-0" ref="bill_state" v-model="billing_address.state"  placeholder="State" required>
                             <label for="" class="form-label">State</label> -->
 
-                             <select class="form-control border-0 border-bottom rounded-0" ref="bill_state" v-model="billing_address.state"  placeholder="State" required>
-                              <option value="">Select State</option>
+                             <select class="form-select border-0 border-bottom rounded-0" ref="bill_state" v-model="billing_address.state"  placeholder="State" required>
+                              <option value="" disabled>Select State</option>
                               <option v-for="state in states" :key="state" :value="state">
                                {{ state }}
                               </option>
