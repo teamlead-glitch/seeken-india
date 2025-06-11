@@ -32,7 +32,7 @@
                 <div class="col-12 mt-5 mb-3 d-flex justify-content-center flex-column align-items-center">
 
                   <button class="btn_1" type="submit">Sign in</button>
-                  <NuxtLink to="/register">Don't have an account? Sign up</NuxtLink>
+                  <NuxtLink to="/register?from=checkout">Don't have an account? Sign up</NuxtLink>
 
                 </div>
 
