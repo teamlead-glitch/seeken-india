@@ -5,7 +5,7 @@
      <div class="col-md-6 col-lg-4  col-xl-4 col-xxl-3 mb-3">
                                         <a >
                                             <div class="product__box">
-                                              <ProductCardFlashSaleTag :is_flashsale="product.is_flashsale? product.is_flashsale : product.is_flash_sale" :item_left="product.item_left?product.item_left:product.stock_quantity" />
+                                              <ProductCardFlashSaleTag :is_flashsale="product.is_flashsale? product.is_flashsale : product.is_flash_sale" :item_left="product.item_left?product.item_left:product.stock_quantity" :endTime="product.to_date"/>
                                             <div class="product__content">
                                                 <div class="top__box">
                                                     <div class="category__name">

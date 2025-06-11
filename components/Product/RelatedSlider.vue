@@ -31,7 +31,7 @@
 
         <div class="product__box"> 
        
-            <ProductCardFlashSaleTag :is_flashsale="product.is_flash_sale" :item_left="product.stock_quantity" />
+            <ProductCardFlashSaleTag :is_flashsale="product.is_flash_sale" :item_left="product.stock_quantity" :endTime="product.to_date"/>
             <div class="product__content">
                 <div class="top__box">
                     <div class="category__name">
