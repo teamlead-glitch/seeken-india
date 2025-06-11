@@ -1,6 +1,6 @@
 <template>
 <section class="products__container" id="section1" v-if="prime_products">
-    <div class="container-fluid p-0">
+    <div class="container-fluid">
       <div class="row">
         
         
