@@ -5,7 +5,8 @@
                 Blog</NuxtLink></li>
         </template>
     </CommonInnerBanner>
-    <section class="inner_container">
+    
+    <section class="inner_container" v-if="blog && blog.title">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center mb-5"><h1>Blog Details</h1>
@@ -14,7 +15,7 @@
                <div class="row">
                <div class="col-md-12">
              <div class="row">
-                    <div class="col-md-8" v-if="blog">
+                    <div class="col-md-8" >
                       <div class="blog__box">
                         <div class="img__box mb-3">
                           <img :src="blog.image_path" class="img-fluid corner-5" alt="seeken"></div>
@@ -54,6 +55,29 @@
          </div>
                </div>
     </section>
+
+
+    <section class="inner_container" v-else>
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="empty__cart" style="min-height: auto;">
+            <!-- <img src="/images/empyt-cart.svg" alt="seeken"> -->
+            <h5>Blog not found !</h5>
+            <p>The article you're looking for doesn't exist.</p>
+            <div class="btn_box">
+              <NuxtLink to="/" class="btn_1">Go Home</NuxtLink>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+  </section>
 </template>
 
 <script setup>
