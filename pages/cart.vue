@@ -131,7 +131,7 @@
           <div class="empty__cart" style="min-height: auto;">
             <img src="/images/empyt-cart.svg" alt="seeken">
             <h5>Your cart is empty</h5>
-            <p>Sign in to your Seeken account to view your saved items or continue shopping</p>
+            <p v-if="!authStore.token">Sign in to your Seeken account to view your saved items or continue shopping</p>
             <div class="btn_box">
               <NuxtLink to="/" class="btn_1">Continue shopping</NuxtLink>
               <NuxtLink to="/login" class="btn_2" v-if="!authStore.token">Sign in</NuxtLink>
