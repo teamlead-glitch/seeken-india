@@ -19,7 +19,9 @@
               <h5>Products</h5>
               <div class="ftr__list">
                 <ul>
-                  <li v-for="cat in categories"><NuxtLink :to="`/list?category=${cat.id}`">{{ cat.name }}</NuxtLink></li>
+                  <li v-for="cat in categories">
+                    <a :href="`/list?category=${cat.id}`">{{ cat.name }}</a>
+                  </li>
                   
                 </ul>
               </div>
