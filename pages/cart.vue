@@ -40,7 +40,7 @@
                   <div class="quantity-input" v-if="!item.is_out_of_stock">
                     <button class="quantity-btn minus-btn" @click="updateQuantity(item, 1, 'minus')"><i
                         class="bi bi-dash-lg"></i></button>
-                    <input type="number" class="quantity" :value="item.quantity" min="1" max="10">
+                    <input type="number" class="quantity" :value="item.quantity" min="1" max="10" readonly>
                     <button class="quantity-btn plus-btn" @click="updateQuantity(item, 1)"><i
                         class="bi bi-plus-lg"></i></button>
                   </div>
