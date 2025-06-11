@@ -12,123 +12,10 @@
             <div class="row">
               
                 <template v-if="wishlist?.length">
-                            <ProductWishListCard v-for="(item, index) in wishlist" :product="item" :key="index"/> 
+                            <ProductWishListCard v-for="(item, index) in wishlist" :product="getModifiedProduct(item)" :key="index"/> 
                 </template>  
                 <p v-else>Your wishlist is empty. Start exploring and add your favorite items!</p>
-              
-              
-<!--               
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
-                <div class="product__box">
-                  <div class="items">Only 2 more left</div>
-                  <div class="flash__combo">Flash Sale</div>
-                  <div class="product__content">
-                    <div class="top__box">
-                      <div class="category__name">
-                        <h5>Fan</h5>
-                      </div>
-                    </div>
-                    <div class="price__feature">
-                      <div class="name">
-                        <h4>Pedestal Fan</h4>
-                      </div>
-                      <div class="price">
-                        Rs. 4,400.00 <span>Rs. 5,500.00</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="top_box">
-                    <div class="product__img">
-                      <img
-                        src="/images/featured_product_1.webp"
-                        class="img-fluid"
-                        alt="seeken"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div class="countdown-container" data-endtime="7">
-                      <div class="countdown-box">
-                        <span id="days">01</span>
-                        <span class="label">DAYS</span>
-                      </div>
-                      <div class="countdown-box">
-                        <span id="hours">23</span>
-                        <span class="label">HOURS</span>
-                      </div>
-                      <div class="countdown-box">
-                        <span id="minutes">57</span>
-                        <span class="label">MINUTES</span>
-                      </div>
-                      <div class="countdown-box">
-                        <span id="seconds">12</span>
-                        <span class="label">SECONDS</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="bottom__box">
-                    <div class="rating">
-                      <i class="bi bi-star-fill"></i> 5.0 <span>(16k)</span>
-                    </div>
-                    <div class="colors">
-                      <ul>
-                        <li>
-                          <div class="code active">
-                            <img
-                              src="/images/color_code/clr-1.webp"
-                              class="img-fluid"
-                              alt="seeken"
-                              loading="lazy"
-                            />
-                          </div>
-                        </li>
-                        <li>
-                          <div class="code">
-                            <img
-                              src="/images/color_code/clr-2.webp"
-                              class="img-fluid"
-                              alt="seeken"
-                              loading="lazy"
-                            />
-                          </div>
-                        </li>
-                        <li>
-                          <div class="code">
-                            <img
-                              src="/images/color_code/clr-3.webp"
-                              class="img-fluid"
-                              alt="seeken"
-                              loading="lazy"
-                            />
-                          </div>
-                        </li>
-                        <li>
-                          <div class="code">
-                            <img
-                              src="/images/color_code/clr-4.webp"
-                              class="img-fluid"
-                              alt="seeken"
-                              loading="lazy"
-                            />
-                          </div>
-                        </li>
-                        <li>+2</li>
-                      </ul>
-                    </div>
-                    <div class="btn_box">
-                      <a class="btn_2" href="">Add to Cart</a>
-                      <a class="delete_btn" href="">
-                        <i class="bi bi-trash"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-               -->
-              
-              
-              
-              
-
+    
 
 
             </div>
@@ -163,6 +50,32 @@ useHead({
       ],
       
     });
+
+
+    const getModifiedProduct = (item) => {
+  if (item.stock_quantity > 0) return item;
+
+  const availableVariant = item.product_variants?.find(
+    v => v.variant_price?.stock_quantity > 0
+  );
+
+  if (availableVariant) {
+    return {
+      ...item,
+      stock_quantity: availableVariant.variant_price.stock_quantity,
+      final_price: availableVariant.variant_price.final_price,
+      price: availableVariant.variant_price.price,
+      selling_price: availableVariant.variant_price.selling_price,
+      to_date:availableVariant.variant_price.to_date,
+      variant_id:availableVariant.variant_price.variant_id,
+      ...(availableVariant.variant_image_path
+        ? { image_path: availableVariant.variant_image_path }
+        : {}),
+    };
+  }
+
+  return item;
+};
 </script>
 
 <style></style>
