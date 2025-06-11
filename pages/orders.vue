@@ -154,7 +154,7 @@ definePageMeta({
   middleware: 'auth'
 })
 
-const { data: orders, error, refresh } = useFetchData('orders', 'list-orders?skip=0&take=10', true);
+const { data: orders, error, refresh } = useFetchData('orders', 'list-orders?skip=0&take=50', true);
 
 useHead({
       title: 'Seeken | Orders',
