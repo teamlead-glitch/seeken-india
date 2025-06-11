@@ -59,7 +59,7 @@
               <div class="pricing">
                 <div class="left">Subtotal</div>
                 <div class="right">₹ {{ cart.total_price }}</div>
-                <template v-if="cart.total_price > cart.grand_total">
+                <template v-if="Number(cart.total_price) > Number(cart.grand_total)">
                 <div class="left">You have saved</div>
                 <div class="right">₹ {{ cart.total_price - cart.grand_total }}</div>
                 </template>
@@ -82,11 +82,11 @@
               </div>
             </div> -->
             <div class="total__price">
-              <h6>Price Breakdown</h6>
+              <h6>Price Breakdown1</h6>
               <div class="pricing">
                 <div class="left">Subtotal</div>
                 <div class="right">₹ {{ cart.total_price }}</div>
-                <template v-if="cart.total_price > cart.grand_total">
+                <template v-if="Number(cart.total_price) > Number(cart.grand_total)">
                 <div class="left">You have saved</div>
                 <div class="right">₹ {{ cart.total_price - cart.grand_total }}</div>
                 </template>
@@ -100,9 +100,9 @@
                 </div>
                 <div class="right">
                   <h3>₹ {{ cart.grand_total }}</h3>
-                  <h5 v-if="Number(cart.total_discount) > 0">
+                  <h5 v-if="Number(cart.total_price) > Number(cart.grand_total)">
                     <span>₹ {{ cart.total_price }}</span>
-                    save ₹ {{ cart.total_discount }}
+                    save ₹ {{ cart.total_price - cart.grand_total }}
                   </h5>
                 </div>
               </div>
