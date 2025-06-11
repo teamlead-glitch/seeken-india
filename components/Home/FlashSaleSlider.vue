@@ -6,7 +6,7 @@
       :modules="[Autoplay, Navigation, Pagination]"
       :spaceBetween="30"
       :slidesPerView="products.length > 3 ? 2.5 : 2"
-      :centeredSlides="products.length > 3 ? true : false"
+      :centeredSlides="(products.length > 3 || products.length ==1) ? true : false"
       :loop="true"
       :autoplay="{ delay: 4000, disableOnInteraction: false }"
      
@@ -93,8 +93,10 @@
       </SwiperSlide>
 
       <!-- Navigation Arrows -->
+       <template v-if="products.length > 1">
       <div class="swiper-button-next"><i class="bi bi-arrow-right"></i></div>
       <div class="swiper-button-prev"><i class="bi bi-arrow-left"></i></div>
+      </template>
     </Swiper>
   </div>
 </section>
