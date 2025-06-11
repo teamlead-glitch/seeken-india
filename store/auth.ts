@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { useCookie } from '#app';
+import { useGuestToken } from '@/composables/useGuestToken'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -9,9 +10,13 @@ export const useAuthStore = defineStore('auth', {
 
   actions: {
     async login(email: string, password: string) {
+
+      const { ensureGuestToken } = useGuestToken();
+      const session_id = ensureGuestToken();
+
       const { token	, user } = await $fetch(`${useRuntimeConfig().public.apiBase}login`, {
         method: 'POST',
-        body: { email, password },
+        body: { email, password, session_id },
       });
       //let token	= access_token;
       this.token = token;
