@@ -92,6 +92,10 @@
           <li><NuxtLink to="/aboutus"  @click="closeMobMenu">About us</NuxtLink></li>
           <li><NuxtLink to="/terms-of-services"  @click="closeMobMenu">Terms and Conditions</NuxtLink></li>
           <li><NuxtLink to="/privacy-policy"  @click="closeMobMenu">Privacy Policy</NuxtLink></li>
+
+          <li><NuxtLink to="/shipping"  @click="closeMobMenu">Shipping</NuxtLink></li>
+          <li><NuxtLink to="/cancellation-returns"  @click="closeMobMenu">Cancellation & Returns</NuxtLink></li>
+
           <li><NuxtLink to="/contactus"  @click="closeMobMenu">Contact</NuxtLink></li>
 
           
