@@ -184,12 +184,7 @@ useHead({
 
 const config = useRuntimeConfig();
 
-// SSR: Load first 4 blogs
-// const { data: initialBlogs } = await useAsyncData('blogs-initial', () =>
-//   $fetch(`${config.public.apiBase}blogs?skip=0&take=4`)
-// );
 
-// Setup blog state
 const orders = ref( []);
 const skip = ref(0);
 const take = 4;
