@@ -48,6 +48,8 @@
                   </div>
                 </div>
                 <div class="col-md-6 brdr_clr">
+                  
+                  
                   <div class="row">
                     <div class="col-md-6">
                       <div class="articles">
@@ -62,12 +64,20 @@
                       </div>
                     </div>
 
+                   
+
+                  </div>
+
+
+                  <div class="row">
+                  
+
                     <div class="col-md-6">
                       <div class="articles">
-                        <a href="#">
+                        <a :href="`/list?category=${categoryTree[activeIndex].id}`">
 
                           <div class="content">
-                            <h3>{{ categoryTree[activeIndex].short_description }}</h3>
+                            <h3 v-if="categoryTree[activeIndex].short_description">{{ categoryTree[activeIndex].short_description }}</h3>
                             <a class="btn_3">
                               <a :href="`/list?category=${categoryTree[activeIndex].id}`">View Products <i class="bi bi-arrow-right"></i></a>
 
@@ -79,6 +89,9 @@
                     </div>
 
                   </div>
+
+
+
                 </div>
               </div>
             </div>
