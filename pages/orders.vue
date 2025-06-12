@@ -41,18 +41,29 @@
               <div class="tab-pane active">
 
                 <div class="accordion accordion-flush">
+                 
 
-                  <OrdersAccordionItem v-if="orders && orders?.data?.length > 0" v-for="(order, index) in orders?.data"
+                  <OrdersAccordionItem v-if="orders && orders.length > 0" v-for="(order, index) in orders"
                     :key="order.order_id" :order="order" :index="index" />
                   <template v-else>
                     <div class="text-center py-4 text-muted">No orders found.</div>
                   </template>
+
+                   
                  
 
                 </div>
+                
               </div>
 
+               
+
             </div>
+            <!-- Infinite Scroll Trigger -->
+          <div id="load-more-trigger" class="text-center py-4">
+            <span v-if="loadingMore">Loading more...</span>
+            
+          </div>
           </div>
 
 
@@ -154,7 +165,7 @@ definePageMeta({
   middleware: 'auth'
 })
 
-const { data: orders, error, refresh } = useFetchData('orders', 'list-orders?skip=0&take=50', true);
+//const { data: orders, error, refresh } = useFetchData('orders', 'list-orders?skip=0&take=50', true);
 
 useHead({
       title: 'Seeken | Orders',
@@ -164,5 +175,73 @@ useHead({
       ],
       
     });
+
+
+
+
+
+
+
+const config = useRuntimeConfig();
+
+// SSR: Load first 4 blogs
+// const { data: initialBlogs } = await useAsyncData('blogs-initial', () =>
+//   $fetch(`${config.public.apiBase}blogs?skip=0&take=4`)
+// );
+
+// Setup blog state
+const orders = ref( []);
+const skip = ref(0);
+const take = 4;
+const loadingMore = ref(false);
+const noMoreOrders = ref(false);
+
+// Infinite loader
+const loadMore = async () => {
+  if (loadingMore.value || noMoreOrders.value) return;
+  loadingMore.value = true;
+
+  try {
+
+    const token = authStore?.token || ''
+const headers = {}
+
+if (token) {
+  headers['Authorization'] = `Bearer ${token}`
+}
+    const more = await $fetch(`${config.public.apiBase}list-orders?skip=${skip.value}&take=${take}`, {
+      
+  headers
+});
+
+console.log(...more.data,'more++')
+    if (!more.data.length) {
+       
+      noMoreOrders.value = true;
+    } else {
+        
+      orders.value.push(...more.data);
+      skip.value += take;
+    }
+  } catch (e) {
+    noMoreOrders.value = true;
+    console.error('Load more error:', e);
+  } finally {
+    loadingMore.value = false;
+  }
+};
+
+
+
+// IntersectionObserver for infinite scroll
+onMounted(() => {
+  const target = document.getElementById('load-more-trigger');
+  if (!target) return;
+
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) loadMore();
+  });
+  observer.observe(target);
+});
 
 </script>
