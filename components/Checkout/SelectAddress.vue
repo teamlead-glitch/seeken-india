@@ -11,7 +11,7 @@
 
 
 
-          <div class="col-md-6 mb-4" v-for="adress in result.addresses">
+          <div class="col-md-9 col-lg-6 col-xl-6 mb-4" v-for="adress in result.addresses">
 
             <div class="shipping__boxes">
               <div class="default" v-if="adress.id == shipping_address.id">Selected</div>
@@ -35,7 +35,7 @@
                   </li>
                 </ul>
               </div>
-              <div class="col-md-12 mt-4 mb-4 d-flex justify-content-center gap-2 profile_setting">
+              <div class="col-md-12 mt-4 mb-4 d-flex gap-2 profile_setting">
                 <button class="btn_1" @click="setBillAddress(adress)">Use This Address</button>
               </div>
 

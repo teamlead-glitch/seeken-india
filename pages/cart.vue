@@ -82,7 +82,7 @@
               </div>
             </div> -->
             <div class="total__price">
-              <h6>Price Breakdown1</h6>
+              <h6>Price Breakdown</h6>
               <div class="pricing">
                 <div class="left">Subtotal</div>
                 <div class="right">₹ {{ cart.total_price }}</div>
