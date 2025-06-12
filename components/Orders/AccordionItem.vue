@@ -86,7 +86,7 @@
                 <a href="#" class="btn_2" @click.prevent="openOrderHistory(order.order_logs)">Order History</a>
               </div>
 
-              <div v-if="statusAllowedCancel.includes(order.order_status)" class="my-4 p-4 border rounded bg-light">
+              <div v-if="statusAllowedCancel.includes(order.order_status) && !isCancelRequested(item)" class="my-4 p-4 border rounded bg-light">
     <div v-if="!showReason[order.id]?.[item.id]">
       
       <div class="d-flex justify-content-between align-items-center">
@@ -115,6 +115,11 @@
       </div>
     </div>
   </div>
+
+  <div class="d-flex justify-content-between align-items-center" v-if="isCancelRequested(item)">
+        <span class="text-danger fw-semibold">You have already requested cancellation</span>
+        
+      </div>
             </div>
 
              
@@ -228,6 +233,10 @@ const showHistoryPopup = ref(false);
 function openOrderHistory(logs) {
   orderLogs.value = logs
   showHistoryPopup.value = true
+}
+
+const isCancelRequested = (item) => {
+  return item.canceled_requests && !Array.isArray(item.canceled_requests)
 }
   </script>
   
