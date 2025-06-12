@@ -25,7 +25,14 @@
 
 <script lang="ts" setup>
 import { useAuthStore } from '~/store/auth';
+import { useCartStore } from '~/store/cart'
 const authStore = useAuthStore();
+
+const cartStore = useCartStore()
+
+onMounted(() => {
+  cartStore.fetchCartFromServer()
+})
 
 </script>
 
