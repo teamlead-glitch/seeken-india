@@ -64,7 +64,7 @@ const config = useRuntimeConfig();
 const authStore = useAuthStore();
 
 
-const { data: result, error, refresh } = useFetchData('result', 'listaddress', true);
+const { data: result, error, refresh } = useFetchData('result', 'listaddress/default', true);
 
 const props = defineProps({
     billing_address: {},
