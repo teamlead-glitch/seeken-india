@@ -25,7 +25,9 @@
             </div>
             <div class="colums">
               <h4><span>Ship to</span>{{ order.shipping_first_name+' '+order.shipping_last_name }}</h4>
-              <p>{{ order.shipping_location }}, {{ order.shipping_city }}
+              <p>
+                {{ order.shipping_address }}
+                <br></br>{{ order.shipping_location }}, {{ order.shipping_city }}
               <br></br>
               {{ order.shipping_state }}, {{ order.shipping_pincode }}
               </p>
