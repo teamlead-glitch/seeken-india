@@ -1151,7 +1151,7 @@ section {
                     font-size: 1.5rem;
                     text-align: center;
                     font-weight: 500;
-                    margin: 1rem 0;
+                    margin: 1rem 0 .4rem 0;
 
                     @media only screen and (min-width: 1200px) and (max-width: 1400px) {
                         font-size: 1.3rem;
@@ -1159,6 +1159,24 @@ section {
 
                     @media only screen and (min-width: 992px) and (max-width: 1200px) {
                         font-size: 1.2rem;
+                    }
+                }
+                 h4 {
+                    color: $white-color;
+                    font-size: 2rem;
+                    text-align: center;
+                    font-weight: 700;
+                    margin: .5rem 0 1rem 0;
+
+                    @media only screen and (min-width: 1200px) and (max-width: 1400px) {
+                        font-size: 1.5rem;
+                    }
+
+                    @media only screen and (min-width: 992px) and (max-width: 1200px) {
+                        font-size: 1.4rem;
+                    }
+                     @media only screen and (min-width: 768px) and (max-width: 992px) {
+                        font-size: 1.8rem;
                     }
                 }
 
@@ -8179,4 +8197,9 @@ section {
         background: $primery-color;
 
     }
+}
+.form-floating  textarea.form-control {
+  min-height: 40px;
+  overflow-y: hidden;
+  resize: none;
 }

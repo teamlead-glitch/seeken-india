@@ -1071,7 +1071,7 @@ section {
   font-size: 1.5rem;
   text-align: center;
   font-weight: 500;
-  margin: 1rem 0;
+  margin: 1rem 0 0.4rem 0;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1400px) {
   .flash__sale .flashsale .item .sale_box h5 {
@@ -1081,6 +1081,28 @@ section {
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   .flash__sale .flashsale .item .sale_box h5 {
     font-size: 1.2rem;
+  }
+}
+.flash__sale .flashsale .item .sale_box h4 {
+  color: #fff;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 700;
+  margin: 0.5rem 0 1rem 0;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1400px) {
+  .flash__sale .flashsale .item .sale_box h4 {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .flash__sale .flashsale .item .sale_box h4 {
+    font-size: 1.4rem;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .flash__sale .flashsale .item .sale_box h4 {
+    font-size: 1.8rem;
   }
 }
 .flash__sale .flashsale .item .sale_box .outer__box {
@@ -7825,6 +7847,12 @@ section {
   border: 2px solid #00687f;
   color: #fff !important;
   background: #00687f;
+}
+
+.form-floating textarea.form-control {
+  min-height: 40px;
+  overflow-y: hidden;
+  resize: none;
 }
 
 .btn_1 {
