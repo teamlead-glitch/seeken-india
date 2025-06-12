@@ -76,6 +76,10 @@
             <li>All Rights Reserved</li>
             <li><NuxtLink to="/terms-of-services"> Terms and Conditions</NuxtLink> </li>
             <li><NuxtLink to="/privacy-policy"> Privacy Policy</NuxtLink></li>
+
+            <li><NuxtLink to="/shipping"> Shipping </NuxtLink></li>
+            <li><NuxtLink to="/cancellation-returns"> Cancellation & Returns</NuxtLink></li>
+
             <li>Powered By<a href="https://phitany.com/" target="_blank"> Phitany</a></li>
           </ul>
         </div>
