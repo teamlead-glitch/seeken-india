@@ -72,7 +72,7 @@
       <div class="row">
         <div class="col-md-12">
           <ul>
-            <li>© Seeken 2025</li>
+            <li>© SEEKEN ELECTRONICS INDIA PRIVATE LIMITED 2025</li>
             <li>All Rights Reserved</li>
             <li><NuxtLink to="/terms-of-services"> Terms and Conditions</NuxtLink> </li>
             <li><NuxtLink to="/privacy-policy"> Privacy Policy</NuxtLink></li>
