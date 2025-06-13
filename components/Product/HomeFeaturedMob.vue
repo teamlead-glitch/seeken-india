@@ -53,3 +53,6 @@ const props = defineProps({
 
 
 </script>
+<style lang="css" scoped>
+.featured__products__mobile .swiper .swiper-slide .col-md-6{ width: 100% !important}
+</style>
