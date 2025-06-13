@@ -12,10 +12,10 @@
           <div class="list"> Home</div>
         </NuxtLink>
       </li>
-      <li :class="{ active: route.path === '/list' }">
-        <NuxtLink :to="`/list`" @click="closeMobMenu2">
+      <li :class="{ active: ['/shop', '/list'].includes(route.path) }">
+        <NuxtLink :to="`/shop`" @click="closeMobMenu2">
           <div class="icon">
-            <img v-if="route.path === '/list'" src="/images/shop-hover-menu.svg" alt="seeken">
+            <img v-if="route.path === '/list' || route.path === '/shop'" src="/images/shop-hover-menu.svg" alt="seeken">
             <img v-else src="/images/shop-menu.svg" alt="seeken">
           </div>
           <div class="list">Shop</div>
@@ -85,7 +85,7 @@
       <div class="navs">
         <ul>
           <li><NuxtLink to="/"  @click="closeMobMenu">Home</NuxtLink></li>
-          <li><NuxtLink to="/list"  @click="closeMobMenu">Shop</NuxtLink></li>
+          <!-- <li><NuxtLink to="/list"  @click="closeMobMenu">Shop</NuxtLink></li> -->
            <li v-if="authStore.token"><NuxtLink to="/orders"  @click="closeMobMenu">Your Orders</NuxtLink></li>
           
           <li><NuxtLink to="/blog"  @click="closeMobMenu">Blog</NuxtLink></li>
