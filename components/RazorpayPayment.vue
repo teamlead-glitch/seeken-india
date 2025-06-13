@@ -105,8 +105,8 @@ const makePayment = async () => {
     key: `${useRuntimeConfig().public.razorpayKey}`, // Replace with your Razorpay sandbox key
     amount: props.amount * 100, // Amount in paisa
     currency: 'INR',
-    name: 'Sherin P R',
-    description: 'Test Payment',
+    name: billing_address.first_name,
+    description: 'Order',
     order_id: data?.value?.razorpay_order_id,
     handler: function (response) {
       console.log('Payment Successful:', response);
@@ -116,9 +116,9 @@ const makePayment = async () => {
   })
     },
     prefill: {
-      name: 'Test User',
-      email: 'test@example.com',
-      contact: '9999999999',
+      name: billing_address.first_name,
+      email: '',
+      contact: '',
     },
     theme: {
       color: '#F37254',
