@@ -19,6 +19,13 @@
     :loop="true"
     :navigation="{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }"
     :autoplay="{ delay: 4000, disableOnInteraction: false }"
+    :breakpoints="{
+        
+        768: { slidesPerView: 3, spaceBetween: 20 },
+        480: { slidesPerView: 2, spaceBetween: 15 },
+        380: { slidesPerView: 1, spaceBetween: 10 },
+        0: { slidesPerView: 1, spaceBetween: 10 } 
+      }"
     class="mySwiper"
   >
     <SwiperSlide v-for="(item, index) in whats_new" :key="index">
