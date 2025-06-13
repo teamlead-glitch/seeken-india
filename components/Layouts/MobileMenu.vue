@@ -21,13 +21,23 @@
 
       </div>
     </div>
-    <div class="grab_sale">
+    <div class="grab_sale" v-if="hasFlashSaleProducts">
       <div class="close-btns">
         <i class="bi bi-chevron-down"></i>
       </div>
       <h6>Grab your Flash Deals Now</h6>
       <p style="display: none;">We have a flash sale running with 40-70% off for a limited period and stock.</p>
     </div>
+
+     <div class="grab_sale" v-else>
+      <div class="close-btns">
+        <i class="bi bi-chevron-down"></i>
+      </div>
+      <h6>We have free shipping all over INDIA .</h6>
+      <!-- <p style="display: none;">We have a flash sale running with 40-70% off for a limited period and stock.</p> -->
+    </div>
+
+
   </div>
   <!-- mobile menu close -->
 </template>
@@ -43,5 +53,7 @@ const isLoginPage = computed(() => route.path === '/login');
 
 const wishlistStore = useWishlistStore()
 const wishlistCount = computed(() => (wishlistStore.list || []).length);
+
+const hasFlashSaleProducts = inject('hasFlashSaleProducts', ref(false))
 
 </script>
