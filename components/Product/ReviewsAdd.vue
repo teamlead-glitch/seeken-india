@@ -7,8 +7,8 @@
       <div class="reviewrating_box ">
         <!-- this div show only  customer didnot login -->
         <h4>Write a review</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, animi sequi cupiditate alias doloribus eligendi
-          dolor, commodi quaerat quo, eum ratione. Adipisci eaque tenetur pariatur vel repellat, aut dicta cumque?</p>
+        <p>Discover what our happy customers have to say about Seeken products. Real experiences, honest feedback, 
+          and trusted reviews that reflect our commitment to quality and customer satisfaction</p>
         <!-- <button class="btn_2" data-bs-toggle="modal"
                 data-bs-target="#exampleModal5">Login</button> -->
         <!--  -->
