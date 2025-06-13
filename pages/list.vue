@@ -82,6 +82,7 @@ const fullyLoaded = ref(false);
 
 const sortBy = ref('price_low_high');
 const filterCat = ref(0); // Init to 0 by default
+const filterSubCat = ref(0);
 
 // Injected categories
 const categories = inject('All_categories');
@@ -100,6 +101,11 @@ const categories = inject('All_categories');
 onMounted(() => {
   nextTick(() => {
     const newCategory = route.query.category;
+    const newSubCategory = route.query.sub;
+    if(newSubCategory){
+      filterSubCat.value = Number(newSubCategory);
+    }
+    
     if (newCategory) {
       filterCat.value = Number(newCategory);
       fetchProducts(newCategory)
@@ -122,6 +128,10 @@ const { data: products, error } = await useAsyncData(
 
       if (filterCat.value !== 0) {
         query.append('category', filterCat.value);
+      }
+
+      if (filterSubCat.value !== 0) {
+        query.append('sub_category', filterSubCat.value);
       }
 
       const response = await $fetch(`${config.public.apiBase}products?${query.toString()}`);
@@ -159,6 +169,7 @@ watch(products, (newVal) => {
 
 // Filter by category click
 const filterCategory = (cat_id) => {
+  filterSubCat.value = 0;
   page.value = 0;
   fullyLoaded.value = false;
   filterCat.value = cat_id;
@@ -188,6 +199,11 @@ const fetchProducts = async (cat=false) => {
 
       if (cat) {
         query.append('category', cat);
+
+         if (filterSubCat.value !== 0) {
+        query.append('sub_category', filterSubCat.value);
+      }
+      
       }
     const { data } = await useFetch(`${config.public.apiBase}products?${query.toString()}`)
 
