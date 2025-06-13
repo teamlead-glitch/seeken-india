@@ -31,7 +31,7 @@
     <p v-if="hasFlashSaleProducts">We have a flash sale running with 40-70% off for a limited period and stock. <span> <NuxtLink id="anchor2"
           :to="'/sales'">Grab your Flash Deals Now </NuxtLink> </span></p>
     <p v-else>
-      <span>Free shipping all over INDIA on orders above RS 750 </span>
+      <span>We have free shipping all over INDIA .</span>
     </p>
     <!-- <button class="close-btn" onclick="closeAlert()"><i class="bi bi-x-lg"></i></button> -->
   </div>
