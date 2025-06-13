@@ -34,7 +34,7 @@
                 <div class="contents">
                   <h3>{{ item.title }} </h3>
                   <div class="button__box">
-                    <NuxtLink class="btn_3" :to="`/list?category=${item.item_id}`">Buy Now <i class="bi bi-chevron-right"></i></NuxtLink>
+                    <NuxtLink class="btn_3" :to="`products/${item.slug}`">Buy Now <i class="bi bi-chevron-right"></i></NuxtLink>
                    </div>
                 </div>
               </div>

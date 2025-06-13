@@ -13,7 +13,7 @@
             <div class="content">
               <h3>{{ whats_new[0].title }}</h3>
               <div class="button__box">
-                <NuxtLink class="btn_3" :to="`/list?category=${whats_new[0].item_id}`">Buy Now <i class="bi bi-chevron-right"></i></NuxtLink>
+                <NuxtLink class="btn_3" :to="`/products/${whats_new[0].slug}`">Buy Now <i class="bi bi-chevron-right"></i></NuxtLink>
               </div>
             </div>
             <img :src="whats_new[0].image_path" class="img-fluid" alt="seeken" loading="lazy">
@@ -26,7 +26,7 @@
                 <div class="content content_center">
                   <h3>{{ whats_new[1].title }}</h3>
                   <div class="button__box">
-                    <NuxtLink class="btn_3" :to="`/list?category=${whats_new[1].item_id}`">Buy Now <i class="bi bi-chevron-right"></i></NuxtLink>
+                    <NuxtLink class="btn_3" :to="`/products/${whats_new[1].slug}`">Buy Now <i class="bi bi-chevron-right"></i></NuxtLink>
                   </div>
                 </div><img :src="whats_new[1].image_path" class="img-fluid" alt="seeken" loading="lazy">
               </div>
@@ -36,7 +36,7 @@
                 <div class="content content_bottom">
                   <h3>{{ whats_new[2].title }}</h3>
                   <div class="button__box">
-                    <NuxtLink class="btn_3" :to="`/list?category=${whats_new[2].item_id}`">Buy Now <i class="bi bi-chevron-right"></i></NuxtLink>
+                    <NuxtLink class="btn_3" :to="`/products/${whats_new[2].slug}`">Buy Now <i class="bi bi-chevron-right"></i></NuxtLink>
                   </div>
                 </div><img :src="whats_new[2].image_path" class="img-fluid" alt="seeken" loading="lazy">
               </div>
@@ -48,7 +48,7 @@
                 <div class="content content_top">
                   <h3>{{ whats_new[3].title }} </h3>
                   <div class="button__box">
-                    <NuxtLink class="btn_3" :to="`/list?category=${whats_new[3].item_id}`">Buy Now <i class="bi bi-chevron-right"></i></NuxtLink>
+                    <NuxtLink class="btn_3" :to="`/products/${whats_new[3].slug}`">Buy Now <i class="bi bi-chevron-right"></i></NuxtLink>
                   </div>
                 </div><img :src="whats_new[3].image_path" class="img-fluid" alt="seeken" loading="lazy">
               </div>
@@ -58,7 +58,7 @@
                 <div class="content content_center">
                   <h3>{{ whats_new[4].title }} </h3>
                   <div class="button__box">
-                    <NuxtLink class="btn_3" :to="`/list?category=${whats_new[4].item_id}`">Buy Now <i class="bi bi-chevron-right"></i></NuxtLink>
+                    <NuxtLink class="btn_3" :to="`/products/${whats_new[4].slug}`">Buy Now <i class="bi bi-chevron-right"></i></NuxtLink>
                   </div>
                 </div><img :src="whats_new[4].image_path" class="img-fluid" alt="seeken" loading="lazy">
               </div>
