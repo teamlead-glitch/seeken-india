@@ -143,7 +143,7 @@ export default defineNuxtConfig({
         {
           children: `
             document.addEventListener("DOMContentLoaded", function () {
-              const closeBtn = document.querySelector(".close-btns");
+              const closeBtn = document.querySelector(".grab_sale");
               if (closeBtn) {
                 const saleText = document.querySelector(".grab_sale p");
                 const icon = document.querySelector(".close-btns i");
