@@ -80,6 +80,7 @@
         background:  #00687F;
         padding: .4rem 1.5rem;
         position: relative;
+        cursor: pointer;
         .close-btns{
             position: absolute;
             right: 10px;
@@ -814,6 +815,21 @@ font-size: 0.813rem;
 color: $black-color;
 line-height: 18px;
 padding: 0.5rem 1rem;
+position: relative;
+.count{
+    @include border(50%);
+    background: #00687f;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  position: absolute;
+  font-size: 0.625rem;
+  top: 3px;
+  right: 4px;
+}
 @media (max-width:480px) {
     font-size: 0.625rem;
 }

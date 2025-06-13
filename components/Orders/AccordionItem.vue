@@ -59,7 +59,7 @@
               <a v-if="statusAllowedInvoice.includes(order.order_status) && index==0" :href="order.invoice_url" target="_blank" style="float: right;text-decoration: underline;font-size: 1rem;font-weight: 600">View Invoice</a>
               <div class="full">
                 <div class="product__pic">
-                  <img v-if="item.product" :src="item.product_image??''" class="img-fluid" alt="product image" />
+                  <img v-if="item.product" :src="item.item_image??''" class="img-fluid" alt="product image" />
                   <img v-else :src="'images/product-not-available.jpg'" class="img-fluid" alt="product image" />
                 </div>
                 <div class="product__details">
