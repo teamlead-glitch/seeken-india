@@ -33,7 +33,7 @@
       <div class="close-btns">
         <!-- <i class="bi bi-chevron-down"></i> -->
       </div>
-      <h6>We have free shipping all over INDIA .</h6>
+      <h6>We have free shipping all over INDIA.</h6>
       <!-- <p style="display: none;">We have a flash sale running with 40-70% off for a limited period and stock.</p> -->
     </div>
 
