@@ -30,11 +30,11 @@
               <h5>About company</h5>
               <div class="ftr__list">
                 <ul>
-                  <li><NuxtLink to="aboutus">About Us</NuxtLink></li>
-                  <li><NuxtLink to="contactus">Contact Us</NuxtLink></li>
+                  <li><NuxtLink to="/aboutus">About Us</NuxtLink></li>
+                  <li><NuxtLink to="/contactus">Contact Us</NuxtLink></li>
                  
-                  <li><NuxtLink to="blog">Blog</NuxtLink></li>
-                  <li><NuxtLink to="faq">FAQ</NuxtLink></li>
+                  <li><NuxtLink to="/blog">Blog</NuxtLink></li>
+                  <li><NuxtLink to="/faq">FAQ</NuxtLink></li>
                 </ul>
               </div>
             </div>
@@ -43,8 +43,8 @@
               <div class="ftr__list">
                 <ul>
                   <!-- <li><a href="#">Support centre</a></li> -->
-                  <li><NuxtLink to="contactus">Contact Us</NuxtLink></li>
-                  <li><NuxtLink to="contactus">Contact us via WhatsApp</NuxtLink></li>
+                  <li><NuxtLink to="/contactus">Contact Us</NuxtLink></li>
+                  <li><NuxtLink to="/contactus">Contact us via WhatsApp</NuxtLink></li>
                   <!-- <li><a href="#">Find a store</a></li> -->
                 </ul>
               </div>
