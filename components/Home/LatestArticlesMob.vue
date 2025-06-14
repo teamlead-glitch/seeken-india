@@ -1,6 +1,6 @@
 <template>
   <!-- latest__articles mobile -->
-  <section class="latest__articles__mobile">
+  <section class="latest__articles__mobile" v-if="articles.length >0">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-xl-6 col-md-8 mb-3">
