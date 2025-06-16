@@ -49,7 +49,7 @@
       <div class="accordion-body">
         <div class="content">
           <div v-for="(item, index) in order.items" :key="index" class="order_boxes">
-            <h5 style="width: 60%;float: left;" v-if="index == 0">{{ order.order_status ?? '-' }} </h5>
+            <h5 style="width: 60%;float: left;" v-if="index == 0">{{ order.order_status ? formatStatus(order.order_status): '-' }} </h5>
             <a v-if="statusAllowedInvoice.includes(order.order_status) && index == 0" :href="order.invoice_url"
               target="_blank" style="float: right;text-decoration: underline;font-size: 1rem;font-weight: 600">View
               Invoice</a>
@@ -276,4 +276,11 @@ function openOrderCancel(order) {
   orderSelected.value = order
   showCancelPopup.value = true
 }
+
+const formatStatus = (status) => {
+  if (!status) return '';
+  return status
+    .replace(/_/g, ' ')       // replace underscores with spaces
+    .replace(/\b\w/g, c => c.toUpperCase()); // capitalize first letter of each word
+};
 </script>

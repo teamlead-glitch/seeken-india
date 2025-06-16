@@ -54,7 +54,7 @@
               </div>
             </div>
 
-            <div class="total__price">
+            <div class="total__price flash__desk ">
               <h6>Price Breakdown</h6>
               <div class="pricing">
                 <div class="left">Subtotal</div>
@@ -93,7 +93,7 @@
               </div>
             </div>
             <div class="total__price">
-              <h6>Total</h6>
+              <!-- <h6>Total</h6> -->
               <div class="pricing_two">
                 <div class="left">
                   <h3>Total <span>Includes GST*</span></h3>
