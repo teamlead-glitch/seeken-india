@@ -59,7 +59,7 @@
        
        
         
-        <ProductBrochure :productId="product?.id"/>
+        <ProductBrochure :productId="product?.id" :short_description="product?.short_description??'-'"/>
         <ProductCardSpecs :specs="product.product_specifications	"/>
 
         <ProductRelatedSlider :products="checkVariantAvailable(relatedProducts)"/>

@@ -5,7 +5,7 @@
               <div class="col-md-10 col-xl-8">
                     <div class="detail">
                          <h3>Product Gallery</h3> 
-                        
+                        <p>{{short_description}}</p>
                     </div>
                 </div>
                
@@ -21,7 +21,8 @@
 
 // Define the props expected from parent component
 const props = defineProps({
-  productId: Number
+  productId: Number,
+  short_description:String
 });
 
 const { data: brochures, error, refresh } = useFetchData('brochures', `product-brochures?product_id=${props.productId}`);
