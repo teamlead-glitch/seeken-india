@@ -26,9 +26,9 @@
         <i class="bi bi-chevron-down" @click="grab=!grab"></i>
       </div>
       <NuxtLink :to="`/sales`" style="color: white !important;">
-      <h6>Grab your Flash Deals Now</h6>
+      <h6>Grab your Flash Deals Now </h6>
       </NuxtLink>
-      <p :style="{ display: grab ? 'block' : 'none' }">
+      <p :style="{ display: grab === true ? 'block' : 'none' }">
         <NuxtLink :to="`/sales`" style="color: white !important;">
 We have a flash sale running with 40-70% off for a limited period and stock.
         </NuxtLink></p>
