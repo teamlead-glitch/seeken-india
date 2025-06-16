@@ -23,10 +23,15 @@
     </div>
     <div class="grab_sale" v-if="hasFlashSaleProducts">
       <div class="close-btns">
-        <i class="bi bi-chevron-down"></i>
+        <i class="bi bi-chevron-down" @click="grab=!grab"></i>
       </div>
+      <NuxtLink :to="`/sales`" style="color: white !important;">
       <h6>Grab your Flash Deals Now</h6>
-      <p style="display: none;">We have a flash sale running with 40-70% off for a limited period and stock.</p>
+      </NuxtLink>
+      <p :style="{ display: grab ? 'block' : 'none' }">
+        <NuxtLink :to="`/sales`" style="color: white !important;">
+We have a flash sale running with 40-70% off for a limited period and stock.
+        </NuxtLink></p>
     </div>
 
      <div class="grab_sale" v-else>
@@ -55,5 +60,7 @@ const wishlistStore = useWishlistStore()
 const wishlistCount = computed(() => (wishlistStore.list || []).length);
 
 const hasFlashSaleProducts = inject('hasFlashSaleProducts', ref(false))
+
+const grab = ref('false');
 
 </script>
