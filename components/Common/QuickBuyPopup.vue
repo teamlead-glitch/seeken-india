@@ -42,7 +42,7 @@
   <div class="full_clm">
     <div class="quantity-input">
       <button class="quantity-btn minus-btn" @click="quantity > 1 ? quantity-- : null"><i class="bi bi-dash-lg"></i></button>
-      <input type="number" class="quantity" v-model="quantity">
+      <input type="number" class="quantity" v-model="quantity" readonly>
       <button class="quantity-btn plus-btn" @click="quantity++"><i class="bi bi-plus-lg"></i></button>
     </div>
     <button class="btn_2" @click="cartAdd(quickProduct,quantity)" data-bs-dismiss="offcanvas">Add to Cart</button>
