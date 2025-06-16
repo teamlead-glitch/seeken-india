@@ -806,7 +806,7 @@ section {
                         font-size: 2rem;
                     }
 
-                    @media (max-width: 767px) {
+                    @media (max-width: 768px) {
                         margin-bottom: 20px;
                         font-size: 2.2rem;
                         text-align: center;
@@ -829,7 +829,7 @@ section {
                         font-size: 0.938rem;
                     }
 
-                    @media (max-width: 767px) {
+                    @media (max-width: 768px) {
                         margin-bottom: 1.2rem;
                         text-align: center;
                     }
@@ -2451,7 +2451,7 @@ section {
                         opacity: 0;
                         transform: translateY(10px);
 
-                        @media(width <=767px) {
+                        @media(width <=768px) {
                             opacity: 1;
                         }
 
@@ -2659,12 +2659,16 @@ section {
     .ftr__list {
         @include lists
     }
+      .ftr__list_2 {
+        @include lists_2
+    }
 
     .social-icons {
+         margin-top: 2.5rem;
         @include socialiocns;
 
         ul {
-            margin-top: 1.5rem;
+            margin-top: .5rem;
         }
     }
 
@@ -3835,7 +3839,7 @@ section {
                 font-size: 1.3rem;
             }
 
-            @media(width <=767px) {
+            @media(width <=768px) {
                 font-size: 1.4rem;
             }
 
@@ -3951,7 +3955,7 @@ section {
                                 height: 25px;
                             }
 
-                            @media(width <=767px) {
+                            @media(width <=768px) {
                                 font-size: 0.813rem;
                             }
 
@@ -5233,26 +5237,16 @@ section {
             }
         }
     }
+ // nav
 
     .nav-tabs {
         margin: 1.5rem 0;
         gap: 5px;
         --bs-nav-tabs-border-color: $white-color;
 
-       @media (max-width:768px) {
-            display: flex;
-            flex-wrap: nowrap;
-            overflow-x: scroll;
-            overflow-y: hidden;
-            /* Hides vertical scroll */
-            white-space: nowrap;
-            -webkit-overflow-scrolling: auto; /* disable touch hiding scroll */
-          
-  scrollbar-width: thin;          /* For Firefox */
-  scrollbar-color: #aaa transparent; /* Firefox: thumb and track */
-        }
+  
        .nav-tabs::-webkit-scrollbar {
-  height: 6px; /* Small height for horizontal scrollbar */
+  height: 6px; 
 }
 
  .nav-tabs::-webkit-scrollbar-track {
@@ -5267,21 +5261,20 @@ section {
     -webkit-overflow-scrolling: auto;
   }
 }
-
-        @media (max-width:480px) {
+ @media (max-width:480px) {
             margin: 1rem 0 .5rem 0;
         }
 
         .nav-tabs::-webkit-scrollbar {
             display: none;
-            /* Hides scrollbar for Chrome, Safari */
+           
         }
     }
 
    @media (max-width:768px) {
         .nav-tabs .nav-item {
             flex: 0 0 auto;
-            /* Prevent items from shrinking */
+           
         }
     }
 
@@ -5361,6 +5354,51 @@ section {
         }
 
     }
+
+    // nav
+
+     .tab-scroll-container {
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+    }
+
+    @media (max-width: 768px) {
+      .nav-tabs {
+        flex-wrap: nowrap;
+      }
+
+      .nav-item {
+        flex: 0 0 auto;
+      }
+
+      /* Optional scrollbar styling */
+      .tab-scroll-container::-webkit-scrollbar {
+        height: 6px;
+      }
+
+      .tab-scroll-container::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 10px;
+      }
+
+      .tab-scroll-container::-webkit-scrollbar-track {
+        background: transparent;
+      }
+    }
+
+    .icon {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 4px;
+    }
+
+    .icon img {
+      height: 16px;
+    }
+
 
     .product__box {
         @include border(10px);
@@ -5559,7 +5597,7 @@ section {
 
                         @media (max-width:480px) {
                             font-size: 1rem;
-                            height: 42px;
+                            height: 40px;
                         }
                     }
                 }

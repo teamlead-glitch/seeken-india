@@ -632,6 +632,12 @@ min-height: 210px;
 
 
 }
+ @media(  width <= 768px){
+    .featured__products__mobile .swiper .swiper-slide .col-md-6{
+    width: 100% !important;
+}
+ }
+
 
 // featured_products_mobile_close
 
@@ -690,7 +696,7 @@ min-height: 210px;
                 height: 100%;
                 padding: 1rem;
                 
- @media(  width <= 767px){
+ @media(  width <= 768px){
      justify-content: flex-end;
  }
 

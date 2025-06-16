@@ -108,11 +108,11 @@
       <div class="social__icons__mobile mt-5">
         <h5>Social Media</h5>
         <ul>
-          <li><a href="#" target="blank"><i class="bi bi-facebook"></i>&nbsp;</a></li>
-          <li> <a href="#" target="blank"><i class="bi bi-instagram"></i> &nbsp;</a></li>
-          <li> <a href="#" target="blank"><i class="bi bi-youtube"></i> &nbsp;</a></li>
-          <li> <a href="#" target="blank"><i class="bi bi-twitter-x"></i>&nbsp;</a></li>
-          <li> <a href="#" target="blank"><i class="bi bi-linkedin"></i>&nbsp;</a></li>
+         <li v-if="settings.fb_url"><a :href="settings.fb_url" target="blank"><i class="bi bi-facebook"></i>&nbsp;</a></li>
+                  <li v-if="settings.insta_url"> <a :href="settings.insta_url" target="blank"><i class="bi bi-instagram"></i> &nbsp;</a></li>
+                  <li v-if="settings.youtube_url"> <a :href="settings.youtube_url" target="blank"><i class="bi bi-youtube"></i> &nbsp;</a></li>
+                  <li  v-if="settings.twitter_url"> <a :href="settings.twitter_url" target="blank"><i class="bi bi-twitter-x"></i>&nbsp;</a></li>
+                  <li v-if="settings.linked_in"> <a :href="settings.linked_in" target="blank"><i class="bi bi-linkedin"></i>&nbsp;</a></li>
         </ul>
       </div>
     </div>
@@ -155,4 +155,6 @@ const closeMobMenu2 = () =>{
 
 const mobMenuBtn = ref(null);
 const offcanvasRef = ref(null)
+
+const settings = await useSiteSettings();
 </script>
