@@ -43,6 +43,39 @@
         }
     }
 }
+@mixin lists_2 {
+    ul {
+        display: flex;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+     
+    }
+ li {
+        @include transition();
+        padding: 3px 0px;
+       width: calc( 100% / 2);
+        list-style: none;
+        color: $white-color;
+        font-size: 0.875rem;
+        font-weight: 400;
+        @media only screen and (min-width: 992px) and (max-width: 1200px) {
+            font-size: .0.813rem;
+        }
+        @media only screen and (min-width: 768px) and (max-width: 992px) {
+             
+              padding: 2px 0px;
+        }
+        
+       
+
+        a {
+            color: #C0C0C0 !important;
+            &:hover{
+                color: $primery-color !important;
+            }
+        }
+    }
+}
 
 
 
