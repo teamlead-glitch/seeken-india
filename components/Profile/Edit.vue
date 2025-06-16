@@ -4,13 +4,13 @@
       <div class="modal-content">
         <form  @submit.prevent="handleEdit">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Profile</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Profile</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="closePopup"></button>
         </div>
         <div class="modal-body">
         <div class="row justify-content-center ">
-            <div class="col-md-12 mb-5"><h6>Edit Profile Details</h6></div>
-            <div class="col-md-3 mb-3">
+            <!-- <div class="col-md-12 mb-5"><h6>Edit Profile Details</h6></div> -->
+            <div class="col-md-3 mb-3 flash__desk">
                 <div class="profile-picture-upload">
                   <CommonAvatar :name="name"   />
                    <!-- <img src="/images/profile_icon.webp" class="img-fluid" alt="seeken">
@@ -166,4 +166,6 @@ const showConfirmPassword = ref(false) // Toggle state
     cursor: pointer;
     z-index: 99;
 }
+
+
 </style>
