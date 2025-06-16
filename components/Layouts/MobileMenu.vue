@@ -23,7 +23,7 @@
     </div>
     <div class="grab_sale" v-if="hasFlashSaleProducts">
       <div class="close-btns">
-        <i class="bi bi-chevron-down" @click="grab=!grab"></i>
+        <i class="bi " :class="grab === true ? 'bi-chevron-up' : 'bi-chevron-down'" @click="grab=!grab"></i>
       </div>
       <NuxtLink :to="`/sales`" style="color: white !important;">
       <h6>Grab your Flash Deals Now </h6>
