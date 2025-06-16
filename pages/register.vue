@@ -76,8 +76,10 @@
       <div class="row justify-content-center">
         <div class="col-md-8 col-xl-7">
           <div class="login__box">
-            <p>By logging-in, I consent and accept the Enrollment <a href="">Terms and Conditions</a>   &  <a
-                href="">Privacy Policy</a>.</p>
+            <p>By logging-in, I consent and accept the Enrollment 
+              <NuxtLink to="/terms-of-services">Terms and Conditions</NuxtLink>   &  
+              <NuxtLink to="/privacy-policy">Privacy Policy</NuxtLink>.
+              </p>
           </div>
         </div>
       </div>

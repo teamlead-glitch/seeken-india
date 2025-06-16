@@ -23,7 +23,7 @@
                     :key="index"
                   />
                 </template>
-                <p v-else>No offers found for you".</p>
+                <p v-else>No offers found for you.</p>
               </div>
             </div>
           </div>
