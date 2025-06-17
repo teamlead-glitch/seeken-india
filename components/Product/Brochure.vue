@@ -5,7 +5,8 @@
               <div class="col-md-10 col-xl-8">
                     <div class="detail">
                          <h3>Product Gallery</h3> 
-                        <p>{{short_description}}</p>
+                         <p>Discover every detail of this product through our visually rich, easy-to-navigate gallery</p>
+                        <!-- <p>{{short_description}}</p> -->
                     </div>
                 </div>
                
