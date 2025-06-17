@@ -110,10 +110,14 @@ const makePayment = async () => {
     order_id: data?.value?.razorpay_order_id,
     handler: function (response) {
       console.log('Payment Successful:', response);
-      router.push({
-    path: '/order-placed',
-    query: { order_id: response?.order_id } // optional: pass order ID
-  })
+      router.replace({
+  path: '/order-placed',
+  query: { order_id: response?.order_id }
+})
+  //     router.push({
+  //   path: '/order-placed',
+  //   query: { order_id: response?.order_id } 
+  // })
     },
     prefill: {
       name: billing_address.first_name,
