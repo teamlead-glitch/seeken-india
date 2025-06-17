@@ -89,7 +89,7 @@
                        </div>
                    </div>
                    <div class="quantity" v-else>
-                   <h4 style="color: red;">Out of stock</h4>
+                   <h4 style="color: red;display: block;">Out of stock</h4>
                    </div>
                   
                    
