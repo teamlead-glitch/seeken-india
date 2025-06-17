@@ -126,7 +126,7 @@ const handleEdit = async () => {
       return;
     }else{
       if(password.value.length < 5){
-         error.value = 'The password must be at least 5 characters.';
+         error.value = 'The password must be at least 8 characters.';
       return;
       }
     }
