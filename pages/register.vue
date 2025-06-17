@@ -46,7 +46,7 @@
                       @click="togglePassword"></i></div>
                   <input autocomplete="off" :type="showPassword ? 'text' : 'password'"
                     class="form-control border-0 border-bottom rounded-0" v-model="password" placeholder="Password"
-                    required>
+                    required minlength="8">
                   <label for="password" class="form-label">Password</label>
                 </div>
 
