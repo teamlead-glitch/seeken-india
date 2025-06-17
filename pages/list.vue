@@ -131,7 +131,7 @@ const { data: products, error } = await useAsyncData(
       }
 
       if (filterSubCat.value !== 0) {
-        query.append('sub_category', filterSubCat.value);
+        query.append('category', filterSubCat.value);
       }
 
       const response = await $fetch(`${config.public.apiBase}products?${query.toString()}`);
@@ -201,7 +201,7 @@ const fetchProducts = async (cat=false) => {
         query.append('category', cat);
 
          if (filterSubCat.value !== 0) {
-        query.append('sub_category', filterSubCat.value);
+        query.append('category', filterSubCat.value);
       }
       
       }
