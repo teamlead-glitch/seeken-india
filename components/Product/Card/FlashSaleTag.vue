@@ -2,7 +2,7 @@
 
 <div class="items" v-if="item_left && item_left <= $siteSettings.stock_level">Only {{ item_left }} more left</div>
 <div class="items" v-if=" item_left<1">Out Of Stock</div>
-<div class="flash__combo" v-if="endTime && timeLeft > 0">Flash Sale </div>
+<div class="flash__combo" v-if="is_flashsale && endTime && timeLeft > 0">Flash Sale </div>
 </template>
 
 <script setup>
