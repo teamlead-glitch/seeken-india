@@ -35,9 +35,10 @@
                                 <h4>WhatsApp Us</h4>
                                 <div class="content">
                                     <p>Available 24/7 @  <br>
-                                        +971 4 232 4747 / +971 56 995 5767</p>
+                                       +91 97464 20575</p>
                                 </div>
-                                <a class="btn_2" href="">WhatsApp us</a>
+                                <a class="btn_2" href="https://wa.me/9746420575" target="_blank"
+  rel="noopener noreferrer">WhatsApp us</a>
                             </div>
                         </div>
                         <div class="col-md-12 col-xl-6 col-lg-12 mb-4">
