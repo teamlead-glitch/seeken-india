@@ -125,7 +125,7 @@ const handleEdit = async () => {
       error.value = 'Passwords do not match.';
       return;
     }else{
-      if(password.value.length < 5){
+      if(password.value.length < 8){
          error.value = 'The password must be at least 8 characters.';
       return;
       }
