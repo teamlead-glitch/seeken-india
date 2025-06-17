@@ -124,6 +124,11 @@ const handleEdit = async () => {
     if (password.value !== password_confirmation.value) {
       error.value = 'Passwords do not match.';
       return;
+    }else{
+      if(password.value.length < 5){
+         error.value = 'The password must be at least 5 characters.';
+      return;
+      }
     }
   }
 
