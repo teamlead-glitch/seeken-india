@@ -56,7 +56,7 @@
 
 
 
-              <a v-if="statusAllowedCancelOnly.includes(order.order_status) && index == 0" href="#" @click.prevent="openOrderCancel(order)"
+              <a v-if="statusAllowedCancelOnly.includes(order.order_status) && index == 0 && order.ordercancel == null" href="#" @click.prevent="openOrderCancel(order)"
                style="float: right;background-color: #dc3545;color: white !important;" class="btn_1">Cancel Request</a>
 
            
@@ -92,7 +92,7 @@
               <a href="#" class="btn_2" @click.prevent="openOrderHistory(order.order_logs)">Order History</a>
             </div>
 
-            <div v-if="statusAllowedCancel.includes(order.order_status) && !isCancelRequested(item)"
+            <div v-if="statusAllowedCancel.includes(order.order_status) && !isCancelRequested(item) && order.ordercancel == null"
               class="my-4 p-4 border rounded bg-light">
               <div v-if="!showReason[order.id]?.[item.id]">
 
@@ -135,8 +135,8 @@
               </div>
             </div>
 
-            <div class="d-flex justify-content-between align-items-center" v-if="isCancelRequested(item)">
-              <span class="text-danger fw-semibold">You have already requested cancellation</span>
+            <div class="d-flex justify-content-between align-items-center" v-if="isCancelRequested(item) || order.ordercancel != null">
+              <span class="text-danger fw-semibold">You have already requested cancellation / return</span>
 
             </div>
           </div>
