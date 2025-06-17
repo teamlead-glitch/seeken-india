@@ -62,6 +62,10 @@
                 <template v-if="Number(cart.total_price) > Number(cart.grand_total)">
                 <div class="left">You have saved</div>
                 <div class="right">₹ {{ cart.total_price - cart.grand_total }}</div>
+
+
+                <div class="left">Total</div>
+                <div class="right">₹ {{ cart.grand_total }}</div>
                 </template>
               </div>
             </div>
