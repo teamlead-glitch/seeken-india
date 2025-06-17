@@ -33,6 +33,7 @@
       </li>
       <li :class="{ active: route.path === '/cart' }">
         <NuxtLink to="/cart" @click="closeMobMenu2">
+          <div class="count">{{ cartCount }}</div>
           <div class="icon">
             <img v-if="route.path === '/cart'" src="/images/cart-hover-menu.svg" alt="seeken">
             <img v-else src="/images/cart-menu.svg" alt="seeken">
@@ -122,6 +123,7 @@
 
 <script setup>
 import { useAuthStore } from '~/store/auth';
+import { useCartStore } from '~/store/cart';
 const isSubmenuVisible = ref(false);
 const authStore = useAuthStore();
 const route = useRoute();
@@ -157,4 +159,7 @@ const mobMenuBtn = ref(null);
 const offcanvasRef = ref(null)
 
 const settings = await useSiteSettings();
+
+const cartStore = useCartStore();
+const cartCount = computed(() => (cartStore.cart?.items || []).length);
 </script>
