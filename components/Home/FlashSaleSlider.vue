@@ -30,9 +30,11 @@
           <!-- desktop  -->
           <div class="sale_box">
             <h5>FLASH SALE</h5>
+            <h5>{{item.name}}</h5>
             <div class="outer__box">
-              <div class="offer">{{item.discount}}% OFF</div>
-              <div class="prices">₹{{item.selling_price}} <span>₹{{item.price}}</span></div>
+              <div class="offer" v-if="item.discount">{{item.discount}}% OFF</div>
+              <div class="prices" v-if="item.discount">₹{{item.selling_price}} <span>₹{{item.price}}</span></div>
+              <div class="prices" v-else>₹{{item.price}} </div>
             </div>
             <h6> <span>{{ item.stock }} more</span> items remaining!</h6>
             <div class="limiter_offer" :class="{ outOfStock: !item.stock || item.stock < 1 }">
@@ -80,7 +82,7 @@
                 <ProductCardCountDown :endTime="item.to_date"/>
                 </template>
                 <h6> <span>{{ item.stock }} more</span> items remaining!</h6>
-                <div class="offer">{{item.discount}}% OFF</div>
+                <div class="offer" v-if="item.discount">{{item.discount}}% OFF</div>
               </div>
             </div>
             </a>
