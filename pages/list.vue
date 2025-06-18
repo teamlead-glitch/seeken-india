@@ -25,6 +25,7 @@
       </div>
       <div class="row">
         <div class="col-md-12 inner_mob_container">
+          <div class="tab-scroll-container">
           <ul class="nav nav-tabs " role="tablist">
             <li class="nav-item" role="presentation">
               <a class="nav-link" :class="{ active: filterCat === 0 }" href="#" @click="filterCategory(0)"> All</a>
@@ -36,6 +37,7 @@
             </li>
 
           </ul>
+          </div>
           <div class="tab-content pt-2" id="tab-content">
             <div class="tab-pane active" id="simple-tabpanel-0" role="tabpanel" aria-labelledby="simple-tab-0">
               <div class="row">
@@ -57,6 +59,7 @@
               </div>
             </div>
           </div>
+        
         </div>
       </div>
     </div>
