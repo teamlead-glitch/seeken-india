@@ -257,7 +257,7 @@ export default defineNuxtConfig({
     // }
 
     prerender: {
-      routes: ["/",'/blog'],       // Only prerender the index page
+      routes: ['/blog'],       // Only prerender the index page
       crawlLinks: false,   // Prevent crawling links to auto-discover routes
       ignore: ["/b"], // Ignore invalid route
     }
