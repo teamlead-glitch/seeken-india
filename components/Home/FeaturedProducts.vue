@@ -7,7 +7,7 @@
 
 <script setup>
 
-const { data: featured_products, error, refresh } = useFetchData('featured_products', 'featured-products');
+const { data: featured_products, error, refresh } = useFetchDataCache('featured_products', 'featured-products');
 
 const getModifiedProduct = (item) => {
   if (item.stock_quantity > 0) return item;
