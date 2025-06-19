@@ -31,7 +31,7 @@
               <a class="nav-link" :class="{ active: filterCat === 0 }" href="#" @click="filterCategory(0)"> All</a>
             </li>
 
-            <li class="nav-item" role="presentation" v-for="cat in categories">
+            <li  class="nav-item" role="presentation" v-for="cat in categories" :ref="el => tabRefs[cat.id] = el">
               <a class="nav-link" :class="{ active: filterCat === cat.id }" href="#" @click="filterCategory(cat.id)"> {{
                 cat.name }}</a>
             </li>
@@ -112,6 +112,7 @@ onMounted(() => {
     if (newCategory) {
       filterCat.value = Number(newCategory);
       fetchProducts(newCategory)
+      
     }else{
        fetchProducts()
     }
@@ -252,4 +253,31 @@ const getModifiedProduct = (item) => {
 
   return item;
 };
+
+const tabRefs = ref({});
+
+function scrollToActiveTab(catId) {
+  const container = document.querySelector('.tab-scroll-container');
+  const activeTab = tabRefs.value[catId];
+
+  if (container && activeTab) {
+    const offsetLeft = activeTab.offsetLeft - container.offsetLeft;
+    //alert(offsetLeft)
+    container.scrollTo({
+      left: offsetLeft - 16,
+      behavior: 'smooth'
+    });
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('load', () => {
+    scrollToActiveTab(filterCat.value);
+  });
+
+  // Fallback: scroll after short delay if window.load isn't reliable
+  setTimeout(() => {
+    scrollToActiveTab(filterCat.value);
+  }, 300); // adjust if needed
+});
 </script>
