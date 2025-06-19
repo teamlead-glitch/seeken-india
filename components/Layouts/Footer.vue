@@ -59,7 +59,11 @@
                 <ul>
                   <!-- <li><a href="#">Support centre</a></li> -->
                   <li><NuxtLink to="/contactus">Contact Us</NuxtLink></li>
-                  <li><NuxtLink to="/contactus">Contact us via WhatsApp</NuxtLink></li>
+                  <li>
+                    <!-- <NuxtLink to="/contactus">Contact us via WhatsApp</NuxtLink> -->
+                    <a  href="https://wa.me/9746420575" target="_blank"
+  rel="noopener noreferrer">Contact us via WhatsApp</a>
+                  </li>
                   <!-- <li><a href="#">Find a store</a></li> -->
                 </ul>
               </div>
