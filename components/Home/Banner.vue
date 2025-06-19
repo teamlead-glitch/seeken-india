@@ -88,7 +88,7 @@ const swiperInstance = ref(null);
 const config = useRuntimeConfig();
 
 
-const { data: slides, error, refresh } = useFetchDataCache('banners', 'banners');
+const { data: slides, error, refresh } = useFetchData('banners', 'banners');
 
 
 // Initialize Swiper instance

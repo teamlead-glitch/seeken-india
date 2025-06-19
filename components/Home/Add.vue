@@ -16,5 +16,5 @@
 // });
 
 
-const { data: page_content, error, refresh } = useFetchDataCache('page_content', 'page/home');
+const { data: page_content, error, refresh } = useFetchData('page_content', 'page/home');
 </script>
