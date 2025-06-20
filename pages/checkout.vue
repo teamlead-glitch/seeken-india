@@ -59,7 +59,7 @@
         <div class="cancellation">
             <h5>Order Cancellation Charges</h5>
             <p>Learn about our cancellation terms and how to request a refund.</p>
-           <NuxtLink to="/cancellation-returns" class="link">Cancellation policy</NuxtLink> 
+           <NuxtLink to="/cancellation-returns" target="_blank" class="link">Cancellation policy</NuxtLink> 
         </div>
     </div>
     </div>
