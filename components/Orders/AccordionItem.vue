@@ -86,7 +86,7 @@
               </div>
             </div>
             <!-- Mobile buttons -->
-            <div class="btn__boxes__mob">
+            <div class="btn__boxes__mob" v-if="item.product">
               <a href="#" class="btn_1" @click="buyNow(item, 1)">Buy it again</a>
               <NuxtLink :to="`/products/${item.product?.slug}`" class="btn_2">View Product</NuxtLink>
               <a href="#" class="btn_2" @click.prevent="openOrderHistory(order.order_logs)">Order History</a>
