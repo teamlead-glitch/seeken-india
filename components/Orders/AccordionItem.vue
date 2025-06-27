@@ -175,6 +175,7 @@ const statusAllowedCancel = [
 const statusAllowedCancelOnly = [
   "pending",
   "confirmed",
+  "processing"
 ];
 
 const statusAllowedInvoice = [
