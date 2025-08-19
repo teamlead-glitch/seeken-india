@@ -45,6 +45,24 @@ watch(
   },
   { immediate: true } // run once on load
 )
+
+
+useHead({
+  script: [
+    {
+      src: "https://www.googletagmanager.com/gtag/js?id=G-229W04MHHY",
+      async: true
+    },
+    {
+      children: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-229W04MHHY');
+      `
+    }
+  ]
+})
 </script>
 
 
