@@ -1,6 +1,13 @@
 import { ref } from 'vue';
 import { useAuthStore } from '~/store/auth';
 
+function toSerializableError(err) {
+  return {
+    message: err?.data?.message || err?.message || 'Unable to fetch data',
+    statusCode: err?.statusCode || err?.response?.status || null,
+  };
+}
+
 export function useFetchData(key, endpoint, auth = false) {
   const config = useRuntimeConfig();
   const data = ref([]);
@@ -31,7 +38,7 @@ export function useFetchData(key, endpoint, auth = false) {
       error.value = null;
     } catch (err) {
       console.error(`useFetchData: Error fetching ${endpoint}:`, err);
-      error.value = err;
+      error.value = toSerializableError(err);
       data.value = [];
     } finally {
       hideLoader();

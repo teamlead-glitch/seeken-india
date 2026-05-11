@@ -24,7 +24,14 @@ export function usePageContent(slug: string, fallbackTitle = 'Page') {
     }
   })
 
-  error.value = asyncError.value
+  watchEffect(() => {
+    error.value = asyncError.value
+      ? {
+          message: asyncError.value?.message || 'Unable to fetch page content',
+          statusCode: asyncError.value?.statusCode || null,
+        }
+      : null
+  })
 
   return {
     page_content,

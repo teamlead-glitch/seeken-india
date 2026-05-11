@@ -44,7 +44,6 @@ export const useAuthStore = defineStore('auth', {
       if (!this.token) return;
 
       try {
-        console.log(this.user,'this.user+')
         let userdata = await $fetch(`${useRuntimeConfig().public.apiBase}profile`, {
           headers: { Authorization: `Bearer ${this.token}` },
         });

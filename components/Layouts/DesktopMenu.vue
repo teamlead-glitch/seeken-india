@@ -195,11 +195,9 @@ const wishlistStore = useWishlistStore()
 const wishlistCount = computed(() => (wishlistStore.list || []).length);
 
 const authStore = useAuthStore();
-console.log(authStore, 'authStore in desktopmenu')
 
 onMounted(() => {
-  console.log('desktopmenu');
-  authStore.fetchUser(); // ✅ Ensures token is set on every page
+  authStore.fetchUser();
 });
 
 const logout = () => {

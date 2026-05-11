@@ -1,12 +1,19 @@
 import { ref, onMounted } from 'vue';
 import { useAuthStore } from '~/store/auth';
 
+function toSerializableError(err: any) {
+  return {
+    message: err?.data?.message || err?.message || 'Unable to fetch data',
+    statusCode: err?.statusCode || err?.response?.status || null,
+  };
+}
+
 export function useFetchDataCache(key, endpoint, auth = false) {
   const config = useRuntimeConfig();
   const data = ref([]);
   const error = ref(null);
 
-  const { $pinia, ssrContext } = useNuxtApp();
+  const { $pinia } = useNuxtApp();
   const authStore = $pinia ? useAuthStore() : null;
   const { showLoader, hideLoader } = useLoader();
 
@@ -48,7 +55,7 @@ export function useFetchDataCache(key, endpoint, auth = false) {
       localStorage.setItem(cacheKey, JSON.stringify(data.value));
     } catch (err) {
       console.error(`useFetchData error (${endpoint}):`, err);
-      error.value = err;
+      error.value = toSerializableError(err);
     } finally {
       hideLoader();
     }

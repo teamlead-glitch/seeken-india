@@ -64,7 +64,6 @@ useQuickProduct();
 const activeIndex = ref(0);
 
 const { data: cats, error, refresh } = useFetchData('cats', 'categories/sub');
-console.log(cats,'cats++')
 provide('All_categories', cats);
 
 // Show subcategories when clicking a category
@@ -73,7 +72,6 @@ const showSubcategories = (index) => {
 };
 
 const handleSearch = () => {
-  console.log('search here...')
 }
 
 const route = useRoute();

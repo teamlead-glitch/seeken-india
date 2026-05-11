@@ -26,25 +26,23 @@ onMounted(() => {
   wishlistStore.fetchWishlists()
 })
 
-watch(
-  () => [authStore.token, authStore.user],
-  async ([newToken, newUser]) => {
-      cartStore.cart={};
-      await cartStore.fetchCartFromServer()
-    
-  },
-  { immediate: true } // run once on load
-)
+if (process.client) {
+  watch(
+    () => [authStore.token, authStore.user],
+    async () => {
+      cartStore.cart = {};
+      await cartStore.fetchCartFromServer();
+    }
+  )
 
-watch(
-  () => [authStore.token, authStore.user],
-  async ([newToken, newUser]) => {
-    wishlistStore.list=[];
-      await wishlistStore.fetchWishlists()
-    
-  },
-  { immediate: true } // run once on load
-)
+  watch(
+    () => [authStore.token, authStore.user],
+    async () => {
+      wishlistStore.list = [];
+      await wishlistStore.fetchWishlists();
+    }
+  )
+}
 
 
 useHead({

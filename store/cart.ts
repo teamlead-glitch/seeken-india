@@ -25,10 +25,8 @@ export const useCartStore = defineStore('cart', {
         headers['Authorization'] = `Bearer ${authStore.token}`;
 
       } else {
-        console.log(2222)
         const guestToken = ensureGuestToken();
         item = { session_id: guestToken };
-        console.log(item, 'item++--')
         if (guestToken) headers['X-Guest-Token'] = guestToken;
 
       }
