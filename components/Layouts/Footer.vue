@@ -79,7 +79,7 @@
       <div class="row">
         <div class="col-md-12">
           <ul>
-            <li>© SEEKEN ELECTRONICS INDIA PRIVATE LIMITED 2025</li>
+            <li>© SEEKEN ELECTRONICS INDIA PRIVATE LIMITED {{ currentYear }}</li>
             <li>All Rights Reserved</li>
             <li><NuxtLink to="/terms-of-services"> Terms and Conditions</NuxtLink> </li>
             <li><NuxtLink to="/privacy-policy"> Privacy Policy</NuxtLink></li>
@@ -101,5 +101,6 @@
 import { inject } from 'vue';
 const categories = inject('All_categories');
 const settings = await useSiteSettings();
+const currentYear = new Date().getFullYear();
 
 </script>
