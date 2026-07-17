@@ -4,9 +4,7 @@
           <div class="row justify-content-center">
             <div class="col-md-8 col-xl-6 mb-4">
               <h3>Choose Your Category</h3>
-              <p>Make your home smarter, cleaner, and more efficient with Seeken. 
-                Choose from a curated collection of fans, cookware, irons, 
-                and more – each designed to simplify your life and elevate your home experience.</p>
+              <p>Explore innovative consumer electronics, including smartwatches, wireless audio, charging solutions, gaming accessories, and mobile essentials.</p>
             </div>
           </div>
           <div class="row">
