@@ -19,11 +19,11 @@
                                                         <!-- </NuxtLink> -->
                                                     </div>
                                                     <template v-if="product.final_price">
-                                                    <div class="price" v-if="product.price > product.final_price"> Rs. {{ product.final_price }} <span>Rs. {{ product.price }}</span></div>
+                                                    <div class="price" v-if="parseFloat(product.price) > parseFloat(product.final_price)"> Rs. {{ product.final_price }} <span>Rs. {{ product.price }}</span></div>
                                                     <div class="price" v-else> Rs. {{ product.final_price }} </div>
                                                     </template>
                                                     <template v-else>
-                                                    <div class="price" v-if="product.price > product.selling_price"> Rs. {{ product.selling_price }} <span>Rs. {{ product.price }}</span></div>
+                                                    <div class="price" v-if="parseFloat(product.price) > parseFloat(product.selling_price)"> Rs. {{ product.selling_price }} <span>Rs. {{ product.price }}</span></div>
                                                     <div class="price" v-else> Rs. {{ product.selling_price }} </div>
                                                     </template>
                                                 </div>
