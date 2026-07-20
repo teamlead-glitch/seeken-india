@@ -18,14 +18,8 @@
                                                         <h4>{{ product.name }}</h4>
                                                         <!-- </NuxtLink> -->
                                                     </div>
-                                                    <template v-if="product.final_price">
-                                                    <div class="price" v-if="parseFloat(product.price) > parseFloat(product.final_price)"> Rs. {{ product.final_price }} <span>Rs. {{ product.price }}</span></div>
-                                                    <div class="price" v-else> Rs. {{ product.final_price }} </div>
-                                                    </template>
-                                                    <template v-else>
-                                                    <div class="price" v-if="parseFloat(product.price) > parseFloat(product.selling_price)"> Rs. {{ product.selling_price }} <span>Rs. {{ product.price }}</span></div>
-                                                    <div class="price" v-else> Rs. {{ product.selling_price }} </div>
-                                                    </template>
+                                                    <div class="price" v-if="effectivePrice < product.price"> Rs. {{ effectivePrice }} <span>Rs. {{ product.price }}</span></div>
+                                                    <div class="price" v-else> Rs. {{ product.price }} </div>
                                                 </div>
                                             </div>
                                             <div class="top_box">
@@ -51,7 +45,7 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, computed } from 'vue';
 
 import { useCartActions } from '@/composables/useCartActions'
 
@@ -59,6 +53,13 @@ const { handleAddToCart } = useCartActions()
 // Define the props expected from parent component
 const props = defineProps({
   product: Array
+});
+
+const effectivePrice = computed(() => {
+  const { final_price, selling_price, price } = props.product;
+  if (final_price) return final_price;
+  if (selling_price) return selling_price;
+  return price;
 });
 
 
